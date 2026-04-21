@@ -1,0 +1,4779 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Madara\n"
+"POT-Creation-Date: 2021-10-08 11:07+0700\n"
+"PO-Revision-Date: 2018-06-28 21:50+0700\n"
+"Last-Translator: \n"
+"Language-Team: mangabooth <mangabooth@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;esc_html__;esc_html_e;__;esc_attr__;esc_attr_e;_x;_n:1,2;_n\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:34 404.php:36 app/config/theme-options.php:60 app/views/ParseBreadcrumbs.php:33
+msgid "404"
+msgstr ""
+
+#: 404.php:48
+msgid "Oops! page not found."
+msgstr ""
+
+#: 404.php:65
+msgid "Go home"
+msgstr ""
+
+#: amp/manga-chapters.php:26 madara-core/single/info-chapters.php:29
+msgid "LATEST MANGA RELEASES"
+msgstr ""
+
+#: amp/manga-chapters.php:145 madara-core/single/info-chapters.php:176
+msgid "Manga has no chapter yet."
+msgstr ""
+
+#: amp/meta-manga.php:34 madara-core/single/info-rank.php:21 manga-functions.php:591
+msgid "Rank"
+msgstr ""
+
+#: amp/meta-manga.php:41 app/metadatas/page-metadatas.php:340 madara-core/manga-filter.php:46 madara-core/single/info-rating.php:26
+msgid "Rating"
+msgstr ""
+
+#: amp/meta-manga.php:48 madara-core/content/content-search.php:68 madara-core/single/info-alternative-name.php:22 manga-functions.php:602
+msgid "Alternative"
+msgstr ""
+
+#: amp/meta-manga.php:54 madara-core/single/info-authors.php:20 manga-functions.php:615
+msgid "Author(s)"
+msgstr ""
+
+#: amp/meta-manga.php:60 madara-core/single/info-artists.php:21 manga-functions.php:628
+msgid "Artist(s)"
+msgstr ""
+
+#: amp/meta-manga.php:66 madara-core/single/info-genres.php:21 manga-functions.php:643
+msgid "Genre(s)"
+msgstr ""
+
+#: amp/meta-manga.php:72 app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2579 madara-core/single/info-type.php:21
+msgid "Type"
+msgstr ""
+
+#: amp/meta-manga.php:78 madara-core/content/content-search.php:176 madara-core/single/info-release.php:23
+msgid "Release"
+msgstr ""
+
+#: amp/meta-manga.php:86 app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2584 madara-core/content/content-search.php:158 madara-core/manga-search.php:154 madara-core/single/info-status.php:20
+msgid "Status"
+msgstr ""
+
+#: amp/meta-taxonomy.php:21 amp/meta-taxonomy.php:35
+msgid ", "
+msgstr ""
+
+#: amp/meta-taxonomy.php:27
+#, php-format
+msgid "Categories: %s"
+msgstr ""
+
+#: amp/meta-taxonomy.php:44
+#, php-format
+msgid "Tags: %s"
+msgstr ""
+
+#: app/config-image-sizes.php:9
+msgid "Thumb 254x140px"
+msgstr ""
+
+#: app/config-image-sizes.php:10
+msgid "This thumb size is used for post thumbnail in Widget Posts & Post Navigation"
+msgstr ""
+
+#: app/config-image-sizes.php:16
+msgid "Thumb 360x206px"
+msgstr ""
+
+#: app/config-image-sizes.php:17
+msgid "This thumb size is used for post thumbnail in Blog Listing"
+msgstr ""
+
+#: app/config-image-sizes.php:23
+msgid "Thumb 125x180px"
+msgstr ""
+
+#: app/config-image-sizes.php:24
+msgid "This thumb size is used for post thumbnail in Popular Slider"
+msgstr ""
+
+#: app/config-image-sizes.php:30
+msgid "Thumb 1200x630px"
+msgstr ""
+
+#: app/config-image-sizes.php:31
+msgid "This thumb size is used for meta tag og:image"
+msgstr ""
+
+#: app/config-image-sizes.php:37
+msgid "Thumb 175x238px"
+msgstr ""
+
+#: app/config-image-sizes.php:38
+msgid "This thumb size is used for Manga's Big Thumbnail item layout in Manga Archives page"
+msgstr ""
+
+#: app/config-image-sizes.php:44
+msgid "Thumb 350x476px"
+msgstr ""
+
+#: app/config-image-sizes.php:45
+msgid "This thumb size is used for Manga's Big Thumbnail item layout in Manga Archives page when using full-width mode for mobile"
+msgstr ""
+
+#: app/config/theme-options.php:15
+msgid "Option Types"
+msgstr ""
+
+#: app/config/theme-options.php:16
+msgid "Help content goes here!"
+msgstr ""
+
+#: app/config/theme-options.php:19
+msgid "Sidebar content goes here!"
+msgstr ""
+
+#: app/config/theme-options.php:24
+msgid "General"
+msgstr ""
+
+#: app/config/theme-options.php:28
+msgid "General Layout"
+msgstr ""
+
+#: app/config/theme-options.php:32 app/config/theme-options.php:291 app/metadatas/page-metadatas.php:410
+msgid "Custom Colors"
+msgstr ""
+
+#: app/config/theme-options.php:36
+msgid "Custom Fonts"
+msgstr ""
+
+#: app/config/theme-options.php:40
+msgid "Header"
+msgstr ""
+
+#: app/config/theme-options.php:44 app/metadatas/page-metadatas.php:98 app/views/ParseBreadcrumbs.php:60 app/views/ParsePageTitle.php:40
+msgid "Blog"
+msgstr ""
+
+#: app/config/theme-options.php:48
+msgid "Single Post"
+msgstr ""
+
+#: app/config/theme-options.php:52
+msgid "Single Page"
+msgstr ""
+
+#: app/config/theme-options.php:56 header.php:58 madara-core/manga-search.php:65 madara-core/manga-search.php:173 madara-core/widgets/manga-search/manga-search.php:107 search.php:20
+msgid "Search"
+msgstr ""
+
+#: app/config/theme-options.php:64
+msgid "Social Accounts"
+msgstr ""
+
+#: app/config/theme-options.php:68
+msgid "Advertising"
+msgstr ""
+
+#: app/config/theme-options.php:72
+msgid "Misc"
+msgstr ""
+
+#: app/config/theme-options.php:76
+msgid "AMP"
+msgstr ""
+
+#: app/config/theme-options.php:86
+msgid "Logo Image"
+msgstr ""
+
+#: app/config/theme-options.php:87
+msgid "Upload your logo image"
+msgstr ""
+
+#: app/config/theme-options.php:94
+msgid "Logo Size (width x height)"
+msgstr ""
+
+#: app/config/theme-options.php:95
+msgid "(optional) Specify your logo width & height. This may help to improve Google Pagespeed Insights value. For example 230x140"
+msgstr ""
+
+#: app/config/theme-options.php:102
+msgid "Retina Logo (optional)"
+msgstr ""
+
+#: app/config/theme-options.php:103
+msgid "Retina logo should be two time bigger than the custom logo. Retina Logo is optional, use this setting if you want to strictly support retina devices."
+msgstr ""
+
+#: app/config/theme-options.php:110
+msgid "Login Logo Image"
+msgstr ""
+
+#: app/config/theme-options.php:111
+msgid "Upload your Admin Login logo image"
+msgstr ""
+
+#: app/config/theme-options.php:123 app/metadatas/page-metadatas.php:418
+msgid "Body Schema"
+msgstr ""
+
+#: app/config/theme-options.php:124 app/metadatas/page-metadatas.php:419
+msgid "Choose Body Color Schema"
+msgstr ""
+
+#: app/config/theme-options.php:131 app/metadatas/page-metadatas.php:429 madara-core/user/page/reader-settings.php:72
+msgid "Light"
+msgstr ""
+
+#: app/config/theme-options.php:135 app/metadatas/page-metadatas.php:433 madara-core/user/page/reader-settings.php:68
+msgid "Dark"
+msgstr ""
+
+#: app/config/theme-options.php:142 app/metadatas/page-metadatas.php:785
+msgid "Main Top Sidebar Container"
+msgstr ""
+
+#: app/config/theme-options.php:143 app/metadatas/page-metadatas.php:786
+msgid "Set container for Main Top Sidebar. Custom width is 1760px"
+msgstr ""
+
+#: app/config/theme-options.php:150 app/config/theme-options.php:196 app/config/theme-options.php:241 app/metadatas/page-metadatas.php:797 app/metadatas/page-metadatas.php:843 app/metadatas/page-metadatas.php:888
+#: app/theme-options.php:155 app/theme-options.php:200 app/theme-options.php:245
+msgid "Full-Width"
+msgstr ""
+
+#: app/config/theme-options.php:155 app/config/theme-options.php:201 app/config/theme-options.php:246 app/config/theme-options.php:1134 app/metadatas/page-metadatas.php:561 app/metadatas/page-metadatas.php:801
+#: app/metadatas/page-metadatas.php:847 app/metadatas/page-metadatas.php:892 app/theme-options.php:160 app/theme-options.php:205 app/theme-options.php:250
+msgid "Container"
+msgstr ""
+
+#: app/config/theme-options.php:160 app/config/theme-options.php:206 app/config/theme-options.php:251 app/config/theme-options.php:1139 app/metadatas/page-metadatas.php:566 app/metadatas/page-metadatas.php:805
+#: app/metadatas/page-metadatas.php:851 app/metadatas/page-metadatas.php:896 app/theme-options.php:165 app/theme-options.php:210 app/theme-options.php:255
+msgid "Custom Width"
+msgstr ""
+
+#: app/config/theme-options.php:169 app/metadatas/page-metadatas.php:813
+msgid "Main Top Sidebar Background"
+msgstr ""
+
+#: app/config/theme-options.php:170 app/metadatas/page-metadatas.php:814
+msgid "Upload background image for Main Top Sidebar"
+msgstr ""
+
+#: app/config/theme-options.php:178 app/metadatas/page-metadatas.php:822
+msgid "Main Top Sidebar - Padding"
+msgstr ""
+
+#: app/config/theme-options.php:179 app/metadatas/page-metadatas.php:823
+msgid "Padding in Main Bottom Top. Default value is 50 0 20 0 & unit is px"
+msgstr ""
+
+#: app/config/theme-options.php:188 app/metadatas/page-metadatas.php:831
+msgid "Main Top Second Sidebar Container"
+msgstr ""
+
+#: app/config/theme-options.php:189 app/metadatas/page-metadatas.php:832
+msgid "Set container for Main Top Second Sidebar. Custom width is 1760px"
+msgstr ""
+
+#: app/config/theme-options.php:214 app/metadatas/page-metadatas.php:858
+msgid "Main Top Second Sidebar Background"
+msgstr ""
+
+#: app/config/theme-options.php:215 app/metadatas/page-metadatas.php:859
+msgid "Upload background image for Main Top Second Sidebar"
+msgstr ""
+
+#: app/config/theme-options.php:223 app/metadatas/page-metadatas.php:867
+msgid "Main Top Second Sidebar - Padding"
+msgstr ""
+
+#: app/config/theme-options.php:224 app/metadatas/page-metadatas.php:868
+msgid "Padding in Main Top Second Sidebar. Default value is 50 0 20 0 & unit is px"
+msgstr ""
+
+#: app/config/theme-options.php:233 app/metadatas/page-metadatas.php:876
+msgid "Main Bottom Sidebar Container"
+msgstr ""
+
+#: app/config/theme-options.php:234 app/metadatas/page-metadatas.php:877
+msgid "Set container for Main bottom Sidebar. Custom width is 1760px"
+msgstr ""
+
+#: app/config/theme-options.php:259 app/metadatas/page-metadatas.php:904
+msgid "Main bottom Sidebar Background"
+msgstr ""
+
+#: app/config/theme-options.php:260 app/metadatas/page-metadatas.php:905
+msgid "Upload background image for Main Bottom Sidebar"
+msgstr ""
+
+#: app/config/theme-options.php:268 app/metadatas/page-metadatas.php:913
+msgid "Main Bottom Sidebar - Padding"
+msgstr ""
+
+#: app/config/theme-options.php:269 app/metadatas/page-metadatas.php:914
+msgid "Padding in Main Bottom Sidebar. Default value is 50 0 20 0 & unit is px"
+msgstr ""
+
+#: app/config/theme-options.php:278
+msgid "Login/Register Popup Background"
+msgstr ""
+
+#: app/config/theme-options.php:279
+msgid "Upload background image for Login/Register Popup"
+msgstr ""
+
+#: app/config/theme-options.php:292 app/metadatas/page-metadatas.php:411
+msgid "Show Custom Colors settings"
+msgstr ""
+
+#: app/config/theme-options.php:300 app/metadatas/page-metadatas.php:441
+msgid "Primary Color (Gradient - Start Color)"
+msgstr ""
+
+#: app/config/theme-options.php:301 app/metadatas/page-metadatas.php:442
+msgid "Choose Primary Color of the theme (Gradient - Start Color). Default is: #eb3349"
+msgstr ""
+
+#: app/config/theme-options.php:310 app/metadatas/page-metadatas.php:450
+msgid "Primary Color (Gradient - End Color)"
+msgstr ""
+
+#: app/config/theme-options.php:311 app/metadatas/page-metadatas.php:451
+msgid "Choose Primary Color of the theme (Gradient - End Color)"
+msgstr ""
+
+#: app/config/theme-options.php:320 app/metadatas/page-metadatas.php:459
+msgid "Link Hover Color"
+msgstr ""
+
+#: app/config/theme-options.php:321 app/metadatas/page-metadatas.php:460
+msgid "Choose Link Hover Color of the theme. Default is Primary Color"
+msgstr ""
+
+#: app/config/theme-options.php:330 app/metadatas/page-metadatas.php:468
+msgid "Star Color"
+msgstr ""
+
+#: app/config/theme-options.php:331 app/metadatas/page-metadatas.php:469
+msgid "Choose Star Color rating in Manga Listing. Default is: #ffd900"
+msgstr ""
+
+#: app/config/theme-options.php:340 app/metadatas/page-metadatas.php:477
+msgid "HOT Badges background color"
+msgstr ""
+
+#: app/config/theme-options.php:341 app/metadatas/page-metadatas.php:478
+msgid "Choose Background Color for HOT Badges in Manga Listing"
+msgstr ""
+
+#: app/config/theme-options.php:350 app/metadatas/page-metadatas.php:486
+msgid "NEW Badges backgroundcolor"
+msgstr ""
+
+#: app/config/theme-options.php:351 app/metadatas/page-metadatas.php:487
+msgid "Choose Background Color for NEW Badges in Manga Listing"
+msgstr ""
+
+#: app/config/theme-options.php:360 app/metadatas/page-metadatas.php:495
+msgid "CUSTOM Badges backgroundcolor"
+msgstr ""
+
+#: app/config/theme-options.php:361 app/metadatas/page-metadatas.php:496
+msgid "Choose Background Color for Custom Badges in Manga Listing"
+msgstr ""
+
+#: app/config/theme-options.php:370 app/metadatas/page-metadatas.php:505
+msgid "Button Background"
+msgstr ""
+
+#: app/config/theme-options.php:371 app/metadatas/page-metadatas.php:506
+msgid "Choose default Background Color for Buttons"
+msgstr ""
+
+#: app/config/theme-options.php:380 app/metadatas/page-metadatas.php:514
+msgid "Button Text Color"
+msgstr ""
+
+#: app/config/theme-options.php:381 app/metadatas/page-metadatas.php:515
+msgid "Choose default Text Color for Buttons"
+msgstr ""
+
+#: app/config/theme-options.php:390 app/metadatas/page-metadatas.php:523
+msgid "Button Background Hover Color"
+msgstr ""
+
+#: app/config/theme-options.php:391 app/metadatas/page-metadatas.php:524
+msgid "Choose default Background Hover Color for Buttons"
+msgstr ""
+
+#: app/config/theme-options.php:400 app/metadatas/page-metadatas.php:532
+msgid "Button Text Hover Color"
+msgstr ""
+
+#: app/config/theme-options.php:401 app/metadatas/page-metadatas.php:533
+msgid "Choose default Text Hover Color for Buttons"
+msgstr ""
+
+#: app/config/theme-options.php:411 app/metadatas/page-metadatas.php:595
+msgid "Customize Header Colors"
+msgstr ""
+
+#: app/config/theme-options.php:412 app/metadatas/page-metadatas.php:596
+msgid "Change various color settings on Header"
+msgstr ""
+
+#: app/config/theme-options.php:420 app/metadatas/page-metadatas.php:603
+msgid "Navigation - Item Color"
+msgstr ""
+
+#: app/config/theme-options.php:421 app/config/theme-options.php:508 app/metadatas/page-metadatas.php:604 app/metadatas/page-metadatas.php:682
+msgid "Choose color for menu items on Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:430 app/metadatas/page-metadatas.php:612
+msgid "Navigation - Item Hover Color"
+msgstr ""
+
+#: app/config/theme-options.php:431 app/metadatas/page-metadatas.php:613
+msgid "Choose hover color for menu items on Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:440 app/metadatas/page-metadatas.php:621
+msgid "Navigation - Background Color For Sub Menu"
+msgstr ""
+
+#: app/config/theme-options.php:441 app/metadatas/page-metadatas.php:622
+msgid "Choose background color for sub menu of Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:450 app/metadatas/page-metadatas.php:630
+msgid "Navigation - Sub Menu Item Border Color"
+msgstr ""
+
+#: app/config/theme-options.php:451 app/metadatas/page-metadatas.php:631
+msgid "Choose color for sub menu item border color"
+msgstr ""
+
+#: app/config/theme-options.php:460 app/metadatas/page-metadatas.php:639
+msgid "Navigation - Sub Menu Item Color"
+msgstr ""
+
+#: app/config/theme-options.php:461 app/metadatas/page-metadatas.php:640
+msgid "Choose color for sub menu item of Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:470 app/metadatas/page-metadatas.php:648
+msgid "Navigation - Sub Menu Item Hover Color"
+msgstr ""
+
+#: app/config/theme-options.php:471 app/metadatas/page-metadatas.php:649
+msgid "Choose hover color for sub menu item of Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:480 app/metadatas/page-metadatas.php:657
+msgid "Navigation - Sub Menu Item Hover Background Color"
+msgstr ""
+
+#: app/config/theme-options.php:481 app/metadatas/page-metadatas.php:658
+msgid "Choose hover background color for sub menu item of Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:490 app/metadatas/page-metadatas.php:666
+msgid "Customize Header Bottom Colors"
+msgstr ""
+
+#: app/config/theme-options.php:491 app/metadatas/page-metadatas.php:667
+msgid "Change various color settings on Header Bottom"
+msgstr ""
+
+#: app/config/theme-options.php:498 app/metadatas/page-metadatas.php:673
+msgid "Header Bottom Background"
+msgstr ""
+
+#: app/config/theme-options.php:499 app/metadatas/page-metadatas.php:674
+msgid "Choose background color for the Header Bottom"
+msgstr ""
+
+#: app/config/theme-options.php:507 app/metadatas/page-metadatas.php:681
+msgid "Second Navigation - Item Color"
+msgstr ""
+
+#: app/config/theme-options.php:517 app/metadatas/page-metadatas.php:690
+msgid "Second Navigation - Item Hover Color"
+msgstr ""
+
+#: app/config/theme-options.php:518 app/metadatas/page-metadatas.php:691
+msgid "Choose hover color for menu items on Second Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:527 app/metadatas/page-metadatas.php:699
+msgid "Second Navigation - Background Color For Sub Menu"
+msgstr ""
+
+#: app/config/theme-options.php:528 app/metadatas/page-metadatas.php:700
+msgid "Choose background color for sub menu of Second Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:537 app/metadatas/page-metadatas.php:708
+msgid "Second Navigation - Sub Menu Item Color"
+msgstr ""
+
+#: app/config/theme-options.php:538 app/metadatas/page-metadatas.php:709
+msgid "Choose color for sub menu item of Second Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:547 app/metadatas/page-metadatas.php:717
+msgid "Second Navigation - Sub Menu Item Hover Color"
+msgstr ""
+
+#: app/config/theme-options.php:548 app/metadatas/page-metadatas.php:718
+msgid "Choose hover color for sub menu item of Second Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:557 app/metadatas/page-metadatas.php:726
+msgid "Second Navigation - Border Bottom Color For Sub Menu"
+msgstr ""
+
+#: app/config/theme-options.php:558 app/metadatas/page-metadatas.php:727
+msgid "Choose border bottom color for sub menu of Second Navigation. Default is Primary Color"
+msgstr ""
+
+#: app/config/theme-options.php:567 app/metadatas/page-metadatas.php:735
+msgid "Mobile Menu Custom Color"
+msgstr ""
+
+#: app/config/theme-options.php:568 app/metadatas/page-metadatas.php:736
+msgid "Change various color settings on Mobile Menu"
+msgstr ""
+
+#: app/config/theme-options.php:576
+msgid "Mobile Browser Header Color"
+msgstr ""
+
+#: app/config/theme-options.php:577
+msgid "Change header color on Mobile Browser Header"
+msgstr ""
+
+#: app/config/theme-options.php:585 app/metadatas/page-metadatas.php:743
+msgid "Canvas Menu - Background"
+msgstr ""
+
+#: app/config/theme-options.php:586 app/metadatas/page-metadatas.php:744
+msgid "Set Background Color of Canvas Menu"
+msgstr ""
+
+#: app/config/theme-options.php:595 app/metadatas/page-metadatas.php:752
+msgid "Canvas Menu - Menu Item Color"
+msgstr ""
+
+#: app/config/theme-options.php:596 app/metadatas/page-metadatas.php:753
+msgid "Set Color of Item of Canvas Menu"
+msgstr ""
+
+#: app/config/theme-options.php:605 app/metadatas/page-metadatas.php:761
+msgid "Canvas Menu - Menu Item Hover Color"
+msgstr ""
+
+#: app/config/theme-options.php:606 app/metadatas/page-metadatas.php:762
+msgid "Set Hover Color of Item of Canvas Menu"
+msgstr ""
+
+#: app/config/theme-options.php:618
+msgid "Google Fonts API Key"
+msgstr ""
+
+#: app/config/theme-options.php:619
+msgid "If the Google Fonts list below does not appear, enter your own Google Fonts API Key here. Please follow the link below to create your Key:"
+msgstr ""
+
+#: app/config/theme-options.php:627
+msgid "Custom Font Settings"
+msgstr ""
+
+#: app/config/theme-options.php:628
+msgid "Customize default Font Settings"
+msgstr ""
+
+#: app/config/theme-options.php:636
+msgid "Use Google Font for Main Font"
+msgstr ""
+
+#: app/config/theme-options.php:637
+msgid "If you use Google Font for Main Font Family, turn this on"
+msgstr ""
+
+#: app/config/theme-options.php:646 app/config/theme-options.php:656
+msgid "Main Font Family"
+msgstr ""
+
+#: app/config/theme-options.php:647
+msgid "Choose Google Fonts for Main Font"
+msgstr ""
+
+#: app/config/theme-options.php:657
+msgid "Enter name of font family here"
+msgstr ""
+
+#: app/config/theme-options.php:666
+msgid "Main Font Size"
+msgstr ""
+
+#: app/config/theme-options.php:667
+msgid "Choose Font Size. Default is 14px"
+msgstr ""
+
+#: app/config/theme-options.php:677
+msgid "Main Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:678
+msgid "Choose Font Weight."
+msgstr ""
+
+#: app/config/theme-options.php:685
+msgid "Normal"
+msgstr ""
+
+#: app/config/theme-options.php:690
+msgid "Bold"
+msgstr ""
+
+#: app/config/theme-options.php:695
+msgid "Bolder"
+msgstr ""
+
+#: app/config/theme-options.php:700
+msgid "Initial"
+msgstr ""
+
+#: app/config/theme-options.php:705
+msgid "Lighter"
+msgstr ""
+
+#: app/config/theme-options.php:710
+msgid "100"
+msgstr ""
+
+#: app/config/theme-options.php:715
+msgid "200"
+msgstr ""
+
+#: app/config/theme-options.php:720
+msgid "300"
+msgstr ""
+
+#: app/config/theme-options.php:725
+msgid "400"
+msgstr ""
+
+#: app/config/theme-options.php:730
+msgid "500"
+msgstr ""
+
+#: app/config/theme-options.php:735
+msgid "600"
+msgstr ""
+
+#: app/config/theme-options.php:740
+msgid "700"
+msgstr ""
+
+#: app/config/theme-options.php:745
+msgid "800"
+msgstr ""
+
+#: app/config/theme-options.php:750
+msgid "900"
+msgstr ""
+
+#: app/config/theme-options.php:759
+msgid "Main Font Line Height"
+msgstr ""
+
+#: app/config/theme-options.php:760
+msgid "Choose Font Line Height. Default is 1.5"
+msgstr ""
+
+#: app/config/theme-options.php:770
+msgid "Use Google Font for Heading Font"
+msgstr ""
+
+#: app/config/theme-options.php:771
+msgid "If you use Google Font for Heading Font Family, turn this on"
+msgstr ""
+
+#: app/config/theme-options.php:780 app/config/theme-options.php:790
+msgid "Heading Font Family"
+msgstr ""
+
+#: app/config/theme-options.php:781
+msgid "Heading Font is used for all heading tags (ie. H1, H2, H3, H4, H5, H6)"
+msgstr ""
+
+#: app/config/theme-options.php:791
+msgid "Heading Font is used for all heading tags (ie. H1, H2, H3, H4, H5, H6). Enter name of font family here"
+msgstr ""
+
+#: app/config/theme-options.php:800
+msgid "H1 - Font Size"
+msgstr ""
+
+#: app/config/theme-options.php:801
+msgid "Choose font size for H1. Default is 34px"
+msgstr ""
+
+#: app/config/theme-options.php:810
+msgid "H1 - Line Height"
+msgstr ""
+
+#: app/config/theme-options.php:811 app/config/theme-options.php:846 app/config/theme-options.php:881 app/config/theme-options.php:916 app/config/theme-options.php:951 app/config/theme-options.php:986
+msgid "Choose Font Line Height.  Default is 1.2em"
+msgstr ""
+
+#: app/config/theme-options.php:822
+msgid "H1 - Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:823 app/config/theme-options.php:858 app/config/theme-options.php:893 app/config/theme-options.php:928 app/config/theme-options.php:963 app/config/theme-options.php:998
+#: app/config/theme-options.php:1051
+msgid "Choose Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:834
+msgid "H2 - Font Size"
+msgstr ""
+
+#: app/config/theme-options.php:835
+msgid "Choose font size for H2. Default is 30px"
+msgstr ""
+
+#: app/config/theme-options.php:845
+msgid "H2 - Line Height"
+msgstr ""
+
+#: app/config/theme-options.php:857
+msgid "H2 - Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:869
+msgid "H3 - Font Size"
+msgstr ""
+
+#: app/config/theme-options.php:870
+msgid "Choose font size for H3. Default is 24px"
+msgstr ""
+
+#: app/config/theme-options.php:880
+msgid "H3 - Line Height"
+msgstr ""
+
+#: app/config/theme-options.php:892
+msgid "H3 - Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:904
+msgid "H4 - Font Size"
+msgstr ""
+
+#: app/config/theme-options.php:905
+msgid "Choose font size for H4. Default is 18px"
+msgstr ""
+
+#: app/config/theme-options.php:915
+msgid "H4 - Line Height"
+msgstr ""
+
+#: app/config/theme-options.php:927
+msgid "H4 - Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:939
+msgid "H5 - Font Size"
+msgstr ""
+
+#: app/config/theme-options.php:940
+msgid "Choose font size for H5. Default is 16px"
+msgstr ""
+
+#: app/config/theme-options.php:950
+msgid "H5 - Line Height"
+msgstr ""
+
+#: app/config/theme-options.php:962
+msgid "H5 - Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:974
+msgid "H6 - Font Size"
+msgstr ""
+
+#: app/config/theme-options.php:975
+msgid "Choose font size for H6. Default is 14px"
+msgstr ""
+
+#: app/config/theme-options.php:985
+msgid "H6 - Line Height"
+msgstr ""
+
+#: app/config/theme-options.php:997
+msgid "H6 - Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:1009
+msgid "Use Google Font for Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:1010
+msgid "If you use Google Font for Navigation Items, turn this on"
+msgstr ""
+
+#: app/config/theme-options.php:1019
+msgid "Navigation - Google Font"
+msgstr ""
+
+#: app/config/theme-options.php:1020
+msgid "Choose font to be used for Navigation Items"
+msgstr ""
+
+#: app/config/theme-options.php:1029
+msgid "Navigation - Font Family"
+msgstr ""
+
+#: app/config/theme-options.php:1030
+msgid "Enter name of font family to be used for Navigation Items"
+msgstr ""
+
+#: app/config/theme-options.php:1039
+msgid "Navigation - Font Size"
+msgstr ""
+
+#: app/config/theme-options.php:1040
+msgid "Choose font size for Navigation Items. Default is 14px"
+msgstr ""
+
+#: app/config/theme-options.php:1050
+msgid "Navigation - Font Weight"
+msgstr ""
+
+#: app/config/theme-options.php:1062
+msgid "Use Google Font for Meta Font"
+msgstr ""
+
+#: app/config/theme-options.php:1063
+msgid "If you use Google Font for Meta Font Family, turn this on"
+msgstr ""
+
+#: app/config/theme-options.php:1072 app/config/theme-options.php:1082
+msgid "Meta Font Family"
+msgstr ""
+
+#: app/config/theme-options.php:1073
+msgid "Meta Font is used for all meta tags"
+msgstr ""
+
+#: app/config/theme-options.php:1083
+msgid "Meta Font is used for all meta tags. Enter name of font family here"
+msgstr ""
+
+#: app/config/theme-options.php:1093
+msgid "Custom Font 1"
+msgstr ""
+
+#: app/config/theme-options.php:1094
+msgid "Upload your own font and enter name \"custom_font_1\" in \"Main Font Family or Special Font Family\" setting above"
+msgstr ""
+
+#: app/config/theme-options.php:1104
+msgid "Custom Font 2"
+msgstr ""
+
+#: app/config/theme-options.php:1105
+msgid "Upload your own font and enter name \"custom_font_2\" in \"Main Font Family, Heading Font Family or Meta Font Family\" setting above"
+msgstr ""
+
+#: app/config/theme-options.php:1115
+msgid "Custom Font 3"
+msgstr ""
+
+#: app/config/theme-options.php:1116
+msgid "Upload your own font and enter name \"custom_font_3\" in \"Main Font Family, Heading Font Family or Meta Font Family\" setting above"
+msgstr ""
+
+#: app/config/theme-options.php:1126 app/metadatas/page-metadatas.php:549
+msgid "Header Style"
+msgstr ""
+
+#: app/config/theme-options.php:1127 app/metadatas/page-metadatas.php:550
+msgid "Choose Header style. Custom width is 1760px"
+msgstr ""
+
+#: app/config/theme-options.php:1147
+msgid "Sticky Menu"
+msgstr ""
+
+#: app/config/theme-options.php:1148
+msgid "Enable/ Disable the Sticky Menu"
+msgstr ""
+
+#: app/config/theme-options.php:1155
+msgid "Disable"
+msgstr ""
+
+#: app/config/theme-options.php:1160
+msgid "Always sticky"
+msgstr ""
+
+#: app/config/theme-options.php:1165
+msgid "When page is scrolled up"
+msgstr ""
+
+#: app/config/theme-options.php:1173 app/metadatas/page-metadatas.php:573
+msgid "Header Bottom - Border Bottom"
+msgstr ""
+
+#: app/config/theme-options.php:1174 app/metadatas/page-metadatas.php:574
+msgid "Enable border bottom of the Header Bottom"
+msgstr ""
+
+#: app/config/theme-options.php:1182
+msgid "Default Login Buttons"
+msgstr ""
+
+#: app/config/theme-options.php:1183
+msgid "In case you plan to use a custom Login/Register buttons somewhere else, you can hide the default button on header"
+msgstr ""
+
+#: app/config/theme-options.php:1194
+msgid "Blog Sidebar"
+msgstr ""
+
+#: app/config/theme-options.php:1202 app/config/theme-options.php:1347 app/config/theme-options.php:1440 app/metadatas/page-metadatas.php:38 app/plugins/madara-woocommerce/WooCommerce.php:95 app/theme-options.php:346
+#: app/theme-options.php:613 app/theme-options.php:865
+msgid "Left"
+msgstr ""
+
+#: app/config/theme-options.php:1207 app/config/theme-options.php:1352 app/config/theme-options.php:1445 app/metadatas/page-metadatas.php:43 app/plugins/madara-woocommerce/WooCommerce.php:99 app/theme-options.php:351
+#: app/theme-options.php:618 app/theme-options.php:870
+msgid "Right"
+msgstr ""
+
+#: app/config/theme-options.php:1212 app/config/theme-options.php:1357 app/config/theme-options.php:1450 app/metadatas/page-metadatas.php:48 app/plugins/madara-woocommerce/WooCommerce.php:103 app/theme-options.php:356
+#: app/theme-options.php:623 app/theme-options.php:875
+msgid "Hidden"
+msgstr ""
+
+#: app/config/theme-options.php:1219
+msgid "Blog Heading Text"
+msgstr ""
+
+#: app/config/theme-options.php:1220
+msgid "Appear in Blog Listing"
+msgstr ""
+
+#: app/config/theme-options.php:1226
+msgid "Blog Heading Icon"
+msgstr ""
+
+#: app/config/theme-options.php:1227 app/metadatas/page-metadatas.php:183
+msgid "Icon class, for example 'fa fa-home'"
+msgstr ""
+
+#: app/config/theme-options.php:1227 app/metadatas/page-metadatas.php:183
+msgid "Font Awesome"
+msgstr ""
+
+#: app/config/theme-options.php:1227 app/metadatas/page-metadatas.php:183
+msgid "Ionicons"
+msgstr ""
+
+#: app/config/theme-options.php:1234
+msgid "Blog Margin Top"
+msgstr ""
+
+#: app/config/theme-options.php:1235
+msgid "Margin Top in Blog Listing Content. Default's 50 (in pixel)"
+msgstr ""
+
+#: app/config/theme-options.php:1243 app/metadatas/page-metadatas.php:189
+msgid "Blog Content Columns"
+msgstr ""
+
+#: app/config/theme-options.php:1244 app/metadatas/page-metadatas.php:190
+msgid "Columns number of Blog Post"
+msgstr ""
+
+#: app/config/theme-options.php:1250 app/metadatas/page-metadatas.php:199
+msgid "3 Columns"
+msgstr ""
+
+#: app/config/theme-options.php:1255 app/metadatas/page-metadatas.php:204
+msgid "2 Columns"
+msgstr ""
+
+#: app/config/theme-options.php:1262 app/metadatas/page-metadatas.php:212
+msgid "Blog Navigation"
+msgstr ""
+
+#: app/config/theme-options.php:1263 app/metadatas/page-metadatas.php:213
+msgid "Choose type of navigation for blog and any listing page. For WP PageNavi, you will need to install WP PageNavi plugin"
+msgstr ""
+
+#: app/config/theme-options.php:1274 app/metadatas/page-metadatas.php:33 app/metadatas/page-metadatas.php:195 app/metadatas/page-metadatas.php:425 app/metadatas/page-metadatas.php:556 app/metadatas/page-metadatas.php:580
+#: app/metadatas/page-metadatas.php:793 app/metadatas/page-metadatas.php:839 app/metadatas/page-metadatas.php:884 app/metadatas/post-metadatas.php:52 app/metadatas/post-metadatas.php:104
+#: app/plugins/madara-widgets/WidgetExtension.php:180 madara-core/user/page/reader-settings.php:64 madara-core/user/page/reader-settings.php:81 madara-core/user/page/reader-settings.php:99
+msgid "Default"
+msgstr ""
+
+#: app/config/theme-options.php:1279 app/metadatas/page-metadatas.php:228
+msgid "Ajax"
+msgstr ""
+
+#: app/config/theme-options.php:1284 app/metadatas/page-metadatas.php:233
+msgid "WP PageNavi"
+msgstr ""
+
+#: app/config/theme-options.php:1291
+msgid "Blog BreadCrumbs"
+msgstr ""
+
+#: app/config/theme-options.php:1292
+msgid "Enable Breadcrumbs for Blog/Posts"
+msgstr ""
+
+#: app/config/theme-options.php:1299
+msgid "Blog Navigation - Same Taxonomy Term"
+msgstr ""
+
+#: app/config/theme-options.php:1300
+msgid "Whether next/previous post should be in a same taxonomy term"
+msgstr ""
+
+#: app/config/theme-options.php:1307
+msgid "Blog Navigation - Taxonomy Type"
+msgstr ""
+
+#: app/config/theme-options.php:1308
+msgid "Taxonomy type, if \"Blog Navigation - Same Taxonomy Term\" is ON"
+msgstr ""
+
+#: app/config/theme-options.php:1316
+msgid "Category"
+msgstr ""
+
+#: app/config/theme-options.php:1320 app/views/ParseBreadcrumbs.php:31 app/views/ParsePageTitle.php:28
+msgid "Tag"
+msgstr ""
+
+#: app/config/theme-options.php:1326
+msgid "Posts Excerpt"
+msgstr ""
+
+#: app/config/theme-options.php:1327
+msgid "Show Posts Excerpt in Blog Listing"
+msgstr ""
+
+#: app/config/theme-options.php:1339 app/config/theme-options.php:1432
+msgid "Sidebar"
+msgstr ""
+
+#: app/config/theme-options.php:1364
+msgid "Post Excerpt"
+msgstr ""
+
+#: app/config/theme-options.php:1365
+msgid "Show Post Excerpt"
+msgstr ""
+
+#: app/config/theme-options.php:1372
+msgid "Featured Image"
+msgstr ""
+
+#: app/config/theme-options.php:1373
+msgid "Show (fullsize) Featured Image"
+msgstr ""
+
+#: app/config/theme-options.php:1380
+msgid "Tags"
+msgstr ""
+
+#: app/config/theme-options.php:1381
+msgid "Show Tags list"
+msgstr ""
+
+#: app/config/theme-options.php:1389
+msgid "Enable Post Meta"
+msgstr ""
+
+#: app/config/theme-options.php:1390
+msgid "Show Post \"Posted-On Date\" and \"Post Categories\""
+msgstr ""
+
+#: app/config/theme-options.php:1399
+msgid "Post Category"
+msgstr ""
+
+#: app/config/theme-options.php:1400
+msgid "Show Category list"
+msgstr ""
+
+#: app/config/theme-options.php:1409
+msgid "Enable Comments"
+msgstr ""
+
+#: app/config/theme-options.php:1410
+msgid "You can disable Comments Form in single post only"
+msgstr ""
+
+#: app/config/theme-options.php:1419
+msgid "Reverse Navigation Links"
+msgstr ""
+
+#: app/config/theme-options.php:1420
+msgid "By default, in LTR language, Next Button is on the left, while Previous Button is on the right. If this option is turned on, then Next Button will be on the right, while the Previous Button is on the left"
+msgstr ""
+
+#: app/config/theme-options.php:1458 app/config/theme-options.php:1459
+msgid "Enable Page Meta Tags"
+msgstr ""
+
+#: app/config/theme-options.php:1469
+msgid "Enable Comments by default"
+msgstr ""
+
+#: app/config/theme-options.php:1470
+msgid "Enable Comment Panel under Single Pages"
+msgstr ""
+
+#: app/config/theme-options.php:1482
+msgid "Search Header Background"
+msgstr ""
+
+#: app/config/theme-options.php:1483
+msgid "Upload background image for Header of Search Page"
+msgstr ""
+
+#: app/config/theme-options.php:1494
+msgid "Head Title Tag"
+msgstr ""
+
+#: app/config/theme-options.php:1495
+msgid "Content of Title Tag (to be appeared on browser Tab Name)"
+msgstr ""
+
+#: app/config/theme-options.php:1502
+msgid "Page Featured Image"
+msgstr ""
+
+#: app/config/theme-options.php:1503
+msgid "Upload your Featured Image into 404 Page"
+msgstr ""
+
+#: app/config/theme-options.php:1510 app/metadatas/page-metadatas.php:929
+msgid "Page Title"
+msgstr ""
+
+#: app/config/theme-options.php:1511
+msgid "Title of the Page"
+msgstr ""
+
+#: app/config/theme-options.php:1518 app/metadatas/page-metadatas.php:79 app/metadatas/page-metadatas.php:86 app/metadatas/page-metadatas.php:93
+msgid "Page Content"
+msgstr ""
+
+#: app/config/theme-options.php:1519
+msgid "Content of the Page"
+msgstr ""
+
+#: app/config/theme-options.php:1530
+msgid "Google AdSense Publisher ID"
+msgstr ""
+
+#: app/config/theme-options.php:1531
+msgid "Enter your Google AdSense Publisher ID"
+msgstr ""
+
+#: app/config/theme-options.php:1542
+msgid "Copyright Text"
+msgstr ""
+
+#: app/config/theme-options.php:1543 app/theme.php:255
+msgid "Appear in Footer"
+msgstr ""
+
+#: app/config/theme-options.php:1549
+msgid "SEO - Echo Meta Tags"
+msgstr ""
+
+#: app/config/theme-options.php:1550
+msgid "By default, Madara generates its own SEO meta tags (for example: Facebook Meta Tags). If you are using another SEO plugin like YOAST or a Facebook plugin, you can turn off this option"
+msgstr ""
+
+#: app/config/theme-options.php:1558
+msgid "Lazyload"
+msgstr ""
+
+#: app/config/theme-options.php:1559
+msgid "Enable to use Image Lazyload."
+msgstr ""
+
+#: app/config/theme-options.php:1568
+msgid "Enable Smooth Scroll Effect"
+msgstr ""
+
+#: app/config/theme-options.php:1578
+msgid "Enable Go To Top button"
+msgstr ""
+
+#: app/config/theme-options.php:1588
+msgid "Turn On/Off loading FontAwesome"
+msgstr ""
+
+#: app/config/theme-options.php:1589
+msgid "If you don't use FontAwesome (a Font Icons library), you can turn it off to save bandwidth"
+msgstr ""
+
+#: app/config/theme-options.php:1598
+msgid "Turn On/Off loading Ionicons"
+msgstr ""
+
+#: app/config/theme-options.php:1599
+msgid "If you don't use Ionicons (a Font Icons library), you can turn it off to save bandwidth"
+msgstr ""
+
+#: app/config/theme-options.php:1608
+msgid "Turn On/Off loading CT-Icons"
+msgstr ""
+
+#: app/config/theme-options.php:1609
+msgid "If you don't use CT-Icons (a Font Icons library), you can turn it off to save bandwidth"
+msgstr ""
+
+#: app/config/theme-options.php:1618
+msgid "Custom CSS"
+msgstr ""
+
+#: app/config/theme-options.php:1619
+msgid "Enter custom CSS. Ex: <i>.class{ font-size: 13px; }</i>"
+msgstr ""
+
+#: app/config/theme-options.php:1627
+msgid "Facebook App ID"
+msgstr ""
+
+#: app/config/theme-options.php:1628
+msgid "(Optional) Enter your Facebook App ID. It is useful when you share your post on Facebook"
+msgstr ""
+
+#: app/config/theme-options.php:1636
+msgid "Default Heading Icon"
+msgstr ""
+
+#: app/config/theme-options.php:1637
+msgid "Default Heading Icon in some heading position. Default is \"ion-ios-star\""
+msgstr ""
+
+#: app/config/theme-options.php:1637
+msgid "IonIcons"
+msgstr ""
+
+#: app/config/theme-options.php:1637
+msgid "FontAwesome"
+msgstr ""
+
+#: app/config/theme-options.php:1644
+msgid "Pre-loading Effect"
+msgstr ""
+
+#: app/config/theme-options.php:1645
+msgid "Enable Pre-loading Effect"
+msgstr ""
+
+#: app/config/theme-options.php:1653
+msgid "Disable All"
+msgstr ""
+
+#: app/config/theme-options.php:1658
+msgid "Enable All"
+msgstr ""
+
+#: app/config/theme-options.php:1663
+msgid "Front-page Only"
+msgstr ""
+
+#: app/config/theme-options.php:1671
+msgid "Pre-loading Logo"
+msgstr ""
+
+#: app/config/theme-options.php:1672
+msgid "Preloading Logo. If not selected, Logo Image at Theme Options > General > Logo Image will be used"
+msgstr ""
+
+#: app/config/theme-options.php:1681
+msgid "Pre-loading Background Color"
+msgstr ""
+
+#: app/config/theme-options.php:1682
+msgid "Default is #eb3349"
+msgstr ""
+
+#: app/config/theme-options.php:1690
+msgid "Pre-loading Icon Color"
+msgstr ""
+
+#: app/config/theme-options.php:1691
+msgid "Default is #ffffff"
+msgstr ""
+
+#: app/config/theme-options.php:1700
+msgid "Preloading Icon"
+msgstr ""
+
+#: app/config/theme-options.php:1714
+msgid "Ball Pulse"
+msgstr ""
+
+#: app/config/theme-options.php:1719
+msgid "Ball Pulse Sync"
+msgstr ""
+
+#: app/config/theme-options.php:1724
+msgid "Ball Beat"
+msgstr ""
+
+#: app/config/theme-options.php:1729
+msgid "Ball Rotate"
+msgstr ""
+
+#: app/config/theme-options.php:1734
+msgid "Ball Grid Pulse"
+msgstr ""
+
+#: app/config/theme-options.php:1739
+msgid "Ball Grid Beat"
+msgstr ""
+
+#: app/config/theme-options.php:1744
+msgid "Ball Clip Rotate"
+msgstr ""
+
+#: app/config/theme-options.php:1749
+msgid "Ball Clip Rotate Pulse"
+msgstr ""
+
+#: app/config/theme-options.php:1754
+msgid "Ball Clip Rotate Multiple"
+msgstr ""
+
+#: app/config/theme-options.php:1759
+msgid "Ball Pulse Rise"
+msgstr ""
+
+#: app/config/theme-options.php:1764
+msgid "Cube Transition"
+msgstr ""
+
+#: app/config/theme-options.php:1769
+msgid "Ball Zig Zag"
+msgstr ""
+
+#: app/config/theme-options.php:1774
+msgid "Ball Zig Zag Deflect"
+msgstr ""
+
+#: app/config/theme-options.php:1779
+msgid "Ball Triangle Path"
+msgstr ""
+
+#: app/config/theme-options.php:1784
+msgid "Line Scale"
+msgstr ""
+
+#: app/config/theme-options.php:1789
+msgid "Line Scale Party"
+msgstr ""
+
+#: app/config/theme-options.php:1794
+msgid "Line Scale Pulse Out"
+msgstr ""
+
+#: app/config/theme-options.php:1799
+msgid "Line Scale Pulse Put Rapid"
+msgstr ""
+
+#: app/config/theme-options.php:1804
+msgid "Ball Scale"
+msgstr ""
+
+#: app/config/theme-options.php:1809
+msgid "Ball Scale Multiple"
+msgstr ""
+
+#: app/config/theme-options.php:1814
+msgid "Ball Scale Ripple"
+msgstr ""
+
+#: app/config/theme-options.php:1819
+msgid "Ball Scale Ripple Multiple"
+msgstr ""
+
+#: app/config/theme-options.php:1824
+msgid "Ball Spin Fade Loader"
+msgstr ""
+
+#: app/config/theme-options.php:1829
+msgid "Line Spin Fade Loader"
+msgstr ""
+
+#: app/config/theme-options.php:1834
+msgid "Triangle Skew Spin"
+msgstr ""
+
+#: app/config/theme-options.php:1839
+msgid "Semi Circle Spin"
+msgstr ""
+
+#: app/config/theme-options.php:1844
+msgid "Square Spin"
+msgstr ""
+
+#: app/config/theme-options.php:1854
+msgid "Enable AMP URLs"
+msgstr ""
+
+#: app/config/theme-options.php:1855
+msgid ""
+"AMP is a special link that is lightweight and stripped down.  The mobile user gets a much-improved experience: content is faster, more engaging, and easier-to-read. AMP was specifically built for publishers, and "
+"publishers still make up a big chunk of AMP content out there. In Madara, AMP URLs work for Manga Detail and Manga Reading page only. You can try to append \"/amp\" to the URL to see how it works. Require \"AMP Plugin"
+"\" (https://wordpress.org/plugins/amp/). Read more about AMP here: https://amp.dev/about/how-amp-works/"
+msgstr ""
+
+#: app/config/theme-options.php:1864
+msgid "FontAwesome Key"
+msgstr ""
+
+#: app/config/theme-options.php:1865
+msgid "In an AMP link, local lib for Font Icons cannot be loaded. Thus, we need to load it from FontAwesome CDN. Register your email here: https://fontawesome.com/start and get the Key"
+msgstr ""
+
+#: app/config/theme-options.php:1874
+msgid "Image Height (in px)"
+msgstr ""
+
+#: app/config/theme-options.php:1875
+msgid "In an AMP link, images of a chapter should have same height. You can specify the height of images here for better display. You can set this value in each Manga and Chapter as well"
+msgstr ""
+
+#: app/config/theme-options.php:1885
+msgid "Chapter Reading in List or Slides mode"
+msgstr ""
+
+#: app/config/theme-options.php:1886
+msgid "For Manga Chapter (Images) Reading page, use Images Listing or Slides mode"
+msgstr ""
+
+#: app/config/theme-options.php:1893 app/metadatas/post-metadatas.php:60 app/theme-options.php:932 madara-core/user/page/reader-settings.php:89
+msgid "List"
+msgstr ""
+
+#: app/config/theme-options.php:1898
+msgid "Slides"
+msgstr ""
+
+#: app/core.php:534 app/core.php:583
+msgid "Invalid Purchase Code"
+msgstr ""
+
+#: app/core.php:550 app/core.php:597
+msgid "An error occured."
+msgstr ""
+
+#: app/core.php:558 app/core.php:603
+msgid "Bad request."
+msgstr ""
+
+#: app/hooks/actions.php:8
+msgid "Toggle Dark/Light Mode"
+msgstr ""
+
+#: app/hooks/template-hooks.php:74
+msgid "Continue Reading"
+msgstr ""
+
+#: app/hooks/template-hooks.php:83 app/plugins/madara-welcome/Welcome.php:82
+msgid "Madara Dashboard"
+msgstr ""
+
+#: app/hooks/template-hooks.php:149
+msgid "WP Manga - Main Top Sidebar"
+msgstr ""
+
+#: app/hooks/template-hooks.php:151 app/hooks/template-hooks.php:161
+msgid "Appear before main content in Manga Pages"
+msgstr ""
+
+#: app/hooks/template-hooks.php:159
+msgid "WP Manga - Main Top Second Sidebar"
+msgstr ""
+
+#: app/hooks/template-hooks.php:169
+msgid "WP Manga - Main Bottom Sidebar"
+msgstr ""
+
+#: app/hooks/template-hooks.php:171
+msgid "Appear after main content in Manga Pages"
+msgstr ""
+
+#: app/hooks/template-hooks.php:310
+msgid "contains themes or scenes that may not be suitable for very young readers thus is blocked for their protection."
+msgstr ""
+
+#: app/hooks/template-hooks.php:311
+msgid "Are you over 18?"
+msgstr ""
+
+#: app/hooks/template-hooks.php:323
+msgid "Caution to under-aged viewers"
+msgstr ""
+
+#: app/hooks/template-hooks.php:329 app/metadatas/post-metadatas.php:18 app/metadatas/post-metadatas.php:112 app/theme-options.php:1051
+msgid "No"
+msgstr ""
+
+#: app/hooks/template-hooks.php:330
+msgid "Yes, I am"
+msgstr ""
+
+#: app/inc/extras.php:68 app/metadatas/page-metadatas.php:60 app/metadatas/page-metadatas.php:118 inc/template-tags.php:31 madara-core/manga-search.php:147
+msgid "All"
+msgstr ""
+
+#: app/inc/extras.php:73
+#, php-format
+msgid "Manga starts with %s"
+msgstr ""
+
+#: app/inc/extras.php:271
+msgid "Hot"
+msgstr ""
+
+#: app/inc/extras.php:271 madara-core/manga-filter.php:61
+msgid "New"
+msgstr ""
+
+#: app/inc/template-tags.php:106
+msgid "18+"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:17
+msgid "Page Settings"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:25
+msgid "Page Sidebar"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:26
+msgid "Choose Sidebar Layout for Page"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:68
+msgid "Front Page Settings"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:87
+msgid "Choose the content source"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:103 app/metadatas/post-metadatas.php:78
+msgid "Manga"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:110
+msgid "Manga Type"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:111
+msgid "Type of Manga to display"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:123
+msgid "Web Comic"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:128
+msgid "Web Novel (Text)"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:133
+msgid "Web Drama (Video)"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:140 app/theme-options.php:364
+msgid "Item Layout"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:141
+msgid "Choose Item Layout"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:148
+msgid "Use Theme Options setting"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:152 app/theme-options.php:372
+msgid "Default (Small Thumbnail)"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:156 app/theme-options.php:376 app/theme-options.php:734
+msgid "Big Thumbnail"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:160 app/theme-options.php:380
+msgid "Simple List"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:167
+msgid "Content Margin Top"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:168
+msgid "Margin Top in Listing Content. Default's 50 (in pixel)"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:175
+msgid "Archives Heading Text"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:176
+msgid "Appear in Blog Listing or Manga Listing"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:182
+msgid "Archives Heading Icon"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:223
+msgid "Default Theme Options"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:242
+msgid "Manga Status"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:243
+msgid "Filter by manga status"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:251
+msgid "Manga Tags"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:252
+msgid "Enter manga tags to get mangs from, separated by a comma"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:259
+msgid "Manga Genres"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:260
+msgid "Enter manga genres to get mangs from, separated by a comma"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:267
+msgid "Post Count"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:268
+msgid "Number of posts per page. Default is 10"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:275
+msgid "Post Categories"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:276
+msgid "Enter category Ids or slugs to get posts from, separated by a comma"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:283
+msgid "Post Tags"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:284
+msgid "Enter tags to get posts from, separated by a comma"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:291
+msgid "Post Ids"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:292
+msgid "Enter post IDs, separated by a comma.If this param is used, other params are ignored"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:299
+msgid "Post Order"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:300
+msgid "Choose the order condition"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:306
+msgid "Descending"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:310
+msgid "Ascending"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:317
+msgid "Order By"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:325
+msgid "New Post"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:329
+msgid "Latest Update (or New Manga Chapter)"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:333 app/views/ParseComment.php:26
+msgid "Name"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:337
+msgid "Random"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:344 madara-core/manga-filter.php:51
+msgid "Trending"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:348
+msgid "All Time Views"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:354
+msgid "Trending Time Range"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:355
+msgid "Choose time range to order trending items"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:361 app/theme-options.php:795
+msgid "All Time"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:365
+msgid "1 day"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:369
+msgid "1 week"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:373
+msgid "1 month"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:377
+msgid "1 year"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:384
+msgid "Filter Mangas by title' first character"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:385
+msgid "Show the Characters Filter Bar to filter Mangas by title' first character"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:393
+msgid "Ignore Ids"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:394
+msgid "Enter post/manga IDs, separated by a comma to be excluded from the list"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:404
+msgid "Custom Color"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:543
+msgid "Header Settings"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:584
+msgid "On"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:588
+msgid "Off"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:772
+msgid "Sidebar Settings"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:778
+msgid "Custom Sidebar Settings"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:779
+msgid "Change various settings of Sidebars"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:923 app/metadatas/post-metadatas.php:36
+msgid "Other Settings"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:930
+msgid "Turn on/off Page Title"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:936
+msgid "Page Meta"
+msgstr ""
+
+#: app/metadatas/page-metadatas.php:937
+msgid "Turn on/off Page Meta including published datetime"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:31
+msgid "Custom"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:45
+msgid "Default Reading Style"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:46
+msgid "Reading Style specified for Manga"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:56 app/theme-options.php:928 madara-core/user/page/reader-settings.php:85
+msgid "Paged"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:67
+msgid "One Shot Manga"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:68
+msgid "Is One Shot Manga? (specified for Manga type)"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:74 app/metadatas/post-metadatas.php:192
+msgid "Use Default Setting in Theme Options"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:82
+msgid "One Shot"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:89
+msgid "Height for Images in this OneShot"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:90
+msgid "Enter height value in pixel"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:98
+msgid "Gaps between images"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:99
+msgid "Enable gaps between images in chapter (used for Manga Chapter Type"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:108 app/metadatas/post-metadatas.php:127 app/theme-options.php:1047
+msgid "Yes"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:119
+msgid "Adult Content"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:120
+msgid "Mark this manga is Adult Content"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:135
+msgid "Expected Total Chapters"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:136
+msgid "If you know how many chapters are there in this series, enter it here, even if it is just expectation"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:143
+msgid "Title Badges"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:144
+msgid "Choose Manga Title Badges"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:151
+msgid "Custom Badge"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:152
+msgid "Enter a custom text for Badge"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:159
+msgid "Custom Badge URL"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:160
+msgid "Set link for badge. Leave empty to not use link"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:167
+msgid "Badge URL target"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:168
+msgid "Open link in new tab or current tab"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:174
+msgid "Current Tab"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:178
+msgid "New Tab"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:185
+msgid "Summary Layout"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:186 app/theme-options.php:501
+msgid "Layout of Manga Summary Info section"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:196 app/theme-options.php:508
+msgid "Layout 1 - Small Featured Image"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:200 app/theme-options.php:512
+msgid "Layout 2 - Fullsize Featured Image"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:207 app/theme-options.php:491
+msgid "Manga Single - Background"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:208 app/theme-options.php:492
+msgid "Upload background image used in Manga detail page"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:215
+msgid "Manga Banner Image"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:216
+msgid "Upload banner image (horizontal/wide ratio) used in Manga Slider and other places"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:224
+msgid "SEO - Manga Meta Title"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:225
+msgid "Custom Meta Title for Manga Post"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:231
+msgid "SEO - Manga Meta Description"
+msgstr ""
+
+#: app/metadatas/post-metadatas.php:232
+msgid "Custom Meta Description for Manga Post"
+msgstr ""
+
+#: app/models/Entity/Ads.php:75
+#, php-format
+msgid "%s - AdSense Ads Slot ID"
+msgstr ""
+
+#: app/models/Entity/Ads.php:76
+#, php-format
+msgid "If you want to display %s, enter Google AdSense Ad Slot ID here. If left empty, \"%s - Custom Code\" will be used"
+msgstr ""
+
+#: app/models/Entity/Ads.php:83
+#, php-format
+msgid "%s - Custom Code"
+msgstr ""
+
+#: app/models/Entity/Ads.php:84
+#, php-format
+msgid "Enter custom code for %s position"
+msgstr ""
+
+#: app/models/Entity/Social.php:48
+msgid "Facebook"
+msgstr ""
+
+#: app/models/Entity/Social.php:49
+msgid "The custom URL to your Facebook profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:56
+msgid "Twitter"
+msgstr ""
+
+#: app/models/Entity/Social.php:57
+msgid "The custom URL to your Twitter profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:64
+msgid "LinkedIn"
+msgstr ""
+
+#: app/models/Entity/Social.php:65
+msgid "The custom URL to your LinkedIn profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:72
+msgid "Tumblr"
+msgstr ""
+
+#: app/models/Entity/Social.php:73
+msgid "The custom URL to your Tumblr profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:80
+msgid "Google Plus"
+msgstr ""
+
+#: app/models/Entity/Social.php:81
+msgid "The custom URL to your Goolge Plus profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:88
+msgid "Pinterest"
+msgstr ""
+
+#: app/models/Entity/Social.php:89
+msgid "The custom URL to your Pinterest profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:96
+msgid "Youtube"
+msgstr ""
+
+#: app/models/Entity/Social.php:97
+msgid "The custom URL to your Youtube profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:104
+msgid "Flickr"
+msgstr ""
+
+#: app/models/Entity/Social.php:105
+msgid "The custom URL to your Flickr profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:112
+msgid "Dribbble"
+msgstr ""
+
+#: app/models/Entity/Social.php:113
+msgid "The custom URL to your Dribble profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:120
+msgid "Behance"
+msgstr ""
+
+#: app/models/Entity/Social.php:121
+msgid "The custom URL to your Behance profile page (Please include http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:128 app/views/ParseComment.php:28
+msgid "Email"
+msgstr ""
+
+#: app/models/Entity/Social.php:129
+msgid "The custom URL to your Email account"
+msgstr ""
+
+#: app/models/Entity/Social.php:136
+msgid "RSS"
+msgstr ""
+
+#: app/models/Entity/Social.php:137
+msgid "Your website RSS Feed URL"
+msgstr ""
+
+#: app/models/Entity/Social.php:152
+msgid "Custom Social Accounts"
+msgstr ""
+
+#: app/models/Entity/Social.php:153
+msgid "Add Social Account"
+msgstr ""
+
+#: app/models/Entity/Social.php:160
+msgid "Icon Font Awesome"
+msgstr ""
+
+#: app/models/Entity/Social.php:163
+msgid "Enter Font Awesome class (Ex: fa-facebook)"
+msgstr ""
+
+#: app/models/Entity/Social.php:166
+msgid "URL"
+msgstr ""
+
+#: app/models/Entity/Social.php:169
+msgid "Enter full link to your account (including http://)"
+msgstr ""
+
+#: app/models/Entity/Social.php:175
+msgid "Open Social link in new tab?"
+msgstr ""
+
+#: app/plugins/madara-option-tree/OptionTree.php:18
+msgid "LESS Compiler"
+msgstr ""
+
+#: app/plugins/madara-option-tree/OptionTree.php:23
+msgid "Compile LESS into .css files, used for production"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:335
+msgid "Install Required Plugins"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:336 app/plugins/madara-tgm-plugin-activation/ThemeRequired.php:41
+msgid "Install Plugins"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:338 app/plugins/madara-tgm-plugin-activation/ThemeRequired.php:42
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:340
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:341 app/plugins/madara-tgm-plugin-activation/ThemeRequired.php:44
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:357 app/plugins/madara-tgm-plugin-activation/ThemeRequired.php:63
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:358 app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:880 app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2564
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3597
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:359 app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3176 app/plugins/madara-tgm-plugin-activation/ThemeRequired.php:64
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:360
+msgid "The following plugin was activated:"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:362
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:364
+#, php-format
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:366
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:367
+msgid "Dismiss this notice"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:368
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:369
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:584
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:584
+msgid "Update Required"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:697
+msgid "Set the parent_slug config variable instead."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:987
+msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:987 app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:993
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:993
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2036
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2326
+msgid "Required"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2329
+msgid "Recommended"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2346
+msgid "WordPress Repository"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2349
+msgid "External Source"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2352
+msgid "Pre-Packaged"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2370 app/plugins/madara-welcome/system-status.php:307
+msgid "Not Installed"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2374
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2376
+msgid "Active"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2382
+msgid "Required Update not Available"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2385
+msgid "Requires Update"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2388
+msgid "Update recommended"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2396
+#, php-format
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2444
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2448
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2452
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2524
+msgid "unknown"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2531
+msgid "Installed version:"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2535
+msgid "Minimum required version:"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2544
+msgid "Available version:"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2564
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2577
+msgid "Plugin"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2578
+msgid "Source"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2583
+msgid "Version"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2634
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2639
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2645
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2707
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2739
+msgid "Install"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2745
+msgid "Update"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2748
+msgid "Activate"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2779
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2781
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2822
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2824
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2922
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2948
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:2965
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3175
+msgid "Plugin activation failed."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3518
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3521
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3523
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3527
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3529
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3529 app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3537
+msgid "Show Details"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3529 app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3537
+msgid "Hide Details"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3530
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3532
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3535
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3537
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3538
+msgid "All installations have been completed."
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/TGM_Plugin_Activation.php:3540
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/ThemeRequired.php:40
+msgid "Install Required &amp; Recommended Plugins"
+msgstr ""
+
+#: app/plugins/madara-tgm-plugin-activation/ThemeRequired.php:65
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:75
+msgid "Madara Welcome Page"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:75
+msgid "Madara"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:82
+msgid "Dashboard"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:92
+msgid "Madara Developer! You should filter this text using \"madara_dashboard_heading\""
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:104
+msgid "Please agree the registration terms"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:123
+msgid "Bad request. Please try again later"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:144
+msgid "Welcome"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:145
+msgid "Document"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:146 app/plugins/madara-welcome/Welcome.php:212
+msgid "Sample Data"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:147 app/plugins/madara-welcome/Welcome.php:219
+msgid "Support"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:169
+msgid "Please install Sample Data plugin to use this feature"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:192
+msgid "Theme Activated"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:197
+msgid "Are you sure?"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:197
+msgid "Deactivate"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:198
+#, php-format
+msgid "Your premium support is valid until %s"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:205
+msgid "Full Documents"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:206
+msgid "See the full user guide for this theme's functions"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:213
+msgid "Import sample data to have homepage like our live DEMO"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:220
+msgid "Need support using the theme? We are here for you."
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:226
+msgid "Release Logs"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:235
+msgid "Activate your theme"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:238
+msgid "Item Purchase Code:"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:243
+msgid "This is the Code you received when you purchase our theme on Envato (ThemeForest.net)"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:244 woocommerce/myaccount/form-login.php:70 woocommerce/myaccount/form-login.php:107
+msgid "Register"
+msgstr ""
+
+#: app/plugins/madara-welcome/Welcome.php:253
+#, php-format
+msgid ""
+"I give my consent to record my site address and purchase code in order to ensure <a href=\"%s\" target=\"_blank\">License</a> and copyright compliance. I understand that this information will be stored as long as the "
+"purchase code remains valid."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:15
+msgid "Get System Report"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:15
+msgid "Click the button to produce a report, then copy and paste into your support ticket."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:20
+msgid "Copied!"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:20
+msgid "Copy for Support"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:28 app/plugins/madara-welcome/system-status.php:32
+msgid "Madara Versions"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:32
+msgid "Theme Version"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:37
+msgid "Current Version"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:37
+msgid "Current Installed Version:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:44 app/plugins/madara-welcome/system-status.php:48
+msgid "WordPress Environment"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:53
+msgid "Home URL"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:53
+msgid "Home URL:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:55
+msgid "The URL of your site's homepage."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:60
+msgid "Site URL"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:60
+msgid "Site URL:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:61
+msgid "The root URL of your site."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:65
+msgid "WP Version"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:65
+msgid "WP Version:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:67
+msgid "The version of WordPress installed on your site."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:71
+msgid "WP Multisite"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:71
+msgid "WP Multisite:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:73
+msgid "Whether or not you have WordPress Multisite enabled."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:78
+msgid "WP Memory Limit"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:78
+msgid "WP Memory Limit:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:80
+msgid "The maximum amount of memory (RAM) that your site can use at one time."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:86
+#, php-format
+msgid "%1$s - We recommend setting memory to at least <strong>64MB</strong>. To learn how, see: <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Increasing memory allocated to PHP.</a>"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:94
+msgid "WP Debug Mode"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:94
+msgid "WP Debug Mode:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:96
+msgid "Displays whether or not WordPress is in Debug Mode."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:107
+msgid "Language"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:107 footer.php:87
+msgid "Language:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:109
+msgid "The current language used by WordPress. Default = English"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:116 app/plugins/madara-welcome/system-status.php:120
+msgid "Server Environment"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:125
+msgid "PHP Version"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:125
+msgid "PHP Version:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:126
+msgid "The version of PHP installed on your hosting server."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:134
+msgid "PHP Post Max Size"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:134
+msgid "PHP Post Max Size:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:135
+msgid "The largest file size that can be contained in one post."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:139
+msgid "PHP Time Limit"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:139
+msgid "PHP Time Limit:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:140
+msgid "The amount of time (in seconds) that your site will spend on a single operation before timing out (to avoid server lockups)"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:145 app/plugins/madara-welcome/system-status.php:149
+#, php-format
+msgid ""
+"%1$s - We recommend setting max execution time to at least 180. <br /> To import classic demo content, <strong>300</strong> seconds of max execution time is required.<br />See: <a href=\"%2$s\" target=\"_blank\" rel="
+"\"noopener noreferrer\">Increasing max execution to PHP</a>"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:156
+msgid "PHP Max Input Vars"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:156
+msgid "PHP Max Input Vars:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:158 app/plugins/madara-welcome/system-status.php:194 app/plugins/madara-welcome/system-status.php:222
+msgid "The maximum number of variables your server can use for a single function to avoid overloads."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:178 app/plugins/madara-welcome/system-status.php:213 app/plugins/madara-welcome/system-status.php:241
+#, php-format
+msgid "%1$s - Recommended Value: %2$s.<br />Max input vars limitation will truncate POST data such as menus. See: <a href=\"%3$s\" target=\"_blank\" rel=\"noopener noreferrer\">Increasing max input vars limit.</a>"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:186
+msgid "SUHOSIN Installed"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:186
+msgid "SUHOSIN Installed:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:187
+msgid ""
+"Suhosin is an advanced protection system for PHP installations. It was designed to protect your servers on the one hand against a number of well known problems in PHP applications and on the other hand against potential "
+"unknown vulnerabilities within these applications or the PHP core itself.\n"
+"\t\tIf enabled on your server, Suhosin may need to be configured to increase its data submission limits."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:193
+msgid "Suhosin Post Max Vars"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:193
+msgid "Suhosin Post Max Vars:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:221
+msgid "Suhosin Request Max Vars"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:221
+msgid "Suhosin Request Max Vars:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:249
+msgid "Suhosin Post Max Value Length"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:249
+msgid "Suhosin Post Max Value Length:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:250
+msgid "Defines the maximum length of a variable that is registered through a POST request."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:255
+#, php-format
+msgid ""
+"%1$s - Recommended Value: %2$s.<br />Post Max Value Length limitation may prohibit the Theme Options data from being saved to your database. See: <a href=\"%3$s\" target=\"_blank\" rel=\"noopener noreferrer\">Suhosin "
+"Configuration Info</a>."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:263
+msgid "ZipArchive"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:263
+msgid "ZipArchive:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:264
+msgid "ZipArchive is required for importing demos. They are used to import and export zip files specifically for sliders."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:268
+msgid "MySQL Version"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:268
+msgid "MySQL Version:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:269
+msgid "The version of MySQL installed on your hosting server."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:275
+msgid "Max Upload Size"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:275
+msgid "Max Upload Size:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:276
+msgid "The largest file size that can be uploaded to your WordPress installation."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:280
+msgid "DOMDocument"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:280
+msgid "DOMDocument:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:281
+msgid "DOMDocument is required for the Fusion Builder plugin to properly function."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:285
+msgid "WP Remote Get"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:285
+msgid "WP Remote Get:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:286 app/plugins/madara-welcome/system-status.php:295
+msgid "Madara uses this method to communicate with different APIs, e.g. Google, Twitter, Facebook."
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:294
+msgid "WP Remote Post"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:294
+msgid "WP Remote Post:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:303
+msgid "GD Library"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:303
+msgid "GD Library:"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:304
+msgid "Madara uses this library to resize images and speed up your site's loading time"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:309
+msgid "Installed"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:322 app/plugins/madara-welcome/system-status.php:326
+msgid "Active Plugins"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:346
+msgid "Visit plugin homepage"
+msgstr ""
+
+#: app/plugins/madara-welcome/system-status.php:352
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:163
+msgid "Change Widget Appearance"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:179
+msgid "Layout"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:181
+msgid "Bordered"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:182
+msgid "Background"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:185
+msgid "Custom Variation - CSS Classes"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:198
+msgid "Widget Width"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:217
+msgid "Heading Style"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:219
+msgid "Style 1"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:220
+msgid "Style 2"
+msgstr ""
+
+#: app/plugins/madara-widgets/WidgetExtension.php:225
+msgid "Font Icon - CSS Classes"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:48
+msgid "WooCommerce Sidebar"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:50
+msgid "Used by all WooCommerce pages"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:64
+msgid "WooCommerce"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:69
+msgid "Breadcrumb Background"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:70
+msgid "Set default Header Background for all WooCommerce pages. The Shop page has its own settings to override this default header"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:78
+msgid "Archives Page Title"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:79
+msgid "Page Title of WooCommerce All Products page"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:87
+msgid "Shop Sidebar Position"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:88
+msgid "Choose Sidebar Position for Shop and Single Product page"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:110
+msgid "Posts Per Page"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:111
+msgid "Enter number of products per page in All Products page"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:119
+msgid "Number of items per row"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:120
+msgid "Enter number of products per row in All Products page"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:127
+msgid "2 Items"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:131
+msgid "3 Items"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:135
+msgid "4 Items"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:139
+msgid "5 Items"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:143
+msgid "6 Items"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:173 app/views/ParseBreadcrumbs.php:28 app/views/ParsePageTitle.php:25 html/header/main-nav.php:20 html/header/main-navigation.php:50 madara-core/manga-breadcrumb.php:82
+msgid "Home"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:191
+msgid "sale"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:199
+msgid "Prev"
+msgstr ""
+
+#: app/plugins/madara-woocommerce/WooCommerce.php:200
+msgid "Next"
+msgstr ""
+
+#: app/theme-options.php:18
+msgid "Manga General Layout"
+msgstr ""
+
+#: app/theme-options.php:22
+msgid "Manga General Settings"
+msgstr ""
+
+#: app/theme-options.php:26
+msgid "Manga Archives Page"
+msgstr ""
+
+#: app/theme-options.php:30
+msgid "Manga Detail Page"
+msgstr ""
+
+#: app/theme-options.php:34
+msgid "Manga Reading Page"
+msgstr ""
+
+#: app/theme-options.php:45
+msgid "Family Safe button"
+msgstr ""
+
+#: app/theme-options.php:46
+msgid "Show to \"Family Safe\" button. This will allow visitors to turn on/off Adult content on your site. If this button is ON, then by default, adult content will be filtered out"
+msgstr ""
+
+#: app/theme-options.php:54
+msgid "Manga Hover Details"
+msgstr ""
+
+#: app/theme-options.php:55
+msgid "Show manga details when manga item in Manga Listing hoverd"
+msgstr ""
+
+#: app/theme-options.php:63
+msgid "Manga New Chapter Tag"
+msgstr ""
+
+#: app/theme-options.php:64
+msgid "Display \"New\" tag for the new chapter"
+msgstr ""
+
+#: app/theme-options.php:72
+msgid "New Chapter - Time Range"
+msgstr ""
+
+#: app/theme-options.php:73
+msgid "The time range for set \"New\" tag from the time the chapter is uploaded"
+msgstr ""
+
+#: app/theme-options.php:80
+msgid "3 Days"
+msgstr ""
+
+#: app/theme-options.php:84
+msgid "7 Days"
+msgstr ""
+
+#: app/theme-options.php:88
+msgid "15 Days"
+msgstr ""
+
+#: app/theme-options.php:92
+msgid "30 Days"
+msgstr ""
+
+#: app/theme-options.php:100 inc/extras.php:149
+msgid "Reader Settings"
+msgstr ""
+
+#: app/theme-options.php:101
+msgid "Enable \"Reading Settings\" tab in User Settings dashboard"
+msgstr ""
+
+#: app/theme-options.php:109
+msgid "Manga Bookmark List - Order By"
+msgstr ""
+
+#: app/theme-options.php:110
+msgid "By default, Bookmarked List items are ordered by the time an item is added to the list"
+msgstr ""
+
+#: app/theme-options.php:116
+msgid "Default (bookmarked time)"
+msgstr ""
+
+#: app/theme-options.php:120
+msgid "Manga Latest Update time"
+msgstr ""
+
+#: app/theme-options.php:128
+msgid "Manga Bookmark List - Order"
+msgstr ""
+
+#: app/theme-options.php:129
+msgid "Order of the items in the Bookmark List in User Settings page"
+msgstr ""
+
+#: app/theme-options.php:135
+msgid "Oldest First"
+msgstr ""
+
+#: app/theme-options.php:139
+msgid "Newest First"
+msgstr ""
+
+#: app/theme-options.php:147
+msgid "Manga Main Top Sidebar Container"
+msgstr ""
+
+#: app/theme-options.php:148
+msgid "Set container for Manga Main Top Sidebar. Custom width is 1760px"
+msgstr ""
+
+#: app/theme-options.php:174
+msgid "Manga Main Top Sidebar Background"
+msgstr ""
+
+#: app/theme-options.php:175
+msgid "Upload background image for Manga Main Top Sidebar"
+msgstr ""
+
+#: app/theme-options.php:183
+msgid "Manga Main Top Sidebar - Padding"
+msgstr ""
+
+#: app/theme-options.php:184
+msgid "Padding in Manga Main Top Sidebar. Default value is 50 0 20 0 & unit is px"
+msgstr ""
+
+#: app/theme-options.php:192
+msgid "Manga Main Top Second Sidebar Container"
+msgstr ""
+
+#: app/theme-options.php:193
+msgid "Set container for Manga Main Top Second Sidebar. Custom width is 1760px"
+msgstr ""
+
+#: app/theme-options.php:219
+msgid "Manga Main Top Second Sidebar Background"
+msgstr ""
+
+#: app/theme-options.php:220
+msgid "Upload background image for Manga Main Top Second Sidebar"
+msgstr ""
+
+#: app/theme-options.php:228
+msgid "Manga Main Top Second Sidebar - Padding"
+msgstr ""
+
+#: app/theme-options.php:229
+msgid "Padding in Manga Main Top Second Sidebar. Default value is 50 0 20 0 & unit is px"
+msgstr ""
+
+#: app/theme-options.php:237
+msgid "Manga Main Bottom Sidebar Container"
+msgstr ""
+
+#: app/theme-options.php:238
+msgid "Set container for Manga Main Bottom Sidebar. Custom width is 1760px"
+msgstr ""
+
+#: app/theme-options.php:264
+msgid "Manga Main Bottom Sidebar Background"
+msgstr ""
+
+#: app/theme-options.php:265
+msgid "Upload background image for Manga Main Bottom Sidebar"
+msgstr ""
+
+#: app/theme-options.php:273
+msgid "Manga Main Bottom Sidebar - Padding"
+msgstr ""
+
+#: app/theme-options.php:274
+msgid "Padding in Manga Main Bottom Sidebar. Default value is 50 0 20 0 & unit is px"
+msgstr ""
+
+#: app/theme-options.php:282
+msgid "Manga Archives Header"
+msgstr ""
+
+#: app/theme-options.php:283
+msgid "Enable Header section on Manga Archives page"
+msgstr ""
+
+#: app/theme-options.php:292
+msgid "Manga Archive Header Background"
+msgstr ""
+
+#: app/theme-options.php:293
+msgid "Upload background image for Manga Archive Header"
+msgstr ""
+
+#: app/theme-options.php:301
+msgid "Manga Archive Heading Text"
+msgstr ""
+
+#: app/theme-options.php:302
+msgid "set Heading Text for Manga Archives page. Default is \"All Mangas\""
+msgstr ""
+
+#: app/theme-options.php:310
+msgid "Genres on Manga Archive Page"
+msgstr ""
+
+#: app/theme-options.php:311
+msgid "Enable Genres block on Manga Archive Page Breadcrumb"
+msgstr ""
+
+#: app/theme-options.php:319
+msgid "Default Genres List appearance"
+msgstr ""
+
+#: app/theme-options.php:320
+msgid "Show or hide Genres list by default. Choose \"On\" to open the Genres List"
+msgstr ""
+
+#: app/theme-options.php:329
+msgid "Genres Block Title"
+msgstr ""
+
+#: app/theme-options.php:330
+msgid "Genres Block Title. Default is \"GENRES\""
+msgstr ""
+
+#: app/theme-options.php:338
+msgid "Manga Archives Sidebar"
+msgstr ""
+
+#: app/theme-options.php:365
+msgid "Select layout for Manga Item in the list. Remember to regenerate thumbnails for existing mangas"
+msgstr ""
+
+#: app/theme-options.php:387 app/theme-options.php:764
+msgid "Item Width on Mobile Screen"
+msgstr ""
+
+#: app/theme-options.php:388 app/theme-options.php:765
+msgid "Set item width when viewing on mobile screens"
+msgstr ""
+
+#: app/theme-options.php:395 app/theme-options.php:776
+#, php-format
+msgid "1/2 - 50% screen width"
+msgstr ""
+
+#: app/theme-options.php:399 app/theme-options.php:772
+#, php-format
+msgid "1/1 - 100% screen width"
+msgstr ""
+
+#: app/theme-options.php:407
+msgid "Allow GIF for Featured Image"
+msgstr ""
+
+#: app/theme-options.php:408
+msgid "Turn On/Off display GIF for Featured Image. Default Off."
+msgstr ""
+
+#: app/theme-options.php:416
+msgid "Link to the Latest Chapter on thumbnail"
+msgstr ""
+
+#: app/theme-options.php:417
+msgid "Item thumbnail will link to the Latest Chapter in this series. A \"Chapter Tag\" will also appear on top of the thumbnail"
+msgstr ""
+
+#: app/theme-options.php:425
+msgid "Manga Type Icon"
+msgstr ""
+
+#: app/theme-options.php:426
+msgid "If your site has different types of manga (Comic, Novel, Drama) and you need an icon to differentiate those, turn this on"
+msgstr ""
+
+#: app/theme-options.php:434
+msgid "Manga Type Text"
+msgstr ""
+
+#: app/theme-options.php:435
+msgid "Showing Manga Type value or not"
+msgstr ""
+
+#: app/theme-options.php:443
+msgid "Badge Position"
+msgstr ""
+
+#: app/theme-options.php:444
+msgid "Choose where to show the badge"
+msgstr ""
+
+#: app/theme-options.php:451
+msgid "Before title"
+msgstr ""
+
+#: app/theme-options.php:455
+msgid "Before thumbnail"
+msgstr ""
+
+#: app/theme-options.php:462
+msgid "Limit Visible Titles"
+msgstr ""
+
+#: app/theme-options.php:463
+msgid "Limit number of text lines so the long title will not break the layout"
+msgstr ""
+
+#: app/theme-options.php:472
+msgid "Number of visible latest chapters"
+msgstr ""
+
+#: app/theme-options.php:473
+msgid "Choose number of visible latest chapters for each item in the list"
+msgstr ""
+
+#: app/theme-options.php:482
+msgid "Show Chapter Volume"
+msgstr ""
+
+#: app/theme-options.php:483
+msgid "Show Chapter Volume information"
+msgstr ""
+
+#: app/theme-options.php:500
+msgid "Manga Single - Summary Layout"
+msgstr ""
+
+#: app/theme-options.php:519
+msgid "Always Show Manga Info"
+msgstr ""
+
+#: app/theme-options.php:520
+msgid "Always show manga info fields even if they are empty"
+msgstr ""
+
+#: app/theme-options.php:528
+msgid "Show Manga Tags"
+msgstr ""
+
+#: app/theme-options.php:529
+msgid "Where to show the Manga Tags"
+msgstr ""
+
+#: app/theme-options.php:535
+msgid "Both in Manga Info section and Page Bottom"
+msgstr ""
+
+#: app/theme-options.php:539
+msgid "In Manga Info section only"
+msgstr ""
+
+#: app/theme-options.php:543
+msgid "At Page Bottom only"
+msgstr ""
+
+#: app/theme-options.php:551
+msgid "Manga Single - Meta Tags for Authors"
+msgstr ""
+
+#: app/theme-options.php:552
+msgid "Use Post Author (default WordPress Author) or Manga Authors in the Meta Tags"
+msgstr ""
+
+#: app/theme-options.php:558
+msgid "WordPress Post Author"
+msgstr ""
+
+#: app/theme-options.php:562
+msgid "Manga Authors"
+msgstr ""
+
+#: app/theme-options.php:570
+msgid "Manga Single - Breadcrumb"
+msgstr ""
+
+#: app/theme-options.php:571
+msgid "Enable Breadcrumb on Manga Single page"
+msgstr ""
+
+#: app/theme-options.php:579
+msgid "Manga Single - Show More Content"
+msgstr ""
+
+#: app/theme-options.php:580
+msgid "Enable Show More button in Manga Summary"
+msgstr ""
+
+#: app/theme-options.php:588
+msgid "Manga Single - Show More Chapter"
+msgstr ""
+
+#: app/theme-options.php:589
+msgid "Enable Show More button in Manga Chapters List"
+msgstr ""
+
+#: app/theme-options.php:597
+msgid "Show \"Read First\", \"Read Last\" button"
+msgstr ""
+
+#: app/theme-options.php:605
+msgid "Manga Single Sidebar"
+msgstr ""
+
+#: app/theme-options.php:631
+msgid "Manga Single - Default Manga Style"
+msgstr ""
+
+#: app/theme-options.php:632
+msgid "Set default style for Mangas. In each manga you can configure again to override this setting"
+msgstr ""
+
+#: app/theme-options.php:639
+msgid "Manga (with Chapters List)"
+msgstr ""
+
+#: app/theme-options.php:643
+msgid "One Shot (display the first chapter only)"
+msgstr ""
+
+#: app/theme-options.php:650
+msgid "Lazy-load chapters list"
+msgstr ""
+
+#: app/theme-options.php:654
+msgid "If you manga/novel has a lot of chapters, the chapters list will load too long. Lazy-load it will improve the performance. However, it will not be cached"
+msgstr ""
+
+#: app/theme-options.php:659
+msgid "Manga Single - Volumes Order"
+msgstr ""
+
+#: app/theme-options.php:660
+msgid "Volumes order in the Chapter Navigation bar. In \"Manga Edit\" page, you can drag&drop the order of volumes to sort them"
+msgstr ""
+
+#: app/theme-options.php:667
+msgid "As in \"Manga Edit\" page"
+msgstr ""
+
+#: app/theme-options.php:671
+msgid "Reverse order in \"Manga Edit\" page"
+msgstr ""
+
+#: app/theme-options.php:678
+msgid "Manga Single - Chapters Order"
+msgstr ""
+
+#: app/theme-options.php:679
+msgid "Set chapters order in Manga Single and other page where chapters are listed. Order By Name works, but low performance. Consider using Order by Custom Index"
+msgstr ""
+
+#: app/theme-options.php:686
+msgid "Oldest to latest by Name"
+msgstr ""
+
+#: app/theme-options.php:690
+msgid "Latest to oldest by Name"
+msgstr ""
+
+#: app/theme-options.php:694
+msgid "Oldest to latest by Time"
+msgstr ""
+
+#: app/theme-options.php:698
+msgid "Latest to oldest by Time"
+msgstr ""
+
+#: app/theme-options.php:702
+msgid "Custom Index Value - Bigger to Smaller"
+msgstr ""
+
+#: app/theme-options.php:706
+msgid "Custom Index Value - Smaller to Bigger"
+msgstr ""
+
+#: app/theme-options.php:712
+msgid "Manga Single - Chapters List Columns"
+msgstr ""
+
+#: app/theme-options.php:713
+msgid "Choose number of columns to list chapters"
+msgstr ""
+
+#: app/theme-options.php:722
+msgid "Manga Single - Related Items Layout"
+msgstr ""
+
+#: app/theme-options.php:723
+msgid "Choose layout for Manga Related Items"
+msgstr ""
+
+#: app/theme-options.php:730
+msgid "Default (small thumbnail)"
+msgstr ""
+
+#: app/theme-options.php:741
+msgid "Manga Single - Number of Related Items"
+msgstr ""
+
+#: app/theme-options.php:742
+msgid "Choose number of related items to display"
+msgstr ""
+
+#: app/theme-options.php:783
+msgid "Manga Views Display"
+msgstr ""
+
+#: app/theme-options.php:784
+msgid "Display monthly views or all time views"
+msgstr ""
+
+#: app/theme-options.php:791
+msgid "Monthly"
+msgstr ""
+
+#: app/theme-options.php:802
+msgid "SEO - Manga Title"
+msgstr ""
+
+#: app/theme-options.php:803
+msgid "Custom Title Meta for Single Manga page. Use tag %title% for current Manga Title. When using with Yoast SEO, this will override the meta title in Yoast"
+msgstr ""
+
+#: app/theme-options.php:811
+msgid "SEO - Manga Description"
+msgstr ""
+
+#: app/theme-options.php:812
+msgid "Custom Description Meta for Single Manga page. Use tag %title% for current Manga Title. When using with Yoast SEO, this will override the meta description in Yoast"
+msgstr ""
+
+#: app/theme-options.php:820
+msgid "SEO - Manga Chapter Title"
+msgstr ""
+
+#: app/theme-options.php:821
+msgid ""
+"Custom Title Meta for Single Manga Reading page. Use tag %title% for current Manga Title, %chapter% for current Manga Chapter, %chapter_index% for current Chapter Index. When using with Yoast SEO, this will override the "
+"meta title in Yoast"
+msgstr ""
+
+#: app/theme-options.php:829
+msgid "SEO - Manga Chapter Description"
+msgstr ""
+
+#: app/theme-options.php:830
+msgid ""
+"Custom Description Meta for Single Manga Reading page. Use tag %title% for current Manga Title, %chapter% for current Manga Chapter, %chapter_index% for current Chapter Index, %summary% for Manga excerpt or first "
+"paragraph in a Novel chapter. When using with Yoast SEO, this will override the meta description in Yoast"
+msgstr ""
+
+#: app/theme-options.php:838
+msgid "Enable Reading Discussion"
+msgstr ""
+
+#: app/theme-options.php:839
+msgid "Turn On/Off Reading Discussion for Manga Reading Page. Default Off."
+msgstr ""
+
+#: app/theme-options.php:847
+msgid "Enable Reading Discussion Heading"
+msgstr ""
+
+#: app/theme-options.php:848
+msgid "Show heading for the Comments Form"
+msgstr ""
+
+#: app/theme-options.php:857
+msgid "Manga Reading Page Sidebar"
+msgstr ""
+
+#: app/theme-options.php:884
+msgid "Manga Text Chapter - Side Column"
+msgstr ""
+
+#: app/theme-options.php:885
+msgid "In Text Chapter reading page, move sidebar & discussion to the side column, instead of at bottom of content"
+msgstr ""
+
+#: app/theme-options.php:893
+msgid "Chapter Heading"
+msgstr ""
+
+#: app/theme-options.php:894
+msgid "Show Chapter Heading"
+msgstr ""
+
+#: app/theme-options.php:902
+msgid "Minimal Reading Layout"
+msgstr ""
+
+#: app/theme-options.php:903
+msgid "Hide header and other parts to focus in reading content"
+msgstr ""
+
+#: app/theme-options.php:911
+msgid "Manga Text Chapter - Font Size"
+msgstr ""
+
+#: app/theme-options.php:912
+msgid "Set font size (in pixels) for text. By default, it takes global font-size"
+msgstr ""
+
+#: app/theme-options.php:920
+msgid "Manga Image Chapter - Reading Style"
+msgstr ""
+
+#: app/theme-options.php:921
+msgid "Choose reading style for Image Chapter"
+msgstr ""
+
+#: app/theme-options.php:939
+msgid "Chapters Order in Reading Navigation"
+msgstr ""
+
+#: app/theme-options.php:940
+msgid "Should we keep the order in detail page, or reverse it?"
+msgstr ""
+
+#: app/theme-options.php:947
+msgid "Use Chapters Order in Detail page"
+msgstr ""
+
+#: app/theme-options.php:951
+msgid "Reverse"
+msgstr ""
+
+#: app/theme-options.php:958
+msgid "Enable Gaps"
+msgstr ""
+
+#: app/theme-options.php:959
+msgid "Enable Gaps between the images in Reading List Style"
+msgstr ""
+
+#: app/theme-options.php:968 madara-core/user/page/reader-settings.php:94
+msgid "Images Per Page"
+msgstr ""
+
+#: app/theme-options.php:976
+msgid "1 image"
+msgstr ""
+
+#: app/theme-options.php:980
+msgid "3 images"
+msgstr ""
+
+#: app/theme-options.php:984
+msgid "6 images"
+msgstr ""
+
+#: app/theme-options.php:988
+msgid "10 images"
+msgstr ""
+
+#: app/theme-options.php:996
+msgid "Full Width (No Left/Right Padding)"
+msgstr ""
+
+#: app/theme-options.php:997
+msgid "Disable Left/Right padding when reading chapter"
+msgstr ""
+
+#: app/theme-options.php:1005
+msgid "Enable Related Manga"
+msgstr ""
+
+#: app/theme-options.php:1006
+msgid "Turn On/Off Related Manga in Reading Page."
+msgstr ""
+
+#: app/theme-options.php:1014
+msgid "Page Reading Ajax"
+msgstr ""
+
+#: app/theme-options.php:1020
+msgid "Use Ajax instead of redirecting URL when go to next page on chapter"
+msgstr ""
+
+#: app/theme-options.php:1025
+msgid "Preload Images"
+msgstr ""
+
+#: app/theme-options.php:1030
+msgid "Use preloaded images for chapter without reloading or using ajax to get next/prev image"
+msgstr ""
+
+#: app/theme-options.php:1035
+msgid "Sticky Header"
+msgstr ""
+
+#: app/theme-options.php:1043
+msgid "Default (use setting in Theme Options > Header > Sticky Menu"
+msgstr ""
+
+#: app/theme-options.php:1058
+msgid "Sticky Chapter Navigation (Wide Screens)"
+msgstr ""
+
+#: app/theme-options.php:1068
+msgid "Enable Sticky Chapter Navigation for mobile screens ( < 768px)"
+msgstr ""
+
+#: app/theme-options.php:1078
+msgid "Next & Prev page by Pointer position"
+msgstr ""
+
+#: app/theme-options.php:1088
+msgid "Social Sharing"
+msgstr ""
+
+#: app/theme-options.php:1089
+msgid "Enable Social Sharing. Required plugin: "
+msgstr ""
+
+#: app/theme-options.php:1097
+msgid "Disable Image \"Save image as\""
+msgstr ""
+
+#: app/theme-options.php:1098
+msgid "This setting will remove \"Save image as\" from mouse right click menu on Manga Reading Page"
+msgstr ""
+
+#: app/theme-options.php:1106
+msgid "Manga Reading History"
+msgstr ""
+
+#: app/theme-options.php:1107
+msgid "Save Manga to user reading history when user's reading a chapter."
+msgstr ""
+
+#: app/theme-options.php:1115
+msgid "Manga Reading History Delay"
+msgstr ""
+
+#: app/theme-options.php:1116
+msgid "how many seconds should we wait user to read the chapter before saving chapter into reading history"
+msgstr ""
+
+#: app/theme-options.php:1125
+msgid "Manga Reading History Items"
+msgstr ""
+
+#: app/theme-options.php:1126
+msgid "Number of Manga Items at most to be saved in Manga Reading History. If you want to store unlimited number of items, enter -1. Please note that you have a lot of mangas, it would effect performance"
+msgstr ""
+
+#: app/theme-options.php:1134
+msgid "Manga Search - Exclude Tags"
+msgstr ""
+
+#: app/theme-options.php:1135
+msgid "Exclude mangas from Search Results if they have these tags. Enter a list of tag slug, separated by comma"
+msgstr ""
+
+#: app/theme-options.php:1142
+msgid "Manga Search - Exclude Genres"
+msgstr ""
+
+#: app/theme-options.php:1143
+msgid "Exclude mangas from Search Results if they have these genres. Enter a list of genre slug, separated by comma"
+msgstr ""
+
+#: app/theme-options.php:1150
+msgid "Manga Search - Exclude Authors"
+msgstr ""
+
+#: app/theme-options.php:1151
+msgid "Exclude mangas from Search Results if they belong to these authors. Enter a list of author slug, separated by comma"
+msgstr ""
+
+#: app/theme-options.php:1158
+msgid "Ajax Search"
+msgstr ""
+
+#: app/theme-options.php:1159
+msgid "Enable or Disable Ajax Search for Manga"
+msgstr ""
+
+#: app/theme-options.php:1173
+msgid "Show Polylang Languages Switcher in Footer"
+msgstr ""
+
+#: app/theme-options.php:1183
+msgid "User Settings"
+msgstr ""
+
+#: app/theme-options.php:1188
+msgid "Require strong Password"
+msgstr ""
+
+#: app/theme-options.php:1189
+msgid "Force user to use strong password"
+msgstr ""
+
+#: app/theme-options.php:1199
+msgid "Speaker"
+msgstr ""
+
+#: app/theme-options.php:1204
+msgid "Player Size"
+msgstr ""
+
+#: app/theme-options.php:1205
+msgid "Size of the audio player"
+msgstr ""
+
+#: app/theme-options.php:1211
+msgid "Full width"
+msgstr ""
+
+#: app/theme-options.php:1215
+msgid "Small Player"
+msgstr ""
+
+#: app/theme-options.php:1223
+msgid "Player Position"
+msgstr ""
+
+#: app/theme-options.php:1230
+msgid "Floating (fixed position at bottom)"
+msgstr ""
+
+#: app/theme-options.php:1234
+msgid "Before chapter content"
+msgstr ""
+
+#: app/theme.php:173
+msgid "Main Sidebar"
+msgstr ""
+
+#: app/theme.php:175
+msgid "Main Sidebar used by all pages"
+msgstr ""
+
+#: app/theme.php:183
+msgid "Single Post Sidebar"
+msgstr ""
+
+#: app/theme.php:185
+msgid "Appear in Single Post"
+msgstr ""
+
+#: app/theme.php:193
+msgid "Search Sidebar"
+msgstr ""
+
+#: app/theme.php:195
+msgid "Search Sidebar in header"
+msgstr ""
+
+#: app/theme.php:203
+msgid "Main Top Sidebar"
+msgstr ""
+
+#: app/theme.php:205 app/theme.php:215
+msgid "Appear before main content"
+msgstr ""
+
+#: app/theme.php:213
+msgid "Main Top Second Sidebar"
+msgstr ""
+
+#: app/theme.php:223
+msgid "Body Top Sidebar"
+msgstr ""
+
+#: app/theme.php:225
+msgid "Appear before body content"
+msgstr ""
+
+#: app/theme.php:233
+msgid "Body Bottom Sidebar"
+msgstr ""
+
+#: app/theme.php:235
+msgid "Appear after body content"
+msgstr ""
+
+#: app/theme.php:243
+msgid "Main Bottom Sidebar"
+msgstr ""
+
+#: app/theme.php:245
+msgid "Appear after main content"
+msgstr ""
+
+#: app/theme.php:253
+msgid "Footer Sidebar"
+msgstr ""
+
+#: app/theme.php:270 html/header/main-navigation.php:36
+msgid "Primary Menu"
+msgstr ""
+
+#: app/theme.php:271
+msgid "Secondary Menu"
+msgstr ""
+
+#: app/theme.php:272
+msgid "Mobile Menu"
+msgstr ""
+
+#: app/theme.php:273
+msgid "User Menu"
+msgstr ""
+
+#: app/theme.php:274
+msgid "Footer Menu"
+msgstr ""
+
+#: app/views/ParseBreadcrumbs.php:30 app/views/ParsePageTitle.php:27
+msgid "Search Results for"
+msgstr ""
+
+#: app/views/ParseComment.php:30
+msgid "Website"
+msgstr ""
+
+#: app/views/ParseComment.php:37
+msgid "Comment"
+msgstr ""
+
+#: app/views/ParseComment.php:75
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: app/views/ParseComment.php:79
+msgid "(Edit)"
+msgstr ""
+
+#: app/views/ParseComment.php:86
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: app/views/ParseHead.php:186
+msgid "Powered by Madara - A powerful multi-purpose theme by Madara"
+msgstr ""
+
+#: app/views/ParseMeta.php:52
+msgid "posted on"
+msgstr ""
+
+#: app/views/ParseMeta.php:95
+msgid "View all posts in "
+msgstr ""
+
+#: app/views/ParseMeta.php:133
+msgid "Views"
+msgstr ""
+
+#: app/views/ParseMeta.php:147
+msgid "Share"
+msgstr ""
+
+#: app/views/ParsePageTitle.php:29 madara-core/manga-search.php:130 madara-core/manga-search.php:131
+msgid "Author"
+msgstr ""
+
+#: app/views/ParsePageTitle.php:30
+msgid "Page not found"
+msgstr ""
+
+#: app/views/ParsePageTitle.php:51 app/views/ParsePageTitle.php:54 app/views/ParsePageTitle.php:57
+msgid "Archives for "
+msgstr ""
+
+#: app/views/ParsePagination.php:97
+msgid "Posts navigation"
+msgstr ""
+
+#: app/views/ParsePagination.php:106
+msgid "<span class=\"icon ion-md-arrow-forward meta-nav\"></span> Older Posts"
+msgstr ""
+
+#: app/views/ParsePagination.php:108
+msgid "<span class=\"icon ion-md-arrow-back meta-nav\"></span> Older Posts"
+msgstr ""
+
+#: app/views/ParsePagination.php:121
+msgid "Newer posts <span class=\"icon ion-md-arrow-back meta-nav\"></span>"
+msgstr ""
+
+#: app/views/ParsePagination.php:123
+msgid "Newer posts <span class=\"icon ion-md-arrow-forward meta-nav\"></span>"
+msgstr ""
+
+#: app/views/ParsePagination.php:187
+msgid "LOAD MORE"
+msgstr ""
+
+#: app/views/ParsePostNavigation.php:39
+msgid "NEXT POST"
+msgstr ""
+
+#: app/views/ParsePostNavigation.php:55
+msgid "PREV POST"
+msgstr ""
+
+#: app/views/ParseSocials.php:117
+msgid "Share on Facebook"
+msgstr ""
+
+#: app/views/ParseSocials.php:130
+msgid "Share on Twitter"
+msgstr ""
+
+#: app/views/ParseSocials.php:142
+msgid "Share on LinkedIn"
+msgstr ""
+
+#: app/views/ParseSocials.php:154
+msgid "Share on Tumblr"
+msgstr ""
+
+#: app/views/ParseSocials.php:167
+msgid "Share on Google Plus"
+msgstr ""
+
+#: app/views/ParseSocials.php:180
+msgid "Pin this"
+msgstr ""
+
+#: app/views/ParseSocials.php:193
+msgid "Email this"
+msgstr ""
+
+#: app/views/ParseSocials.php:200
+msgid "SHARE THIS POST"
+msgstr ""
+
+#: comments.php:35
+#, php-format
+msgid "1 Comment"
+msgid_plural "%d Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:41 comments.php:61
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:43 comments.php:63
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:44 comments.php:64
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:74
+msgid "Comments are closed."
+msgstr ""
+
+#: css/custom.css.php:730 madara-core/user/page/bookmark.php:32
+msgid "Manga Name"
+msgstr ""
+
+#: css/custom.css.php:733 html/single/content-page.php:71 madara-core/user/page/bookmark.php:34
+msgid "Edit"
+msgstr ""
+
+#: css/custom.css.php:736 madara-core/user/page/bookmark.php:33
+msgid "Updated Time"
+msgstr ""
+
+#: footer.php:79
+#, php-format
+msgid "&copy; %s Madara Inc. All rights reserved"
+msgstr ""
+
+#: header.php:57 madara-core/manga-search.php:64 madara-core/widgets/manga-search/manga-search.php:101 search.php:19
+msgid "Search..."
+msgstr ""
+
+#: html/header/mobile-navigation.php:35 html/header/sub-header-nav.php:60
+msgid "Sign in"
+msgstr ""
+
+#: html/header/mobile-navigation.php:39 html/header/sub-header-nav.php:61
+msgid "Sign up"
+msgstr ""
+
+#: html/loop/content-none.php:16
+msgid "Nothing Found"
+msgstr ""
+
+#: html/loop/content-none.php:20
+#, php-format
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: html/loop/content-none.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: html/loop/content-none.php:29
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: html/loop/content-search.php:47
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: html/loop/content-search.php:53 html/single/content-page.php:63 html/single/content.php:56
+msgid "Pages:"
+msgstr ""
+
+#: html/loop/content-search.php:66
+msgid "Read more"
+msgstr ""
+
+#: html/single/author.php:18
+msgid "About The Author"
+msgstr ""
+
+#: html/single/content-page.php:55 html/single/content.php:47
+msgid "Tags: "
+msgstr ""
+
+#: inc/extras.php:41
+msgid "Search Results"
+msgstr ""
+
+#: inc/extras.php:54
+#, php-format
+msgid "Author: %s"
+msgstr ""
+
+#: inc/extras.php:57
+#, php-format
+msgid "Day: %s"
+msgstr ""
+
+#: inc/extras.php:60
+#, php-format
+msgid "Month: %s"
+msgstr ""
+
+#: inc/extras.php:60
+msgid "F Y"
+msgstr ""
+
+#: inc/extras.php:63
+#, php-format
+msgid "Year: %s"
+msgstr ""
+
+#: inc/extras.php:63
+msgid "Y"
+msgstr ""
+
+#: inc/extras.php:66
+msgid "Asides"
+msgstr ""
+
+#: inc/extras.php:69
+msgid "Galleries"
+msgstr ""
+
+#: inc/extras.php:72
+msgid "Images"
+msgstr ""
+
+#: inc/extras.php:75
+msgid "Videos"
+msgstr ""
+
+#: inc/extras.php:78
+msgid "Quotes"
+msgstr ""
+
+#: inc/extras.php:81
+msgid "Links"
+msgstr ""
+
+#: inc/extras.php:84
+msgid "Statuses"
+msgstr ""
+
+#: inc/extras.php:87
+msgid "Audios"
+msgstr ""
+
+#: inc/extras.php:90
+msgid "Chats"
+msgstr ""
+
+#: inc/extras.php:97
+#, php-format
+msgid "Projects in %s category"
+msgstr ""
+
+#: inc/extras.php:99 inc/extras.php:118
+msgid "Archives"
+msgstr ""
+
+#: inc/extras.php:110
+msgid "All Projects"
+msgstr ""
+
+#: inc/extras.php:114
+msgid "Location"
+msgstr ""
+
+#: inc/extras.php:116
+msgid "All Services"
+msgstr ""
+
+#: inc/extras.php:131 madara-core/manga-single.php:109
+msgid "Show more  "
+msgstr ""
+
+#: inc/extras.php:132
+msgid "Show less  "
+msgstr ""
+
+#: inc/extras.php:147
+msgid "Bookmarks"
+msgstr ""
+
+#: inc/extras.php:148
+msgid "History"
+msgstr ""
+
+#: inc/extras.php:150
+msgid "Account Settings"
+msgstr ""
+
+#: inc/extras.php:151
+msgid "My Uploaded Mangas"
+msgstr ""
+
+#: inc/template-tags.php:46
+#, php-format
+msgid "<div class=\"c-meta\"><div class=\"item-meta\"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> projects in <span>%s</span></p></li></ul></div></div>"
+msgstr ""
+
+#: inc/template-tags.php:56
+#, php-format
+msgid "<div class=\"c-meta\"><div class=\"item-meta\"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> project in <span>%s</span></p></li></ul></div></div>"
+msgstr ""
+
+#: inc/template-tags.php:69 inc/template-tags.php:77
+#, php-format
+msgid "<div class=\"c-meta\"><div class=\"item-meta\"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> projects found</li></ul></div></div>"
+msgstr ""
+
+#: inc/template-tags.php:152 inc/template-tags.php:153
+msgid "Family Safe"
+msgstr ""
+
+#: madara-core/content/content-archive.php:102
+#, php-format
+msgid "Chapter %s"
+msgstr ""
+
+#: madara-core/content/content-none.php:27
+#, php-format
+msgid "There is no Manga in this %s - %s"
+msgstr ""
+
+#: madara-core/content/content-none.php:29
+msgid "There is no Manga yet"
+msgstr ""
+
+#: madara-core/content/content-none.php:31 search.php:94
+msgid "No matches found. Try a different search..."
+msgstr ""
+
+#: madara-core/content/content-search.php:86
+msgid "Authors"
+msgstr ""
+
+#: madara-core/content/content-search.php:111
+msgid "Artists"
+msgstr ""
+
+#: madara-core/content/content-search.php:135
+msgid "Genres"
+msgstr ""
+
+#: madara-core/content/content-search.php:215
+msgid "Latest chapter"
+msgstr ""
+
+#: madara-core/manga-archive.php:26 madara-core/manga-breadcrumb.php:88
+msgid "All Mangas"
+msgstr ""
+
+#: madara-core/manga-archive.php:112 search.php:43
+#, php-format
+msgid "%s result"
+msgid_plural "%s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: madara-core/manga-filter.php:22
+msgid "Order by"
+msgstr ""
+
+#: madara-core/manga-filter.php:29
+msgid "Relevance"
+msgstr ""
+
+#: madara-core/manga-filter.php:36
+msgid "Latest"
+msgstr ""
+
+#: madara-core/manga-filter.php:41
+msgid "A-Z"
+msgstr ""
+
+#: madara-core/manga-filter.php:56
+msgid "Most Views"
+msgstr ""
+
+#: madara-core/manga-oneshot.php:83 madara-core/manga-single.php:122
+msgid "Edit This Manga"
+msgstr ""
+
+#: madara-core/manga-related.php:136
+msgid "YOU MAY ALSO LIKE"
+msgstr ""
+
+#: madara-core/manga-search.php:63 search.php:18
+msgid "Search for:"
+msgstr ""
+
+#: madara-core/manga-search.php:89
+msgid "Advanced"
+msgstr ""
+
+#: madara-core/manga-search.php:122
+msgid "Genres condition"
+msgstr ""
+
+#: madara-core/manga-search.php:124
+msgid "OR (having one of selected genres)"
+msgstr ""
+
+#: madara-core/manga-search.php:125
+msgid "AND (having all selected genres)"
+msgstr ""
+
+#: madara-core/manga-search.php:135 madara-core/manga-search.php:136
+msgid "Artist"
+msgstr ""
+
+#: madara-core/manga-search.php:140
+msgid "Year of Released"
+msgstr ""
+
+#: madara-core/manga-search.php:141
+msgid "Year"
+msgstr ""
+
+#: madara-core/manga-search.php:145
+msgid "Adult content"
+msgstr ""
+
+#: madara-core/manga-search.php:148
+msgid "None adult content"
+msgstr ""
+
+#: madara-core/manga-search.php:149
+msgid "Only adult content"
+msgstr ""
+
+#: madara-core/manga-search.php:157
+msgid "Completed"
+msgstr ""
+
+#: madara-core/manga-search.php:161
+msgid "Ongoing"
+msgstr ""
+
+#: madara-core/manga-search.php:165
+msgid "Canceled"
+msgstr ""
+
+#: madara-core/manga-search.php:169
+msgid "On Hold"
+msgstr ""
+
+#: madara-core/manga-search.php:174
+msgid "Reset"
+msgstr ""
+
+#: madara-core/manga-search.php:200
+#, php-format
+msgid "%s result for \"%s\""
+msgid_plural "%s results for \"%s\""
+msgstr[0] ""
+msgstr[1] ""
+
+#: madara-core/manga-single-reading.php:138
+msgid "SHARE THIS MANGA"
+msgstr ""
+
+#: madara-core/manga-single.php:93 manga-functions.php:677
+msgid "Summary"
+msgstr ""
+
+#: madara-core/reading-content/content-reading-list.php:111 madara-core/reading-content/content-reading-paged.php:132 madara-core/reading-content/content-reading-paged.php:159
+msgid "View Full Size Image"
+msgstr ""
+
+#: madara-core/single/info-chapters.php:31
+msgid "Change Order"
+msgstr ""
+
+#: madara-core/single/info-chapters.php:161
+msgid "There is no chapters"
+msgstr ""
+
+#: madara-core/single/info-chapters.php:183
+msgid "Show more "
+msgstr ""
+
+#: madara-core/single/info-rank.php:31
+#, php-format
+msgid " %1s, it has %2s monthly view"
+msgid_plural " %1s, it has %2s monthly views"
+msgstr[0] ""
+msgstr[1] ""
+
+#: madara-core/single/info-rating.php:29
+#, php-format
+msgid "<span> <span> Average <span property=\"ratingValue\" id=\"averagerate\"> %s</span> / <span property=\"bestRating\">5</span> </span> </span> out of <span property=\"ratingCount\" id=\"countrate\">%s</span>"
+msgstr ""
+
+#: madara-core/single/info-tags.php:25 manga-functions.php:658
+msgid "Tag(s)"
+msgstr ""
+
+#: madara-core/single/quick-buttons.php:42
+msgid "Continue reading"
+msgstr ""
+
+#: madara-core/single/quick-buttons.php:57 madara-core/single/quick-buttons.php:63
+msgid "Read First"
+msgstr ""
+
+#: madara-core/single/quick-buttons.php:58 madara-core/single/quick-buttons.php:64
+msgid "Read Last"
+msgstr ""
+
+#: madara-core/single/user-actions.php:28
+msgid "Comments"
+msgstr ""
+
+#: madara-core/single/user-actions.php:35
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: madara-core/single/user-actions.php:37
+#, php-format
+msgid "%d comment"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:36
+msgid "Succeeded!"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:36
+msgid "Update successfully"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:41
+msgid "Failed!"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:69
+msgid "Only for .jpg .png or .gif file"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:75
+msgid "Upload"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:86
+msgid "Change Your Display name"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:90
+msgid "Current Display name"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:98
+msgid "New Display name"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:106 madara-core/user/page/account-settings.php:134 madara-core/user/page/account-settings.php:168 madara-core/user/page/reader-settings.php:119
+msgid "Submit"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:114
+msgid "Change Your email address"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:118
+msgid "Your email"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:126
+msgid "New email address"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:141
+msgid "Change Your Password"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:146
+msgid "Current Password"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:152
+msgid "New Password"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:158
+msgid "Comfirm Password"
+msgstr ""
+
+#: madara-core/user/page/account-settings.php:167
+msgid "I agree to use this weak password"
+msgstr ""
+
+#: madara-core/user/page/bookmark.php:99
+msgid "Latest chapter: "
+msgstr ""
+
+#: madara-core/user/page/bookmark.php:106
+msgid "page "
+msgstr ""
+
+#: madara-core/user/page/bookmark.php:115
+msgid "Unread chapter(s): "
+msgstr ""
+
+#: madara-core/user/page/bookmark.php:172
+msgid "Check all"
+msgstr ""
+
+#: madara-core/user/page/bookmark.php:174
+msgid "Delete"
+msgstr ""
+
+#: madara-core/user/page/bookmark.php:181
+msgid "No Manga Bookmarked"
+msgstr ""
+
+#: madara-core/user/page/history.php:97
+#, php-format
+msgid "page %d"
+msgstr ""
+
+#: madara-core/user/page/history.php:130
+msgid "You haven't read any manga yet"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:49
+msgid "Success!"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:49
+msgid " Update successfully"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:56
+msgid "Reading Settings"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:60
+msgid "Site Schema"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:77
+msgid "Reading Style"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:95
+msgid "Only works with paged reading style"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:103
+msgid "Load 1 image per page (default)"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:107
+msgid "Load 3 images per page"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:111
+msgid "Load 6 images per page"
+msgstr ""
+
+#: madara-core/user/page/reader-settings.php:115
+msgid "Load 10 images per page"
+msgstr ""
+
+#: manga-functions.php:291
+msgid "Invalid request, please try again"
+msgstr ""
+
+#: manga-functions.php:295
+msgid "Session expired, please try again."
+msgstr ""
+
+#: manga-functions.php:302
+msgid "User not found, please try again later. "
+msgstr ""
+
+#: manga-functions.php:324
+msgid "Current Password cannot be empty"
+msgstr ""
+
+#: manga-functions.php:326
+msgid "Confirm Password cannot be empty"
+msgstr ""
+
+#: manga-functions.php:328
+msgid "New password must be different with current password"
+msgstr ""
+
+#: manga-functions.php:330
+msgid "New Password & Confirm Password must be matched."
+msgstr ""
+
+#: manga-functions.php:332
+msgid "Incorrect current password, please check again."
+msgstr ""
+
+#: manga-functions.php:428
+msgid "<span>You haven't read any manga yet</span>"
+msgstr ""
+
+#: manga-functions.php:528
+msgid "Updating"
+msgstr ""
+
+#: manga-functions.php:1240
+#, php-format
+msgid "Comments for chapter \"%s\""
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:30
+#, php-format
+msgid "%s quantity"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:30 woocommerce/global/quantity-input.php:38
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/loop/result-count.php:32
+msgid "Showing the single result"
+msgstr ""
+
+#: woocommerce/loop/result-count.php:35
+#, php-format
+msgid "Showing all %d result"
+msgid_plural "Showing all %d results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: woocommerce/myaccount/form-login.php:32
+msgid "Login"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:39
+msgid "Username or email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:43 woocommerce/myaccount/form-login.php:93
+msgid "Password"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:51
+msgid "Remember me"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:54
+msgid "Log in"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:57
+msgid "Lost your password?"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:79
+msgid "Username"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:86
+msgid "Email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:99
+msgid "A password will be sent to your email address."
+msgstr ""

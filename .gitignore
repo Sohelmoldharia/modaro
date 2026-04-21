@@ -1,1 +1,4 @@
 extracted/
+dist/
+*.zip
+!themeforest-724A8VMg-madara-wordpress-theme-for-manga-wordpress-theme.zip
