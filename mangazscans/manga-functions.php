@@ -537,10 +537,13 @@
 
 	function madara_hover_load_post() {
 
-		$post_id = isset( $_REQUEST['postid'] ) && $_REQUEST['postid'] != '' ? intval( $_REQUEST['postid'] ) : '';
+		$post_id = isset( $_REQUEST['postid'] ) ? absint( $_REQUEST['postid'] ) : 0;
 
-		if ( $post_id != '' ) {
+		if ( $post_id > 0 ) {
 			$post_content = get_post( $post_id );
+			if ( ! $post_content || $post_content->post_status !== 'publish' || $post_content->post_type !== 'wp-manga' ) {
+				wp_die( '', '', array( 'response' => 404 ) );
+			}
 			$post_excerpt = $post_content->post_content;
 			$post_excerpt = wp_trim_words( $post_excerpt, apply_filters( 'mangasteam_hover_summary', 35 ) );
 

@@ -71,10 +71,6 @@
 				'id'    => 'misc',
 				'title' => '<i class="fas fa-chess-board"></i>' . esc_html__( 'Misc', 'madara' ),
 			),
-			array(
-				'id'    => 'amp',
-				'title' => '<i class="fas fa-bolt"></i>' . esc_html__( 'AMP', 'madara' ),
-			)
 		),
 		'settings'        => array(
 
@@ -1604,16 +1600,6 @@
 			),
 
 			array(
-				'id'       => 'loading_ct_icons',
-				'label'    => esc_html__( 'Turn On/Off loading CT-Icons', 'madara' ),
-				'desc'     => esc_html__( 'If you don\'t use CT-Icons (a Font Icons library), you can turn it off to save bandwidth', 'madara' ),
-				'std'      => 'on',
-				'type'     => 'on-off',
-				'section'  => 'misc',
-				'operator' => 'and'
-			),
-
-			array(
 				'id'      => 'custom_css',
 				'label'   => esc_html__( 'Custom CSS', 'madara' ),
 				'desc'    => esc_html__( 'Enter custom CSS. Ex: <i>.class{ font-size: 13px; }</i>', 'madara' ),
@@ -1849,58 +1835,6 @@
 				
 			),
 			
-			array(
-				'id'        => 'amp',
-				'label'     => esc_html__( 'Enable AMP URLs', 'madara' ),
-				'desc'      => esc_html__( 'AMP is a special link that is lightweight and stripped down.  The mobile user gets a much-improved experience: content is faster, more engaging, and easier-to-read. AMP was specifically built for publishers, and publishers still make up a big chunk of AMP content out there. In Madara, AMP URLs work for Manga Detail and Manga Reading page only. You can try to append "/amp" to the URL to see how it works. Require "AMP Plugin" (https://wordpress.org/plugins/amp/). Read more about AMP here: https://amp.dev/about/how-amp-works/', 'madara' ),
-				'std'       => 'off',
-				'type'      => 'on-off',
-				'section'   => 'amp',
-				'operator'  => 'and'
-			),
-			
-			array(
-				'id'        => 'amp_fontawesome_key',
-				'label'     => esc_html__( 'FontAwesome Key', 'madara' ),
-				'desc'      => esc_html__( 'In an AMP link, local lib for Font Icons cannot be loaded. Thus, we need to load it from FontAwesome CDN. Register your email here: https://fontawesome.com/start and get the Key', 'madara' ),
-				'std'       => '',
-				'type'      => 'text',
-				'section'   => 'amp',
-				'condition' => 'amp:is(on)'
-			),
-			
-			array(
-				'id'        => 'amp_image_height',
-				'label'     => esc_html__( 'Image Height (in px)', 'madara' ),
-				'desc'      => esc_html__( 'In an AMP link, images of a chapter should have same height. You can specify the height of images here for better display. You can set this value in each Manga and Chapter as well', 'madara' ),
-				'std'       => '400',
-				'type'      => 'text',
-				'section'   => 'amp',
-				'operator'  => 'and',
-				'condition' => 'amp:is(on)'
-			),
-			
-			array(
-				'id'        => 'amp_manga_reading_style',
-				'label'     => esc_html__( 'Chapter Reading in List or Slides mode', 'madara' ),
-				'desc'      => esc_html__( 'For Manga Chapter (Images) Reading page, use Images Listing or Slides mode', 'madara' ),
-				'std'       => '400',
-				'type'      => 'select',
-				'section'   => 'amp',
-				'choices' => array(
-					array(
-						'value' => 'list',
-						'label' => esc_html__( 'List', 'madara' ),
-						'src'   => ''
-					),
-					array(
-						'value' => 'slides',
-						'label' => esc_html__( 'Slides', 'madara' ),
-						'src'   => ''
-					)
-				),
-				'condition' => 'amp:is(on)'
-			),
 
 			/*
          * End

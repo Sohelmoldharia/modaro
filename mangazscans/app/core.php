@@ -64,16 +64,6 @@
 			Plugins\TGM_Plugin_Activation\ThemeRequired::initialize();
 
 			/**
-			 * Initialize the Welcome page
-			 */
-			Plugins\madara_Welcome\Welcome::initialize();
-
-			/**
-			 * Initialize Starter Content package
-			 */
-			Plugins\madara_Starter_Content\StarterContent::initialize();
-
-			/**
 			 * Initialize the Social Accounts Entity
 			 */
 			Models\Entity\Social::initialize();
@@ -211,65 +201,62 @@
 					$val          = $this->__format_POST_args( $val );
 					$args[ $key ] = $val;
 				}
-			} else {
+			} elseif ( is_string( $args ) ) {
 				if ( is_numeric( $args ) ) {
 					$args = intval( $args );
-				}
-				if ( $args == 'false' ) {
+				} elseif ( $args === 'false' ) {
 					$args = false;
-				}
-				if ( $args == 'true' ) {
+				} elseif ( $args === 'true' ) {
 					$args = true;
+				} else {
+					$args = sanitize_text_field( $args );
 				}
-
-				$args = str_replace( '\"', '"', $args );
 			}
 
 			return $args;
 		}
 
 		/**
-		 * Ajax call to load next page
+		 * Ajax call to load next page.
 		 *
-		 * @return HTML
+		 * Hardened: requires the 'madara_load_more' nonce sent in $_POST['nonce']
+		 * and only loads templates whose slug resolves inside the active theme.
+		 * The legacy code path that include()'d an arbitrary $_POST['template']
+		 * (when its name contained "plugins") was a Local File Inclusion sink
+		 * and has been removed.
 		 */
 		function ajax_load_next_page() {
 
-			// Get current page
-			$page = intval( $_POST['page'] );
-
-			// current query vars
-			$vars = $_POST['vars'];
-			if ( ! isset( $vars ) ) {
-				$vars = array();
+			$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
+			if ( ! wp_verify_nonce( $nonce, 'madara_load_more' ) ) {
+				wp_send_json_error( 'invalid_nonce', 403 );
 			}
 
-			// convert string value into corresponding data types
-			$vars = $this->__format_POST_args( $vars );
-
-			// item template file
-			$template = $_POST['template'];
-
-			// Return next page
-			$page = intval( $page ) + 1;
-
-			$posts_per_page = isset( $vars['posts_per_page'] ) ? $vars['posts_per_page'] : get_option( 'posts_per_page' );
-
-			if ( $page == 0 ) {
+			$page = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 0;
+			$page = $page + 1;
+			if ( $page < 1 ) {
 				$page = 1;
 			}
+
+			$vars = isset( $_POST['vars'] ) && is_array( $_POST['vars'] ) ? wp_unslash( $_POST['vars'] ) : array();
+			$vars = $this->__format_POST_args( $vars );
+
+			$template_slug = isset( $_POST['template'] ) ? sanitize_text_field( wp_unslash( $_POST['template'] ) ) : '';
+			$template_slug = $this->sanitize_template_slug( $template_slug );
+			if ( $template_slug === '' ) {
+				wp_send_json_error( 'invalid_template', 400 );
+			}
+
+			$posts_per_page = isset( $vars['posts_per_page'] ) ? intval( $vars['posts_per_page'] ) : intval( get_option( 'posts_per_page' ) );
+			if ( $posts_per_page < 1 ) {
+				$posts_per_page = 10;
+			}
 			$offset = ( $page - 1 ) * $posts_per_page;
-			/*
-			 * This is confusing. Just leave it here to later reference
-			 *
 
-			 *
-			 */
-
-
-			// get more posts per page than necessary to detect if there are more posts
-			$args = array( 'posts_per_page' => $posts_per_page + 1, 'offset' => $offset );
-			$args = array_merge( $vars, $args );
+			$args = array_merge( $vars, array(
+				'posts_per_page' => $posts_per_page + 1,
+				'offset'         => $offset,
+			) );
 
 			if ( ! isset( $args['post_status'] ) ) {
 				$args['post_status'] = 'publish';
@@ -283,54 +270,60 @@
 				set_query_var( 'archive_content_columns', $args['archive_content_columns'] );
 			}
 
-			// remove unnecessary variables
-			unset( $args['paged'] );
-			unset( $args['p'] );
-			unset( $args['page'] );
-			unset( $args['pagename'] ); // this is neccessary in case Posts Page is set to a static page
-			unset( $args['sidebar'] );
-			unset( $args['archive_content_columns'] );
+			unset( $args['paged'], $args['p'], $args['page'], $args['pagename'], $args['sidebar'], $args['archive_content_columns'] );
 
 			$query = new \WP_Query( $args );
 
-			$idx = 0;
 			set_query_var( 'madara_offset', $offset + 1 );
 			set_query_var( 'madara_total', $posts_per_page );
 
-			$manga_archives_item_layout = isset($args['manga_archives_item_layout']) ? $args['manga_archives_item_layout'] : self::getOption( 'manga_archives_item_layout', 'default' );
-			
-			set_query_var('manga_archives_item_layout', $manga_archives_item_layout);
+			$manga_archives_item_layout = isset( $args['manga_archives_item_layout'] )
+				? $args['manga_archives_item_layout']
+				: self::getOption( 'manga_archives_item_layout', 'default' );
+			set_query_var( 'manga_archives_item_layout', $manga_archives_item_layout );
 
-			$madara_loop_index = '';
+			$madara_loop_index = 0;
 
 			if ( $query->have_posts() ) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
-					$madara_loop_index ++;
+					$madara_loop_index++;
 					set_query_var( 'madara_loop_index', $madara_loop_index );
 
 					if ( $madara_loop_index < $posts_per_page + 1 ) {
-						if ( ( strpos( $template, 'plugins' ) !== false ) ) {
-							include( $template );
-						} else {
-							//$post_format = get_post_format() ? get_post_format : '';
-							get_template_part( $template, get_post_format() );
-						}
+						get_template_part( $template_slug, get_post_format() );
 					}
 				}
 
 				if ( $query->post_count <= $posts_per_page ) {
-					// there are no more posts
-					// print a flag to detect
 					echo '<div class="invi no-posts"><!-- --></div>';
 				}
-			} else {
-				// no posts found
 			}
 
-			/* Restore original Post Data */
 			wp_reset_postdata();
-			die( '' );
+			wp_die();
+		}
+
+		/**
+		 * Reduce a caller-supplied template slug to a safe relative path that
+		 * get_template_part() can resolve inside the (parent or child) theme.
+		 *
+		 * Strips any leading slash, drops the .php suffix, blocks path
+		 * traversal, and rejects anything that isn't [a-zA-Z0-9_/-].
+		 */
+		private function sanitize_template_slug( $slug ) {
+			if ( ! is_string( $slug ) || $slug === '' ) {
+				return '';
+			}
+			$slug = ltrim( $slug, '/' );
+			$slug = preg_replace( '/\.php$/i', '', $slug );
+			if ( strpos( $slug, '..' ) !== false ) {
+				return '';
+			}
+			if ( ! preg_match( '#^[a-zA-Z0-9_\-/]+$#', $slug ) ) {
+				return '';
+			}
+			return $slug;
 		}
 
 
@@ -410,19 +403,8 @@
 		 * Style for admin
 		 */
 		function __adminStyles() {
-            if(is_admin()){
-                $screen = \get_current_screen();
-                if($screen){
-                    if( 'toplevel_page_madara-welcome' == $screen->id ) {
-                        wp_enqueue_style( 'bootstrap', get_parent_theme_file_uri( '/css/bootstrap.min.css' ), array(), '4.6.0' );
-                    }
-                }
-            }
-            
-            wp_enqueue_style( 'fontawesome', get_parent_theme_file_uri( '/app/lib/fontawesome/web-fonts-with-css/css/all.min.css' ), array(), '5.2.0' );
+			wp_enqueue_style( 'fontawesome', get_parent_theme_file_uri( '/app/lib/fontawesome/web-fonts-with-css/css/all.min.css' ), array(), '5.15.3' );
 			wp_enqueue_style( 'madara-admin-style', get_parent_theme_file_uri( '/admin/assets/css/style.css' ) );
-            
-            
 		}
 
 		/**
@@ -431,12 +413,10 @@
 		function __adminScripts() {
 			wp_enqueue_media();
 
+			wp_enqueue_style( 'wp-color-picker' );
 			wp_enqueue_script( 'wp-color-picker' );
 
-			wp_enqueue_script( 'madara-admin', get_parent_theme_file_uri( '/admin/js/madara-admin.js' ), array( 'jquery' ), '1.7', true );
-
-			wp_enqueue_style( 'madara-color-picker', get_parent_theme_file_uri( '/admin/assets/lib/colorpicker-master/jquery.colorpicker.css' ) );
-			wp_enqueue_script( 'madara-color-picker', get_parent_theme_file_uri( '/admin/assets/lib/colorpicker-master/jquery.colorpicker.js' ), array( 'jquery' ), '1.2.13', true );
+			wp_enqueue_script( 'madara-admin', get_parent_theme_file_uri( '/admin/js/madara-admin.js' ), array( 'jquery', 'wp-color-picker' ), '1.7', true );
 		}
 
 		/**
@@ -461,157 +441,6 @@
 
 		}
         
-        function theme_is_activated() {
-            return ( 'yes' === get_site_option( 'madara_activated' ) );
-        }
-
-        function activate_theme( $code, $supported_until ) {
-            update_site_option( 'madara_activated', 'yes' );
-            update_site_option( 'madara_purchase_code', $code );
-            update_site_option( 'madara_supported_until', $supported_until );
-            
-            do_action( 'madara_after_theme_activation' );
-        }
-
-        function deactivate_theme() {
-            delete_site_option( 'madara_activated' );
-            delete_site_option( 'madara_purchase_code' );
-            
-            do_action( 'madara_after_theme_deactivation' );
-        }
-
-        function delete_purchase_code() {
-            delete_site_option( 'madara_purchase_code' );
-        }
-
-        function get_purchase_code() {
-            return get_site_option( 'madara_purchase_code' );
-        }
-        
-        /**
-         * $rew - boolean - set false to return formated datetime
-         **/
-        function get_theme_support_date( $raw = true ) {
-            $date = get_site_option( 'madara_supported_until' );
-            if(!$raw){
-                $date = date_i18n(get_option('date_format'), strtotime($date));
-            }
-            return $date;
-        }
-
-        function get_censored_purchase_code() {
-            $madara = Madara::getInstance();
-            
-            $code = $madara->get_purchase_code();
-            $hidden_part = substr( $code, 4, -4 );
-            if ( $hidden_part ) {
-                $code = str_replace( $hidden_part, str_repeat( '*', strlen( $hidden_part ) ), $code );
-            }
-
-            return $code;
-        }
-        
-        /**
-         * Register site to Mangabooth.com
-         *
-         * @return array ['error' => '', 'data' => mixed]
-         *      $data - in case of unknown error, return WP_Error
-                        - in case of success, return ['status' => [valid|error], 'data' => Envato Item Object]
-         *
-         **/
-        function do_validate( $envato_code ){
-            $result = array(
-                            'error' => '',
-                            'data' => ''
-                        );
-
-            $site_url = get_site_url();
-            // Surrounding whitespace can cause a 404 error, so trim it first
-            $envato_code = trim($envato_code);                       
-
-            // Make sure the code looks valid before sending it to Envato
-            if (!preg_match("/^([a-f0-9]{8})-(([a-f0-9]{4})-){3}([a-f0-9]{12})$/i", $envato_code)) {
-                $result['error'] = esc_html__("Invalid Purchase Code", 'madara');
-                
-                return $result;
-            }
-
-            $args     = array(
-                'timeout' => 30,
-                'body'    => array(
-                    'code' => urlencode( $envato_code ),
-                    'site' => urldecode( $site_url ),
-                    'action' => 'activate'
-                ),
-            );
-            $response = wp_remote_post( 'https://mangabooth.com/envato', $args );
-            
-            if ( is_wp_error( $response ) ) {
-                $result['error'] = esc_html__('An error occured.', 'madara');
-                $result['data'] = $response;
-                
-                return $result;
-            }
-
-            $response_code = wp_remote_retrieve_response_code( $response );
-            if ( '200' != $response_code ) {
-                $result['error'] = $response_code . ': ' . esc_html__( 'Bad request.', 'madara' );
-                
-                return $result;
-            }
-            
-            $result['data'] = json_decode( wp_remote_retrieve_body( $response ), true );            
-            
-            if($result['data']['status'] == 'error'){
-                $result['error'] = $result['data']['message'];
-            }
-            
-            return $result;
-        }
-        
-        function do_deactivate(){
-            $result = array(
-                            'error' => '',
-                            'data' => ''
-                        );
-
-            $site_url = get_site_url();
-            $envato_code = $this->get_purchase_code();                       
-
-            // Make sure the code looks valid before sending it to Envato
-            if (!preg_match("/^([a-f0-9]{8})-(([a-f0-9]{4})-){3}([a-f0-9]{12})$/i", $envato_code)) {
-                $result['error'] = esc_html__("Invalid Purchase Code", 'madara');
-            }
-
-            $args     = array(
-                'timeout' => 30,
-                'body'    => array(
-                    'code' => urlencode( $envato_code ),
-                    'site' => urldecode( $site_url ),
-                    'action' => 'deactivate'                    
-                ),
-            );
-            $response = wp_remote_post( 'https://mangabooth.com/envato', $args );
-            
-            if ( is_wp_error( $response ) ) {
-                $result['error'] = esc_html__('An error occured.', 'madara');
-                $result['data'] = $response;
-            }
-
-            $response_code = wp_remote_retrieve_response_code( $response );
-            if ( '200' != $response_code ) {
-                $result['error'] = $response_code . ': ' . esc_html__( 'Bad request.', 'madara' );
-            }
-            
-            $result['data'] = json_decode( wp_remote_retrieve_body( $response ), true );
-            
-            if($result['data']['status'] == 'error'){
-                $result['error'] = $result['data']['message'];
-            }
-            
-            return $result;
-        }
-
 		/**
 		 * add custom code to footer
 		 */

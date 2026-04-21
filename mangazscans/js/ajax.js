@@ -30,7 +30,8 @@
 						action: 'madara_load_more',
 						page: _current_page,
 						template: item_template,
-						vars: __madara_query_vars
+						vars: __madara_query_vars,
+						nonce: (typeof madara !== 'undefined' && madara.load_more_nonce) ? madara.load_more_nonce : ''
 					};
 
 					content_div = jQuery(this).attr('data-target');

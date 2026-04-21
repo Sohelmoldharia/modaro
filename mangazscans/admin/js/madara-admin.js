@@ -350,22 +350,18 @@ jQuery(document).ready(function (e) {
 	});
 
 	/**
-	 * init Color Picker for Widget Member-Author
+	 * init Color Picker for Widget Member-Author (uses native WP wpColorPicker)
 	 */
-	jQuery('.c-widget-member-bg-color').colorpicker({
-		colorFormat: ('#HEX'),
-	});
-	jQuery('.c-widget-member-text-color').colorpicker({
-		colorFormat: ('#HEX'),
-	});
-
-	jQuery(document).on('widget-updated widget-added', function () {
-		jQuery('.c-widget-member-bg-color').colorpicker({
-			colorFormat: ('#HEX'),
+	function initWidgetColorPickers() {
+		if (typeof jQuery.fn.wpColorPicker !== 'function') return;
+		jQuery('.c-widget-member-bg-color, .c-widget-member-text-color').each(function () {
+			if (!jQuery(this).hasClass('wp-color-picker-initialized')) {
+				jQuery(this).wpColorPicker();
+				jQuery(this).addClass('wp-color-picker-initialized');
+			}
 		});
-		jQuery('.c-widget-member-text-color').colorpicker({
-			colorFormat: ('#HEX'),
-		});
-	});
+	}
+	initWidgetColorPickers();
+	jQuery(document).on('widget-updated widget-added', initWidgetColorPickers);
 
 });
