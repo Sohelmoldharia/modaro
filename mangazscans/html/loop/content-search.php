@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	$postMeta = new App\Views\ParseMeta();
@@ -44,13 +44,13 @@
         <div class="col-12 c-column">
             <div class="entry-content">
                 <div class="entry-excerpt">
-					<?php the_excerpt( esc_html__( 'Continue reading <span class="meta-nav">&rarr;</span>', 'madara' ) ); ?>
+					<?php the_excerpt( esc_html__( 'Continue reading <span class="meta-nav">&rarr;</span>', 'mangazscans' ) ); ?>
                 </div>
                 <!-- .entry-excerpt -->
 
 				<?php
 					wp_link_pages( array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'madara' ),
+						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mangazscans' ),
 						'after'  => '</div>',
 					) );
 				?>
@@ -63,7 +63,7 @@
             <footer class="entry-footer">
                 <div class="entry-readmore float-left">
                     <a class="item-readmore btn btn-default btn-custom small" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><i class="icon ion-ios-plus-outline"></i>
-                        <span><?php esc_html_e( 'Read more', 'madara' ); ?></span> </a>
+                        <span><?php esc_html_e( 'Read more', 'mangazscans' ); ?></span> </a>
                 </div>
             </footer>
             <!-- .entry-footer -->

@@ -4,7 +4,7 @@
 	 * Class ParsePagination
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Views;
@@ -20,7 +20,7 @@
 		 * @madara
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		public function renderPostTitle( $tag = 'h3', $link = 1 ) {
 			if ( $link ) {
@@ -37,7 +37,7 @@
 		 * @madara
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		public function renderPostMeta( $args = array( 'date', 'author', 'comment_count', 'category' ) ) {
 			$html = '';
@@ -49,7 +49,7 @@
 
 			if ( ($madara_page_meta_tags == 'on' && is_page()) || ($madara_post_meta_tags == 'on' && is_single()) ) : ?>
                 <div class="post-on">
-                    <span class="font-meta"><?php echo esc_html__( 'posted on', 'madara' ); ?></span>
+                    <span class="font-meta"><?php echo esc_html__( 'posted on', 'mangazscans' ); ?></span>
                     <div class="c-blog__date">
 
 						<?php $this->renderPublishDate(); ?>
@@ -79,7 +79,7 @@
 		 * @return string
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		public function renderPostCategory() {
 			$output = '';
@@ -92,7 +92,7 @@
 					$cat_name = $category->name;
 					$cat_url  = get_category_link( $category->term_id );
 
-					array_push( $html_array, '<a href="' . esc_url( $cat_url ) . '" title="' . esc_html__( 'View all posts in ', 'madara' ) . esc_attr( $cat_name ) . '">' . esc_html( $cat_name ) . '</a>' );
+					array_push( $html_array, '<a href="' . esc_url( $cat_url ) . '" title="' . esc_html__( 'View all posts in ', 'mangazscans' ) . esc_attr( $cat_name ) . '">' . esc_html( $cat_name ) . '</a>' );
 				}
 
 				$output .= implode( ', ', $html_array );
@@ -117,7 +117,7 @@
 		 * Get Publish Date
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		function renderPublishDate() {
 			$time_string = '<time class="published" datetime="%1$s">%2$s</time>';
@@ -130,7 +130,7 @@
 			$views = '';
 
 			if ( function_exists( 'echo_tptn_post_count' ) ) {
-				$views .= '<span class="count-view">' . do_shortcode( '[tptn_views]' ) . ' ' . esc_html__( 'Views', 'madara' ) . '</span>';
+				$views .= '<span class="count-view">' . do_shortcode( '[tptn_views]' ) . ' ' . esc_html__( 'Views', 'mangazscans' ) . '</span>';
 			}
 
 			if ( $echo == 1 ) {
@@ -144,7 +144,7 @@
 			$total_counter = '';
 
 			if ( class_exists( 'APSS_Class' ) ) {
-				$total_counter .= '<span class="count-share ' . ( $hide_networks == 1 ? 'hide-networks' : '' ) . '">' . do_shortcode( '[apss_share total_counter="1" counter="1"]' ) . ' ' . esc_html__( 'Share', 'madara' ) . '</span>';
+				$total_counter .= '<span class="count-share ' . ( $hide_networks == 1 ? 'hide-networks' : '' ) . '">' . do_shortcode( '[apss_share total_counter="1" counter="1"]' ) . ' ' . esc_html__( 'Share', 'mangazscans' ) . '</span>';
 			}
 
 			if ( $echo == 1 ) {

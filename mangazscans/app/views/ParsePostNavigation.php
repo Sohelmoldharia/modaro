@@ -36,7 +36,7 @@
                 <div class="nav-links">
 					<?php if ( is_object( $get_next_post ) ) { ?>
                         <div class="nav-next nav-button">
-                            <a class="link" href="<?php echo get_permalink( $get_next_post->ID ) ?>"><?php echo esc_html__( 'NEXT POST', 'madara' ); ?></a>
+                            <a class="link" href="<?php echo get_permalink( $get_next_post->ID ) ?>"><?php echo esc_html__( 'NEXT POST', 'mangazscans' ); ?></a>
                             <div class="c-blog__thumbnail c-image-hover">
                                 <a href="<?php echo get_permalink( $get_next_post->ID ) ?>"> <?php echo get_the_post_thumbnail( $get_next_post->ID, $thumb_size, array( 'class' => 'img-responsive' ) ) ?> </a>
                             </div>
@@ -52,7 +52,7 @@
 
 					<?php if ( is_object( $get_previous_post ) ) { ?>
                         <div class="nav-previous nav-button">
-                            <a class="link" href="<?php echo get_permalink( $get_previous_post->ID ) ?>"><?php echo esc_html__( 'PREV POST', 'madara' ); ?></a>
+                            <a class="link" href="<?php echo get_permalink( $get_previous_post->ID ) ?>"><?php echo esc_html__( 'PREV POST', 'mangazscans' ); ?></a>
                             <div class="c-blog__thumbnail c-image-hover">
                                 <a href="<?php echo get_permalink( $get_previous_post->ID ) ?>"> <?php echo get_the_post_thumbnail( $get_previous_post->ID, $thumb_size, array( 'class' => 'img-responsive' ) ) ?> </a>
                             </div>

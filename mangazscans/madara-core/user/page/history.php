@@ -94,7 +94,7 @@
 
 									<span class="page">
 										<a href="<?php echo esc_url( $p_url ); ?>">
-											<?php echo sprintf(esc_html__('page %d', 'madara'), $this_history_manga['p']);?> 
+											<?php echo sprintf(esc_html__('page %d', 'mangazscans'), $this_history_manga['p']);?> 
 										</a>
 									</span>
 								<?php } ?>
@@ -127,7 +127,7 @@
 	<?php } ?>
 
 	<?php if( empty( $history_manga ) ){ ?>
-		<span><?php esc_html_e( 'You haven\'t read any manga yet', 'madara' ); ?></span>
+		<span><?php esc_html_e( 'You haven\'t read any manga yet', 'mangazscans' ); ?></span>
 	<?php } ?>
 
 </div>

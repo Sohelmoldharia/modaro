@@ -439,6 +439,14 @@
 				<?php
 			}
 
+			// Default favicon: only inject if the user hasn't configured a Site Icon
+			// in the WP Customizer. WP emits its own <link rel> for site_icon.
+			if ( ! has_site_icon() ) {
+				$base = get_parent_theme_file_uri();
+				echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( $base . '/images/favicon.svg' ) . '">' . "\n";
+				echo '<link rel="icon" type="image/png" sizes="32x32" href="' . esc_url( $base . '/images/favicon.png' ) . '">' . "\n";
+				echo '<link rel="apple-touch-icon" sizes="180x180" href="' . esc_url( $base . '/images/favicon-180.png' ) . '">' . "\n";
+			}
 		}
         
 		/**

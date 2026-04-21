@@ -4,7 +4,7 @@
 	 * Class ParsePageTitle
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Views;
@@ -22,12 +22,12 @@
 
 			$title = '';
 
-			$text['home']     = esc_html__( 'Home', 'madara' );
+			$text['home']     = esc_html__( 'Home', 'mangazscans' );
 			$text['category'] = '%s';
-			$text['search']   = esc_html__( 'Search Results for', 'madara' ) . ' <span>%s</span>';
-			$text['tag']      = esc_html__( 'Tag', 'madara' ) . ' "%s"';
-			$text['author']   = esc_html__( 'Author', 'madara' ) . ' %s';
-			$text['404']      = Madara::getOption( 'page404_title', esc_html__( 'Page not found', 'madara' ) );
+			$text['search']   = esc_html__( 'Search Results for', 'mangazscans' ) . ' <span>%s</span>';
+			$text['tag']      = esc_html__( 'Tag', 'mangazscans' ) . ' "%s"';
+			$text['author']   = esc_html__( 'Author', 'mangazscans' ) . ' %s';
+			$text['404']      = Madara::getOption( 'page404_title', esc_html__( 'Page not found', 'mangazscans' ) );
 
 			$parent_id = $parent_id_2 = ( $post ) ? $post->post_parent : 0;
 
@@ -37,7 +37,7 @@
 
 			} elseif ( is_home() ) {
 
-				$title = get_option( 'page_for_posts' ) ? get_the_title( get_option( 'page_for_posts' ) ) : esc_html__( 'Blog', 'madara' );
+				$title = get_option( 'page_for_posts' ) ? get_the_title( get_option( 'page_for_posts' ) ) : esc_html__( 'Blog', 'mangazscans' );
 
 			} else {
 
@@ -48,13 +48,13 @@
 					$title = sprintf( $text['search'], get_search_query() );
 
 				} elseif ( is_day() ) {
-					$title = esc_html__( "Archives for ", 'madara' ) . date_i18n( get_option( 'date_format' ), strtotime( get_the_date() ) );
+					$title = esc_html__( "Archives for ", 'mangazscans' ) . date_i18n( get_option( 'date_format' ), strtotime( get_the_date() ) );
 
 				} elseif ( is_month() ) {
-					$title = esc_html__( "Archives for ", 'madara' ) . get_the_date( 'F, Y' );
+					$title = esc_html__( "Archives for ", 'mangazscans' ) . get_the_date( 'F, Y' );
 
 				} elseif ( is_year() ) {
-					$title = esc_html__( "Archives for ", 'madara' ) . get_the_date( 'Y' );
+					$title = esc_html__( "Archives for ", 'mangazscans' ) . get_the_date( 'Y' );
 
 				} elseif ( is_single() && ! is_attachment() ) {
 					if ( get_post_type() != 'post' ) {

@@ -3,7 +3,7 @@
 	/**
 	 * Class General
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Models\Entity;

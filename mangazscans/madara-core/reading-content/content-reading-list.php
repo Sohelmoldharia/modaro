@@ -108,6 +108,6 @@
 	}
 	
 	if($need_button_fullsize){ ?>
-			<a href="javascript:void(0)" id="btn_view_full_image"><?php esc_html_e('View Full Size Image', 'madara');?></a>
+			<a href="javascript:void(0)" id="btn_view_full_image"><?php esc_html_e('View Full Size Image', 'mangazscans');?></a>
 		<?php
 		}

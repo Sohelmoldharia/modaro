@@ -3,7 +3,7 @@
 	/**
 	 * Class Ads
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Models\Entity;
@@ -72,16 +72,16 @@
 				$args = array_merge( $args, array(
 					array(
 						'id'      => 'adsense_slot_' . $slot,
-						'label'   => sprintf( esc_html__( '%s - AdSense Ads Slot ID', 'madara' ), $name ),
-						'desc'    => sprintf( esc_html__( 'If you want to display %s, enter Google AdSense Ad Slot ID here. If left empty, "%s - Custom Code" will be used', 'madara' ), $name, $name ),
+						'label'   => sprintf( esc_html__( '%s - AdSense Ads Slot ID', 'mangazscans' ), $name ),
+						'desc'    => sprintf( esc_html__( 'If you want to display %s, enter Google AdSense Ad Slot ID here. If left empty, "%s - Custom Code" will be used', 'mangazscans' ), $name, $name ),
 						'std'     => '',
 						'type'    => 'text',
 						'section' => 'advertising'
 					),
 					array(
 						'id'       => $slot,
-						'label'    => sprintf( esc_html__( '%s - Custom Code', 'madara' ), $name ),
-						'desc'     => sprintf( esc_html__( 'Enter custom code for %s position', 'madara' ), $name ),
+						'label'    => sprintf( esc_html__( '%s - Custom Code', 'mangazscans' ), $name ),
+						'desc'     => sprintf( esc_html__( 'Enter custom code for %s position', 'mangazscans' ), $name ),
 						'std'      => '',
 						'type'     => 'textarea-simple',
 						'section'  => 'advertising',

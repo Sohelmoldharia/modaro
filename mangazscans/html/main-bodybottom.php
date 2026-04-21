@@ -3,7 +3,7 @@
 	/**
 	 * The Template for displaying Body Bottom Sidebar
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	echo apply_filters( 'madara_ads_after_content', madara_ads_position( 'ads_after_content', 'body-bottom-ads' ) );

@@ -2,7 +2,7 @@
 	/**
 	 * Template Name: Front-Page
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	use App\Madara;

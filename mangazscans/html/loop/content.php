@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	use App\Madara;

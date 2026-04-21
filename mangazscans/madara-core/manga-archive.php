@@ -23,7 +23,7 @@
 
 	$madara_breadcrumb     = Madara::getOption( 'manga_archive_breadcrumb', 'on' );
 
-	$manga_archive_heading = Madara::getOption( 'manga_archive_heading', esc_html__('All Mangas', 'madara') );
+	$manga_archive_heading = Madara::getOption( 'manga_archive_heading', esc_html__('All Mangas', 'mangazscans') );
 	$manga_archive_heading = apply_filters( 'madara_archive_heading', $manga_archive_heading );
 	
 	$manga_archives_item_layout = Madara::getOption( 'manga_archives_item_layout', 'default' );
@@ -109,7 +109,7 @@
 
                                         <div class="h4">
                                             <i class="<?php madara_default_heading_icon(); ?>"></i>
-											<?php echo sprintf( _n( '%s result', '%s results', $manga_query->post_count, 'madara' ), $manga_query->found_posts ); ?>
+											<?php echo sprintf( _n( '%s result', '%s results', $manga_query->post_count, 'mangazscans' ), $manga_query->found_posts ); ?>
                                         </div>
 										<?php get_template_part( 'madara-core/manga-filter' ); ?>
                                     </div>

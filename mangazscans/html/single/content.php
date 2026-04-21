@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	$madara_postMeta = new App\Views\ParseMeta();
@@ -44,7 +44,7 @@
 
 	<?php if ( $madara_showtags == 'on' && has_tag() ): ?>
         <div class="item-tags">
-            <h5><?php esc_html_e('Tags: ', 'madara');?></h5>
+            <h5><?php esc_html_e('Tags: ', 'mangazscans');?></h5>
 			<?php the_tags( '<ul class="list-inline">
                 <li>', '</li><li>', '</li></ul>' );
 			?>
@@ -53,7 +53,7 @@
 
 	<?php
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'madara' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mangazscans' ),
 			'after'  => '</div>',
 		) );
 	?>

@@ -25,16 +25,16 @@
 			<?php 
 			if(isset($wp_manga_settings['default_comment']) && $wp_manga_settings['default_comment'] == 'disqus'){
 				?>
-				<span class="disqus-comment-count" data-disqus-url="<?php echo esc_url(get_permalink());?>"><?php esc_html_e('Comments', 'madara');?></span>
+				<span class="disqus-comment-count" data-disqus-url="<?php echo esc_url(get_permalink());?>"><?php esc_html_e('Comments', 'mangazscans');?></span>
 				<?php 
 			} else {
 				$comments_count = wp_count_comments( get_the_ID() ); ?>
 				<span><?php 
 				
 				if(function_exists('wp_manga_number_format_short')){
-					printf( _n( '%s comment', '%s comments', wp_manga_number_format_short($comments_count->approved), 'madara' ), wp_manga_number_format_short($comments_count->approved) );
+					printf( _n( '%s comment', '%s comments', wp_manga_number_format_short($comments_count->approved), 'mangazscans' ), wp_manga_number_format_short($comments_count->approved) );
 				} else {
-					printf(esc_html__('%d comment', 'madara'),  $comments_count);
+					printf(esc_html__('%d comment', 'mangazscans'),  $comments_count);
 				}
 				?></span>
 			<?php } ?>

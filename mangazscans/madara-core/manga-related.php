@@ -133,7 +133,7 @@
                     <div class="c-blog__heading style-2 font-heading">
                         <h4>
                             <i class="<?php madara_default_heading_icon(); ?>"></i>
-							<?php esc_html_e( 'YOU MAY ALSO LIKE', 'madara' ) ?></h4>
+							<?php esc_html_e( 'YOU MAY ALSO LIKE', 'mangazscans' ) ?></h4>
                     </div>
                 </div>
 

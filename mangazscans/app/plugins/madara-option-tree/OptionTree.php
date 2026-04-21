@@ -15,12 +15,12 @@
 			$html .= '<div class="format-setting-wrap">';
 
 			$html .= '<div class="format-setting-label">';
-			$html .= '<h3 class="label">' . esc_html__( 'LESS Compiler', 'madara' ) . '</h3>';
+			$html .= '<h3 class="label">' . esc_html__( 'LESS Compiler', 'mangazscans' ) . '</h3>';
 			$html .= '</div>';
 
 			$html .= '<div class="format-setting type-radio has-desc">';
 
-			$html .= '<div class="description">' . esc_html__( 'Compile LESS into .css files, used for production', 'madara' ) . '</div>';
+			$html .= '<div class="description">' . esc_html__( 'Compile LESS into .css files, used for production', 'mangazscans' ) . '</div>';
 			$html .= '<div class="format-setting-inner">';
 
 			$html .= $this->insertCompiler();

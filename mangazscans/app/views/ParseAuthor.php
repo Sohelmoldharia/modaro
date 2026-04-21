@@ -14,7 +14,7 @@
 		 * @author
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 
 		public function __construct() {

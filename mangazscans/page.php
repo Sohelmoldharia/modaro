@@ -3,7 +3,7 @@
 	/**
 	 * The Template for displaying all single page.
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	get_header();

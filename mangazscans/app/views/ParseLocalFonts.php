@@ -4,7 +4,7 @@
 	 * Class parseLocalFonts
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Views;

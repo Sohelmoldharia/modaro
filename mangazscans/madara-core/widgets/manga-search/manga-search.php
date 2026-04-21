@@ -98,13 +98,13 @@
         <ul class="search-main-menu">
             <li>
                 <form class="manga-search-form search-form ajax" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
-                    <input class="manga-search-field" type="text" placeholder="<?php echo esc_html__( 'Search...', 'madara' ); ?>" name="s" value="">
+                    <input class="manga-search-field" type="text" placeholder="<?php echo esc_html__( 'Search...', 'mangazscans' ); ?>" name="s" value="">
                     <input type="hidden" name="post_type" value="wp-manga"> <i class="icon ion-ios-search"></i>
                     <div class="loader-inner ball-clip-rotate-multiple">
                         <div></div>
                         <div></div>
                     </div>
-                    <input type="submit" value="<?php esc_html_e( 'Search', 'madara' ); ?>">
+                    <input type="submit" value="<?php esc_html_e( 'Search', 'mangazscans' ); ?>">
                 </form>
             </li>
         </ul>

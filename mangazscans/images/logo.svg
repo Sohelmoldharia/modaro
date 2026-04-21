@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="600" height="120" role="img" aria-label="MangazScans">
+  <defs>
+    <style>
+      .wordmark { font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+      .accent { fill: #ff6b35; }
+      .ink { fill: #1a1a2e; }
+    </style>
+  </defs>
+
+  <!-- Mark: rounded square monogram -->
+  <rect x="8" y="14" width="92" height="92" rx="18" class="ink"/>
+  <text x="54" y="83" text-anchor="middle" font-size="68" class="wordmark" fill="#ffffff">M</text>
+  <rect x="22" y="92" width="64" height="6" rx="3" class="accent"/>
+
+  <!-- Wordmark -->
+  <text x="120" y="78" font-size="56" class="wordmark ink">Mangaz<tspan class="accent">Scans</tspan></text>
+</svg>

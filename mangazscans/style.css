@@ -1,15 +1,13 @@
 /*
-Theme Name: Madara
-Theme URI: https://live.mangabooth.com/
-Author: WPStylish
-Author URI: https://themeforest.net/user/wpstylish
-Description: Manga Solution for WordPress. Support Manga, Comic, Novel, Anime, Video content. Require WP Manga (Madara-Core) plugin
-Version: 1.7.3.1
-Text Domain: madara
+Theme Name: MangazScans
+Theme URI: https://mangazscans.local/
+Description: Lightweight, security-hardened manga & comic theme for WordPress. Forked from Madara 1.7.3.1, then stripped of unused integrations (AMP, WooCommerce, Jetpack, Welcome, Starter Content), bundled font formats, and the Mangabooth/Envato activation flow; ajax_load_more LFI patched. Requires the Madara-Core (WP Manga) plugin.
+Version: 2.0.0
+Text Domain: mangazscans
 Domain Path: /languages/
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
-License: ThemeForest License
-License URI: license.txt
+License: GNU GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:

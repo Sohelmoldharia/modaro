@@ -29,9 +29,9 @@
 <table class="table table-hover list-bookmark">
     <thead>
     <tr>
-        <th><?php esc_html_e( 'Manga Name', 'madara' ); ?></th>
-        <th><?php esc_html_e( 'Updated Time', 'madara' ); ?></th>
-        <th><?php esc_html_e( 'Edit', 'madara' ); ?></th>
+        <th><?php esc_html_e( 'Manga Name', 'mangazscans' ); ?></th>
+        <th><?php esc_html_e( 'Updated Time', 'mangazscans' ); ?></th>
+        <th><?php esc_html_e( 'Edit', 'mangazscans' ); ?></th>
     </tr>
     </thead>
     <tbody>
@@ -96,14 +96,14 @@
 								$chapter_url = $wp_manga_functions->build_chapter_url( $post_id, $chapter['chapter_slug'], $reading_style );
 								?>
                                 <div class="chapter">
-                                    <span><?php echo esc_html__('Latest chapter: ', 'madara');?><a href="<?php echo esc_url( $chapter_url ); ?>"><?php echo ($chapter['chapter_name'] ? esc_html( $chapter['chapter_name'] ) : ''); ?></a></span>
+                                    <span><?php echo esc_html__('Latest chapter: ', 'mangazscans');?><a href="<?php echo esc_url( $chapter_url ); ?>"><?php echo ($chapter['chapter_name'] ? esc_html( $chapter['chapter_name'] ) : ''); ?></a></span>
 
 									<?php if ( ! empty( $bookmark['p'] ) && $reading_style == 'paged' ) {
 										$paged_url = add_query_arg( array(
 											'paged' => $bookmark['p'],
 										), $chapter_url );
 										?>
-                                        <span><a href="<?php echo esc_url( $paged_url ); ?>"><?php esc_html_e( 'page ', 'madara' ); ?><?php echo esc_html( $bookmark['p'] ) ?></a></span>
+                                        <span><a href="<?php echo esc_url( $paged_url ); ?>"><?php esc_html_e( 'page ', 'mangazscans' ); ?><?php echo esc_html( $bookmark['p'] ) ?></a></span>
 									<?php } ?>
 
                                 </div>
@@ -112,7 +112,7 @@
                                 if(isset($bookmark['unread_c']) && is_array($bookmark['unread_c']) && count($bookmark['unread_c']) > 0){
                                 ?>
                                 <div class="chapter unread">
-                                    <span><?php echo esc_html__('Unread chapter(s): ', 'madara');?></span>
+                                    <span><?php echo esc_html__('Unread chapter(s): ', 'mangazscans');?></span>
                                 <?php
                                     foreach($bookmark['unread_c'] as $c_id){
                                         $chapter          = $wp_manga_chapter->get_chapter_by_id( $post_id, $c_id );
@@ -169,16 +169,16 @@
                 <div class="remove-all float-right">
                     <div class="checkbox">
                         <input id="checkall" type="checkbox">
-                        <label for="checkall"><?php esc_html_e( 'Check all', 'madara' ); ?></label>
+                        <label for="checkall"><?php esc_html_e( 'Check all', 'mangazscans' ); ?></label>
                     </div>
-                    <button type="button" id="delete-bookmark-manga" class="btn btn-default"><?php esc_html_e( 'Delete', 'madara' ); ?></button>
+                    <button type="button" id="delete-bookmark-manga" class="btn btn-default"><?php esc_html_e( 'Delete', 'mangazscans' ); ?></button>
                 </div>
             </td>
         </tr>
 
 	<?php } else { ?>
         <tr>
-            <td colspan="3"> <?php esc_html_e( 'No Manga Bookmarked', 'madara' ); ?> </td>
+            <td colspan="3"> <?php esc_html_e( 'No Manga Bookmarked', 'mangazscans' ); ?> </td>
         </tr>
 	<?php } ?>
     </tbody>

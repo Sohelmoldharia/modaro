@@ -26,9 +26,9 @@ global $wp_manga_storage, $wp_manga_user_actions;
 <div class="c-blog__heading style-2 font-heading">
 	<h2 class="h4">
 		<i class="<?php madara_default_heading_icon(); ?>"></i>
-		<?php echo esc_html__( 'LATEST MANGA RELEASES', 'madara' ); ?>
+		<?php echo esc_html__( 'LATEST MANGA RELEASES', 'mangazscans' ); ?>
 	</h2>
-	<a href="#" title="<?php echo esc_attr__('Change Order', 'madara');?>" class="btn-reverse-order"><i class="icon ion-md-swap"></i></a>
+	<a href="#" title="<?php echo esc_attr__('Change Order', 'mangazscans');?>" class="btn-reverse-order"><i class="icon ion-md-swap"></i></a>
 </div>
 <div class="page-content-listing single-page">
 	<div class="listing-chapters_wrap cols-<?php echo esc_attr($chapters_list_cols);?>  <?php echo( esc_attr($manga_single_chapters_list == 'on' ? 'show-more' : '' )); ?>">
@@ -158,7 +158,7 @@ global $wp_manga_storage, $wp_manga_user_actions;
 										</ul>
 									<?php } else { ?>
 
-										<span class="no-chapter"><?php echo esc_html__( 'There is no chapters', 'madara' ); ?></span>
+										<span class="no-chapter"><?php echo esc_html__( 'There is no chapters', 'mangazscans' ); ?></span>
 									<?php } ?>
 							</li>
 							<?php $first_volume = false; ?>
@@ -173,14 +173,14 @@ global $wp_manga_storage, $wp_manga_user_actions;
 
 		<?php else : ?>
 
-			<?php echo esc_html__( 'Manga has no chapter yet.', 'madara' ); ?>
+			<?php echo esc_html__( 'Manga has no chapter yet.', 'mangazscans' ); ?>
 
 		<?php endif; ?>
 
 		<?php if ( $manga_single_chapters_list == 'on' ) { ?>
 			<div class="c-chapter-readmore">
 				<span class="btn btn-link chapter-readmore">
-					<?php echo esc_html__( 'Show more ', 'madara' ); ?>
+					<?php echo esc_html__( 'Show more ', 'mangazscans' ); ?>
 				</span>
 			</div>
 		<?php } ?>

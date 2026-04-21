@@ -5,7 +5,7 @@
 	 * Custom_Walker_Nav_Menu_Mobile Class
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Plugins;

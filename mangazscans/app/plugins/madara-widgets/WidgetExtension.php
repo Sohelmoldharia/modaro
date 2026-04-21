@@ -4,7 +4,7 @@
 	 * Class Widget
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Plugins\Widgets;
@@ -40,7 +40,7 @@
 		 * Add Custom Variation field to let users set custom css class to any widget
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		public function add_widget_custom_variation_field() {
 			global $wp_registered_widgets, $wp_registered_widget_controls, $madara_options_widget_variation, $madara_options_widget_width, $madara_wg_heading_style;
@@ -106,7 +106,7 @@
 		 * Support running shortcode in Text Widget
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		public function supportShortcode() {
 			global $wp_embed;
@@ -118,7 +118,7 @@
 		 * Support running shortcode in Text Widget
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		public function widgetAutoEmbed() {
 			global $wp_embed;
@@ -129,7 +129,7 @@
 		/**
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		public function madara_widget_add_custom_fields() { 
 			global $wp_registered_widget_controls, $madara_options_widget_variation, $madara_options_widget_width, $madara_wg_heading_style;
@@ -160,7 +160,7 @@
 				$id_disp = $wp_registered_widget_controls[ $id ]['id_base'] . '-' . $number;
 			}
 
-			echo '<div class="widget-separator"><!-- --></div><a href="javascript:void(0)" class="btn-widget_appearance">' . esc_html__( 'Change Widget Appearance', 'madara' ) . '</a>';
+			echo '<div class="widget-separator"><!-- --></div><a href="javascript:void(0)" class="btn-widget_appearance">' . esc_html__( 'Change Widget Appearance', 'mangazscans' ) . '</a>';
 
 			if ( is_array( $values ) && count( $values ) == 4 ) {
 				$custom_variation = $values[0];
@@ -176,13 +176,13 @@
 
 			echo '<div class="widget-appearance-settings">';
 
-			echo "<p class='widget_appearance' style='display:none'><label for='" . esc_attr( $id_disp ) . "-madara_wg_layout'>" . esc_html__( 'Layout', 'madara' ) . ": <select class='widefat' name='" . esc_attr( $id_disp ) . "-madara_wg_layout' id='" . esc_attr( $id_disp ) . "-madara_wg_layout'>
-				<option value='default' " . selected( $layout, 'default', false ) . ">" . esc_html__( 'Default', 'madara' ) . "</option>
-				<option value='bordered' " . selected( $layout, 'bordered', false ) . ">" . esc_html__( 'Bordered', 'madara' ) . "</option>
-				<option value='background' " . selected( $layout, 'background', false ) . ">" . esc_html__( 'Background', 'madara' ) . "</option>
+			echo "<p class='widget_appearance' style='display:none'><label for='" . esc_attr( $id_disp ) . "-madara_wg_layout'>" . esc_html__( 'Layout', 'mangazscans' ) . ": <select class='widefat' name='" . esc_attr( $id_disp ) . "-madara_wg_layout' id='" . esc_attr( $id_disp ) . "-madara_wg_layout'>
+				<option value='default' " . selected( $layout, 'default', false ) . ">" . esc_html__( 'Default', 'mangazscans' ) . "</option>
+				<option value='bordered' " . selected( $layout, 'bordered', false ) . ">" . esc_html__( 'Bordered', 'mangazscans' ) . "</option>
+				<option value='background' " . selected( $layout, 'background', false ) . ">" . esc_html__( 'Background', 'mangazscans' ) . "</option>
 				</select></label></p>";
 
-			echo "<p class='widget_appearance' style='display:none'><label for='" . esc_attr( $id_disp ) . "-madara_wg_custom_variation'>" . esc_html__( 'Custom Variation - CSS Classes', 'madara' ) . ": <input class='widefat' type='text' name='" . esc_attr( $id_disp ) . "-madara_wg_custom_variation' id='" . esc_attr( $id_disp ) . "-madara_wg_custom_variation' value='" . esc_attr( $custom_variation ) . "' /></label></p>";
+			echo "<p class='widget_appearance' style='display:none'><label for='" . esc_attr( $id_disp ) . "-madara_wg_custom_variation'>" . esc_html__( 'Custom Variation - CSS Classes', 'mangazscans' ) . ": <input class='widefat' type='text' name='" . esc_attr( $id_disp ) . "-madara_wg_custom_variation' id='" . esc_attr( $id_disp ) . "-madara_wg_custom_variation' value='" . esc_attr( $custom_variation ) . "' /></label></p>";
 
 			$value = ! empty( $madara_options_widget_width[ $id ] ) ? htmlspecialchars( stripslashes( $madara_options_widget_width[ $id ] ), ENT_QUOTES ) : '';
 
@@ -195,7 +195,7 @@
 			$html = '';
 
 			echo "<p class='widget_appearance madara-footer-width hidden' id='madara-" . esc_attr( $id_disp ) . "'>";
-			echo "<label for='" . esc_attr( $id_disp ) . "-madara_wg_custom_widget_width'>" . esc_html__( 'Widget Width', 'madara' ) . ":";
+			echo "<label for='" . esc_attr( $id_disp ) . "-madara_wg_custom_widget_width'>" . esc_html__( 'Widget Width', 'mangazscans' ) . ":";
 			echo "<select name='" . esc_attr( $id_disp ) . "-madara_wg_custom_widget_width' id='" . esc_attr($id_disp) . "-madara_wg_custom_widget_width'>";
 			echo "<option value='col-12 col-md-12' " . ( $value == 'col-12 col-md-12' ? 'selected="selected"' : '' ) . ">col-md-12</option>";
 			echo "<option value='col-12 col-md-11' " . ( $value == 'col-12 col-md-11' ? 'selected="selected"' : '' ) . ">col-md-11</option>";
@@ -214,15 +214,15 @@
 			echo "</p>";
 
 			echo "<p class='widget_appearance c-wg-heading-style' style='display:none' id='" . esc_attr( $id_disp ) . "-madara_wg_heading_style'>";
-			echo "<label for='" . esc_attr( $id_disp ) . "-madara_wg_heading_style'>" . esc_html__( 'Heading Style', 'madara' ) . ":";
+			echo "<label for='" . esc_attr( $id_disp ) . "-madara_wg_heading_style'>" . esc_html__( 'Heading Style', 'mangazscans' ) . ":";
 			echo "<select name='" . esc_attr( $id_disp ) . "-madara_wg_heading_style' id='" . esc_attr( $id_disp ) . "-madara_wg_heading_style'>";
-			echo "<option value='heading-style-1' " . ( $heading_style == 'heading-style-1' ? 'selected="selected"' : '' ) . ">" . esc_html__( 'Style 1', 'madara' ) . "</option>";
-			echo "<option value='heading-style-2' " . ( $heading_style == 'heading-style-2' ? 'selected="selected"' : '' ) . ">" . esc_html__( 'Style 2', 'madara' ) . "</option>";
+			echo "<option value='heading-style-1' " . ( $heading_style == 'heading-style-1' ? 'selected="selected"' : '' ) . ">" . esc_html__( 'Style 1', 'mangazscans' ) . "</option>";
+			echo "<option value='heading-style-2' " . ( $heading_style == 'heading-style-2' ? 'selected="selected"' : '' ) . ">" . esc_html__( 'Style 2', 'mangazscans' ) . "</option>";
 			echo "</select>";
 			echo "</label>";
 			echo "</p>";
 
-			echo "<p class='widget_appearance' style='display:none'><label for='" . esc_attr( $id_disp ) . "-madara_wg_custom_icon'>" . esc_html__( 'Font Icon - CSS Classes', 'madara' ) . ": <input class='widefat' type='text' name='" . esc_attr( $id_disp ) . "-madara_wg_custom_icon' id='" . esc_attr( $id_disp ) . "-madara_wg_custom_icon' value='" . esc_attr( $widget_icon ) . "' /></label></p>";
+			echo "<p class='widget_appearance' style='display:none'><label for='" . esc_attr( $id_disp ) . "-madara_wg_custom_icon'>" . esc_html__( 'Font Icon - CSS Classes', 'mangazscans' ) . ": <input class='widefat' type='text' name='" . esc_attr( $id_disp ) . "-madara_wg_custom_icon' id='" . esc_attr( $id_disp ) . "-madara_wg_custom_icon' value='" . esc_attr( $widget_icon ) . "' /></label></p>";
 
 			echo '</div>';
 		}

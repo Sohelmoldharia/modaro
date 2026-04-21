@@ -16,7 +16,7 @@
 	 use App\Madara;
     
 	/**
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	get_header();
@@ -60,9 +60,9 @@
 
             <div class="search-content">
                 <form role="search" method="get" class="search-form manga-search-form <?php echo ($madara_ajax_search == 'on' ? 'ajax' : '');?>" action="<?php echo home_url('/');?>">
-						<span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'madara' ); ?></span>
-                        <input type="text" class="search-field manga-search-field" placeholder="<?php esc_html_e( 'Search...', 'madara' ); ?>" value="<?php echo esc_attr( stripcslashes( $s )); ?>" name="s">
-						<input type="submit" class="search-submit" value="<?php esc_html_e( 'Search', 'madara' ); ?>">
+						<span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'mangazscans' ); ?></span>
+                        <input type="text" class="search-field manga-search-field" placeholder="<?php esc_html_e( 'Search...', 'mangazscans' ); ?>" value="<?php echo esc_attr( stripcslashes( $s )); ?>" name="s">
+						<input type="submit" class="search-submit" value="<?php esc_html_e( 'Search', 'mangazscans' ); ?>">
 						<div class="loader-inner line-scale">
                                 <div></div>
                                 <div></div>
@@ -86,7 +86,7 @@
 							});
                         </script>
                 </form>
-                <a class="btn-search-adv collapsed" data-toggle="collapse" data-target="#search-advanced"><?php esc_html_e( 'Advanced', 'madara' ); ?>
+                <a class="btn-search-adv collapsed" data-toggle="collapse" data-target="#search-advanced"><?php esc_html_e( 'Advanced', 'mangazscans' ); ?>
                     <span class="icon-search-adv"></span></a>
             </div>
             <div class="collapse" id="search-advanced">
@@ -119,59 +119,59 @@
                     </div>
 					<!-- Genre Condition -->
                     <div class="form-group">
-                        <span><?php esc_html_e( 'Genres condition', 'madara' ); ?></span>
+                        <span><?php esc_html_e( 'Genres condition', 'mangazscans' ); ?></span>
                         <select name="op" class="form-control">
-							<option value="" <?php selected($s_genre_condition, '');?>><?php esc_html_e('OR (having one of selected genres)', 'madara');?></option>
-							<option value="1" <?php selected($s_genre_condition, 1);?>><?php esc_html_e('AND (having all selected genres)', 'madara');?></option>
+							<option value="" <?php selected($s_genre_condition, '');?>><?php esc_html_e('OR (having one of selected genres)', 'mangazscans');?></option>
+							<option value="1" <?php selected($s_genre_condition, 1);?>><?php esc_html_e('AND (having all selected genres)', 'mangazscans');?></option>
 						</select>
                     </div>
 					<!-- Manga Author -->
                     <div class="form-group">
-                        <span><?php esc_html_e( 'Author', 'madara' ); ?></span>
-                        <input type="text" class="form-control" name="author" placeholder="<?php esc_attr_e( 'Author', 'madara' ) ?>" value="<?php echo esc_attr( $s_author ); ?>">
+                        <span><?php esc_html_e( 'Author', 'mangazscans' ); ?></span>
+                        <input type="text" class="form-control" name="author" placeholder="<?php esc_attr_e( 'Author', 'mangazscans' ) ?>" value="<?php echo esc_attr( $s_author ); ?>">
                     </div>
                     <!-- Manga Artist -->
                     <div class="form-group">
-                        <span><?php esc_html_e( 'Artist', 'madara' ); ?></span>
-                        <input type="text" class="form-control" name="artist" placeholder="<?php esc_attr_e( 'Artist', 'madara' ); ?>" value="<?php echo esc_attr( $s_artist ); ?>">
+                        <span><?php esc_html_e( 'Artist', 'mangazscans' ); ?></span>
+                        <input type="text" class="form-control" name="artist" placeholder="<?php esc_attr_e( 'Artist', 'mangazscans' ); ?>" value="<?php echo esc_attr( $s_artist ); ?>">
                     </div>
                     <!-- Manga Release -->
                     <div class="form-group">
-                        <span><?php esc_html_e( 'Year of Released', 'madara' ); ?></span>
-                        <input type="text" class="form-control" name="release" placeholder="<?php esc_attr_e( 'Year', 'madara' ); ?>" value="<?php echo esc_attr( $s_release ); ?>">
+                        <span><?php esc_html_e( 'Year of Released', 'mangazscans' ); ?></span>
+                        <input type="text" class="form-control" name="release" placeholder="<?php esc_attr_e( 'Year', 'mangazscans' ); ?>" value="<?php echo esc_attr( $s_release ); ?>">
                     </div>
 					<!-- Manga Adult Content -->
                     <div class="form-group">
-                        <span><?php esc_html_e( 'Adult content', 'madara' ); ?></span>
+                        <span><?php esc_html_e( 'Adult content', 'mangazscans' ); ?></span>
 						<select name="adult" class="form-control">
-							<option value="" <?php selected($s_adult, '');?>><?php esc_html_e('All', 'madara');?></option>
-							<option value="0" <?php selected($s_adult, 0);?>><?php esc_html_e('None adult content', 'madara');?></option>
-							<option value="1" <?php selected($s_adult, 1);?>><?php esc_html_e('Only adult content', 'madara');?></option>
+							<option value="" <?php selected($s_adult, '');?>><?php esc_html_e('All', 'mangazscans');?></option>
+							<option value="0" <?php selected($s_adult, 0);?>><?php esc_html_e('None adult content', 'mangazscans');?></option>
+							<option value="1" <?php selected($s_adult, 1);?>><?php esc_html_e('Only adult content', 'mangazscans');?></option>
 						</select>
                     </div>
                     <!-- Manga Status -->
                     <div class="form-group">
-                        <span><?php esc_html_e( 'Status', 'madara' ); ?></span>
+                        <span><?php esc_html_e( 'Status', 'mangazscans' ); ?></span>
                         <div class="checkbox-inline">
                             <input id="complete" type="checkbox" name="status[]" <?php echo in_array( 'end', $s_status ) ? 'checked' : '' ; ?> value="end" />
-                            <label for="complete"><?php esc_html_e( 'Completed', 'madara' ); ?></label>
+                            <label for="complete"><?php esc_html_e( 'Completed', 'mangazscans' ); ?></label>
                         </div>
                         <div class="checkbox-inline">
                             <input id="on-going" type="checkbox" name="status[]" <?php echo in_array( 'on-going', $s_status ) ? 'checked' : '' ; ?> value="on-going" />
-                            <label for="on-going"><?php esc_html_e( 'Ongoing', 'madara' ); ?></label>
+                            <label for="on-going"><?php esc_html_e( 'Ongoing', 'mangazscans' ); ?></label>
                         </div>
 						<div class="checkbox-inline">
                             <input id="canceled" type="checkbox" name="status[]" <?php echo in_array( 'canceled', $s_status ) ? 'checked' : '' ; ?> value="canceled" />
-                            <label for="canceled"><?php esc_html_e( 'Canceled', 'madara' ); ?></label>
+                            <label for="canceled"><?php esc_html_e( 'Canceled', 'mangazscans' ); ?></label>
                         </div>
 						<div class="checkbox-inline">
                             <input id="on-hold" type="checkbox" name="status[]" <?php echo in_array( 'on-hold', $s_status ) ? 'checked' : '' ; ?> value="on-hold" />
-                            <label for="on-hold"><?php esc_html_e( 'On Hold', 'madara' ); ?></label>
+                            <label for="on-hold"><?php esc_html_e( 'On Hold', 'mangazscans' ); ?></label>
                         </div>
                     </div>
                     <div class="form-group group-btn">
-                        <button type="submit" class="c-btn c-btn_style-1 search-adv-submit"><?php esc_html_e( 'Search', 'madara' ); ?></button>
-                        <button type="submit" class="c-btn c-btn_style-2 search-adv-reset"><?php esc_html_e( 'Reset', 'madara' ); ?></button>
+                        <button type="submit" class="c-btn c-btn_style-1 search-adv-submit"><?php esc_html_e( 'Search', 'mangazscans' ); ?></button>
+                        <button type="submit" class="c-btn c-btn_style-2 search-adv-reset"><?php esc_html_e( 'Reset', 'mangazscans' ); ?></button>
                     </div>
                 </form>
             </div>
@@ -197,7 +197,7 @@
                                         <div class="tab-wrap">
                                             <div class="c-blog__heading style-2 font-heading">
                                                 <h1 class="h4">
-                                                    <i class="<?php madara_default_heading_icon(); ?>"></i> <?php echo sprintf( _n( '%s result for "%s"', '%s results for "%s"', $s_query->found_posts, 'madara' ), $s_query->found_posts, $s ); ?>
+                                                    <i class="<?php madara_default_heading_icon(); ?>"></i> <?php echo sprintf( _n( '%s result for "%s"', '%s results for "%s"', $s_query->found_posts, 'mangazscans' ), $s_query->found_posts, $s ); ?>
                                                 </h1>
 												<?php get_template_part( 'madara-core/manga-filter' ); ?>
                                             </div>

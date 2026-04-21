@@ -78,7 +78,7 @@ class MadaraClassLoader
  * Autoload Class
  *
  * @since  madara alpha 1.0
- * @package madara
+ * @package mangazscans
  */
 
 

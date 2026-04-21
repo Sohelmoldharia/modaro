@@ -727,13 +727,13 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
         
         $custom_css .= '
         .settings-page table.list-bookmark > tbody tr td > div.mange-name:before {
-            content: "'.esc_html__('Manga Name', 'madara').'";
+            content: "'.esc_html__('Manga Name', 'mangazscans').'";
           }
           .settings-page table.list-bookmark > tbody tr td > div.action:before {
-            content: "'.esc_html__('Edit', 'madara').'";
+            content: "'.esc_html__('Edit', 'mangazscans').'";
           }
           .settings-page table.list-bookmark > tbody tr td > div.post-on:before {            
-            content: "'.esc_html__('Updated Time', 'madara').'";
+            content: "'.esc_html__('Updated Time', 'mangazscans').'";
           }';
         
         if(defined('WP_MANGA_VER') && WP_MANGA_VER >= 1.66 && is_manga_oneshot()){

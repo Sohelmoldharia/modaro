@@ -19,7 +19,7 @@
 		 * @return string
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		function madara_hex2rgb( $hex ) {
 			$hex = str_replace( "#", "", $hex );
@@ -46,7 +46,7 @@
 		 * @return string
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		function rgb2hexa( $rgb ) {
 			if ( count( $rgb ) == 3 ) {
@@ -81,7 +81,7 @@
 		 * @return mixed
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		function colorGradientGenerator( $basic_hexa, $step_rgb ) {
 			$basic_rbg = $this->madara_hex2rgb( $basic_hexa );

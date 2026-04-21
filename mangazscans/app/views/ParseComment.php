@@ -4,7 +4,7 @@
 	 * Class ParseComment
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Views;
@@ -23,18 +23,18 @@
 
 			$fields = array(
 
-				'author' => '<p class="comment-form-author"><label for="author">' . esc_html__( 'Name', 'madara' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) . '<input id="author" name="author" type="text" placeholder="' . esc_html__( 'Name', 'madara' ) . '" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>',
+				'author' => '<p class="comment-form-author"><label for="author">' . esc_html__( 'Name', 'mangazscans' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) . '<input id="author" name="author" type="text" placeholder="' . esc_html__( 'Name', 'mangazscans' ) . '" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>',
 
-				'email' => '<p class="comment-form-email"><label for="email">' . esc_html__( 'Email', 'madara' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) . '<input id="email" name="email" type="text" placeholder="' . esc_html__( 'Email', 'madara' ) . '" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>',
+				'email' => '<p class="comment-form-email"><label for="email">' . esc_html__( 'Email', 'mangazscans' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) . '<input id="email" name="email" type="text" placeholder="' . esc_html__( 'Email', 'mangazscans' ) . '" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>',
 
-				'url' => '<p class="comment-form-url"><label for="url">' . esc_html__( 'Website', 'madara' ) . '</label>' . '<input id="url" name="url" type="text" placeholder="' . esc_html__( 'Website', 'madara' ) . '" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
+				'url' => '<p class="comment-form-url"><label for="url">' . esc_html__( 'Website', 'mangazscans' ) . '</label>' . '<input id="url" name="url" type="text" placeholder="' . esc_html__( 'Website', 'mangazscans' ) . '" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
 			);
 
 			$args = array(
 				'title_reply_before' => '<h4 id="reply-title" class="comment-reply-title">',
 				'title_reply_after'  => '</h4>',
 				'fields'             => $fields,
-				'comment_field'      => '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Comment', 'madara' ) . '"></textarea></p>'
+				'comment_field'      => '<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="' . esc_html__( 'Comment', 'mangazscans' ) . '"></textarea></p>'
 			);
 
 			return $args;
@@ -72,18 +72,18 @@
 					<?php comment_text(); ?>
 
 					<?php if ( $comment->comment_approved == '0' ) : ?>
-                        <em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'madara' ); ?></em>
+                        <em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'mangazscans' ); ?></em>
                         <br/>
 					<?php endif; ?>
 
-					<?php edit_comment_link( esc_html__( '(Edit)', 'madara' ), '  ', '' ); ?>
+					<?php edit_comment_link( esc_html__( '(Edit)', 'mangazscans' ), '  ', '' ); ?>
                 </div>
                 <!-- .comment-content -->
                 <div class="comment-metadata">
                     <a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
 						<?php
 							/* translators: 1: date, 2: time */
-							printf( esc_html__( '%1$s at %2$s', 'madara' ), get_comment_date(), get_comment_time() ); ?></a>
+							printf( esc_html__( '%1$s at %2$s', 'mangazscans' ), get_comment_date(), get_comment_time() ); ?></a>
                 </div>
                 <!-- .comment-metadata -->
             </div>

@@ -79,13 +79,13 @@
                             <ol class="breadcrumb">
                                 <li>
                                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-										<?php esc_html_e( 'Home', 'madara' ); ?>
+										<?php esc_html_e( 'Home', 'mangazscans' ); ?>
                                     </a>
                                 </li>
 								<?php if($breadcrumb_all_manga_link){?>
                                 <li>
                                     <a href="<?php echo esc_url( $wp_manga_functions->get_manga_archive_link() ); ?>">
-										<?php esc_html_e( 'All Mangas', 'madara' ); ?>
+										<?php esc_html_e( 'All Mangas', 'mangazscans' ); ?>
                                     </a>
                                 </li>
 								<?php } ?>

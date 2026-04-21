@@ -2,7 +2,7 @@
 	/**
 	 * The Sidebar containing the main widget areas.
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	if ( ! is_404() && ! is_search() || ( class_exists( 'WP_MANGA' ) && ! is_manga_search_page() ) ) {

@@ -1,7 +1,7 @@
 <?php
 	/**
 	 * Main Navigation Template
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	use App\Madara;
@@ -33,7 +33,7 @@
                 <div class="col-md-9 col-12 c-column">
                     <div class="c-main-menu float-right">
                         <nav id="site-navigation" class="navbar navbar-inverse main-menu">
-                            <button class="menu-toggle"><?php esc_html_e( 'Primary Menu', 'madara' ); ?></button>
+                            <button class="menu-toggle"><?php esc_html_e( 'Primary Menu', 'mangazscans' ); ?></button>
 							<?php
 								if ( has_nav_menu( 'primary_menu' ) ) {
 
@@ -47,7 +47,7 @@
 								} else { ?>
 
                                     <li>
-                                        <a href="<?php echo esc_url( home_url( '/' ) );; ?>"><?php esc_html_e( 'Home', 'madara' ) ?></a>
+                                        <a href="<?php echo esc_url( home_url( '/' ) );; ?>"><?php esc_html_e( 'Home', 'mangazscans' ) ?></a>
                                     </li>
 
 									<?php wp_list_pages( 'depth=1&number=4&title_li=' ); ?>

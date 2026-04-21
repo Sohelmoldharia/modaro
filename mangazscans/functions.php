@@ -1,7 +1,7 @@
 <?php
 	/**
-	 * Madara Functions and Definitions
+	 * MangazScans Functions and Definitions
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 	require( get_template_directory() . '/app/theme.php' );

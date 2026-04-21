@@ -3,7 +3,7 @@
 	/**
 	 * Class Thumbnail
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Models\Entity;

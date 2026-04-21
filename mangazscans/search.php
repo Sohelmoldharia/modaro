@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * @package madara
+	 * @package mangazscans
 	 */
     use App\Madara;
     
@@ -15,9 +15,9 @@
         <div class="container">
             <div class="search-content">
                 <form role="search" method="get" class="search-form <?php echo ($madara_ajax_search == 'on' ? 'ajax' : '');?>">
-                    <label> <span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'madara' ); ?></span>
-                        <input type="search" class="search-field" placeholder="<?php esc_html_e( 'Search...', 'madara' ); ?>" value="<?php echo esc_attr( $s ); ?>" name="s">
-                    </label> <input type="submit" class="search-submit" value="<?php esc_html_e( 'Search', 'madara' ); ?>">
+                    <label> <span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'mangazscans' ); ?></span>
+                        <input type="search" class="search-field" placeholder="<?php esc_html_e( 'Search...', 'mangazscans' ); ?>" value="<?php echo esc_attr( $s ); ?>" name="s">
+                    </label> <input type="submit" class="search-submit" value="<?php esc_html_e( 'Search', 'mangazscans' ); ?>">
                 </form>
             </div>
         </div>
@@ -40,7 +40,7 @@
                                     <div class="c-blog__heading style-2 font-heading">
                                         <h4>
                                             <i class="<?php madara_default_heading_icon(); ?>"></i>
-											<?php echo sprintf( _n( '%s result', '%s results', $wp_query->found_posts, 'madara' ), $wp_query->found_posts ); ?>
+											<?php echo sprintf( _n( '%s result', '%s results', $wp_query->found_posts, 'mangazscans' ), $wp_query->found_posts ); ?>
                                         </h4>
                                     </div>
                                 </div>
@@ -91,7 +91,7 @@
                                     <i class="icon ion-android-sad"></i>
                                 </div>
                                 <div class="not-found-content">
-                                    <p><?php esc_html_e( 'No matches found. Try a different search...', 'madara' ); ?></p>
+                                    <p><?php esc_html_e( 'No matches found. Try a different search...', 'mangazscans' ); ?></p>
                                 </div>
                             </div>
                         </div>

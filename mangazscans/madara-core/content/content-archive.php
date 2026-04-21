@@ -99,7 +99,7 @@
                                 if($thumbnail_link == 'on'){
                                     $total_chapters = get_post_meta($manga_id, 'manga_expected_total', true);
                                     $current_chapters = $wp_manga_functions->get_chapters_count($manga_id);
-                                    $text = esc_html__('Chapter %s', 'madara');
+                                    $text = esc_html__('Chapter %s', 'mangazscans');
                                     if($total_chapters){
                                         $text = sprintf($text, $current_chapters . '/' . $total_chapters);
                                     } else {

@@ -4,7 +4,7 @@
 	 * Class ParseHead
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Views;
@@ -183,7 +183,7 @@
 			
 			$meta_tags_html .= '<meta name="description" content="' . esc_attr( strip_shortcodes( $description ) ) . '" />';
 
-			$meta_tags_html .= '<meta name="generator" content="' . esc_attr( esc_html__( 'Powered by Madara - A powerful multi-purpose theme by Madara', 'madara' ) ) . '" />' . PHP_EOL;
+			$meta_tags_html .= '<meta name="generator" content="' . esc_attr( esc_html__( 'Powered by Madara - A powerful multi-purpose theme by Madara', 'mangazscans' ) ) . '" />' . PHP_EOL;
 
 			echo apply_filters( 'madara-meta-tags', $meta_tags_html );
 

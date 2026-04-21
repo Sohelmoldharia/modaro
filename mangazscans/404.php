@@ -5,7 +5,7 @@
 	/**
 	 * The Template for displaying all 404 pages.
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	get_header();
@@ -31,9 +31,9 @@
 												$madara_featured_image = Madara::getOption( 'page404_featured_image' );
 
 												if ( $madara_featured_image != '' ) {
-													echo '<figure class="c-thumbnail"><img src="' . esc_url( $madara_featured_image ) . '" alt="' . esc_attr__( '404', 'madara' ) . '"/></figure>';
+													echo '<figure class="c-thumbnail"><img src="' . esc_url( $madara_featured_image ) . '" alt="' . esc_attr__( '404', 'mangazscans' ) . '"/></figure>';
 												} else {
-													echo '<figure class="c-thumbnail"><img src="' . esc_url( get_template_directory_uri() . '/images/404.png' ) . '" alt="' . esc_attr__( '404', 'madara' ) . '"/></figure>';
+													echo '<figure class="c-thumbnail"><img src="' . esc_url( get_template_directory_uri() . '/images/404.png' ) . '" alt="' . esc_attr__( '404', 'mangazscans' ) . '"/></figure>';
 												}
 											?>
                                         </div>
@@ -45,7 +45,7 @@
 													if ( $madara_heading != '' ) {
 														echo esc_html( $madara_heading );
 													} else {
-														esc_html_e( 'Oops! page not found.', 'madara' );
+														esc_html_e( 'Oops! page not found.', 'mangazscans' );
 													}
 												?>
                                             </h3>
@@ -62,7 +62,7 @@
                                     <!-- .entry-content -->
 
                                     <div class="entry-footer">
-                                        <a class="c-btn c-btn_style-3" href="<?php echo esc_url( home_url( '/' ) ); ?>"> <?php esc_html_e( 'Go home', 'madara' ) ?></a>
+                                        <a class="c-btn c-btn_style-3" href="<?php echo esc_url( home_url( '/' ) ); ?>"> <?php esc_html_e( 'Go home', 'mangazscans' ) ?></a>
                                     </div>
                                     <!-- .entry-footer -->
                                 </div>

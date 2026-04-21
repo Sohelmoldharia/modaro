@@ -106,7 +106,7 @@
 		 */
 		function addThemeSupport() {
 
-			load_theme_textdomain( 'madara', get_template_directory() . '/languages' );
+			load_theme_textdomain( 'mangazscans', get_template_directory() . '/languages' );
 
 			add_theme_support( 'automatic-feed-links' );
 
@@ -156,9 +156,9 @@
 			$after_title  = '</h5></div>';
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Main Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Main Sidebar', 'mangazscans' ),
 				'id'            => 'main_sidebar',
-				'description'   => esc_html__( 'Main Sidebar used by all pages', 'madara' ),
+				'description'   => esc_html__( 'Main Sidebar used by all pages', 'mangazscans' ),
 				'before_widget' => $main_sidebar_before_widget,
 				'after_widget'  => $main_sidebar_after_widget,
 				'before_title'  => $before_title,
@@ -166,9 +166,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Single Post Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Single Post Sidebar', 'mangazscans' ),
 				'id'            => 'single_post_sidebar',
-				'description'   => esc_html__( 'Appear in Single Post', 'madara' ),
+				'description'   => esc_html__( 'Appear in Single Post', 'mangazscans' ),
 				'before_widget' => $main_sidebar_before_widget,
 				'after_widget'  => $main_sidebar_after_widget,
 				'before_title'  => $before_title,
@@ -176,9 +176,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Search Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Search Sidebar', 'mangazscans' ),
 				'id'            => 'search_sidebar',
-				'description'   => esc_html__( 'Search Sidebar in header', 'madara' ),
+				'description'   => esc_html__( 'Search Sidebar in header', 'mangazscans' ),
 				'before_widget' => $before_widget,
 				'after_widget'  => $after_widget,
 				'before_title'  => $before_title,
@@ -186,9 +186,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Main Top Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Main Top Sidebar', 'mangazscans' ),
 				'id'            => 'top_sidebar',
-				'description'   => esc_html__( 'Appear before main content', 'madara' ),
+				'description'   => esc_html__( 'Appear before main content', 'mangazscans' ),
 				'before_widget' => $before_widget,
 				'after_widget'  => $after_widget,
 				'before_title'  => $before_title,
@@ -196,9 +196,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Main Top Second Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Main Top Second Sidebar', 'mangazscans' ),
 				'id'            => 'top_second_sidebar',
-				'description'   => esc_html__( 'Appear before main content', 'madara' ),
+				'description'   => esc_html__( 'Appear before main content', 'mangazscans' ),
 				'before_widget' => $before_widget,
 				'after_widget'  => $after_widget,
 				'before_title'  => $before_title,
@@ -206,9 +206,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Body Top Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Body Top Sidebar', 'mangazscans' ),
 				'id'            => 'body_top_sidebar',
-				'description'   => esc_html__( 'Appear before body content', 'madara' ),
+				'description'   => esc_html__( 'Appear before body content', 'mangazscans' ),
 				'before_widget' => $before_widget,
 				'after_widget'  => $after_widget,
 				'before_title'  => $before_title,
@@ -216,9 +216,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Body Bottom Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Body Bottom Sidebar', 'mangazscans' ),
 				'id'            => 'body_bottom_sidebar',
-				'description'   => esc_html__( 'Appear after body content', 'madara' ),
+				'description'   => esc_html__( 'Appear after body content', 'mangazscans' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget__inner %2$s__inner c-widget-wrap">',
 				'after_widget'  => '</div></div>',
 				'before_title'  => '<div class="widget-title"><div class="c-blog__heading style-2 font-heading"><h4>',
@@ -226,9 +226,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'Main Bottom Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Main Bottom Sidebar', 'mangazscans' ),
 				'id'            => 'bottom_sidebar',
-				'description'   => esc_html__( 'Appear after main content', 'madara' ),
+				'description'   => esc_html__( 'Appear after main content', 'mangazscans' ),
 				'before_widget' => $before_widget,
 				'after_widget'  => $after_widget,
 				'before_title'  => $before_title,
@@ -236,9 +236,9 @@
 			) );
 			
 			register_sidebar( array(
-				'name'          => esc_html__( 'Footer Sidebar', 'madara' ),
+				'name'          => esc_html__( 'Footer Sidebar', 'mangazscans' ),
 				'id'            => 'footer_sidebar',
-				'description'   => esc_html__( 'Appear in Footer', 'madara' ),
+				'description'   => esc_html__( 'Appear in Footer', 'mangazscans' ),
 				'before_widget' => $before_widget,
 				'after_widget'  => $after_widget,
 				'before_title'  => $before_title,
@@ -253,11 +253,11 @@
 		 */
 		function registerNavMenus() {
 			register_nav_menus( array(
-				'primary_menu'   => esc_html__( 'Primary Menu', 'madara' ),
-				'secondary_menu' => esc_html__( 'Secondary Menu', 'madara' ),
-				'mobile_menu'    => esc_html__( 'Mobile Menu', 'madara' ),
-				'user_menu'      => esc_html__( 'User Menu', 'madara' ),
-				'footer_menu'    => esc_html__( 'Footer Menu', 'madara' ),
+				'primary_menu'   => esc_html__( 'Primary Menu', 'mangazscans' ),
+				'secondary_menu' => esc_html__( 'Secondary Menu', 'mangazscans' ),
+				'mobile_menu'    => esc_html__( 'Mobile Menu', 'mangazscans' ),
+				'user_menu'      => esc_html__( 'User Menu', 'mangazscans' ),
+				'footer_menu'    => esc_html__( 'Footer Menu', 'mangazscans' ),
 			) );
 		}
 
@@ -319,7 +319,7 @@
 			$js_params['current_url']     = home_url( $wp->request );
 			$js_params['load_more_nonce'] = wp_create_nonce( 'madara_load_more' );
 
-			wp_localize_script( 'madara-js', 'madara', apply_filters( 'madara_js_params', $js_params ) );
+			wp_localize_script( 'madara-js', 'mangazscans', apply_filters( 'madara_js_params', $js_params ) );
 
 			/**
 			 * Add Custom CSS

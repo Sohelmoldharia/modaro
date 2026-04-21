@@ -2,7 +2,7 @@
 
 	/**
 	 * hooks to change template HTML
-	 * @package madara
+	 * @package mangazscans
 	 *
 	 */
 
@@ -71,7 +71,7 @@
 	 */
 	function madara_excerpt_more( $more ) {
 		$html = '...';
-		$html .= '<div class="c-read-more"><a class="c-read-more-link" href="' . get_the_permalink( get_the_ID() ) . '">' . esc_html__( 'Continue Reading', 'madara' ) . '</a> ' . esc_html( '&rarr;' ) . '</div>';
+		$html .= '<div class="c-read-more"><a class="c-read-more-link" href="' . get_the_permalink( get_the_ID() ) . '">' . esc_html__( 'Continue Reading', 'mangazscans' ) . '</a> ' . esc_html( '&rarr;' ) . '</div>';
 
 		return apply_filters( 'madara_excerpt_more_content', $html );
 	}
@@ -80,7 +80,7 @@
 
 	add_filter( 'madara_dashboard_heading', 'madara_welcome_text' );
 	function madara_welcome_text( $text ) {
-		return esc_html__( 'Madara Dashboard', 'madara' );
+		return esc_html__( 'Madara Dashboard', 'mangazscans' );
 	}
 
 	add_filter( 'madara_theme_document_url', 'madara_online_document' );
@@ -146,9 +146,9 @@
 		function madara_add_manga_sidebar() {
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'WP Manga - Main Top Sidebar', 'madara' ),
+				'name'          => esc_html__( 'WP Manga - Main Top Sidebar', 'mangazscans' ),
 				'id'            => 'manga_main_top_sidebar',
-				'description'   => esc_html__( 'Appear before main content in Manga Pages', 'madara' ),
+				'description'   => esc_html__( 'Appear before main content in Manga Pages', 'mangazscans' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget__inner %2$s__inner c-widget-wrap">',
 				'after_widget'  => '</div></div>',
 				'before_title'  => '<div class="widget-title"><div class="c-blog__heading style-2 font-heading"><h4>',
@@ -156,9 +156,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'WP Manga - Main Top Second Sidebar', 'madara' ),
+				'name'          => esc_html__( 'WP Manga - Main Top Second Sidebar', 'mangazscans' ),
 				'id'            => 'manga_main_top_second_sidebar',
-				'description'   => esc_html__( 'Appear before main content in Manga Pages', 'madara' ),
+				'description'   => esc_html__( 'Appear before main content in Manga Pages', 'mangazscans' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget__inner %2$s__inner c-widget-wrap">',
 				'after_widget'  => '</div></div>',
 				'before_title'  => '<div class="widget-title"><div class="c-blog__heading style-2 font-heading"><h4>',
@@ -166,9 +166,9 @@
 			) );
 
 			register_sidebar( array(
-				'name'          => esc_html__( 'WP Manga - Main Bottom Sidebar', 'madara' ),
+				'name'          => esc_html__( 'WP Manga - Main Bottom Sidebar', 'mangazscans' ),
 				'id'            => 'manga_main_bottom_sidebar',
-				'description'   => esc_html__( 'Appear after main content in Manga Pages', 'madara' ),
+				'description'   => esc_html__( 'Appear after main content in Manga Pages', 'mangazscans' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s"><div class="widget__inner %2$s__inner c-widget-wrap">',
 				'after_widget'  => '</div></div>',
 				'before_title'  => '<div class="widget-title"><div class="c-blog__heading style-2 font-heading"><h4>',
@@ -307,8 +307,8 @@
 		if ( is_manga_single() ||  is_manga_reading_page() ) {
 			$manga_adult_content = get_post_meta( get_the_ID(), 'manga_adult_content', true );
 			$message_html        = '<p class="manga-adult-title">' . get_the_title() . '</p>';
-			$message_html        .= '<p class="adult-message">' . esc_html__( 'contains themes or scenes that may not be suitable for very young readers thus is blocked for their protection.', 'madara' ) . '</p>';
-			$message_html        .= '<p class="adult-confirm">' . esc_html__( 'Are you over 18?', 'madara' ) . '</p>';
+			$message_html        .= '<p class="adult-message">' . esc_html__( 'contains themes or scenes that may not be suitable for very young readers thus is blocked for their protection.', 'mangazscans' ) . '</p>';
+			$message_html        .= '<p class="adult-confirm">' . esc_html__( 'Are you over 18?', 'mangazscans' ) . '</p>';
 
 			$adult_content = apply_filters( 'madara_adult_content_message', $message_html );
 			$direct_url    = apply_filters( 'madara_adult_popup_direct_url', home_url( '/' ) );
@@ -320,14 +320,14 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title"><?php esc_html_e( 'Caution to under-aged viewers', 'madara' ) ?></h5>
+                                <h5 class="modal-title"><?php esc_html_e( 'Caution to under-aged viewers', 'mangazscans' ) ?></h5>
                             </div>
                             <div class="modal-body">
 								<?php echo wp_kses_post( $adult_content ); ?>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-not-adult"><?php esc_html_e( 'No', 'madara' ) ?></button>
-                                <button type="button" class="btn btn-primary btn-adult-confirm" data-dismiss="modal"><?php esc_html_e( 'Yes, I am', 'madara' ); ?></button>
+                                <button type="button" class="btn btn-secondary btn-not-adult"><?php esc_html_e( 'No', 'mangazscans' ) ?></button>
+                                <button type="button" class="btn btn-primary btn-adult-confirm" data-dismiss="modal"><?php esc_html_e( 'Yes, I am', 'mangazscans' ); ?></button>
                             </div>
                         </div>
                     </div>

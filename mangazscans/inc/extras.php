@@ -38,7 +38,7 @@
 			$page_title = Madara::getOption( 'blog_heading', '' );
 			$page_title = $page_title ? $page_title : get_bloginfo( 'name' );
 		} elseif ( is_search() ) {
-			$page_title = esc_html__( 'Search Results', 'madara' );
+			$page_title = esc_html__( 'Search Results', 'mangazscans' );
 		} elseif ( is_singular() ) {
 			$page_title = get_the_title();
 		} elseif ( is_archive() ) {
@@ -51,52 +51,52 @@
 				$page_title = single_tag_title( '', false );
 
 			elseif ( is_author() ) :
-				$page_title = sprintf( esc_html__( 'Author: %s', 'madara' ), '<span class="vcard">' . get_the_author() . '</span>' );
+				$page_title = sprintf( esc_html__( 'Author: %s', 'mangazscans' ), '<span class="vcard">' . get_the_author() . '</span>' );
 
 			elseif ( is_day() ) :
-				$page_title = sprintf( esc_html__( 'Day: %s', 'madara' ), '<span>' . get_the_date() . '</span>' );
+				$page_title = sprintf( esc_html__( 'Day: %s', 'mangazscans' ), '<span>' . get_the_date() . '</span>' );
 
 			elseif ( is_month() ) :
-				$page_title = sprintf( esc_html__( 'Month: %s', 'madara' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'madara' ) ) . '</span>' );
+				$page_title = sprintf( esc_html__( 'Month: %s', 'mangazscans' ), '<span>' . get_the_date( _x( 'F Y', 'monthly archives date format', 'mangazscans' ) ) . '</span>' );
 
 			elseif ( is_year() ) :
-				$page_title = sprintf( esc_html__( 'Year: %s', 'madara' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'madara' ) ) . '</span>' );
+				$page_title = sprintf( esc_html__( 'Year: %s', 'mangazscans' ), '<span>' . get_the_date( _x( 'Y', 'yearly archives date format', 'mangazscans' ) ) . '</span>' );
 
 			elseif ( is_tax( 'post_format', 'post-format-aside' ) ) :
-				$page_title = esc_html__( 'Asides', 'madara' );
+				$page_title = esc_html__( 'Asides', 'mangazscans' );
 
 			elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) :
-				$page_title = esc_html__( 'Galleries', 'madara' );
+				$page_title = esc_html__( 'Galleries', 'mangazscans' );
 
 			elseif ( is_tax( 'post_format', 'post-format-image' ) ) :
-				$page_title = esc_html__( 'Images', 'madara' );
+				$page_title = esc_html__( 'Images', 'mangazscans' );
 
 			elseif ( is_tax( 'post_format', 'post-format-video' ) ) :
-				$page_title = esc_html__( 'Videos', 'madara' );
+				$page_title = esc_html__( 'Videos', 'mangazscans' );
 
 			elseif ( is_tax( 'post_format', 'post-format-quote' ) ) :
-				$page_title = esc_html__( 'Quotes', 'madara' );
+				$page_title = esc_html__( 'Quotes', 'mangazscans' );
 
 			elseif ( is_tax( 'post_format', 'post-format-link' ) ) :
-				$page_title = esc_html__( 'Links', 'madara' );
+				$page_title = esc_html__( 'Links', 'mangazscans' );
 
 			elseif ( is_tax( 'post_format', 'post-format-status' ) ) :
-				$page_title = esc_html__( 'Statuses', 'madara' );
+				$page_title = esc_html__( 'Statuses', 'mangazscans' );
 
 			elseif ( is_tax( 'post_format', 'post-format-audio' ) ) :
-				$page_title = esc_html__( 'Audios', 'madara' );
+				$page_title = esc_html__( 'Audios', 'mangazscans' );
 
 			elseif ( is_tax( 'post_format', 'post-format-chat' ) ) :
-				$page_title = esc_html__( 'Chats', 'madara' );
+				$page_title = esc_html__( 'Chats', 'mangazscans' );
 
 			elseif ( is_tax( 'ct_portfolio_cat' ) ) :
 
 				$term = get_queried_object();
 
 				if ( $term ) {
-					$page_title = sprintf( esc_html__( 'Projects in %s category', 'madara' ), $term->name );
+					$page_title = sprintf( esc_html__( 'Projects in %s category', 'mangazscans' ), $term->name );
 				} else {
-					$page_title = esc_html__( 'Archives', 'madara' );
+					$page_title = esc_html__( 'Archives', 'mangazscans' );
 				}
 
 			elseif ( is_post_type_archive( 'ct_portfolio' ) ) :
@@ -107,15 +107,15 @@
 					$page_title = $text;
 				} else {
 
-					$page_title = esc_html__( 'All Projects', 'madara' );
+					$page_title = esc_html__( 'All Projects', 'mangazscans' );
 				}
 
 			elseif ( is_post_type_archive( 'ct_office' ) ) :
-				$page_title = esc_html__( 'Location', 'madara' );
+				$page_title = esc_html__( 'Location', 'mangazscans' );
 			elseif ( is_post_type_archive( 'ct_service' ) ) :
-				$page_title = esc_html__( 'All Services', 'madara' );
+				$page_title = esc_html__( 'All Services', 'mangazscans' );
 			else:
-				$page_title = esc_html__( 'Archives', 'madara' );
+				$page_title = esc_html__( 'Archives', 'mangazscans' );
 			endif;
 
 			$page_title = apply_filters( 'madara_archive_title', $page_title );
@@ -128,8 +128,8 @@
 
 		if( function_exists( 'is_manga_single' ) && is_manga_single() ){
 			wp_localize_script( 'madara-js', 'single_manga_show_more', array(
-				'show_more' => __( 'Show more  ', 'madara' ),
-				'show_less' => __( 'Show less  ', 'madara' )
+				'show_more' => __( 'Show more  ', 'mangazscans' ),
+				'show_less' => __( 'Show less  ', 'mangazscans' )
 			) );
 		}
 
@@ -144,11 +144,11 @@
 	function madara_get_user_settings_tabs(){
 		global $wp_manga_user_actions;
 		$default_tabs = [
-			'bookmark' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'bookmark' ), 'icon' => 'icon ion-ios-bookmark', 'label' => esc_html__( 'Bookmarks', 'madara' )),
-			'history' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'history' ), 'icon' => 'icon ion-md-alarm', 'label' => esc_html__( 'History', 'madara' )),
-			'reader-settings' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'reader-settings' ), 'icon' => 'icon ion-md-cog', 'label' => esc_html__( 'Reader Settings', 'madara' )),
-			'account-settings' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'account-settings' ), 'icon' => 'icon ion-md-person', 'label' => esc_html__( 'Account Settings', 'madara' )),
-			'my-mangas' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'my-mangas' ), 'icon' => 'icon ion-md-folder-open', 'label' => esc_html__( 'My Uploaded Mangas', 'madara' ))
+			'bookmark' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'bookmark' ), 'icon' => 'icon ion-ios-bookmark', 'label' => esc_html__( 'Bookmarks', 'mangazscans' )),
+			'history' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'history' ), 'icon' => 'icon ion-md-alarm', 'label' => esc_html__( 'History', 'mangazscans' )),
+			'reader-settings' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'reader-settings' ), 'icon' => 'icon ion-md-cog', 'label' => esc_html__( 'Reader Settings', 'mangazscans' )),
+			'account-settings' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'account-settings' ), 'icon' => 'icon ion-md-person', 'label' => esc_html__( 'Account Settings', 'mangazscans' )),
+			'my-mangas' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'my-mangas' ), 'icon' => 'icon ion-md-folder-open', 'label' => esc_html__( 'My Uploaded Mangas', 'mangazscans' ))
 		];
 		
 		$reader_settings_tab = Madara::getOption( 'manga_reader_setting', 'on' );

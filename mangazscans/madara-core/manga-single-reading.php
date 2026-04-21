@@ -137,7 +137,7 @@
 
 							<?php if ( class_exists( 'APSS_Class' ) && $manga_reading_social_share == 'on' ) {
 
-								$madara_sharing_text     = apply_filters( 'manga_reading_sharing_text', esc_html__( 'SHARE THIS MANGA', 'madara' ) );
+								$madara_sharing_text     = apply_filters( 'manga_reading_sharing_text', esc_html__( 'SHARE THIS MANGA', 'mangazscans' ) );
 								$madara_sharing_networks = 'facebook, twitter, google-plus, pinterest, linkedin, digg';
 								$madara_sharing_networks = apply_filters( 'manga_reading_sharing_networkds', $madara_sharing_networks );
 								echo do_shortcode( "[apss_share share_text='$madara_sharing_text' networks='$madara_sharing_networks' counter='1' total_counter='1' http_count='1']" );

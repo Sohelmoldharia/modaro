@@ -17,6 +17,6 @@
 		echo '</ul>';
 	} else { ?>
         <ul class="nav navbar-nav main-navbar">
-            <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'madara' ) ?></a></li>
+            <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'mangazscans' ) ?></a></li>
         </ul>
 	<?php }

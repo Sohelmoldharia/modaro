@@ -1,7 +1,7 @@
 <?php
 	/**
 	 * Mobile Navigation Template
-	 * @package madara
+	 * @package mangazscans
 	 */
     use App\Madara;
     $header_login_buttons = Madara::getOption('header_disable_login_buttons', 'on');
@@ -32,11 +32,11 @@
         <div class="c-modal_item">
             <!-- Button trigger modal -->
             <span class="c-modal_sign-in">
-                <a href="#" data-toggle="modal" data-target="#form-login" class="btn-active-modal"><?php echo esc_html__( 'Sign in', 'madara' ); ?></a>
+                <a href="#" data-toggle="modal" data-target="#form-login" class="btn-active-modal"><?php echo esc_html__( 'Sign in', 'mangazscans' ); ?></a>
             </span>
 
             <span class="c-modal_sign-up">
-                <a href="javascript:void(0)" data-toggle="modal" data-target="#form-sign-up" class="btn-active-modal"><?php echo esc_html__( 'Sign up', 'madara' ); ?></a>
+                <a href="javascript:void(0)" data-toggle="modal" data-target="#form-sign-up" class="btn-active-modal"><?php echo esc_html__( 'Sign up', 'mangazscans' ); ?></a>
             </span>
 
         </div>

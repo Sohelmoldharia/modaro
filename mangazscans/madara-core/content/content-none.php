@@ -24,11 +24,11 @@
 				<?php
 					if ( is_tax() ) {
 						$tax = get_queried_object();
-						echo sprintf( esc_html__( 'There is no Manga in this %s - %s', 'madara' ), $tax->name, get_taxonomy( $tax->taxonomy )->label );
+						echo sprintf( esc_html__( 'There is no Manga in this %s - %s', 'mangazscans' ), $tax->name, get_taxonomy( $tax->taxonomy )->label );
 					} elseif ( is_manga_posttype_archive() && ! is_search() ) {
-						esc_html_e( 'There is no Manga yet', 'madara' );
+						esc_html_e( 'There is no Manga yet', 'mangazscans' );
 					} elseif ( is_search() ) {
-						esc_html_e( 'No matches found. Try a different search...', 'madara' );
+						esc_html_e( 'No matches found. Try a different search...', 'mangazscans' );
 					}
 				?>
             </p>

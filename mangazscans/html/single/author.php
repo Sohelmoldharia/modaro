@@ -15,7 +15,7 @@
                     <!-- <div class="heading-group">
 			<div class="col-12 c-column">
 				<div class="item-heading">
-					<h4 class="heading"><?php echo esc_html__( 'About The Author', 'madara' ); ?></h4>
+					<h4 class="heading"><?php echo esc_html__( 'About The Author', 'mangazscans' ); ?></h4>
 				</div>
 			</div>
 		</div> -->

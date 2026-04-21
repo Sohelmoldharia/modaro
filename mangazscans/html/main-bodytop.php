@@ -3,7 +3,7 @@
 	/**
 	 * The Template for displaying Body Top Sidebar
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	echo apply_filters( 'madara_ads_before_content', madara_ads_position( 'ads_before_content', 'body-top-ads' ) );

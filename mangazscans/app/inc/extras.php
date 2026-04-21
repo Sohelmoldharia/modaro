@@ -65,12 +65,12 @@
 		}
 		?>
 		<div id="manga-filte-alphabeta-bar">
-			<a href="<?php echo remove_query_arg('start', $baseurl);?>"><?php echo esc_html__('All', 'madara');?></a>
+			<a href="<?php echo remove_query_arg('start', $baseurl);?>"><?php echo esc_html__('All', 'mangazscans');?></a>
 		<?php
 		$characters = str_split(apply_filters('madara_manga_title_characters', '0123456789abcdefghijklmnopqrstuvwxyz'));
 		foreach($characters as $c){
 			?>
-			<a title="<?php echo sprintf(esc_html__('Manga starts with %s', 'madara'), $c);?>" class="<?php echo esc_html($c == $start ? 'active':'');?>" href="<?php echo esc_url(add_query_arg('start', $c, $baseurl));?>"><?php echo esc_html($c);?></a>
+			<a title="<?php echo sprintf(esc_html__('Manga starts with %s', 'mangazscans'), $c);?>" class="<?php echo esc_html($c == $start ? 'active':'');?>" href="<?php echo esc_url(add_query_arg('start', $c, $baseurl));?>"><?php echo esc_html($c);?></a>
 			<?php
 		}
 		?>
@@ -268,5 +268,5 @@
 	}
 	
 	function madara_get_badge_choices(){
-		return apply_filters('madara_manga_default_badges', array(esc_html__( 'Hot', 'madara' ), esc_html__( 'New', 'madara' )));
+		return apply_filters('madara_manga_default_badges', array(esc_html__( 'Hot', 'mangazscans' ), esc_html__( 'New', 'mangazscans' )));
 	}

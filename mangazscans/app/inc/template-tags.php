@@ -2,7 +2,7 @@
 	/**
 	 * Template Tags hold functions to print out HTML
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	use App\Madara;
@@ -103,7 +103,7 @@
 
 		if ( ! empty( $manga_adult_content ) && $manga_adult_content[0] == 'yes' ) {
 			$badges_html .= '<span class="manga-title-badges custom adult">';
-			$badges_html .= esc_html__( '18+', 'madara' );
+			$badges_html .= esc_html__( '18+', 'mangazscans' );
 			$badges_html .= '</span>';
 		}
 		

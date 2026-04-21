@@ -43,7 +43,7 @@ if($init_links_enabled){ ?>
 			// this check to ensure a reading chapter is still there (ie. not deleted)
 			$current_chapter_link = $wp_manga_functions->build_chapter_url( $manga_id, $current_chapter, $reading_style );
 		?>
-		<a href="<?php echo esc_url($current_chapter_link);?>" class="c-btn c-btn_style-1" title="<?php echo esc_attr($current_chapter['chapter_name']);?>"><?php esc_html_e('Continue reading', 'madara');?></a>
+		<a href="<?php echo esc_url($current_chapter_link);?>" class="c-btn c-btn_style-1" title="<?php echo esc_attr($current_chapter['chapter_name']);?>"><?php esc_html_e('Continue reading', 'mangazscans');?></a>
 		<?php
 			$has_current_reading = true;
 		}
@@ -61,14 +61,14 @@ if($init_links_enabled){ ?>
 		if($sort_order == 'asc'){
 			?>
 			<a href="#" id="btn-read-first" class="c-btn c-btn_style-1">
-			<?php esc_html_e('Read First', 'madara');?></a>
-			<a href="#" id="btn-read-last" class="c-btn c-btn_style-1"><?php esc_html_e('Read Last', 'madara');?></a>
+			<?php esc_html_e('Read First', 'mangazscans');?></a>
+			<a href="#" id="btn-read-last" class="c-btn c-btn_style-1"><?php esc_html_e('Read Last', 'mangazscans');?></a>
 			<?php
 		} else {
 			?>
 			<a href="#" id="btn-read-last" class="c-btn c-btn_style-1">
-			<?php esc_html_e('Read First', 'madara');?></a>
-			<a href="#" id="btn-read-first" class="c-btn c-btn_style-1"><?php esc_html_e('Read Last', 'madara');?></a>
+			<?php esc_html_e('Read First', 'mangazscans');?></a>
+			<a href="#" id="btn-read-first" class="c-btn c-btn_style-1"><?php esc_html_e('Read Last', 'mangazscans');?></a>
 			<?php
 		}
 	}?>

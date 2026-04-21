@@ -90,7 +90,7 @@ do_action( 'before_manga_single' );
 
                                         <h2 class="h4">
                                             <i class="<?php madara_default_heading_icon(); ?>"></i>
-											<?php echo esc_attr__( 'Summary', 'madara' ); ?>
+											<?php echo esc_attr__( 'Summary', 'mangazscans' ); ?>
                                         </h2>
                                     </div>
 
@@ -106,7 +106,7 @@ do_action( 'before_manga_single' );
 										<?php if ( $manga_single_summary == 'on' ) { ?>
                                             <div class="c-content-readmore">
                                                 <span class="btn btn-link content-readmore">
-                                                    <?php echo esc_html__( 'Show more  ', 'madara' ); ?>
+                                                    <?php echo esc_html__( 'Show more  ', 'mangazscans' ); ?>
                                                 </span>
                                             </div>
 										<?php } ?>
@@ -119,7 +119,7 @@ do_action( 'before_manga_single' );
                             </div>
                             <!-- </div> -->
                         </div>
-						<?php edit_post_link(esc_html__('Edit This Manga', 'madara'));?>
+						<?php edit_post_link(esc_html__('Edit This Manga', 'mangazscans'));?>
 						
                         <!-- comments-area -->
 						<?php 

@@ -18,19 +18,19 @@
 		 * @author
 		 *
 		 * @since Madara Alpha 1.0
-		 * @package madara
+		 * @package mangazscans
 		 */
 		public function render( $echo = 1 ) {
 			global $post;
 
 			$html = '';
 
-			$text['home']     = esc_html__( 'Home', 'madara' ); // text for the 'Home' link
+			$text['home']     = esc_html__( 'Home', 'mangazscans' ); // text for the 'Home' link
 			$text['category'] = '%s'; // text for a category page
-			$text['search']   = esc_html__( 'Search Results for', 'madara' ) . ' "%s"'; // text for a search results page
-			$text['tag']      = esc_html__( 'Tag', 'madara' ) . ' "%s"'; // text for a tag page
+			$text['search']   = esc_html__( 'Search Results for', 'mangazscans' ) . ' "%s"'; // text for a search results page
+			$text['tag']      = esc_html__( 'Tag', 'mangazscans' ) . ' "%s"'; // text for a tag page
 			$text['author']   = ' %s'; // text for an author page
-			$text['404']      = esc_html__( '404', 'madara' ); // text for the 404 page
+			$text['404']      = esc_html__( '404', 'mangazscans' ); // text for the 404 page
 
 			$show_current   = 1; // 1 - show current post/page/category title in breadcrumbs, 0 - don't show
 			$show_on_home   = 1; // 1 - show breadcrumbs on the homepage, 0 - don't show
@@ -57,7 +57,7 @@
 				}
 
 			} elseif ( is_home() ) {
-				$title = get_option( 'page_for_posts' ) ? get_the_title( get_option( 'page_for_posts' ) ) : esc_html__( 'Blog', 'madara' );
+				$title = get_option( 'page_for_posts' ) ? get_the_title( get_option( 'page_for_posts' ) ) : esc_html__( 'Blog', 'mangazscans' );
 				$html  .= '<div class="c-page-breadcrumb"><a href="' . $home_link . '">' . $text['home'] . '</a> . ' . $title . '</div>';
 			} else {
 

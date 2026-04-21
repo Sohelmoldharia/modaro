@@ -4,7 +4,7 @@
 	 * Class CT_Social_V
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Views;
@@ -114,7 +114,7 @@
 			if ( $this->model->getOption( 'sharing_facebook' ) == 'on' ) {
 				$html .= '<li>
                         <a class="social-icons icon-facebook"
-                           title="' . esc_html__( 'Share on Facebook', 'madara' ) . '"
+                           title="' . esc_html__( 'Share on Facebook', 'mangazscans' ) . '"
                            href="#" target="_blank"
                            rel="nofollow"
                            onclick="window.open(\'https://www.facebook.com/sharer/sharer.php?u=\' + \'' . urlencode( get_permalink( $id ) ) . '\',\'facebook-share-dialog\',\'width=626,height=436\');return false;">
@@ -127,7 +127,7 @@
 				$html .= '<li>
                             <a class="social-icons icon-twitter"
                                href="#"
-                               title="' . esc_html__( 'Share on Twitter', 'madara' ) . '"
+                               title="' . esc_html__( 'Share on Twitter', 'mangazscans' ) . '"
                                rel="nofollow" target="_blank"
                                onclick="window.open(\'http://twitter.com/share?text=' . urlencode( get_the_title( $id ) ) . '&amp;url=' . urlencode( get_permalink( $id ) ) . '\',\'twitter-share-dialog\',\'width=626,height=436\');return false;">
                                 <i class="fab fa-twitter"></i>
@@ -139,7 +139,7 @@
 				$html .= '<li>
                             <a class="social-icons icon-linkedin"
                                href="#"
-                               title="' . esc_html__( 'Share on LinkedIn', 'madara' ) . '"
+                               title="' . esc_html__( 'Share on LinkedIn', 'mangazscans' ) . '"
                                rel="nofollow" target="_blank"
                                onclick="window.open(\'http://www.linkedin.com/shareArticle?mini=true&url=' . urlencode( get_permalink( $id ) ) . '&amp;title=' . urlencode( get_the_title( $id ) ) . '&amp;source=' . urlencode( get_bloginfo( 'name' ) ) . '\',\'linkedin-share-dialog\',\'width=626,height=436\');return false;">
                                 <i class="fab fa-linkedin"></i>
@@ -151,7 +151,7 @@
 				$html .= '<li>
                             <a class="social-icons icon-tumblr"
                                href="#"
-                               title="' . esc_html__( 'Share on Tumblr', 'madara' ) . '"
+                               title="' . esc_html__( 'Share on Tumblr', 'mangazscans' ) . '"
                                rel="nofollow"
                                target="_blank"
                                onclick="window.open(\'http://www.tumblr.com/share/link?url=' . urlencode( get_permalink( $id ) ) . '&amp;name=' . urlencode( get_the_title( $id ) ) . '\',\'tumblr-share-dialog\',\'width=626,height=436\');return false;">
@@ -164,7 +164,7 @@
 				$html .= '<li>
                             <a class="social-icons icon-google-plus"
                                href="#"
-                               title="' . esc_html__( 'Share on Google Plus', 'madara' ) . '"
+                               title="' . esc_html__( 'Share on Google Plus', 'mangazscans' ) . '"
                                rel="nofollow"
                                target="_blank"
                                onclick="window.open(\'https://plus.google.com/share?url=' . urlencode( get_permalink( $id ) ) . '\',\'googleplus-share-dialog\',\'width=626,height=436\');return false;">
@@ -177,7 +177,7 @@
 				$html .= '<li>
                             <a class="social-icons icon-pinterest"
                                href="#"
-                               title="' . esc_html__( 'Pin this', 'madara' ) . '"
+                               title="' . esc_html__( 'Pin this', 'mangazscans' ) . '"
                                rel="nofollow"
                                target="_blank"
                                onclick="window.open(\'//pinterest.com/pin/create/button/?url=' . urlencode( get_permalink( $id ) ) . '&amp;media=' . urlencode( wp_get_attachment_url( get_post_thumbnail_id( $id ) ) ) . '&amp;description=' . urlencode( get_the_title( $id ) ) . '\',\'pin-share-dialog\',\'width=626,height=436\');return false;">
@@ -190,14 +190,14 @@
 				$html .= '<li>
                             <a class="social-icons icon-envelope"
                                href="mailto:?subject=' . get_the_title( $id ) . '&amp;body=' . urlencode( get_permalink( $id ) ) . '"
-                               title="' . esc_html__( 'Email this', 'madara' ) . '">
+                               title="' . esc_html__( 'Email this', 'mangazscans' ) . '">
                                 <i class="far fa-envelope"></i>
                             </a>
                         </li>';
 			}
 
 			if ( $html != '' ) {
-				$html = '<div class="item-heading"><h4 class="heading">' . esc_html__( 'SHARE THIS POST', 'madara' ) . '</h4></div><ul class="list-inline article-social-share social-list-btn">' . $html . '</ul>';
+				$html = '<div class="item-heading"><h4 class="heading">' . esc_html__( 'SHARE THIS POST', 'mangazscans' ) . '</h4></div><ul class="list-inline article-social-share social-list-btn">' . $html . '</ul>';
 			}
 
 			if ( $echo ) {

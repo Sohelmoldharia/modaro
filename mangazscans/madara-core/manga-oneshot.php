@@ -80,7 +80,7 @@
                             </div>
                             <!-- </div> -->
                         </div>
-						<?php edit_post_link(esc_html__('Edit This Manga', 'madara'));?>
+						<?php edit_post_link(esc_html__('Edit This Manga', 'mangazscans'));?>
 						
                         <!-- comments-area -->
 						<?php 

@@ -3,7 +3,7 @@
 	/**
 	 * Class CT_Metadata_M
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Models;

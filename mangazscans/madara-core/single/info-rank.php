@@ -18,7 +18,7 @@
 	 <div class="post-content_item">
 	<div class="summary-heading">
 		<h5>
-			<?php echo esc_html__( 'Rank', 'madara' ); ?>
+			<?php echo esc_html__( 'Rank', 'mangazscans' ); ?>
 		</h5>
 	</div>
 	<div class="summary-content">
@@ -28,7 +28,7 @@
 			$wp_manga_functions->print_ranking_views( $manga_id );
 		} else {
 			?>
-			<?php echo sprintf( _n( ' %1s, it has %2s monthly view', ' %1s, it has %2s monthly views', $views, 'madara' ), $rank, $views ); ?>
+			<?php echo sprintf( _n( ' %1s, it has %2s monthly view', ' %1s, it has %2s monthly views', $views, 'mangazscans' ), $rank, $views ); ?>
 			<?php
 		}
 		

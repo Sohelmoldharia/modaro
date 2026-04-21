@@ -12,7 +12,7 @@
 		 *
 		 * Displays all of the <head> section and everything up till <div id="content">
 		 *
-		 * @package madara
+		 * @package mangazscans
 		 */
 
 		use App\Madara;
@@ -54,8 +54,8 @@
                 <ul class="search-main-menu">
                     <li>
                         <form id="blog-post-search" class="<?php echo ($madara_ajax_search == 'on' ? 'ajax' : '');?>" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
-                            <input type="text" placeholder="<?php echo esc_html__( 'Search...', 'madara' ); ?>" name="s" value="">
-                            <input type="submit" value="<?php esc_html_e( 'Search', 'madara' ); ?>">
+                            <input type="text" placeholder="<?php echo esc_html__( 'Search...', 'mangazscans' ); ?>" name="s" value="">
+                            <input type="submit" value="<?php esc_html_e( 'Search', 'mangazscans' ); ?>">
                             <div class="loader-inner line-scale">
                                 <div></div>
                                 <div></div>

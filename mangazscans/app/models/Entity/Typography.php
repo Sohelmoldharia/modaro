@@ -3,7 +3,7 @@
 	/**
 	 * Class Typography
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Models\Entity;

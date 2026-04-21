@@ -4,7 +4,7 @@
 	 * Initialize the category metadatas
 	 *
 	 * @since Madara Alpha 1.0
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	//leave blank for further customizations

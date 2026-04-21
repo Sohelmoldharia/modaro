@@ -20,7 +20,7 @@ if($release != ''){?>
 <div class="post-content_item">
 	<div class="summary-heading">
 		<h5>
-			<?php echo esc_html__( 'Release', 'madara' ); ?>
+			<?php echo esc_html__( 'Release', 'mangazscans' ); ?>
 		</h5>
 	</div>
 	<div class="summary-content">

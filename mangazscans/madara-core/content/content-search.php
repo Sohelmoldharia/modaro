@@ -65,7 +65,7 @@
                         <div class="post-content_item mg_alternative <?php echo esc_attr($class_flag);?>">
                             <div class="summary-heading">
                                 <h5>
-									<?php esc_html_e( 'Alternative', 'madara' ); ?>
+									<?php esc_html_e( 'Alternative', 'mangazscans' ); ?>
                                 </h5>
                             </div>
                             <div class="summary-content">
@@ -83,7 +83,7 @@
                         <div class="post-content_item mg_author <?php echo esc_attr($class_flag);?>">
                             <div class="summary-heading">
                                 <h5>
-									<?php esc_html_e( 'Authors', 'madara' ); ?>
+									<?php esc_html_e( 'Authors', 'mangazscans' ); ?>
                                 </h5>
                             </div>
                             <div class="summary-content">
@@ -108,7 +108,7 @@
                         <div class="post-content_item mg_artists <?php echo esc_attr($class_flag);?>">
                             <div class="summary-heading">
                                 <h5>
-									<?php esc_html_e( 'Artists', 'madara' ); ?>
+									<?php esc_html_e( 'Artists', 'mangazscans' ); ?>
                                 </h5>
                             </div>
 
@@ -132,7 +132,7 @@
                         <div class="post-content_item mg_genres <?php echo esc_attr($class_flag);?>">
                             <div class="summary-heading">
                                 <h5>
-									<?php esc_html_e( 'Genres', 'madara' ); ?>
+									<?php esc_html_e( 'Genres', 'mangazscans' ); ?>
                                 </h5>
                             </div>
                             <div class="summary-content">
@@ -155,7 +155,7 @@
                         <div class="post-content_item mg_status <?php echo esc_attr($class_flag);?>">
                             <div class="summary-heading">
                                 <h5>
-									<?php esc_html_e( 'Status', 'madara' ); ?>
+									<?php esc_html_e( 'Status', 'mangazscans' ); ?>
                                 </h5>
                             </div>
                             <div class="summary-content">
@@ -173,7 +173,7 @@
                         <div class="post-content_item mg_release <?php echo esc_attr($class_flag);?>">
                             <div class="summary-heading">
                                 <h5>
-									<?php esc_html_e( 'Release', 'madara' ); ?>
+									<?php esc_html_e( 'Release', 'mangazscans' ); ?>
                                 </h5>
                             </div>
                             <div class="summary-content release-year">
@@ -212,7 +212,7 @@
 					?>
                     <div class="meta-item latest-chap">
 						<?php if ( isset( $latest_chapter['chapter_name'] ) ) { ?>
-                            <span class="font-meta"><?php echo esc_html__( 'Latest chapter', 'madara' ); ?> </span>
+                            <span class="font-meta"><?php echo esc_html__( 'Latest chapter', 'mangazscans' ); ?> </span>
                             <span class="font-meta chapter"><a href="<?php echo esc_url( $latest_chapter_url ); ?>"><?php echo wp_kses_post( $latest_chapter['chapter_name'] ); ?></a></span>
 						<?php } ?>
                     </div>

@@ -2,7 +2,7 @@
 	/**
 	 * Author extension for the theme
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	namespace App\Plugins\madara_Author;

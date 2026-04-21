@@ -288,18 +288,18 @@
 		$user_id  = get_current_user_id();
 
 		if ( empty( $user_id ) || empty( $wp_nonce ) ) {
-			return new WP_Error( 'invalid_request', __( 'Invalid request, please try again', 'madara' ) );
+			return new WP_Error( 'invalid_request', __( 'Invalid request, please try again', 'mangazscans' ) );
 		}
 
 		if( ! wp_verify_nonce( $wp_nonce, '_wp_manga_save_user_settings' ) ){
-			return new WP_Error( 'invalid_request', __( 'Session expired, please try again.', 'madara' ) );
+			return new WP_Error( 'invalid_request', __( 'Session expired, please try again.', 'mangazscans' ) );
 		}
 
 		// Get user object from ID
 		$user = get_user_by( 'ID', $user_id );
 
 		if( ! $user ){
-			return new WP_Error( 'user_not_found', __( 'User not found, please try again later. ', 'madara' ) );
+			return new WP_Error( 'user_not_found', __( 'User not found, please try again later. ', 'mangazscans' ) );
 		}
 
 		// Update account display name
@@ -321,15 +321,15 @@
 		if ( ! empty( $new_pwd ) ) {
 
 			if( empty( $current_pwd ) ){
-				return new WP_Error( 'empty_pwd', __( 'Current Password cannot be empty', 'madara' ) );
+				return new WP_Error( 'empty_pwd', __( 'Current Password cannot be empty', 'mangazscans' ) );
 			}elseif( empty( $confirm_pwd ) ){
-				return new WP_Error( 'empty_pwd', __( 'Confirm Password cannot be empty', 'madara' ) );
+				return new WP_Error( 'empty_pwd', __( 'Confirm Password cannot be empty', 'mangazscans' ) );
 			}elseif( $new_pwd === $current_pwd ){
-				return new WP_Error( 'same_pwd', __( 'New password must be different with current password', 'madara' ) );
+				return new WP_Error( 'same_pwd', __( 'New password must be different with current password', 'mangazscans' ) );
 			}elseif( $new_pwd !== $confirm_pwd ){
-				return new WP_Error( 'dismatch_pwd', __( 'New Password & Confirm Password must be matched.', 'madara' ) );
+				return new WP_Error( 'dismatch_pwd', __( 'New Password & Confirm Password must be matched.', 'mangazscans' ) );
 			}elseif( ! wp_check_password( $current_pwd, $user->data->user_pass, $user_id ) ){
-				return new WP_Error( 'invalid_pwd', __( 'Incorrect current password, please check again.', 'madara' ) );
+				return new WP_Error( 'invalid_pwd', __( 'Incorrect current password, please check again.', 'mangazscans' ) );
 			}else{
 				//$user->user_pass = $new_pwd;
 			}
@@ -425,7 +425,7 @@
 			if ( empty( $history_manga ) ) {
 				wp_send_json_success( array(
 					'is_empty' => true,
-					'msg'      => wp_kses( __( '<span>You haven\'t read any manga yet</span>', 'madara' ), array( 'span' => array() ) )
+					'msg'      => wp_kses( __( '<span>You haven\'t read any manga yet</span>', 'mangazscans' ), array( 'span' => array() ) )
 				) );
 			};
 			wp_send_json_success();
@@ -525,7 +525,7 @@
         $show_info = Madara::getOption('manga_single_info_visibility', 'off');
         if($show_info == 'on'){
             if ( empty( $value ) ) {
-                $value = esc_html__( 'Updating', 'madara' );
+                $value = esc_html__( 'Updating', 'mangazscans' );
             }
         }
 
@@ -591,7 +591,7 @@
                             <div class="post-content_item item_rank">
                                 <div class="summary-heading">
                                     <h5>
-										<?php echo esc_attr__( 'Rank', 'madara' ); ?>
+										<?php echo esc_attr__( 'Rank', 'mangazscans' ); ?>
                                     </h5>
                                 </div>
                                 <div class="summary-content">
@@ -602,7 +602,7 @@
                                 <div class="post-content_item item_alternative">
                                     <div class="summary-heading">
                                         <h5>
-											<?php echo esc_attr__( 'Alternative', 'madara' ); ?>
+											<?php echo esc_attr__( 'Alternative', 'mangazscans' ); ?>
                                         </h5>
                                     </div>
                                     <div class="summary-content">
@@ -615,7 +615,7 @@
                                 <div class="post-content_item item_authors">
                                     <div class="summary-heading">
                                         <h5>
-											<?php echo esc_attr__( 'Author(s)', 'madara' ); ?>
+											<?php echo esc_attr__( 'Author(s)', 'mangazscans' ); ?>
                                         </h5>
                                     </div>
                                     <div class="summary-content">
@@ -628,7 +628,7 @@
                                 <div class="post-content_item item_artists">
                                     <div class="summary-heading">
                                         <h5>
-											<?php echo esc_attr__( 'Artist(s)', 'madara' ); ?>
+											<?php echo esc_attr__( 'Artist(s)', 'mangazscans' ); ?>
                                         </h5>
                                     </div>
                                     <div class="summary-content">
@@ -643,7 +643,7 @@
                                 <div class="post-content_item item_genres">
                                     <div class="summary-heading">
                                         <h5>
-											<?php echo esc_attr__( 'Genre(s)', 'madara' ); ?>
+											<?php echo esc_attr__( 'Genre(s)', 'mangazscans' ); ?>
                                         </h5>
                                     </div>
                                     <div class="summary-content">
@@ -658,7 +658,7 @@
                                 <div class="post-content_item item_tags">
                                     <div class="summary-heading">
                                         <h5>
-											<?php echo esc_attr__( 'Tag(s)', 'madara' ); ?>
+											<?php echo esc_attr__( 'Tag(s)', 'mangazscans' ); ?>
                                         </h5>
                                     </div>
                                     <div class="summary-content">
@@ -677,7 +677,7 @@
                                 <div class="post-content_item item_summary">
                                     <div class="summary-heading">
                                         <h5>
-											<?php echo esc_attr__( 'Summary', 'madara' ); ?>
+											<?php echo esc_attr__( 'Summary', 'mangazscans' ); ?>
                                         </h5>
                                     </div>
                                     <div class="summary-content">
@@ -1240,7 +1240,7 @@
 		$chapter_comments_heading = Madara::getOption('manga_reading_discussion_heading', 'on');
 		if($reading_chapter && $chapter_comments_heading == 'on'){
 		?>
-		<h4><?php echo sprintf(esc_html__('Comments for chapter "%s"', 'madara'), $reading_chapter['chapter_name']);?></h4>
+		<h4><?php echo sprintf(esc_html__('Comments for chapter "%s"', 'mangazscans'), $reading_chapter['chapter_name']);?></h4>
 		<?php
 		}
 	}

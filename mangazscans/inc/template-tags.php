@@ -2,7 +2,7 @@
 	/**
 	 * Template Tags hold functions to print out HTML
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	use App\Madara;
@@ -28,7 +28,7 @@
 			$end_index = $total;
 		}
 
-		$current_category = esc_html__( 'All', 'madara' );
+		$current_category = esc_html__( 'All', 'mangazscans' );
 
 		if ( is_tax( 'ct_portfolio_cat' ) ) {
 			$term = get_queried_object();
@@ -43,7 +43,7 @@
 
 			if ( $total > 1 ) {
 
-				$html = sprintf( wp_kses( __( '<div class="c-meta"><div class="item-meta"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> projects in <span>%s</span></p></li></ul></div></div>', 'madara' ), array(
+				$html = sprintf( wp_kses( __( '<div class="c-meta"><div class="item-meta"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> projects in <span>%s</span></p></li></ul></div></div>', 'mangazscans' ), array(
 					'ul'   => array(),
 					'li'   => array(),
 					'p'    => array(),
@@ -53,7 +53,7 @@
 
 			} else {
 
-				$html = sprintf( wp_kses( __( '<div class="c-meta"><div class="item-meta"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> project in <span>%s</span></p></li></ul></div></div>', 'madara' ), array(
+				$html = sprintf( wp_kses( __( '<div class="c-meta"><div class="item-meta"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> project in <span>%s</span></p></li></ul></div></div>', 'mangazscans' ), array(
 					'ul'   => array(),
 					'li'   => array(),
 					'p'    => array(),
@@ -66,7 +66,7 @@
 		} else {
 
 			if ( $total > 1 ) {
-				$html = sprintf( wp_kses( __( '<div class="c-meta"><div class="item-meta"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> projects found</li></ul></div></div>', 'madara' ), array(
+				$html = sprintf( wp_kses( __( '<div class="c-meta"><div class="item-meta"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> projects found</li></ul></div></div>', 'mangazscans' ), array(
 					'ul'   => array(),
 					'li'   => array(),
 					'p'    => array(),
@@ -74,7 +74,7 @@
 					'div'  => array( 'class' => array() )
 				) ), $start_index, $end_index, $total );
 			} else {
-				$html = sprintf( wp_kses( __( '<div class="c-meta"><div class="item-meta"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> projects found</li></ul></div></div>', 'madara' ), array(
+				$html = sprintf( wp_kses( __( '<div class="c-meta"><div class="item-meta"><ul><li><p>Showing <span>%d-%d</span> of <span>%d</span> projects found</li></ul></div></div>', 'mangazscans' ), array(
 					'ul'   => array(),
 					'li'   => array(),
 					'p'    => array(),
@@ -149,8 +149,8 @@
 			}
 			?>
 			<div class="section_adult <?php echo esc_attr($adult_filter);?>">
-				<a href="<?php echo esc_url(home_url('/'));?>" target="_self" title="<?php esc_attr_e('Family Safe','madara');?>">
-					<span class="dot"><!-- --></span><span><?php esc_html_e('Family Safe', 'madara');?></span>
+				<a href="<?php echo esc_url(home_url('/'));?>" target="_self" title="<?php esc_attr_e('Family Safe','mangazscans');?>">
+					<span class="dot"><!-- --></span><span><?php esc_html_e('Family Safe', 'mangazscans');?></span>
 				</a>
 			</div>
 			<?php

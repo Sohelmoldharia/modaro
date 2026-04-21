@@ -4,7 +4,7 @@
 	 *
 	 * Contains the closing of the #content div and all content after
 	 *
-	 * @package madara
+	 * @package mangazscans
 	 */
 
 	use App\Madara;
@@ -76,7 +76,7 @@
 									if ( $madara_copyright != '' ) {
 										echo '<p>' . wp_kses_post( $madara_copyright ) . '</p>';
 									} else {
-										echo '<p>' . sprintf(esc_html__( '&copy; %s Madara Inc. All rights reserved', 'madara' ), date('Y')) . '</p>';
+										echo '<p>' . sprintf(esc_html__( '&copy; %s Madara Inc. All rights reserved', 'mangazscans' ), date('Y')) . '</p>';
 									}
 								?>
                             </div>
@@ -84,7 +84,7 @@
                             <?php
                             if(Madara::getOption('polylang_footer', 'off') == 'on' && function_exists('pll_the_languages')){?>
                             <div class="languages">
-                                <span class="title"><?php esc_html_e('Language:','madara');?></span> <?php pll_the_languages( ['dropdown'=>1] );?>
+                                <span class="title"><?php esc_html_e('Language:','mangazscans');?></span> <?php pll_the_languages( ['dropdown'=>1] );?>
                             </div>
                             <?php } ?>
                         </div>
