@@ -385,22 +385,298 @@ button:disabled, .btn:disabled, .button-primary:disabled { opacity: 0.55; cursor
 }
 .post-content_item .summary-content { font-size: 13.5px; padding: 0; border: 0; background: transparent; }
 
-/* Chapters list (often hundreds of rows — keep it dense) */
-.listing-chapters_wrap, .version-chap, .main { background: transparent; }
-.wp-manga-chapter {
+/* ---- Latest Manga Releases section (on manga detail page) ---------
+   Madara's default: big badge + thin underline heading, then tall
+   half-empty chapter rows with washed-out grey chapter links and an
+   italic grey date. Below is a targeted pass that wins against the
+   compiled style.css without !important sprayed everywhere. */
+
+/* Section heading "LATEST MANGA RELEASES" */
+.c-blog__heading.style-2.font-heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 0 0 10px;
+	margin: 0 0 12px;
+	border-bottom: 1px solid var(--mz-border);
+	background: transparent;
+}
+.c-blog__heading.style-2.font-heading h2,
+.c-blog__heading.style-2.font-heading h2.h4 {
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--mz-ink);
+	margin: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	background: transparent;
+	padding: 0;
+}
+/* Kill the red chunky badge-flag around the icon */
+.c-blog__heading.style-2.font-heading h2 > i,
+.c-blog__heading.style-2.font-heading h2.h4 > i {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px; height: 20px;
+	background: var(--mz-accent);
+	color: var(--mz-accent-ink);
+	border-radius: 4px;
+	font-size: 11px;
+	padding: 0;
+	box-shadow: none;
+}
+/* Reverse-order button: small icon, ghost pill */
+.c-blog__heading.style-2.font-heading .btn-reverse-order {
+	width: 28px; height: 28px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--mz-border);
+	border-radius: var(--mz-radius-sm, 6px);
+	color: var(--mz-ink-soft);
+	background: transparent;
+	transition: border-color var(--mz-trans), color var(--mz-trans), background var(--mz-trans);
+}
+.c-blog__heading.style-2.font-heading .btn-reverse-order:hover {
+	border-color: var(--mz-accent);
+	color: var(--mz-accent);
+	background: var(--mz-accent-soft);
+}
+.c-blog__heading.style-2.font-heading .btn-reverse-order i { font-size: 14px; }
+
+/* Chapter list wrapper + each row */
+.page-content-listing.single-page {
+	background: transparent;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+.listing-chapters_wrap {
+	background: var(--mz-surface);
+	border: 1px solid var(--mz-border);
+	border-radius: var(--mz-radius);
+	padding: 4px 4px;
+	margin: 0;
+	overflow: hidden;
+}
+.listing-chapters_wrap.show-more { padding-bottom: 4px; }
+
+.listing-chapters_wrap ul.main,
+.listing-chapters_wrap ul.main.version-chap,
+.listing-chapters_wrap ul.main.version-chap.no-volumn,
+.listing-chapters_wrap ul.main.version-chap.volumns {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+}
+
+/* Kill the oversized padding Madara puts on each row */
+.listing-chapters_wrap li.wp-manga-chapter {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
 	padding: 7px 10px;
+	margin: 0;
+	min-height: 0;
+	background: transparent;
+	border: 0;
 	border-bottom: 1px solid var(--mz-border);
 	font-size: 13.5px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 10px;
+	line-height: 1.35;
 	transition: background-color var(--mz-trans);
 }
-.wp-manga-chapter:hover { background: var(--mz-surface-2); }
-.wp-manga-chapter a { color: var(--mz-ink); }
-.wp-manga-chapter a:hover { color: var(--mz-accent); }
-.wp-manga-chapter .chapter-release-date { color: var(--mz-muted); font-size: 12px; }
+.listing-chapters_wrap li.wp-manga-chapter:last-child { border-bottom: 0; }
+.listing-chapters_wrap li.wp-manga-chapter:hover {
+	background: var(--mz-surface-2);
+}
+
+/* Chapter link: FULL ink colour — Madara washes this out with a
+   visited/read "already-seen" style that leaves it nearly invisible. */
+.listing-chapters_wrap li.wp-manga-chapter > a,
+.listing-chapters_wrap li.wp-manga-chapter > a:link,
+.listing-chapters_wrap li.wp-manga-chapter > a:visited {
+	flex: 1 1 auto;
+	color: var(--mz-ink);
+	font-weight: 500;
+	text-decoration: none;
+	padding: 0;
+	background: transparent;
+	font-style: normal;
+	font-size: 13.5px;
+	line-height: 1.3;
+}
+.listing-chapters_wrap li.wp-manga-chapter > a:hover {
+	color: var(--mz-accent);
+}
+.listing-chapters_wrap li.wp-manga-chapter.unread > a {
+	color: var(--mz-accent);
+	font-weight: 600;
+}
+
+/* Release date: compact, muted but legible, not italic */
+.listing-chapters_wrap li.wp-manga-chapter .chapter-release-date {
+	flex: 0 0 auto;
+	color: var(--mz-muted);
+	font-size: 12px;
+	white-space: nowrap;
+	margin-left: auto;
+}
+.listing-chapters_wrap li.wp-manga-chapter .chapter-release-date i,
+.listing-chapters_wrap li.wp-manga-chapter .chapter-release-date * {
+	font-style: normal;
+	color: inherit;
+}
+
+/* "Reading" state — currently reading chapter marker */
+.listing-chapters_wrap li.wp-manga-chapter.reading {
+	background: var(--mz-accent-soft);
+}
+.listing-chapters_wrap li.wp-manga-chapter.reading > a {
+	color: var(--mz-accent);
+	font-weight: 600;
+}
+
+/* Volume row (when chapters are grouped into volumes) */
+.listing-chapters_wrap ul.main li.parent > a {
+	display: block;
+	padding: 8px 10px;
+	font-weight: 600;
+	font-size: 13px;
+	color: var(--mz-ink);
+	background: var(--mz-surface-2);
+	border-bottom: 1px solid var(--mz-border);
+}
+.listing-chapters_wrap ul.main li.parent > a:hover { color: var(--mz-accent); }
+.listing-chapters_wrap ul.sub-chap,
+.listing-chapters_wrap ul.sub-chap-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+}
+
+/* Show more button */
+.c-chapter-readmore {
+	padding: 8px 10px 2px;
+	text-align: center;
+	background: transparent;
+}
+.c-chapter-readmore .chapter-readmore,
+.c-chapter-readmore .btn-link {
+	display: inline-block;
+	padding: 6px 14px;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--mz-ink-soft);
+	background: transparent;
+	border: 1px solid var(--mz-border);
+	border-radius: var(--mz-radius-sm, 6px);
+	cursor: pointer;
+	text-decoration: none;
+	transition: color var(--mz-trans), border-color var(--mz-trans), background var(--mz-trans);
+}
+.c-chapter-readmore .chapter-readmore:hover,
+.c-chapter-readmore .btn-link:hover {
+	color: var(--mz-accent);
+	border-color: var(--mz-accent);
+	background: var(--mz-accent-soft);
+}
+
+/* ---- Manga detail card (Continue reading + meta strip) -----------
+   The default template stacks .profile-manga > .tab-summary >
+   .summary_content_wrap > .summary_content > .manga-action with
+   mismatched backgrounds so the "Continue reading" button sits on a
+   lighter band than the rest of the card. Flatten them all to one
+   surface. */
+
+body.manga-page .profile-manga,
+body.manga-page .profile-manga .tab-summary,
+body.manga-page .profile-manga .summary_content_wrap,
+body.manga-page .profile-manga .summary_content,
+body.manga-page .profile-manga .post-status,
+body.manga-page .profile-manga .manga-action,
+body.manga-page .profile-manga .post-content {
+	background: var(--mz-surface);
+	box-shadow: none;
+}
+body.manga-page .profile-manga {
+	border: 1px solid var(--mz-border);
+	border-radius: var(--mz-radius);
+	padding: var(--mz-pad-lg);
+}
+body.manga-page .profile-manga .post-title h1,
+body.manga-page .profile-manga .post-title h3 {
+	color: var(--mz-ink);
+	font-size: 22px;
+	margin: 0 0 8px;
+}
+body.manga-page .profile-manga .post-status {
+	border-top: 1px solid var(--mz-border);
+	border-bottom: 1px solid var(--mz-border);
+	padding: 10px 0;
+	margin: 10px 0;
+}
+body.manga-page .profile-manga .manga-action {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	flex-wrap: wrap;
+	padding-top: 6px;
+}
+body.manga-page .profile-manga .manga-action .c-btn {
+	background: var(--mz-accent);
+	border: 1px solid var(--mz-accent);
+	color: var(--mz-accent-ink);
+	border-radius: var(--mz-radius-sm, 6px);
+	padding: 8px 16px;
+	font-weight: 600;
+	font-size: 13.5px;
+	line-height: 1;
+	box-shadow: none;
+}
+body.manga-page .profile-manga .manga-action .c-btn:hover {
+	background: var(--mz-accent-hover, var(--mz-accent));
+	border-color: var(--mz-accent-hover, var(--mz-accent));
+}
+body.manga-page .profile-manga .manga-action .count-comment,
+body.manga-page .profile-manga .manga-action .add-bookmark {
+	color: var(--mz-ink-soft);
+	font-size: 13px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+body.manga-page .profile-manga .manga-action .count-comment i,
+body.manga-page .profile-manga .manga-action .add-bookmark i {
+	color: var(--mz-accent);
+	font-size: 16px;
+}
+
+/* "Edit This Manga" link (only visible to editors) */
+#admin-link-edit,
+.post-edit-link {
+	display: inline-block;
+	margin-top: 10px;
+	padding: 4px 10px;
+	font-size: 12px;
+	color: var(--mz-muted);
+	border: 1px solid var(--mz-border);
+	border-radius: var(--mz-radius-sm, 6px);
+	background: transparent;
+	text-decoration: none;
+}
+#admin-link-edit:hover,
+.post-edit-link:hover {
+	color: var(--mz-accent);
+	border-color: var(--mz-accent);
+}
 
 /* ---- Chapter reader ---- */
 .read-container, .reading-content, .page-break {
