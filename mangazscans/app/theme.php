@@ -296,14 +296,30 @@
 
 			wp_enqueue_style( 'madara-css', get_stylesheet_uri(), array(), '2.5.0' );
 
-			// MangazScans overrides: loaded last so its rules trump the
-			// compiled style.css without needing !important. Compact
-			// header + calm palette live here.
+			// MangazScans overrides: content/body surface polish on top
+			// of madara-css (manga grid, reader, etc.).
 			wp_enqueue_style(
 				'mangazscans-overrides',
 				get_parent_theme_file_uri( '/css/mangazscans-overrides.css' ),
 				array( 'madara-css' ),
 				'2.5.0'
+			);
+
+			// Chrome: our own header + footer. Dedicated 'mz-*' namespace,
+			// loaded last so nothing in madara-css or the overrides layer
+			// can reach into our navigation/footer markup by accident.
+			wp_enqueue_style(
+				'mangazscans-chrome',
+				get_parent_theme_file_uri( '/css/mangazscans-chrome.css' ),
+				array( 'mangazscans-overrides' ),
+				'2.5.0'
+			);
+			wp_enqueue_script(
+				'mangazscans-chrome',
+				get_parent_theme_file_uri( '/js/mangazscans-chrome.js' ),
+				array(),
+				'2.5.0',
+				true
 			);
 
 			wp_enqueue_script( 'imagesloaded' );

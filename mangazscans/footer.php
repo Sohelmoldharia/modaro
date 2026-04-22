@@ -1,111 +1,122 @@
 <?php
 	/**
-	 * The template for displaying the footer.
+	 * MangazScans footer.
 	 *
-	 * Contains the closing of the #content div and all content after
+	 * Replaces Madara's footer.php. Preserves the madara-footer action
+	 * so any plugin that injects into the footer still works, and
+	 * preserves the .wrap / .body-wrap outer structure.
 	 *
 	 * @package mangazscans
 	 */
 
 	use App\Madara;
 
-	$madara_copyright = Madara::getOption( 'copyright', '' );
+	if ( ! is_404() ) :
+		$copyright = Madara::getOption( 'copyright', '' );
+		$tagline   = get_bloginfo( 'description' );
+		$site_name = get_bloginfo( 'name' );
+		$logo_opt  = Madara::getOption( 'logo_image', '' );
+		$logo_dark = $logo_opt !== '' ? $logo_opt : get_parent_theme_file_uri( '/images/logo-light.svg' );
+		$logo_light = $logo_opt !== '' ? $logo_opt : get_parent_theme_file_uri( '/images/logo.svg' );
+		$socials   = array();
 
-	$madara_ParseSocials = new App\Views\ParseSocials();
+		// Reuse Madara's social accounts list (Facebook/Twitter/Discord
+		// etc. configured under Theme Options), but render our own markup.
+		if ( class_exists( '\\App\\Views\\ParseSocials' ) ) {
+			$parser    = new \App\Views\ParseSocials();
+			$html_list = $parser->renderSocialAccounts( false );
+		} else {
+			$html_list = '';
+		}
+?>
 
-	$madara_social_accounts = $madara_ParseSocials->renderSocialAccounts( false );
+		</div><!-- .site-content -->
 
-	$manga_hover_details = Madara::getOption( 'manga_hover_details', 'off' );
+		<footer class="mz-footer" role="contentinfo">
+			<div class="mz-footer__grid">
+				<section class="mz-footer__brand">
+					<a class="mz-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( $site_name ); ?>">
+						<img class="mz-brand__logo mz-brand__logo--dark"  src="<?php echo esc_url( $logo_dark ); ?>"  alt="<?php echo esc_attr( $site_name ); ?>" width="200" height="40" />
+						<img class="mz-brand__logo mz-brand__logo--light" src="<?php echo esc_url( $logo_light ); ?>" alt="<?php echo esc_attr( $site_name ); ?>" width="200" height="40" />
+					</a>
+					<?php if ( $tagline ) : ?>
+						<p class="mz-footer__tagline"><?php echo esc_html( $tagline ); ?></p>
+					<?php endif; ?>
+					<?php if ( $html_list !== '' ) : ?>
+						<div class="mz-footer__social"><?php echo wp_kses_post( $html_list ); ?></div>
+					<?php endif; ?>
+				</section>
 
-	if ( ! is_404() ) {
+				<section class="mz-footer__col">
+					<h4 class="mz-footer__heading"><?php esc_html_e( 'Explore', 'mangazscans' ); ?></h4>
+					<?php
+						if ( has_nav_menu( 'footer_menu' ) ) {
+							wp_nav_menu( array(
+								'theme_location' => 'footer_menu',
+								'container'      => false,
+								'menu_class'     => 'mz-footer__list',
+								'depth'          => 1,
+								'fallback_cb'    => false,
+							) );
+						} else {
+							$manga_root = class_exists( '\\App\\Madara' ) ? get_post_type_archive_link( 'wp-manga' ) : '';
+							echo '<ul class="mz-footer__list">';
+							if ( $manga_root ) {
+								echo '<li><a href="' . esc_url( $manga_root ) . '">' . esc_html__( 'All manga', 'mangazscans' ) . '</a></li>';
+							}
+							echo '<li><a href="' . esc_url( home_url( '/?s=' ) ) . '">' . esc_html__( 'Search', 'mangazscans' ) . '</a></li>';
+							echo '</ul>';
+						}
+					?>
+				</section>
 
-		?>
-        </div><!-- <div class="site-content"> -->
-
-		<?php get_template_part( 'html/main-bottom' ); ?>
-
-        <footer class="site-footer">
-
-			<?php echo apply_filters( 'madara_ads_footer', madara_ads_position( 'ads_footer', 'footer-ads col-md-12' ) ); ?>
-
-			<?php if ( $madara_social_accounts && $madara_social_accounts != '' ) { ?>
-                <div class="top-footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="wrap_social_account">
-									<?php echo wp_kses_post( $madara_social_accounts ); ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-			<?php } ?>
-			
-			<?php if ( is_active_sidebar( 'footer_sidebar' ) ) { ?>
-			<div class="c-footer-sidebar">
-				<div class="container">
-					<div class="row c-row">
-						<?php dynamic_sidebar( 'footer_sidebar' ); ?>
-					</div>
-				</div>
+				<section class="mz-footer__col">
+					<h4 class="mz-footer__heading"><?php esc_html_e( 'Account', 'mangazscans' ); ?></h4>
+					<ul class="mz-footer__list">
+						<?php if ( is_user_logged_in() ) : ?>
+							<li><a href="<?php echo esc_url( admin_url( 'profile.php' ) ); ?>"><?php esc_html_e( 'Profile', 'mangazscans' ); ?></a></li>
+							<li><a href="<?php echo esc_url( wp_logout_url( home_url( '/' ) ) ); ?>"><?php esc_html_e( 'Sign out', 'mangazscans' ); ?></a></li>
+						<?php else : ?>
+							<li><a href="<?php echo esc_url( wp_login_url() ); ?>"><?php esc_html_e( 'Sign in', 'mangazscans' ); ?></a></li>
+							<?php if ( get_option( 'users_can_register' ) ) : ?>
+								<li><a href="<?php echo esc_url( wp_registration_url() ); ?>"><?php esc_html_e( 'Create an account', 'mangazscans' ); ?></a></li>
+							<?php endif; ?>
+						<?php endif; ?>
+					</ul>
+				</section>
 			</div>
-			<?php } ?>
 
-            <div class="bottom-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
+			<div class="mz-footer__bottom">
+				<p class="mz-footer__copy">
+					<?php
+					if ( $copyright !== '' ) {
+						echo wp_kses_post( $copyright );
+					} else {
+						printf(
+							/* translators: %s: current year */
+							esc_html__( '© %s MangazScans. All rights reserved.', 'mangazscans' ),
+							esc_html( date( 'Y' ) )
+						);
+					}
+					?>
+				</p>
+				<?php
+					// Language switcher (Polylang) — only render if enabled + plugin active.
+					if ( Madara::getOption( 'polylang_footer', 'off' ) === 'on' && function_exists( 'pll_the_languages' ) ) :
+				?>
+					<div class="mz-footer__lang"><?php pll_the_languages( array( 'dropdown' => 1 ) ); ?></div>
+				<?php endif; ?>
+			</div>
+		</footer>
 
-							<?php
-								if ( has_nav_menu( 'footer_menu' ) ) {
-									echo '<div class="nav-footer"><ul class="list-inline font-nav">';
-									wp_nav_menu( array(
-										'theme_location' => 'footer_menu',
-										'container'      => false,
-										'items_wrap'     => '%3$s',
-										'depth'          => '1',
-									) );
-									echo '</ul></div>';
-								}
-							?>
+		<?php do_action( 'madara-footer' ); ?>
 
-                            <div class="copyright">
-								<?php
-									$madara_copyright = Madara::getOption( 'copyright', '' );
-									if ( $madara_copyright != '' ) {
-										echo '<p>' . wp_kses_post( $madara_copyright ) . '</p>';
-									} else {
-										echo '<p>' . sprintf( esc_html__( '&copy; %s MangazScans. All rights reserved.', 'mangazscans' ), date( 'Y' ) ) . '</p>';
-									}
-								?>
-                            </div>
-                            
-                            <?php
-                            if(Madara::getOption('polylang_footer', 'off') == 'on' && function_exists('pll_the_languages')){?>
-                            <div class="languages">
-                                <span class="title"><?php esc_html_e('Language:','mangazscans');?></span> <?php pll_the_languages( ['dropdown'=>1] );?>
-                            </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
+		</div><!-- .wrap -->
+	</div><!-- .body-wrap -->
 
-        </footer>
-		<?php
-		echo apply_filters( 'madara_ads_wall_left', madara_ads_position( 'ads_wall_left', 'wall-ads-control wall-ads-left' ) );
-		echo apply_filters( 'madara_ads_wall_right', madara_ads_position( 'ads_wall_right', 'wall-ads-control wall-ads-right' ) );
-		?>
-
-		<?php if ( $manga_hover_details == 'on' ) { ?>
-            <div id="hover-infor"></div>
-		<?php } ?>
-
-        </div> <!-- class="wrap" --></div> <!-- class="body-wrap" -->
-
-	<?php } ?>
+	<?php endif; // ! is_404() ?>
 
 <?php wp_footer(); ?>
 
-</body></html>
+</body>
+</html>
