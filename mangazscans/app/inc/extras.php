@@ -120,7 +120,7 @@
 			$body_schema = get_user_meta( $user_id, '_manga_user_site_schema', true);
 		}
 		
-		$body_schema           = (isset($body_schema) && $body_schema != '') ? $body_schema : Madara::getOption( 'body_schema', 'light' );
+		$body_schema           = (isset($body_schema) && $body_schema != '') ? $body_schema : Madara::getOption( 'body_schema', 'dark' );
 		
 		
 		$overwrite_body_schema = isset( $_GET['body_schema'] ) && $_GET['body_schema'] != '' ? $_GET['body_schema'] : '';

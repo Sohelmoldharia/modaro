@@ -1,136 +1,159 @@
 /*
- * MangazScans overrides
+ * MangazScans overrides — dark by default, compact, accent-driven.
  *
- * Layer loaded LAST so every rule in here wins over style.css without
- * needing !important everywhere. Keep this file short and purposeful;
- * anything structural lives in the compiled style.css.
+ * Loaded last via wp_enqueue_style with 'madara-css' as a dependency,
+ * so every rule here wins over the compiled style.css without
+ * needing !important sprayed everywhere.
  *
- * Goals:
- *   - calm light palette: paper-white bg, ink text, single orange accent
- *   - compact header with tighter vertical rhythm
- *   - drop heavy gradients / shadows so pages feel faster
+ * Colour palette is driven by CSS custom properties scoped on the body
+ * schema class so dark/light swaps are a single class flip:
+ *
+ *   body.text-ui-light  → DARK mode  (madara names this "light text on dark bg")
+ *   body.text-ui-dark   → LIGHT mode (madara names this "dark text on light bg")
+ *
+ * Default site mode is dark; admin can switch to light under
+ * Theme Options → General → Body Schema. Logged-in users keep their
+ * own per-account choice.
  */
 
 :root {
+	--mz-accent: #ff6b35;
+	--mz-accent-hover: #e95822;
+	--mz-accent-ink: #ffffff;
+	--mz-radius: 6px;
+	--mz-header-h: 56px;
+	--mz-header-h-mobile: 48px;
+	--mz-gap: 12px;
+	--mz-pad: 14px;
+}
+
+/* DARK (default + body.text-ui-light) */
+body,
+body.text-ui-light {
+	--mz-bg: #14141f;
+	--mz-surface: #1c1c2e;
+	--mz-surface-2: #242438;
+	--mz-ink: #f0f0f5;
+	--mz-ink-soft: #c0c0d0;
+	--mz-muted: #80809a;
+	--mz-border: #2a2a3e;
+	--mz-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* LIGHT (when admin sets Body Schema → Light) */
+body.text-ui-dark {
 	--mz-bg: #ffffff;
 	--mz-surface: #fafafa;
+	--mz-surface-2: #f0f0f4;
 	--mz-ink: #1a1a2e;
 	--mz-ink-soft: #4a4a5e;
 	--mz-muted: #8a8a9a;
 	--mz-border: #e6e6ec;
-	--mz-accent: #ff6b35;
-	--mz-accent-ink: #ffffff;
-	--mz-header-h: 64px;
-	--mz-header-h-mobile: 56px;
+	--mz-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 /* ---- Base ---- */
-body,
-body.text-ui-light {
+html, body, body.text-ui-light, body.text-ui-dark {
 	background: var(--mz-bg);
 	color: var(--mz-ink);
 }
 
-body a,
-body a:visited {
-	color: var(--mz-ink);
-	text-decoration: none;
-}
-body a:hover,
-body a:focus {
-	color: var(--mz-accent);
-}
+a, a:visited { color: var(--mz-ink); text-decoration: none; }
+a:hover, a:focus { color: var(--mz-accent); }
 
-/* ---- Header: compact ---- */
-.site-header {
+p { line-height: 1.5; }
+
+hr { border-color: var(--mz-border); }
+
+/* Selection */
+::selection { background: var(--mz-accent); color: var(--mz-accent-ink); }
+
+/* ---- Header: compact, flat ---- */
+.site-header,
+.site-header .c-header__top,
+.site-header .main-navigation,
+.sub-header-nav, .c-header__sub, .c-header__bottom {
 	background: var(--mz-bg);
-	border-bottom: 1px solid var(--mz-border);
+	border-color: var(--mz-border);
 	box-shadow: none;
 }
-
-.site-header .c-header__top {
-	background: var(--mz-bg);
-	border: 0;
-	box-shadow: none;
-	padding: 0;
-}
-
+.site-header { border-bottom: 1px solid var(--mz-border); }
 .site-header .main-navigation {
-	background: var(--mz-bg);
 	min-height: var(--mz-header-h);
-	padding: 6px 0;
-	box-shadow: none;
+	padding: 4px 0;
 }
-
 .site-header .main-navigation .main-navigation_wrap {
-	min-height: calc(var(--mz-header-h) - 12px);
+	min-height: calc(var(--mz-header-h) - 8px);
 	padding: 0;
 }
-
 .site-header .wrap_branding .logo img,
 .site-header .logo img {
-	max-height: 40px;
+	max-height: 36px;
 	width: auto;
 	height: auto;
 }
-
 .site-header .main-menu > ul > li > a {
-	padding: 0 14px;
+	padding: 0 12px;
 	line-height: var(--mz-header-h);
 	color: var(--mz-ink);
 	font-weight: 600;
+	font-size: 14px;
 	letter-spacing: 0.01em;
 }
 .site-header .main-menu > ul > li > a:hover,
 .site-header .main-menu > ul > li.current-menu-item > a {
 	color: var(--mz-accent);
 }
-
 .site-header .main-menu ul ul.sub-menu {
-	background: var(--mz-bg);
+	background: var(--mz-surface);
 	border: 1px solid var(--mz-border);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+	box-shadow: var(--mz-shadow);
 }
 .site-header .main-menu ul ul.sub-menu > li > a {
 	color: var(--mz-ink);
+	padding: 8px 14px;
 }
 .site-header .main-menu ul ul.sub-menu > li > a:hover {
 	color: var(--mz-accent);
-	background: var(--mz-surface);
+	background: var(--mz-surface-2);
 }
 
-/* Sub-header / secondary nav: flatten */
-.sub-header-nav,
-.c-header__sub,
-.c-header__bottom {
-	background: var(--mz-bg);
-	border-bottom: 1px solid var(--mz-border);
-	box-shadow: none;
-}
-
-/* Search box in header */
+/* Search input in header */
 .site-header input[type="text"],
-.site-header input[type="search"] {
+.site-header input[type="search"],
+input[type="text"], input[type="search"], input[type="email"],
+input[type="url"], input[type="password"], input[type="number"],
+textarea, select {
 	background: var(--mz-surface);
 	border: 1px solid var(--mz-border);
 	color: var(--mz-ink);
-	border-radius: 6px;
+	border-radius: var(--mz-radius);
 }
+input::placeholder, textarea::placeholder { color: var(--mz-muted); }
+
+/* Buttons */
 .site-header input[type="submit"],
-.btn-primary,
-.button-primary,
-button.button-primary {
+button.button-primary, .button-primary,
+.btn-primary, a.btn-primary,
+.c-btn,
+.wp-manga-nav-links a,
+.chapter-selection a.selected {
 	background: var(--mz-accent);
-	border-color: var(--mz-accent);
+	border: 1px solid var(--mz-accent);
 	color: var(--mz-accent-ink);
-	border-radius: 6px;
+	border-radius: var(--mz-radius);
 	box-shadow: none;
+	padding: 8px 16px;
+	font-weight: 600;
+	transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 .site-header input[type="submit"]:hover,
-.btn-primary:hover,
-.button-primary:hover {
-	background: #e95822;
-	border-color: #e95822;
+button.button-primary:hover, .button-primary:hover,
+.btn-primary:hover, a.btn-primary:hover,
+.c-btn:hover, .wp-manga-nav-links a:hover {
+	background: var(--mz-accent-hover);
+	border-color: var(--mz-accent-hover);
+	color: var(--mz-accent-ink);
 }
 
 /* Mobile header trim */
@@ -140,51 +163,144 @@ button.button-primary {
 	}
 	.site-header .wrap_branding .logo img,
 	.site-header .logo img {
-		max-height: 34px;
+		max-height: 30px;
 	}
 	.site-header .main-menu > ul > li > a {
 		line-height: var(--mz-header-h-mobile);
+		padding: 0 10px;
 	}
 }
 
-/* ---- Global calm-down ---- */
-.card,
-.c-card,
+/* ---- Cards / widgets / containers ---- */
 .c-blog__inner,
+.c-card,
 .c-widget-wrap,
+.widget__inner,
+.page-listing-item,
+.page-content-listing,
 .page-breadcrumb,
-.page-listing-item {
-	background: var(--mz-bg);
+.c-blog,
+.c-tabs-content {
+	background: var(--mz-surface);
 	border: 1px solid var(--mz-border);
 	box-shadow: none;
+	border-radius: var(--mz-radius);
+}
+.c-blog__inner,
+.c-card,
+.c-widget-wrap,
+.widget__inner {
+	padding: var(--mz-pad);
+}
+.c-blog,
+.page-listing-item,
+.page-content-listing {
+	margin-bottom: var(--mz-gap);
 }
 
-button,
-.btn,
-input[type="submit"] {
-	transition: background-color 120ms ease, color 120ms ease,
-		border-color 120ms ease;
-}
+/* Compact list spacing */
+.row { margin-left: -8px; margin-right: -8px; }
+.row > [class*="col-"] { padding-left: 8px; padding-right: 8px; }
 
-/* Accent links (read now, continue, chapter links) */
-.c-btn,
-.wp-manga-nav-links a,
-.chapter-selection a.selected {
-	background: var(--mz-accent);
-	color: var(--mz-accent-ink);
-	border-color: var(--mz-accent);
-	box-shadow: none;
+/* Manga thumbnails: tighter gaps */
+.page-content-listing .row .page-item-detail,
+.page-content-listing .row .page-listing-item {
+	margin-bottom: var(--mz-gap);
 }
-.c-btn:hover,
-.wp-manga-nav-links a:hover {
-	background: #e95822;
-	border-color: #e95822;
-}
+.item-summary { padding: 8px 4px; }
+.item-thumb img,
+.thumb-content img { border-radius: var(--mz-radius); }
 
-/* Tone down heavy backgrounds */
-.site-content,
-.c-body,
-.body-wrap,
-.wrap {
+/* Tone down heavy backgrounds across body areas */
+.site-content, .body-wrap, .wrap, .container, .c-body {
 	background: var(--mz-bg);
 }
+
+/* Page heading bar: compact */
+.page-breadcrumb { padding: 10px 14px; margin-bottom: var(--mz-gap); }
+
+/* Sidebars */
+.c-sidebar { padding-top: 0; }
+.c-sidebar .widget,
+.c-sidebar .c-widget-wrap { margin-bottom: var(--mz-gap); }
+.widget-heading {
+	border-bottom: 1px solid var(--mz-border);
+	padding: 0 0 8px;
+	margin: 0 0 10px;
+}
+.widget-heading h5,
+.widget-title h4 { color: var(--mz-ink); font-size: 14px; }
+
+/* Footer: same flat surface as cards */
+.site-footer, .c-footer, .footer-wrapper, .c-footer__bottom {
+	background: var(--mz-surface);
+	border-top: 1px solid var(--mz-border);
+	color: var(--mz-ink-soft);
+}
+.site-footer a, .c-footer a, .footer-wrapper a { color: var(--mz-ink-soft); }
+.site-footer a:hover, .c-footer a:hover, .footer-wrapper a:hover { color: var(--mz-accent); }
+.c-footer__bottom { padding: 10px 0; font-size: 13px; }
+
+/* ---- Manga reader page (where compactness matters most) ---- */
+.read-container, .reading-content, .page-break {
+	background: var(--mz-bg);
+}
+.reading-content img {
+	background: var(--mz-surface);
+	border-radius: 0;
+	display: block;
+	margin: 0 auto;
+}
+.c-blog__heading, .heading {
+	color: var(--mz-ink);
+	margin: 0 0 8px;
+}
+.chapter-selection,
+.nav-links {
+	background: var(--mz-surface);
+	border: 1px solid var(--mz-border);
+	border-radius: var(--mz-radius);
+	padding: 8px;
+}
+
+/* Manga single info card: compact stack */
+.c-blog-post .post-title h1,
+.c-blog-post .post-title h3 { font-size: 22px; margin: 0 0 6px; }
+
+/* Inputs grouped tighter */
+.wp-manga-form-group { margin-bottom: 12px; }
+
+/* Generic table compact */
+table { border-color: var(--mz-border); }
+th, td { padding: 6px 10px; }
+
+/* Pagination */
+.wp-pagenavi a, .wp-pagenavi span,
+.nav-links a, .nav-links span {
+	background: var(--mz-surface);
+	border: 1px solid var(--mz-border);
+	color: var(--mz-ink);
+	border-radius: var(--mz-radius);
+	padding: 4px 10px;
+	margin: 0 2px;
+}
+.wp-pagenavi .current,
+.wp-pagenavi a:hover,
+.nav-links .current,
+.nav-links a:hover {
+	background: var(--mz-accent);
+	border-color: var(--mz-accent);
+	color: var(--mz-accent-ink);
+}
+
+/* Ratings stars */
+.ratings_stars { color: var(--mz-muted); }
+.ratings_stars.rating_current,
+.ratings_stars.rating_current_half { color: var(--mz-accent); }
+
+/* Comments */
+#comments, .comments-area { background: var(--mz-bg); }
+.comment-body { background: var(--mz-surface); padding: var(--mz-pad); border-radius: var(--mz-radius); }
+
+/* Loaders / utility */
+.fa-spinner, .fa-spin { color: var(--mz-accent); }

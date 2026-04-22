@@ -117,19 +117,19 @@
 			array(
 				'id'      => 'body_schema',
 				'label'   => esc_html__( 'Body Schema', 'mangazscans' ),
-				'desc'    => esc_html__( 'Choose Body Color Schema', 'mangazscans' ),
-				'std'     => 'light',
+				'desc'    => esc_html__( 'Default site colour scheme. Visitors can override per session with ?body_schema=light or ?body_schema=dark; logged-in users get their own per-account choice.', 'mangazscans' ),
+				'std'     => 'dark',
 				'type'    => 'select',
 				'section' => 'theme_layout',
 				'choices' => array(
 					array(
+						'value' => 'dark',
+						'label' => esc_html__( 'Dark', 'mangazscans' )
+					),
+					array(
 						'value' => 'light',
 						'label' => esc_html__( 'Light', 'mangazscans' )
 					),
-					array(
-						'value' => 'dark',
-						'label' => esc_html__( 'Dark', 'mangazscans' )
-					)
 				),
 			),
 

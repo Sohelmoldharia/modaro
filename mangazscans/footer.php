@@ -76,7 +76,7 @@
 									if ( $madara_copyright != '' ) {
 										echo '<p>' . wp_kses_post( $madara_copyright ) . '</p>';
 									} else {
-										echo '<p>' . sprintf(esc_html__( '&copy; %s Madara Inc. All rights reserved', 'mangazscans' ), date('Y')) . '</p>';
+										echo '<p>' . sprintf( esc_html__( '&copy; %s MangazScans. All rights reserved.', 'mangazscans' ), date( 'Y' ) ) . '</p>';
 									}
 								?>
                             </div>
