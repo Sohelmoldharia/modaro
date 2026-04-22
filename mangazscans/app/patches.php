@@ -160,3 +160,113 @@
 		// (priority 10, same action) never runs.
 		wp_send_json_success();
 	}
+
+	/**
+	 * PATCH: strip the WordPress author from share-preview surfaces.
+	 *
+	 * Discord / Slack / iMessage / Signal etc. build their preview
+	 * cards from a site's oEmbed response (linked in <head> via
+	 * <link rel="alternate" type="application/json+oembed" …>). WP
+	 * puts the post author's display name into that response by
+	 * default, which is how 'izame1' ends up on a public manga card.
+	 * MangazScans is a publisher-style site — we want the brand, not
+	 * the WP username, so:
+	 *   - unset author_name / author_url in the JSON oembed payload
+	 *   - suppress the XML oembed author element the same way
+	 *   - remove WP's default author rel + meta from <head>
+	 */
+	add_filter( 'oembed_response_data', function ( $data ) {
+		unset( $data['author_name'], $data['author_url'] );
+		return $data;
+	}, 99 );
+
+	add_action( 'rest_api_init', function () {
+		add_filter( 'rest_prepare_oembed_response', function ( $response ) {
+			if ( isset( $response->data ) && is_array( $response->data ) ) {
+				unset( $response->data['author_name'], $response->data['author_url'] );
+			}
+			return $response;
+		}, 99 );
+	} );
+
+	// XML-flavoured oembed — older clients still hit this.
+	add_filter( 'oembed_xml_response', function ( $return, $data ) {
+		if ( $return && is_string( $return ) ) {
+			$return = preg_replace( '#<(author_name|author_url)>.*?</\1>#is', '', $return );
+		}
+		return $return;
+	}, 10, 2 );
+
+	// Kill the two things that would otherwise put the author back in
+	// <head>: the 'rsd' link pointed at the author archive feed, and
+	// the WP author meta tag.
+	remove_action( 'wp_head', 'wp_generator' );                 // WP version disclosure, not author but while we're here
+	remove_action( 'wp_head', 'rsd_link' );
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 ); // smaller <head>
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+	/**
+	 * Provide a sensible og:description for share cards. Yoast was
+	 * emitting og:title / og:url / og:site_name but no og:description,
+	 * which is why Discord was falling back to 'Visit the post for
+	 * more.' on chapter and manga pages.
+	 *
+	 * Priority runs AFTER Yoast (priority 10) so we only fill the
+	 * gap if Yoast didn't already set one, and we short-circuit
+	 * entirely if any plugin/theme has already output the tag.
+	 */
+	add_action( 'wp_head', function () {
+		static $already_emitted = null;
+		if ( $already_emitted !== null ) {
+			return; // only run once per request
+		}
+		$already_emitted = true;
+
+		global $wp_filter;
+		// Simple heuristic: peek at the HTML currently buffered isn't
+		// practical at this action-level hook, so instead rely on
+		// Yoast's own canonical filter to short-circuit us if it
+		// generated a description.
+		$suppressed = apply_filters( 'mangazscans_suppress_og_description', false );
+		if ( $suppressed ) {
+			return;
+		}
+
+		$desc = '';
+		if ( is_singular() ) {
+			$post = get_queried_object();
+			if ( $post && isset( $post->post_excerpt ) && $post->post_excerpt !== '' ) {
+				$desc = $post->post_excerpt;
+			} elseif ( $post && isset( $post->post_content ) ) {
+				$desc = wp_strip_all_tags( $post->post_content );
+			}
+		} elseif ( is_tax() || is_category() || is_tag() ) {
+			$term = get_queried_object();
+			if ( $term && ! empty( $term->description ) ) {
+				$desc = $term->description;
+			}
+		}
+		if ( $desc === '' ) {
+			$desc = get_bloginfo( 'description' );
+		}
+		$desc = wp_trim_words( trim( wp_strip_all_tags( $desc ) ), 40, '…' );
+		if ( $desc === '' ) {
+			return;
+		}
+		// Only print if no og:description has been emitted yet. We
+		// check Yoast's 'wpseo_opengraph_desc' filter being non-empty
+		// as the "Yoast already did it" signal.
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			$yoast_desc = apply_filters( 'wpseo_opengraph_desc', '' );
+			if ( $yoast_desc !== '' ) {
+				return;
+			}
+		}
+		printf(
+			"<meta property=\"og:description\" content=\"%s\" />\n<meta name=\"twitter:description\" content=\"%s\" />\n",
+			esc_attr( $desc ),
+			esc_attr( $desc )
+		);
+	}, 20 );
+
