@@ -1,154 +1,100 @@
 /*
- * MangazScans — chapter reader.
+ * MangazScans — chapter reader polish.
  *
- * Styles madara-core/manga-single-reading.php. Dark-first, inherits
- * --mz-* tokens from the chrome + overrides layers. Own mz-reader__*
- * namespace only — the plugin's own .select-pagination / .wp-manga-nav
- * / .entry-header elements can't reach in because we don't render
- * them at all in the rewritten template.
+ * This stylesheet does NOT replace Madara's reader — it styles it.
+ * Keeping the plugin's native template means paged mode, the page
+ * pager (1/2, 2/2, …), the chapter selector, host/volume selects,
+ * and chapter prev/next all keep working end-to-end.
  *
- * Loaded only on is_manga_reading_page() via conditional enqueue.
+ * We only:
+ *   - dark-theme the chrome (dark bg, accent buttons, readable text),
+ *   - stack the nav cleanly on mobile so buttons don't overflow,
+ *   - compact the chapter image area,
+ *   - sticky the bottom nav on mobile so it's always in thumb reach.
+ *
+ * Loaded only on is_manga_reading_page().
  */
 
-.mz-reader {
-	max-width: 1000px;
-	margin: 0 auto;
-	padding: 0;
+/* ---- Chapter heading + breadcrumb spacing ------------------------ */
+
+.reading-content-wrap #chapter-heading {
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.25;
+	letter-spacing: -0.01em;
 	color: var(--mz-ink, #ededf2);
-	font-family: var(--mz-font, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+	margin: 14px 0 8px;
+	padding: 0 12px;
 }
 
-/* ---- Reader nav bar (used top + bottom) -------------------------- */
-
-.mz-reader__bar {
-	display: grid;
-	align-items: center;
-	gap: 10px;
-	padding: 8px 12px;
-	background: var(--mz-blur-bg, rgba(14, 14, 24, 0.88));
-	-webkit-backdrop-filter: saturate(160%) blur(10px);
-	backdrop-filter: saturate(160%) blur(10px);
-	border-bottom: 1px solid var(--mz-border, #272736);
-	font-size: 13px;
-	color: var(--mz-ink, #ededf2);
+.reading-content-wrap .c-breadcrumb,
+.reading-content-wrap .manga-breadcrumb {
+	padding: 4px 12px 8px;
+	font-size: 12.5px;
+	color: var(--mz-muted, #7e7e93);
 }
-
-.mz-reader__bar--top {
-	grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto) auto;
-	position: sticky;
-	top: var(--mz-header-h, 56px);
-	z-index: 20;
-}
-
-.mz-reader__bar--bottom {
-	grid-template-columns: 1fr;
-	justify-items: center;
-	border-bottom: 0;
-	border-top: 1px solid var(--mz-border, #272736);
-	padding: 10px 12px;
-	margin-bottom: 12px;
-}
-
-/* Back link (top only) — "← Manga title" */
-.mz-reader__back {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	padding: 6px 10px;
-	color: var(--mz-ink, #ededf2);
-	text-decoration: none;
-	font-weight: 600;
-	border-radius: var(--mz-radius-sm, 6px);
-	transition: background 140ms ease, color 140ms ease;
-	max-width: 100%;
-	min-width: 0;
-}
-.mz-reader__back:hover {
-	background: var(--mz-surface-2, #1f1f30);
-	color: var(--mz-accent, #ff6b35);
-}
-.mz-reader__back-label {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	max-width: 28ch;
-}
-
-/* Chapter label in the middle of the top bar */
-.mz-reader__chapter-label {
+.reading-content-wrap .c-breadcrumb a,
+.reading-content-wrap .manga-breadcrumb a {
 	color: var(--mz-ink-soft, #b6b6c4);
-	font-size: 13px;
-	font-weight: 500;
-	text-align: center;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	min-width: 0;
-}
-
-/* Info icon (top only) — goes back to manga info */
-.mz-reader__info {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 36px; height: 36px;
-	color: var(--mz-ink, #ededf2);
-	background: transparent;
-	border: 1px solid var(--mz-border, #272736);
-	border-radius: var(--mz-radius-sm, 6px);
 	text-decoration: none;
-	transition: all 140ms ease;
 }
-.mz-reader__info:hover {
+.reading-content-wrap .c-breadcrumb a:hover,
+.reading-content-wrap .manga-breadcrumb a:hover {
 	color: var(--mz-accent, #ff6b35);
-	border-color: var(--mz-accent, #ff6b35);
-	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
 }
 
-/* Controls cluster: [Prev] [Chapter select] [Next] */
-.mz-reader__controls {
-	display: inline-flex;
+/* ---- Chapter nav bars (madara's .wp-manga-nav) ------------------- */
+
+.reading-content-wrap .entry-header.header,
+.reading-content-wrap .entry-header.footer,
+.reading-content-wrap #manga-reading-nav-head,
+.reading-content-wrap #manga-reading-nav-foot {
+	background: var(--mz-surface, #171724);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius, 8px);
+	padding: 10px 12px;
+	margin: 8px 12px;
+}
+.reading-content-wrap #manga-reading-nav-head { margin-top: 4px; }
+.reading-content-wrap #manga-reading-nav-foot { margin-bottom: 12px; }
+
+/* Inner wrapper */
+.reading-content-wrap .wp-manga-nav {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+}
+
+/* Left cluster — host / volume / chapter / reading-style selects */
+.reading-content-wrap .wp-manga-nav .select-view {
+	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: 6px;
 	min-width: 0;
+	flex: 1 1 auto;
 }
 
-.mz-reader__nav {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 4px;
-	padding: 0 14px;
-	height: 36px;
-	color: var(--mz-ink, #ededf2);
+/* Each "select picker" box */
+.reading-content-wrap .wp-manga-nav .c-selectpicker,
+.reading-content-wrap .wp-manga-nav .select-pagination .c-selectpicker {
+	margin: 0;
+	padding: 0;
 	background: transparent;
-	border: 1px solid var(--mz-border, #272736);
-	border-radius: var(--mz-radius-sm, 6px);
-	font-size: 13px;
-	font-weight: 600;
-	text-decoration: none;
-	cursor: pointer;
-	transition: all 140ms ease;
-	white-space: nowrap;
-}
-.mz-reader__nav:hover:not(.is-disabled) {
-	color: var(--mz-accent-ink, #fff);
-	background: var(--mz-accent, #ff6b35);
-	border-color: var(--mz-accent, #ff6b35);
-}
-.mz-reader__nav.is-disabled {
-	opacity: 0.4;
-	cursor: not-allowed;
-	pointer-events: none;
+	border: 0;
 }
 
-/* Chapter picker */
-.mz-reader__picker {
-	position: relative;
-	min-width: 0;
-	flex: 0 1 auto;
-}
-.mz-reader__select {
+/* The actual <select> elements */
+.reading-content-wrap .wp-manga-nav select,
+.reading-content-wrap .wp-manga-nav .selectpicker,
+.reading-content-wrap select.single-chapter-select,
+.reading-content-wrap select.selectpicker,
+.reading-content-wrap select#single-pager {
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -159,174 +105,265 @@
 	color: var(--mz-ink, #ededf2);
 	border: 1px solid var(--mz-border, #272736);
 	border-radius: var(--mz-radius-sm, 6px);
-	padding: 0 28px 0 12px;
+	padding: 0 28px 0 10px;
 	height: 36px;
 	font-size: 13px;
 	font-weight: 600;
 	cursor: pointer;
-	max-width: 180px;
-	min-width: 100px;
-	transition: border-color 140ms ease, background-color 140ms ease;
 	outline: none;
-	text-overflow: ellipsis;
+	transition: border-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
+	min-width: 80px;
+	max-width: 100%;
+	font-family: inherit;
 }
-.mz-reader__select:hover { border-color: var(--mz-border-hi, #34344a); }
-.mz-reader__select:focus {
+.reading-content-wrap .wp-manga-nav select:hover,
+.reading-content-wrap .wp-manga-nav .selectpicker:hover {
+	border-color: var(--mz-border-hi, #34344a);
+}
+.reading-content-wrap .wp-manga-nav select:focus,
+.reading-content-wrap .wp-manga-nav .selectpicker:focus {
 	border-color: var(--mz-accent, #ff6b35);
 	box-shadow: 0 0 0 3px var(--mz-accent-soft, rgba(255,107,53,0.18));
 }
-
-/* ---- Chapter images ---------------------------------------------- */
-
-.mz-reader__content {
-	background: var(--mz-bg, #0e0e18);
-	padding: 8px 0;
+.reading-content-wrap .wp-manga-nav label {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
 }
-.mz-reader__content .reading-content {
+
+/* Right cluster — page pager + prev/next chapter buttons */
+.reading-content-wrap .wp-manga-nav .select-pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	flex: 0 0 auto;
+}
+
+/* Prev / next / back buttons */
+.reading-content-wrap .wp-manga-nav .nav-links {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	position: static;
+	box-shadow: none;
+}
+.reading-content-wrap .wp-manga-nav .nav-links .nav-previous,
+.reading-content-wrap .wp-manga-nav .nav-links .nav-next,
+.reading-content-wrap .wp-manga-nav .nav-links .btn-primary {
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	display: inline-flex;
+}
+.reading-content-wrap .wp-manga-nav .nav-links a,
+.reading-content-wrap .wp-manga-nav .nav-links .btn,
+.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 0 14px;
+	height: 36px;
+	background: var(--mz-surface-2, #1f1f30);
+	color: var(--mz-ink, #ededf2);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	font-size: 13px;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+	box-shadow: none;
+}
+/* Next + Back buttons get the accent fill */
+.reading-content-wrap .wp-manga-nav .nav-links .nav-next a,
+.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a {
+	background: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	color: var(--mz-accent-ink, #fff);
+}
+.reading-content-wrap .wp-manga-nav .nav-links a:hover,
+.reading-content-wrap .wp-manga-nav .nav-links .btn:hover,
+.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a:hover {
+	color: var(--mz-accent-ink, #fff);
+	background: var(--mz-accent-hover, #ff8054);
+	border-color: var(--mz-accent-hover, #ff8054);
+}
+.reading-content-wrap .wp-manga-nav .nav-links .nav-previous a:hover {
+	background: var(--mz-surface-3, #282838);
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+}
+
+/* The mobile hamburger icon that lives inside .nav-links on mobile */
+.reading-content-wrap .wp-manga-nav .nav-links .mobile-nav-btn {
+	display: none;
+}
+
+/* ---- Chapter image area ------------------------------------------ */
+
+.reading-content-wrap .read-container,
+.reading-content-wrap .reading-content {
+	background: var(--mz-bg, #0e0e18);
+}
+.reading-content-wrap .reading-content {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 8px 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 0;
 }
-.mz-reader__content img {
+.reading-content-wrap .reading-content .page-break {
+	margin: 0;
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+.reading-content-wrap .reading-content .page-break.no-gaps { margin: 0; }
+.reading-content-wrap .reading-content .page-break img,
+.reading-content-wrap .reading-content img {
 	display: block;
 	margin: 0 auto;
 	max-width: 100%;
 	height: auto;
 	background: var(--mz-surface, #171724);
-	animation: mz-reader-fade 280ms ease-out both;
 }
-@keyframes mz-reader-fade { from { opacity: 0; } to { opacity: 1; } }
 
-/* Paged mode uses a specific wrapper — make its image fill too. */
-.mz-reader__content .page-break {
-	margin: 0;
-	display: block;
-	text-align: center;
+/* Smooth fade-in when images finish loading (lazy or not) */
+.reading-content-wrap .reading-content img {
+	animation: mz-reader-fade 260ms ease-out both;
 }
-.mz-reader__content .page-break img { width: auto; max-width: 100%; }
+@keyframes mz-reader-fade {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
 
-/* ---- Comments / related / footer sections ------------------------ */
-
-.mz-reader__comments,
-.mz-reader__related {
-	max-width: 1000px;
-	margin: 12px auto 16px;
-	padding: 14px 16px;
-	background: var(--mz-surface, #171724);
+/* View-full-size helper link that madara shows after last image */
+.reading-content-wrap #btn_view_full_image {
+	display: inline-block;
+	padding: 6px 14px;
+	margin: 10px auto;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--mz-ink-soft, #b6b6c4);
+	background: transparent;
 	border: 1px solid var(--mz-border, #272736);
-	border-radius: var(--mz-radius, 8px);
+	border-radius: var(--mz-radius-sm, 6px);
+	text-decoration: none;
+	transition: all 140ms ease;
+}
+.reading-content-wrap #btn_view_full_image:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
 }
 
 /* ---- Mobile (≤ 760 px) ------------------------------------------- */
 
 @media (max-width: 760px) {
-	.mz-reader__bar--top {
-		grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
-		gap: 6px;
-		padding: 6px 10px;
+	.reading-content-wrap #chapter-heading {
+		font-size: 16px;
+		margin: 10px 0 6px;
+		padding: 0 10px;
 	}
-	/* On mobile the top bar collapses to [back] [chapter title] [info].
-	   The controls cluster moves to a sticky bottom bar below. */
-	.mz-reader__bar--top .mz-reader__controls { display: none !important; }
-	.mz-reader__bar--top .mz-reader__chapter-label {
-		text-align: left;
-		font-size: 12.5px;
+
+	/* Nav bars: tighter padding, allow wrapping properly */
+	.reading-content-wrap .entry-header.header,
+	.reading-content-wrap .entry-header.footer,
+	.reading-content-wrap #manga-reading-nav-head,
+	.reading-content-wrap #manga-reading-nav-foot {
+		margin: 6px 8px;
+		padding: 8px;
+		border-radius: var(--mz-radius-sm, 6px);
+	}
+
+	/* Stack the two halves of the nav vertically */
+	.reading-content-wrap .wp-manga-nav {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 8px;
+	}
+	.reading-content-wrap .wp-manga-nav .select-view,
+	.reading-content-wrap .wp-manga-nav .select-pagination {
+		width: 100%;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	/* Select boxes — full width where sensible */
+	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker {
+		flex: 1 1 calc(50% - 3px);
 		min-width: 0;
 	}
-	/* Hide the back-label text on narrow screens, keep the ← arrow so
-	   the target stays tappable but can't shove the chapter title off. */
-	.mz-reader__back-label { display: none; }
-	.mz-reader__back {
-		padding: 6px 10px;
-		font-size: 16px;
-		line-height: 1;
+	.reading-content-wrap .wp-manga-nav .select-view select,
+	.reading-content-wrap .wp-manga-nav .select-view .selectpicker {
+		width: 100%;
 	}
-	.mz-reader__info { width: 32px; height: 32px; }
+	.reading-content-wrap .wp-manga-nav .selectpicker_page { flex: 1 1 80px; min-width: 70px; }
+	.reading-content-wrap .wp-manga-nav .selectpicker_page select { width: 100%; }
 
-	/* Make the bottom bar the PRIMARY on mobile: sticky to bottom,
-	   always visible while reading. */
-	.mz-reader__bar--bottom {
+	/* Prev / next / back: equal-width full-row on mobile */
+	.reading-content-wrap .wp-manga-nav .nav-links {
+		width: 100%;
+		justify-content: stretch;
+		gap: 6px;
+		flex: 1 1 100%;
+	}
+	.reading-content-wrap .wp-manga-nav .nav-links .nav-previous,
+	.reading-content-wrap .wp-manga-nav .nav-links .nav-next,
+	.reading-content-wrap .wp-manga-nav .nav-links .btn-primary {
+		flex: 1 1 0;
+	}
+	.reading-content-wrap .wp-manga-nav .nav-links a,
+	.reading-content-wrap .wp-manga-nav .nav-links .btn,
+	.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a {
+		width: 100%;
+		padding: 0 8px;
+		height: 40px;
+		font-size: 12.5px;
+	}
+
+	/* Bottom nav: make it sticky so it's always reachable */
+	.reading-content-wrap #manga-reading-nav-foot,
+	.reading-content-wrap .entry-header.footer {
 		position: sticky;
 		bottom: 0;
 		z-index: 20;
-		border-top: 1px solid var(--mz-border, #272736);
-		padding: 8px 10px;
-		margin-bottom: 0;
-	}
-	.mz-reader__bar--bottom .mz-reader__controls {
-		display: flex;
-		width: 100%;
-		justify-content: stretch;
-	}
-	.mz-reader__bar--bottom .mz-reader__nav {
-		flex: 1 1 0;
-		padding: 0 6px;
-		height: 40px;
-	}
-	.mz-reader__bar--bottom .mz-reader__nav-label { display: none; }
-	.mz-reader__bar--bottom .mz-reader__nav span[aria-hidden] {
-		font-size: 18px;
-		font-weight: 700;
-	}
-	.mz-reader__bar--bottom .mz-reader__picker { flex: 2 1 0; }
-	.mz-reader__bar--bottom .mz-reader__select {
-		width: 100%;
-		max-width: none;
-		height: 40px;
+		margin: 8px 0 0;
+		border-radius: 0;
+		border-left: 0;
+		border-right: 0;
+		background: var(--mz-blur-bg, rgba(14, 14, 24, 0.9));
+		-webkit-backdrop-filter: saturate(160%) blur(10px);
+		backdrop-filter: saturate(160%) blur(10px);
 	}
 
-	.mz-reader__content { padding: 4px 0; }
-	.mz-reader__comments,
-	.mz-reader__related { margin: 10px 8px; padding: 12px; }
+	/* Reader content: edge to edge on mobile */
+	.reading-content-wrap .reading-content { padding: 4px 0; }
+	.reading-content-wrap .reading-content .page-break img,
+	.reading-content-wrap .reading-content img {
+		width: 100%;
+		max-width: 100%;
+	}
 }
 
-/* iOS safe-area respect for bottom sticky nav */
+/* iOS safe-area respect for sticky bottom nav */
 @supports (padding: env(safe-area-inset-bottom)) {
 	@media (max-width: 760px) {
-		.mz-reader__bar--bottom {
+		.reading-content-wrap #manga-reading-nav-foot,
+		.reading-content-wrap .entry-header.footer {
 			padding-bottom: calc(8px + env(safe-area-inset-bottom));
 		}
 	}
 }
-
-/* ---- Suppress legacy madara nav -----------------------------------
-   This stylesheet is only enqueued on is_manga_reading_page(), so
-   every rule below applies only on reader pages. The selectors are
-   intentionally NOT scoped to .mz-reader — if a cached page or a
-   plugin injects the legacy markup outside our wrapper, we still
-   kill it. */
-
-.wp-manga-nav,
-.select-pagination,
-.entry-header.header,
-.entry-header.footer,
-.c-select-bottom,
-#chapter-heading,
-#manga-reading-nav-head,
-#manga-reading-nav-foot,
-.read-container > .c-blog-post > .entry-header,
-body .c-page-content.reading-content-wrap > .content-area > .container > .row > .main-col > h1#chapter-heading,
-body .c-page-content.reading-content-wrap .main-col > h1,
-body .c-page-content.reading-content-wrap .manga-breadcrumb,
-body .c-page-content.reading-content-wrap .c-breadcrumb {
-	display: none !important;
-}
-
-/* Also nuke the default madara "minimal reading layout" chrome that
-   sometimes re-appears via ajax page navigation partials. */
-body.reading-manga .entry-header,
-body.reading-manga .select-pagination,
-body.reading-manga .nav-links,
-body.reading-manga .c-select-bottom,
-body.manga-reading-paged-style .entry-header,
-body.manga-reading-paged-style .select-pagination,
-body.manga-reading-list-style  .entry-header,
-body.manga-reading-list-style  .select-pagination {
-	display: none !important;
-}
-/* ...but keep OUR nav visible even though it lives inside the same
-   ancestor chain. */
-.mz-reader .mz-reader__bar,
-.mz-reader .mz-reader__bar--top,
-.mz-reader .mz-reader__bar--bottom { display: grid !important; }
