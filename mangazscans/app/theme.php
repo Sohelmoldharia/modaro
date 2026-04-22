@@ -296,7 +296,7 @@
 			//Temporary
 			wp_enqueue_style( 'loaders', get_parent_theme_file_uri( '/css/loaders.min.css' ) );
 
-			wp_enqueue_style( 'madara-css', get_stylesheet_uri(), array(), '2.6.1' );
+			wp_enqueue_style( 'madara-css', get_stylesheet_uri(), array(), '2.6.2' );
 
 			// MangazScans overrides: content/body surface polish on top
 			// of madara-css (manga grid, reader, etc.).
@@ -304,7 +304,7 @@
 				'mangazscans-overrides',
 				get_parent_theme_file_uri( '/css/mangazscans-overrides.css' ),
 				array( 'madara-css' ),
-				'2.6.1'
+				'2.6.2'
 			);
 
 			// Chrome: our own header + footer. Dedicated 'mz-*' namespace,
@@ -314,13 +314,13 @@
 				'mangazscans-chrome',
 				get_parent_theme_file_uri( '/css/mangazscans-chrome.css' ),
 				array( 'mangazscans-overrides' ),
-				'2.6.1'
+				'2.6.2'
 			);
 			wp_enqueue_script(
 				'mangazscans-chrome',
 				get_parent_theme_file_uri( '/js/mangazscans-chrome.js' ),
 				array(),
-				'2.6.1',
+				'2.6.2',
 				true
 			);
 
@@ -332,7 +332,7 @@
 					'mangazscans-manga',
 					get_parent_theme_file_uri( '/css/mangazscans-manga.css' ),
 					array( 'mangazscans-chrome' ),
-					'2.6.1'
+					'2.6.2'
 				);
 			}
 
@@ -342,17 +342,24 @@
 					'mangazscans-home',
 					get_parent_theme_file_uri( '/css/mangazscans-home.css' ),
 					array( 'mangazscans-chrome' ),
-					'2.6.1'
+					'2.6.2'
 				);
 			}
 
-			// Chapter reader stylesheet — only the reading page.
+			// Chapter reader stylesheet + toggle script — reader page only.
 			if ( function_exists( 'is_manga_reading_page' ) && is_manga_reading_page() ) {
 				wp_enqueue_style(
 					'mangazscans-reader',
 					get_parent_theme_file_uri( '/css/mangazscans-reader.css' ),
 					array( 'mangazscans-chrome' ),
-					'2.6.1'
+					'2.6.2'
+				);
+				wp_enqueue_script(
+					'mangazscans-reader',
+					get_parent_theme_file_uri( '/js/mangazscans-reader.js' ),
+					array(),
+					'2.6.2',
+					true
 				);
 			}
 

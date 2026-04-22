@@ -209,6 +209,56 @@
 	display: none;
 }
 
+/* ---- Reading-mode toggle (injected by js/mangazscans-reader.js) --- */
+
+.mz-style-toggle {
+	display: inline-flex;
+	background: var(--mz-surface-2, #1f1f30);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	padding: 3px;
+	gap: 2px;
+	height: 36px;
+	box-sizing: border-box;
+}
+.mz-style-toggle__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 12px;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--mz-ink-soft, #b6b6c4);
+	text-decoration: none;
+	border-radius: calc(var(--mz-radius-sm, 6px) - 2px);
+	transition: background 140ms ease, color 140ms ease;
+	line-height: 1;
+	white-space: nowrap;
+}
+.mz-style-toggle__btn:hover {
+	color: var(--mz-ink, #ededf2);
+}
+.mz-style-toggle__btn.is-active {
+	background: var(--mz-accent, #ff6b35);
+	color: var(--mz-accent-ink, #fff);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.mz-style-toggle__btn.is-active:hover {
+	color: var(--mz-accent-ink, #fff);
+}
+
+@media (max-width: 760px) {
+	.mz-style-toggle {
+		width: 100%;
+		flex: 1 1 100%;
+		justify-content: stretch;
+	}
+	.mz-style-toggle__btn {
+		flex: 1 1 0;
+		padding: 0 10px;
+	}
+}
+
 /* ---- Chapter image area ------------------------------------------ */
 
 .reading-content-wrap .read-container,
