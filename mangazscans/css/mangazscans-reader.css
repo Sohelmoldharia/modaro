@@ -347,60 +347,112 @@
 		padding: 0 10px;
 	}
 
-	/* Nav bars: tighter padding, allow wrapping properly */
+	/* Nav bar wrappers */
 	.reading-content-wrap .entry-header.header,
 	.reading-content-wrap .entry-header.footer,
 	.reading-content-wrap #manga-reading-nav-head,
 	.reading-content-wrap #manga-reading-nav-foot {
 		margin: 6px 8px;
-		padding: 8px;
+		padding: 10px;
 		border-radius: var(--mz-radius-sm, 6px);
 	}
 
-	/* Stack the two halves of the nav vertically */
+	/* Column layout for the whole nav — one visual row per logical group. */
 	.reading-content-wrap .wp-manga-nav {
+		display: flex;
 		flex-direction: column;
 		align-items: stretch;
 		gap: 8px;
 	}
-	.reading-content-wrap .wp-manga-nav .select-view,
-	.reading-content-wrap .wp-manga-nav .select-pagination {
-		width: 100%;
-		justify-content: space-between;
-		flex-wrap: wrap;
-	}
 
-	/* Select boxes — full width where sensible */
+	/* ── Select-view row (host / volume / chapter / reading-style) ── */
+	.reading-content-wrap .wp-manga-nav .select-view {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		width: 100%;
+		justify-content: stretch;
+	}
 	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker {
-		flex: 1 1 calc(50% - 3px);
+		flex: 1 1 100%;
 		min-width: 0;
+		margin: 0;
+	}
+	/* Host + volume share a row at 2-col when both present on ≥480 px */
+	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker.selectpicker_version,
+	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker.selectpicker_volume {
+		flex: 1 1 calc(50% - 4px);
+	}
+	/* Chapter picker: always its own full-width row */
+	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker.selectpicker_chapter {
+		flex: 1 1 100%;
 	}
 	.reading-content-wrap .wp-manga-nav .select-view select,
 	.reading-content-wrap .wp-manga-nav .select-view .selectpicker {
 		width: 100%;
+		min-width: 0;
 	}
-	.reading-content-wrap .wp-manga-nav .selectpicker_page { flex: 1 1 80px; min-width: 70px; }
-	.reading-content-wrap .wp-manga-nav .selectpicker_page select { width: 100%; }
 
-	/* Prev / next / back: equal-width full-row on mobile */
-	.reading-content-wrap .wp-manga-nav .nav-links {
+	/* ── Pagination row (page pager + prev/next/back) ── */
+	.reading-content-wrap .wp-manga-nav .select-pagination {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
 		width: 100%;
 		justify-content: stretch;
-		gap: 6px;
+		padding: 0;
+		margin: 0;
+		background: transparent;
+		border: 0;
+	}
+	/* Page pager (1/2) on its own full-width row so the dropdown
+	   arrow doesn't collide with prev/next buttons */
+	.reading-content-wrap .wp-manga-nav .selectpicker_page {
 		flex: 1 1 100%;
+		min-width: 0;
+		margin: 0;
+	}
+	.reading-content-wrap .wp-manga-nav .selectpicker_page select,
+	.reading-content-wrap .wp-manga-nav #single-pager {
+		width: 100%;
+	}
+
+	/* Prev / Next / Back: equal-width row */
+	.reading-content-wrap .wp-manga-nav .nav-links {
+		display: flex;
+		width: 100%;
+		flex: 1 1 100%;
+		gap: 6px;
+		padding: 0;
+		margin: 0;
+		background: transparent;
+		border: 0;
+		box-shadow: none;
+		justify-content: stretch;
 	}
 	.reading-content-wrap .wp-manga-nav .nav-links .nav-previous,
 	.reading-content-wrap .wp-manga-nav .nav-links .nav-next,
 	.reading-content-wrap .wp-manga-nav .nav-links .btn-primary {
 		flex: 1 1 0;
+		min-width: 0;
+		margin: 0;
+		padding: 0;
 	}
 	.reading-content-wrap .wp-manga-nav .nav-links a,
 	.reading-content-wrap .wp-manga-nav .nav-links .btn,
 	.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a {
 		width: 100%;
-		padding: 0 8px;
+		padding: 0 10px;
 		height: 40px;
-		font-size: 12.5px;
+		font-size: 13px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	/* Mobile hamburger from madara — our chapter picker replaces it */
+	.reading-content-wrap .wp-manga-nav .nav-links .mobile-nav-btn {
+		display: none !important;
 	}
 
 	/* Bottom nav: make it sticky so it's always reachable */
