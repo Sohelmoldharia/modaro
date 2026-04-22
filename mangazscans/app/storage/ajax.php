@@ -22,6 +22,30 @@
 
 	add_action( 'wp_ajax_mangazscans_create_chapter', 'mangazscans_create_chapter_handler' );
 
+	/**
+	 * Cheap, no-network MIME guess based on the URL's file extension.
+	 * Strips query strings first ("foo.png?v=1" -> "png"). Falls back to
+	 * image/jpeg because every source we support is an image.
+	 */
+	function mangazscans_guess_mime_from_url( $url ) {
+		$path = wp_parse_url( (string) $url, PHP_URL_PATH );
+		if ( ! is_string( $path ) || $path === '' ) {
+			return 'image/jpeg';
+		}
+		$ext = strtolower( pathinfo( $path, PATHINFO_EXTENSION ) );
+		$map = array(
+			'jpg'  => 'image/jpeg',
+			'jpeg' => 'image/jpeg',
+			'png'  => 'image/png',
+			'gif'  => 'image/gif',
+			'webp' => 'image/webp',
+			'bmp'  => 'image/bmp',
+			'svg'  => 'image/svg+xml',
+			'avif' => 'image/avif',
+		);
+		return isset( $map[ $ext ] ) ? $map[ $ext ] : 'image/jpeg';
+	}
+
 	function mangazscans_create_chapter_handler() {
 
 		$nonce = isset( $_POST['nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['nonce'] ) ) : '';
@@ -44,12 +68,41 @@
 			wp_send_json_error( array( 'message' => esc_html__( 'Chapter name is required.', 'mangazscans' ) ), 400 );
 		}
 
-		global $wp_manga_storage, $wp_manga_functions, $wp_manga_chapter, $wp_manga_chapter_data;
+		global $wp_manga_storage, $wp_manga_functions, $wp_manga_chapter, $wp_manga_chapter_data, $wpdb;
 		if ( empty( $wp_manga_storage ) || empty( $wp_manga_chapter ) || empty( $wp_manga_chapter_data ) ) {
 			wp_send_json_error( array( 'message' => esc_html__( 'Madara-Core is not initialized. Activate the plugin and retry.', 'mangazscans' ) ), 500 );
 		}
 
-		// Duplicate-name guard (mirrors madara-core behaviour).
+		$chapters_table      = $wpdb->prefix . 'manga_chapters';
+		$chapters_data_table = $wpdb->prefix . 'manga_chapters_data';
+
+		// Self-heal missing tables BEFORE running any madara-core query,
+		// so later calls like check_unique_chapter() don't silently fail
+		// on a broken schema (symptom users were hitting: "Chapter row
+		// insert failed (DB said: unknown)" because a plugin silently
+		// activated via activate_plugin($silent=true) skipped its
+		// register_activation_hook → wp_manga_create_db() path).
+		$have_chapters      = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $chapters_table ) );
+		$have_chapters_data = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $chapters_data_table ) );
+		if ( $have_chapters !== $chapters_table || $have_chapters_data !== $chapters_data_table ) {
+			if ( class_exists( 'WP_MANGA_DATABASE' ) && method_exists( 'WP_MANGA_DATABASE', 'get_instance' ) ) {
+				$db = WP_MANGA_DATABASE::get_instance();
+				if ( $db && method_exists( $db, 'wp_manga_create_db' ) ) {
+					$db->wp_manga_create_db();
+				}
+			}
+			$have_chapters      = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $chapters_table ) );
+			$have_chapters_data = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $chapters_data_table ) );
+		}
+		if ( $have_chapters !== $chapters_table || $have_chapters_data !== $chapters_data_table ) {
+			wp_send_json_error( array(
+				'message' => esc_html__( 'Madara-Core DB tables missing and schema migration failed. Deactivate and reactivate the Madara-Core plugin, then retry.', 'mangazscans' ),
+			), 500 );
+		}
+
+		// Duplicate-name guard (mirrors madara-core behaviour). Runs
+		// AFTER the schema heal so its internal SELECT always has a
+		// table to read.
 		if ( ! isset( $_POST['overwrite'] ) ) {
 			$existing = $wp_manga_functions->check_unique_chapter( $name, $volume, $post_id );
 			if ( $existing && isset( $existing['output'] ) ) {
@@ -73,7 +126,13 @@
 				require_once __DIR__ . '/zip.php';
 				$file = isset( $_FILES['file'] ) ? $_FILES['file'] : null;
 				$urls = wp_manga_storage_zip::get_instance()->import_uploaded_zip( $file, $post_id, $slug );
-				$storage_slug = 'local'; // extracted into /uploads — treat as local
+				// NB: NOT 'local'. Madara-Core's reader prefixes
+				// WP_MANGA_DATA_URL to every src when storage === 'local',
+				// which would corrupt our already-absolute URLs into
+				// "…/plugins/madara-core/manga/https://site/…". Use a
+				// distinct slug so host resolves to '' and src renders
+				// as-is.
+				$storage_slug = 'zip';
 				break;
 
 			case 'direct':
@@ -105,38 +164,12 @@
 			wp_send_json_error( array( 'message' => esc_html__( 'No images were produced for that source.', 'mangazscans' ) ), 400 );
 		}
 
-		// 2. Insert chapter row. We go straight to $wpdb instead of
-		//    routing through $wp_manga_chapter->insert_chapter() so we
-		//    know exactly which step (table existence, schema mismatch,
-		//    INSERT failure, insert_id=0) caused a failure. The madara
-		//    wrapper has internal early-returns that swallow context.
-		global $wpdb;
-
-		$chapters_table      = $wpdb->prefix . 'manga_chapters';
-		$chapters_data_table = $wpdb->prefix . 'manga_chapters_data';
-
-		// Sanity-check the tables actually exist. SHOW TABLES LIKE is
-		// cheap and gives us a precise error message if they don't.
-		$have_chapters      = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $chapters_table ) );
-		$have_chapters_data = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $chapters_data_table ) );
-		if ( $have_chapters !== $chapters_table ) {
-			wp_send_json_error( array(
-				'message' => sprintf(
-					/* translators: %s: table name */
-					esc_html__( 'Table %s does not exist. Re-activate the Madara-Core plugin to run its schema migration.', 'mangazscans' ),
-					esc_html( $chapters_table )
-				),
-			), 500 );
-		}
-		if ( $have_chapters_data !== $chapters_data_table ) {
-			wp_send_json_error( array(
-				'message' => sprintf(
-					/* translators: %s: table name */
-					esc_html__( 'Table %s does not exist. Re-activate the Madara-Core plugin to run its schema migration.', 'mangazscans' ),
-					esc_html( $chapters_data_table )
-				),
-			), 500 );
-		}
+		// 2. Insert chapter row directly via $wpdb. The madara-core
+		//    wrapper $wp_manga_chapter->insert_chapter() has internal
+		//    early-returns that swallow context (returns false without
+		//    a last_error), so we go straight to the DB for clearer
+		//    diagnostics. Table existence was already verified above
+		//    and self-healed if missing.
 
 		// If a chapter with this slug already exists, disambiguate.
 		$existing_slug = $wpdb->get_var( $wpdb->prepare(
@@ -193,12 +226,16 @@
 
 
 		// 3. Build chapter data JSON — same shape madara-core's reader expects.
+		//    We compute mime locally instead of using $wp_manga_storage->mime_content_type
+		//    because that function falls through to finfo_file() on any
+		//    URL with a query string, which would download every remote
+		//    image (slow, and can fail if allow_url_fopen is off).
 		$pages = array();
 		$page  = 1;
 		foreach ( $urls as $url ) {
 			$pages[ $page ] = array(
 				'src'  => $url,
-				'mime' => $wp_manga_storage->mime_content_type( $url ),
+				'mime' => mangazscans_guess_mime_from_url( $url ),
 			);
 			$page++;
 		}

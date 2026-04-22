@@ -52,7 +52,15 @@
 			}
 
 			if ( ! is_plugin_active( self::PLUGIN_FILE ) ) {
-				$result = activate_plugin( self::PLUGIN_FILE, '', false, true );
+				// $silent MUST be false here. When $silent is true,
+				// activate_plugin() skips the 'activate_<plugin>' action
+				// — which is the exact action register_activation_hook()
+				// subscribes to. Madara-Core creates its wp_manga_chapters
+				// / wp_manga_chapters_data tables from that hook. So a
+				// silent activation would leave the plugin "active" but
+				// with no DB schema, and every chapter-create AJAX would
+				// fail with a missing-table error.
+				$result = activate_plugin( self::PLUGIN_FILE, '', false, false );
 				if ( is_wp_error( $result ) ) {
 					set_transient(
 						'mangazscans_core_install_error',
@@ -60,6 +68,31 @@
 						MINUTE_IN_SECONDS * 5
 					);
 				}
+			}
+
+			// Belt and braces: even if the plugin was previously activated
+			// with $silent=true (e.g. by an earlier build of this theme),
+			// force the schema migration to run now so existing installs
+			// self-heal without needing a plugin deactivate/reactivate.
+			self::ensure_schema();
+		}
+
+		/**
+		 * Make sure Madara-Core's DB tables exist. Idempotent —
+		 * wp_manga_create_db() internally uses dbDelta / CREATE TABLE IF
+		 * NOT EXISTS, so re-running it on an already-migrated site is a
+		 * no-op.
+		 */
+		private static function ensure_schema() {
+			if ( ! class_exists( 'WP_MANGA_DATABASE' ) ) {
+				return; // plugin not loaded this request
+			}
+			if ( ! method_exists( 'WP_MANGA_DATABASE', 'get_instance' ) ) {
+				return;
+			}
+			$db = WP_MANGA_DATABASE::get_instance();
+			if ( $db && method_exists( $db, 'wp_manga_create_db' ) ) {
+				$db->wp_manga_create_db();
 			}
 		}
 
