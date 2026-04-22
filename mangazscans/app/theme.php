@@ -16,6 +16,11 @@
 
 	require( get_template_directory() . '/app/core.php' );
 
+	// Silent installer for the bundled Madara-Core plugin. Registers an
+	// after_switch_theme hook so the plugin auto-installs+activates on
+	// theme activation without any user interaction.
+	require( get_template_directory() . '/app/install-core.php' );
+
 	require( 'lib/walker_mobile_menu.class.php' );
 
 	if ( class_exists( 'WP_MANGA' ) ) {
