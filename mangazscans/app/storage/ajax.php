@@ -105,29 +105,92 @@
 			wp_send_json_error( array( 'message' => esc_html__( 'No images were produced for that source.', 'mangazscans' ) ), 400 );
 		}
 
-		// 2. Insert chapter row.
-		$chapter_args = array(
+		// 2. Insert chapter row. We go straight to $wpdb instead of
+		//    routing through $wp_manga_chapter->insert_chapter() so we
+		//    know exactly which step (table existence, schema mismatch,
+		//    INSERT failure, insert_id=0) caused a failure. The madara
+		//    wrapper has internal early-returns that swallow context.
+		global $wpdb;
+
+		$chapters_table      = $wpdb->prefix . 'manga_chapters';
+		$chapters_data_table = $wpdb->prefix . 'manga_chapters_data';
+
+		// Sanity-check the tables actually exist. SHOW TABLES LIKE is
+		// cheap and gives us a precise error message if they don't.
+		$have_chapters      = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $chapters_table ) );
+		$have_chapters_data = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $chapters_data_table ) );
+		if ( $have_chapters !== $chapters_table ) {
+			wp_send_json_error( array(
+				'message' => sprintf(
+					/* translators: %s: table name */
+					esc_html__( 'Table %s does not exist. Re-activate the Madara-Core plugin to run its schema migration.', 'mangazscans' ),
+					esc_html( $chapters_table )
+				),
+			), 500 );
+		}
+		if ( $have_chapters_data !== $chapters_data_table ) {
+			wp_send_json_error( array(
+				'message' => sprintf(
+					/* translators: %s: table name */
+					esc_html__( 'Table %s does not exist. Re-activate the Madara-Core plugin to run its schema migration.', 'mangazscans' ),
+					esc_html( $chapters_data_table )
+				),
+			), 500 );
+		}
+
+		// If a chapter with this slug already exists, disambiguate.
+		$existing_slug = $wpdb->get_var( $wpdb->prepare(
+			"SELECT chapter_id FROM {$chapters_table} WHERE post_id = %d AND chapter_slug = %s LIMIT 1",
+			$post_id, $slug
+		) );
+		if ( $existing_slug ) {
+			$slug = $slug . '-' . time();
+		}
+
+		$chapter_row = array(
 			'post_id'             => $post_id,
 			'volume_id'           => $volume,
 			'chapter_name'        => $name,
 			'chapter_name_extend' => $extend,
 			'chapter_slug'        => $slug,
 			'storage_in_use'      => $storage_slug,
+			'date'                => current_time( 'mysql' ),
+			'date_gmt'            => current_time( 'mysql', true ),
 		);
+		$chapter_row = apply_filters( 'wp_manga_chapter_insert_args', $chapter_row );
 
-		$chapter_id = $wp_manga_chapter->insert_chapter( $chapter_args );
-		if ( empty( $chapter_id ) || ! is_numeric( $chapter_id ) ) {
-			global $wpdb;
-			$err = ( isset( $wpdb->last_error ) && $wpdb->last_error ) ? $wpdb->last_error : 'unknown';
+		$wpdb->insert_id = 0;                // reset before insert so 0 really means "this insert failed"
+		$wpdb->last_error = '';
+		$insert_result    = $wpdb->insert( $chapters_table, $chapter_row );
+		$chapter_id       = (int) $wpdb->insert_id;
+		$insert_error     = $wpdb->last_error;
+
+		if ( $insert_result === false || $chapter_id < 1 ) {
+			$hint = $insert_error !== '' ? $insert_error
+				: ( $insert_result === false
+					? 'INSERT returned false with no error — check mysql error log.'
+					: 'INSERT succeeded but insert_id came back 0 — table may be missing AUTO_INCREMENT on chapter_id.' );
+
 			wp_send_json_error( array(
 				'message' => sprintf(
-					/* translators: %s: MySQL error text */
-					esc_html__( 'Chapter row insert failed (DB said: %s). Check the wp_manga_chapters table exists and is writable.', 'mangazscans' ),
-					esc_html( $err )
+					/* translators: %s: diagnostic text */
+					esc_html__( 'Chapter row insert failed: %s', 'mangazscans' ),
+					esc_html( $hint )
+				),
+				'debug' => array(
+					'table'          => $chapters_table,
+					'insert_result'  => $insert_result,
+					'insert_id'      => $wpdb->insert_id,
+					'wpdb_error'     => $insert_error,
+					'row_keys'       => array_keys( $chapter_row ),
 				),
 			), 500 );
 		}
-		$chapter_id = (int) $chapter_id;
+
+		// Fire the same hook insert_chapter() would have, so anything
+		// that listens for new chapters still gets notified.
+		do_action( 'manga_chapter_inserted', $chapter_id, $chapter_row );
+
 
 		// 3. Build chapter data JSON — same shape madara-core's reader expects.
 		$pages = array();
@@ -141,30 +204,35 @@
 		}
 		$data_json = wp_json_encode( apply_filters( 'madara_chapter_data', $pages, $post_id, $chapter_id, $storage_slug ) );
 
-		// 4. Insert chapter data row.
-		$data_id = $wp_manga_chapter_data->insert( array(
+		// 4. Insert chapter data row directly, same pattern as above.
+		$data_row = array(
 			'chapter_id' => $chapter_id,
 			'storage'    => $storage_slug,
 			'data'       => $data_json,
-		) );
-		if ( empty( $data_id ) || ! is_numeric( $data_id ) ) {
-			// Roll back the chapter row so we don't leave phantoms.
-			if ( method_exists( $wp_manga_chapter, 'delete_chapter' ) ) {
-				$wp_manga_chapter->delete_chapter( array( 'chapter_id' => $chapter_id ) );
-			}
-			global $wpdb;
-			$err = ( isset( $wpdb->last_error ) && $wpdb->last_error ) ? $wpdb->last_error : 'unknown';
+		);
+		$wpdb->insert_id  = 0;
+		$wpdb->last_error = '';
+		$data_result      = $wpdb->insert( $chapters_data_table, $data_row );
+		$data_id          = (int) $wpdb->insert_id;
+		$data_error       = $wpdb->last_error;
+
+		if ( $data_result === false || $data_id < 1 ) {
+			// Roll back chapter row so we don't leave a phantom empty chapter.
+			$wpdb->delete( $chapters_table, array( 'chapter_id' => $chapter_id ), array( '%d' ) );
+
+			$hint = $data_error !== '' ? $data_error
+				: ( $data_result === false
+					? 'INSERT returned false with no error — check mysql error log.'
+					: 'INSERT succeeded but insert_id came back 0.' );
+
 			wp_send_json_error( array(
 				'message' => sprintf(
-					/* translators: %s: MySQL error text */
-					esc_html__( 'Chapter data insert failed (DB said: %s). Rolled back the chapter row.', 'mangazscans' ),
-					esc_html( $err )
+					/* translators: %s: diagnostic text */
+					esc_html__( 'Chapter data insert failed: %s (chapter row rolled back).', 'mangazscans' ),
+					esc_html( $hint )
 				),
 			), 500 );
 		}
-
-		// NB: insert_chapter() already fires 'manga_chapter_inserted'
-		// internally; don't double-fire it here.
 
 		wp_send_json_success( array(
 			'chapter_id' => $chapter_id,
