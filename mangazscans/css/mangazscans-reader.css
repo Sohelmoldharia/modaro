@@ -70,6 +70,108 @@
 	background: transparent;
 }
 
+/* ── Entry-header wrap (breadcrumb + action icons) ── */
+.reading-content-wrap .entry-header_wrap {
+	width: 100%;
+	margin: 0 0 6px;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+}
+.reading-content-wrap .c-breadcrumb-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+}
+/* Breadcrumb list itself */
+.reading-content-wrap .c-breadcrumb {
+	padding: 0;
+	margin: 0;
+	font-size: 12px;
+	color: var(--mz-muted, #7e7e93);
+	min-width: 0;
+	flex: 1 1 auto;
+}
+.reading-content-wrap .c-breadcrumb .breadcrumb {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	background: transparent;
+	font-size: 12px;
+}
+.reading-content-wrap .c-breadcrumb .breadcrumb li {
+	padding: 0;
+	color: var(--mz-muted, #7e7e93);
+}
+.reading-content-wrap .c-breadcrumb .breadcrumb li + li::before {
+	content: "/";
+	padding: 0 4px 0 0;
+	color: var(--mz-muted, #7e7e93);
+}
+.reading-content-wrap .c-breadcrumb .breadcrumb li a {
+	color: var(--mz-ink-soft, #b6b6c4);
+	text-decoration: none;
+}
+.reading-content-wrap .c-breadcrumb .breadcrumb li a:hover {
+	color: var(--mz-accent, #ff6b35);
+}
+.reading-content-wrap .c-breadcrumb .breadcrumb li.active {
+	color: var(--mz-ink, #ededf2);
+}
+
+/* Action icon strip (dark/light contrast toggle from madara) */
+.reading-content-wrap .action-icon {
+	display: flex;
+	flex: 0 0 auto;
+	margin: 0;
+	padding: 0;
+}
+.reading-content-wrap .action-icon ul.action_list_icon,
+.reading-content-wrap .action-icon ul.list-inline {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 4px;
+}
+.reading-content-wrap .action-icon ul li {
+	margin: 0;
+	padding: 0;
+	display: inline-flex;
+}
+.reading-content-wrap .action-icon ul li a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border-radius: var(--mz-radius-sm, 6px);
+	background: var(--mz-surface-2, #1f1f30);
+	border: 1px solid var(--mz-border, #272736);
+	color: var(--mz-ink-soft, #b6b6c4);
+	text-decoration: none;
+	transition: all 140ms ease;
+	font-size: 14px;
+	line-height: 1;
+	box-shadow: none;
+}
+.reading-content-wrap .action-icon ul li a:hover,
+.reading-content-wrap .action-icon ul li a:focus {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
+}
+.reading-content-wrap .action-icon ul li a i { color: inherit; }
+
 /* Left cluster — host / volume / chapter / reading-style selects */
 .reading-content-wrap .wp-manga-nav .select-view {
 	display: flex;
@@ -89,23 +191,28 @@
 	border: 0;
 }
 
-/* The actual <select> elements */
+/* The actual <select> elements. Uses an SVG data-URI for the arrow
+   so the native browser chevron is guaranteed gone (appearance:none
+   fallback was still showing a double-chevron in the user's desktop
+   screenshot). !important on the critical bits so any plugin or
+   compiled-Madara rule can't override us. */
 .reading-content-wrap .wp-manga-nav select,
 .reading-content-wrap .wp-manga-nav .selectpicker,
 .reading-content-wrap select.single-chapter-select,
 .reading-content-wrap select.selectpicker,
 .reading-content-wrap select#single-pager {
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	background:
-		linear-gradient(45deg, transparent 50%, var(--mz-ink-soft, #b6b6c4) 50%) no-repeat right 12px top 50% / 4px 4px,
-		linear-gradient(135deg, var(--mz-ink-soft, #b6b6c4) 50%, transparent 50%) no-repeat right 8px top 50% / 4px 4px,
-		var(--mz-surface, #171724);
+	-webkit-appearance: none !important;
+	-moz-appearance: none !important;
+	appearance: none !important;
+	background-color: var(--mz-surface, #171724) !important;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23b6b6c4' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E") !important;
+	background-repeat: no-repeat !important;
+	background-position: right 10px center !important;
+	background-size: 9px 6px !important;
 	color: var(--mz-ink, #ededf2);
 	border: 1px solid var(--mz-border, #272736);
 	border-radius: var(--mz-radius-sm, 6px);
-	padding: 0 24px 0 8px;
+	padding: 0 26px 0 10px;
 	height: 30px;
 	font-size: 12px;
 	font-weight: 600;
@@ -115,7 +222,11 @@
 	min-width: 70px;
 	max-width: 100%;
 	font-family: inherit;
+	box-shadow: none;
+	line-height: 28px; /* vertical centering fallback for Safari */
 }
+/* IE / Edge legacy hide-arrow fallback */
+.reading-content-wrap .wp-manga-nav select::-ms-expand { display: none; }
 .reading-content-wrap .wp-manga-nav select:hover,
 .reading-content-wrap .wp-manga-nav .selectpicker:hover {
 	border-color: var(--mz-border-hi, #34344a);
@@ -370,12 +481,28 @@
 		font-size: 12.5px;
 	}
 
-	/* Column layout for the whole nav — one visual row per logical group. */
+	/* Column layout for the whole nav — one visual row per logical
+	   group. !important to beat any leftover Madara CSS specificity
+	   that was causing the pager to end up next to the breadcrumb. */
 	.reading-content-wrap .wp-manga-nav {
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
+		display: flex !important;
+		flex-direction: column !important;
+		align-items: stretch !important;
+		gap: 6px !important;
+		float: none !important;
+	}
+
+	/* Breadcrumb + action icons: single row, tight */
+	.reading-content-wrap .c-breadcrumb-wrapper {
 		gap: 8px;
+	}
+	.reading-content-wrap .c-breadcrumb .breadcrumb {
+		font-size: 11.5px;
+	}
+	.reading-content-wrap .action-icon ul li a {
+		width: 26px;
+		height: 26px;
+		font-size: 13px;
 	}
 
 	/* ── Select-view row (host / volume / chapter / reading-style) ── */
