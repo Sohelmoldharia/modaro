@@ -1,0 +1,499 @@
+/*
+ * MangazScans — manga detail page.
+ *
+ * Self-contained stylesheet for madara-core/manga-single.php and
+ * madara-core/single/info-chapters.php. Uses the 'mz-*' namespace,
+ * inherits design tokens from the chrome + overrides layers.
+ *
+ * Loaded (conditionally, on manga singular views) AFTER:
+ *   madara-css -> mangazscans-overrides -> mangazscans-chrome
+ */
+
+.mz-manga {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 16px;
+	color: var(--mz-ink, #ededf2);
+	font-family: var(--mz-font, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif);
+	font-size: 14px;
+	line-height: 1.55;
+}
+
+/* ---- breadcrumb ---- */
+.mz-manga__breadcrumb {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12.5px;
+	color: var(--mz-muted, #7e7e93);
+	margin: 4px 0 16px;
+}
+.mz-manga__breadcrumb a {
+	color: var(--mz-ink-soft, #b6b6c4);
+	text-decoration: none;
+	transition: color 140ms ease;
+}
+.mz-manga__breadcrumb a:hover { color: var(--mz-accent, #ff6b35); }
+.mz-manga__breadcrumb-current {
+	color: var(--mz-ink, #ededf2);
+	font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 60vw;
+}
+
+/* ---- hero ---- */
+.mz-manga__hero {
+	display: grid;
+	grid-template-columns: 240px 1fr;
+	gap: 28px;
+	padding: 24px;
+	background: var(--mz-surface, #171724);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius, 8px);
+	margin-bottom: 20px;
+}
+.mz-manga__cover {
+	width: 240px;
+	aspect-ratio: 2 / 3;
+	background: var(--mz-surface-2, #1f1f30);
+	border-radius: var(--mz-radius, 8px);
+	overflow: hidden;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+.mz-manga__cover img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.mz-manga__cover-placeholder {
+	width: 100%; height: 100%;
+	display: flex; align-items: center; justify-content: center;
+	font-size: 100px;
+	font-weight: 800;
+	color: var(--mz-muted, #7e7e93);
+	background: linear-gradient(135deg, var(--mz-surface-2) 0%, var(--mz-surface-3, #282838) 100%);
+}
+
+.mz-manga__info {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	min-width: 0;
+}
+
+.mz-manga__titlebar {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+.mz-manga__title {
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 1.15;
+	letter-spacing: -0.015em;
+	margin: 0;
+	color: var(--mz-ink, #ededf2);
+}
+.mz-manga__status {
+	display: inline-flex;
+	align-items: center;
+	padding: 3px 10px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--mz-accent-ink, #fff);
+	background: var(--mz-accent, #ff6b35);
+	border-radius: 999px;
+	white-space: nowrap;
+}
+
+.mz-manga__alt {
+	margin: 0;
+	color: var(--mz-ink-soft, #b6b6c4);
+	font-size: 13px;
+}
+.mz-manga__alt-label {
+	color: var(--mz-muted, #7e7e93);
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	margin-right: 6px;
+}
+
+.mz-manga__meta {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: 4px 20px;
+	margin: 0;
+}
+.mz-manga__meta > div {
+	display: flex;
+	gap: 8px;
+	font-size: 13px;
+	align-items: baseline;
+}
+.mz-manga__meta dt {
+	color: var(--mz-muted, #7e7e93);
+	text-transform: uppercase;
+	font-size: 10.5px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	margin: 0;
+	flex: 0 0 auto;
+	min-width: 64px;
+}
+.mz-manga__meta dd {
+	margin: 0;
+	color: var(--mz-ink, #ededf2);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.mz-manga__meta a {
+	color: var(--mz-ink, #ededf2);
+	text-decoration: none;
+	border-bottom: 1px dotted transparent;
+	transition: color 140ms ease, border-color 140ms ease;
+}
+.mz-manga__meta a:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-bottom-color: currentColor;
+}
+
+.mz-manga__genres {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	line-height: 1.2;
+}
+.mz-manga__genres a {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 10px;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--mz-ink-soft, #b6b6c4);
+	background: var(--mz-surface-2, #1f1f30);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: 999px;
+	text-decoration: none;
+	transition: all 140ms ease;
+}
+.mz-manga__genres a:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
+}
+
+.mz-manga__stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+	padding: 10px 0;
+	border-top: 1px solid var(--mz-border, #272736);
+	border-bottom: 1px solid var(--mz-border, #272736);
+	font-size: 13px;
+	color: var(--mz-ink-soft, #b6b6c4);
+}
+.mz-stat {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.mz-stat strong { color: var(--mz-ink, #ededf2); font-weight: 700; }
+.mz-stat__label { color: var(--mz-muted, #7e7e93); font-size: 12px; }
+.mz-stat__stars { display: inline-flex; gap: 1px; font-size: 14px; line-height: 1; }
+.mz-star { color: var(--mz-border-hi, #34344a); }
+.mz-star.is-full,
+.mz-star.is-half { color: var(--mz-accent, #ff6b35); }
+.mz-stat--rating .mz-stat__value { color: var(--mz-ink, #ededf2); font-weight: 700; }
+
+.mz-manga__actions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-top: 2px;
+}
+.mz-manga__actions .mz-btn,
+.mz-manga__actions a,
+.mz-manga__actions button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: 10px 20px;
+	font-size: 14px;
+	font-weight: 600;
+	border-radius: var(--mz-radius-sm, 6px);
+	text-decoration: none;
+	cursor: pointer;
+	border: 1px solid transparent;
+	line-height: 1;
+	transition: background 140ms ease, color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+.mz-manga__actions .mz-btn--primary,
+.mz-manga__actions a.mz-btn--primary {
+	background: var(--mz-accent, #ff6b35);
+	color: var(--mz-accent-ink, #fff);
+	border-color: var(--mz-accent, #ff6b35);
+}
+.mz-manga__actions .mz-btn--primary:hover {
+	background: var(--mz-accent-hover, #ff8054);
+	border-color: var(--mz-accent-hover, #ff8054);
+}
+.mz-manga__actions .mz-btn--ghost,
+.mz-manga__actions a.mz-btn--ghost {
+	background: transparent;
+	color: var(--mz-ink, #ededf2);
+	border-color: var(--mz-border-hi, #34344a);
+}
+.mz-manga__actions .mz-btn--ghost:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+}
+.mz-manga__actions button:active,
+.mz-manga__actions a:active { transform: translateY(1px); }
+
+/* ---- sections below the hero ---- */
+.mz-manga__section {
+	padding: 18px 20px;
+	background: var(--mz-surface, #171724);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius, 8px);
+	margin-bottom: 14px;
+}
+.mz-manga__h {
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--mz-ink, #ededf2);
+	margin: 0 0 12px;
+}
+
+.mz-manga__summary-body {
+	color: var(--mz-ink-soft, #b6b6c4);
+	font-size: 14px;
+	line-height: 1.65;
+}
+.mz-manga__summary-body p { margin: 0 0 10px; }
+.mz-manga__summary-body p:last-child { margin-bottom: 0; }
+.mz-manga__summary-body a { color: var(--mz-accent, #ff6b35); }
+
+.mz-manga__edit {
+	text-align: right;
+	margin: -8px 0 14px;
+}
+.mz-manga__edit a {
+	display: inline-block;
+	padding: 4px 10px;
+	font-size: 12px;
+	color: var(--mz-muted, #7e7e93);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	text-decoration: none;
+}
+.mz-manga__edit a:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+}
+
+/* ---- chapters list (info-chapters.php) ---- */
+.mz-chapters {
+	/* lives inside .mz-manga__chapters section */
+}
+.mz-chapters__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid var(--mz-border, #272736);
+	margin: 0 0 8px;
+}
+.mz-chapters__title {
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--mz-ink, #ededf2);
+	margin: 0;
+	display: inline-flex;
+	align-items: baseline;
+	gap: 8px;
+}
+.mz-chapters__count {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--mz-muted, #7e7e93);
+	padding: 2px 8px;
+	background: var(--mz-surface-2, #1f1f30);
+	border-radius: 999px;
+	letter-spacing: 0;
+	text-transform: none;
+}
+.mz-chapters__sort {
+	width: 28px; height: 28px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	color: var(--mz-ink-soft, #b6b6c4);
+	cursor: pointer;
+	transition: all 140ms ease;
+	padding: 0;
+	font-size: 14px;
+}
+.mz-chapters__sort:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
+}
+
+.mz-chapters__list,
+.mz-vol__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+}
+
+.mz-chapter {
+	display: flex !important;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 8px 4px;
+	margin: 0;
+	min-height: 0;
+	background: transparent;
+	border: 0;
+	border-bottom: 1px solid var(--mz-border, #272736);
+	font-size: 13.5px;
+	line-height: 1.3;
+	transition: background 140ms ease;
+}
+.mz-chapters__list > .mz-chapter:last-child,
+.mz-vol__list > .mz-chapter:last-child { border-bottom: 0; }
+.mz-chapter:hover { background: var(--mz-surface-2, #1f1f30); }
+
+.mz-chapter__link,
+.mz-chapter__link:link,
+.mz-chapter__link:visited {
+	flex: 1 1 auto;
+	display: block;
+	padding: 2px 6px;
+	color: var(--mz-ink, #ededf2) !important;
+	text-decoration: none !important;
+	font-weight: 500;
+	font-size: 13.5px;
+	line-height: 1.3;
+	font-style: normal !important;
+	background: transparent !important;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.mz-chapter__link:hover,
+.mz-chapter__link:focus { color: var(--mz-accent, #ff6b35) !important; }
+.mz-chapter.is-unread .mz-chapter__link { color: var(--mz-accent, #ff6b35) !important; font-weight: 600; }
+.mz-chapter.is-reading { background: var(--mz-accent-soft, rgba(255,107,53,0.15)); }
+.mz-chapter.is-reading .mz-chapter__link { color: var(--mz-accent, #ff6b35) !important; font-weight: 600; }
+
+.mz-chapter__date {
+	flex: 0 0 auto;
+	color: var(--mz-muted, #7e7e93);
+	font-size: 12px;
+	font-style: normal !important;
+	white-space: nowrap;
+	padding: 2px 6px;
+}
+
+/* Volume group */
+.mz-chapters__volume { list-style: none; padding: 0; margin: 8px 0; }
+.mz-vol { background: transparent; }
+.mz-vol__summary {
+	cursor: pointer;
+	padding: 8px 10px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--mz-ink, #ededf2);
+	background: var(--mz-surface-2, #1f1f30);
+	border-radius: var(--mz-radius-sm, 6px);
+	margin-bottom: 2px;
+	list-style: none;
+}
+.mz-vol__summary::-webkit-details-marker { display: none; }
+.mz-vol__summary::before {
+	content: "▸ ";
+	display: inline-block;
+	margin-right: 4px;
+	transition: transform 140ms ease;
+}
+.mz-vol[open] > .mz-vol__summary::before { content: "▾ "; }
+.mz-vol__list > .mz-chapter { padding-left: 14px; }
+
+.mz-chapters__empty {
+	padding: 16px;
+	text-align: center;
+	color: var(--mz-muted, #7e7e93);
+	font-size: 13px;
+}
+
+.mz-chapters__more {
+	display: flex;
+	justify-content: center;
+	padding: 10px 0 2px;
+}
+.mz-chapters__more-btn {
+	display: inline-block;
+	padding: 6px 16px;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--mz-ink-soft, #b6b6c4);
+	background: transparent;
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	cursor: pointer;
+	transition: all 140ms ease;
+}
+.mz-chapters__more-btn:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
+}
+
+/* ---- comments section shell (contents rendered by plugin) ---- */
+.mz-manga__comments {
+	padding: 18px 20px;
+}
+
+/* ---- mobile ---- */
+@media (max-width: 760px) {
+	.mz-manga { padding: 10px; }
+	.mz-manga__hero {
+		grid-template-columns: 1fr;
+		padding: 16px;
+		gap: 16px;
+	}
+	.mz-manga__cover {
+		width: min(220px, 60vw);
+		margin: 0 auto;
+	}
+	.mz-manga__title { font-size: 22px; }
+	.mz-manga__meta { grid-template-columns: 1fr; gap: 2px 0; }
+	.mz-manga__meta > div { padding: 4px 0; border-bottom: 1px solid var(--mz-border, #272736); }
+	.mz-manga__actions { flex-direction: column; }
+	.mz-manga__actions .mz-btn,
+	.mz-manga__actions a,
+	.mz-manga__actions button { width: 100%; }
+	.mz-manga__section { padding: 14px; }
+}

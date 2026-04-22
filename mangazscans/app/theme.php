@@ -324,6 +324,18 @@
 				true
 			);
 
+			// Manga detail page stylesheet — only the single-manga view
+			// needs this, and it ships the mz-manga__* rules that back
+			// the rewritten madara-core/manga-single.php template.
+			if ( function_exists( 'is_manga_single' ) && is_manga_single() ) {
+				wp_enqueue_style(
+					'mangazscans-manga',
+					get_parent_theme_file_uri( '/css/mangazscans-manga.css' ),
+					array( 'mangazscans-chrome' ),
+					'2.5.0'
+				);
+			}
+
 			wp_enqueue_script( 'imagesloaded' );
 			wp_enqueue_script( 'slick', get_parent_theme_file_uri( '/js/slick/slick.min.js' ), array( 'jquery' ), '1.9.0', true );
 			// (aos.js was dropped in Phase A; the enqueue is gone with it.)
