@@ -336,6 +336,16 @@
 				);
 			}
 
+			// Homepage stylesheet — only the site root needs it.
+			if ( is_front_page() || is_home() ) {
+				wp_enqueue_style(
+					'mangazscans-home',
+					get_parent_theme_file_uri( '/css/mangazscans-home.css' ),
+					array( 'mangazscans-chrome' ),
+					'2.6.0'
+				);
+			}
+
 			wp_enqueue_script( 'imagesloaded' );
 			wp_enqueue_script( 'slick', get_parent_theme_file_uri( '/js/slick/slick.min.js' ), array( 'jquery' ), '1.9.0', true );
 			// (aos.js was dropped in Phase A; the enqueue is gone with it.)
