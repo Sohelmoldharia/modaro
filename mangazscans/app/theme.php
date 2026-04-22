@@ -346,20 +346,13 @@
 				);
 			}
 
-			// Chapter reader stylesheet + toggle script — reader page only.
+			// Chapter reader stylesheet — reader page only.
 			if ( function_exists( 'is_manga_reading_page' ) && is_manga_reading_page() ) {
 				wp_enqueue_style(
 					'mangazscans-reader',
 					get_parent_theme_file_uri( '/css/mangazscans-reader.css' ),
 					array( 'mangazscans-chrome' ),
-					'2.6.2'
-				);
-				wp_enqueue_script(
-					'mangazscans-reader',
-					get_parent_theme_file_uri( '/js/mangazscans-reader.js' ),
-					array(),
-					'2.6.2',
-					true
+					'2.6.3'
 				);
 			}
 

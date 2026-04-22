@@ -1,373 +1,120 @@
 /*
- * MangazScans — chapter reader polish.
+ * MangazScans — chapter reader.
  *
- * This stylesheet does NOT replace Madara's reader — it styles it.
- * Keeping the plugin's native template means paged mode, the page
- * pager (1/2, 2/2, …), the chapter selector, host/volume selects,
- * and chapter prev/next all keep working end-to-end.
+ * EVERY selector in this file starts with .mz-reader (or is a class
+ * we generated ourselves: .mz-style-toggle). The template
+ * madara-core/manga-single-reading.php emits all its own markup —
+ * no .wp-manga-nav, .select-pagination, .nav-links, or any madara
+ * chrome class — so this stylesheet cannot cascade-fight Madara's
+ * compiled style.css.
  *
- * We only:
- *   - dark-theme the chrome (dark bg, accent buttons, readable text),
- *   - stack the nav cleanly on mobile so buttons don't overflow,
- *   - compact the chapter image area,
- *   - sticky the bottom nav on mobile so it's always in thumb reach.
- *
- * Loaded only on is_manga_reading_page().
+ * Loaded only on is_manga_reading_page() via theme.php.
  */
 
-/* ---- Chapter heading + breadcrumb spacing ------------------------ */
+/* ---- Heading -------------------------------------------------------- */
 
-.reading-content-wrap #chapter-heading {
-	font-size: 16px;
-	font-weight: 700;
-	line-height: 1.3;
-	letter-spacing: -0.005em;
+.mz-reader {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0;
 	color: var(--mz-ink, #ededf2);
-	margin: 8px 0 6px;
-	padding: 0 12px;
+	font-family: var(--mz-font, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif);
+	font-size: 14px;
+	line-height: 1.55;
 }
 
-.reading-content-wrap .c-breadcrumb,
-.reading-content-wrap .manga-breadcrumb {
-	padding: 2px 12px 6px;
+.mz-reader__heading {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2px;
+	padding: 10px 14px;
+	margin: 6px 12px 6px;
+}
+.mz-reader__back {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
 	font-size: 12px;
 	color: var(--mz-muted, #7e7e93);
-}
-.reading-content-wrap .c-breadcrumb a,
-.reading-content-wrap .manga-breadcrumb a {
-	color: var(--mz-ink-soft, #b6b6c4);
 	text-decoration: none;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
 }
-.reading-content-wrap .c-breadcrumb a:hover,
-.reading-content-wrap .manga-breadcrumb a:hover {
-	color: var(--mz-accent, #ff6b35);
+.mz-reader__back:hover { color: var(--mz-accent, #ff6b35); }
+.mz-reader__back-text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 40ch;
+}
+.mz-reader__chapter-title {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.25;
+	letter-spacing: -0.01em;
+	color: var(--mz-ink, #ededf2);
+	margin: 0;
 }
 
-/* ---- Chapter nav bars (madara's .wp-manga-nav) ------------------- */
+/* ---- Nav bars ------------------------------------------------------- */
 
-.reading-content-wrap .entry-header.header,
-.reading-content-wrap .entry-header.footer,
-.reading-content-wrap #manga-reading-nav-head,
-.reading-content-wrap #manga-reading-nav-foot {
+.mz-reader__bar {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 10px 12px;
+	margin: 0 12px 8px;
 	background: var(--mz-surface, #171724);
 	border: 1px solid var(--mz-border, #272736);
 	border-radius: var(--mz-radius-sm, 6px);
-	padding: 8px 10px;
-	margin: 6px 12px;
 }
-.reading-content-wrap #manga-reading-nav-head { margin-top: 4px; }
-.reading-content-wrap #manga-reading-nav-foot { margin-bottom: 10px; }
+.mz-reader__bar--bottom { margin-top: 10px; margin-bottom: 14px; }
 
-/* Inner wrapper */
-.reading-content-wrap .wp-manga-nav {
+.mz-reader__row {
 	display: flex;
+	align-items: center;
+	gap: 6px;
 	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-	gap: 10px;
-	margin: 0;
-	padding: 0;
-	background: transparent;
 }
-
-/* ── Entry-header wrap (breadcrumb + action icons) ── */
-.reading-content-wrap .entry-header_wrap {
-	width: 100%;
-	margin: 0 0 6px;
-	padding: 0;
-	background: transparent;
-	border: 0;
-	box-shadow: none;
-}
-.reading-content-wrap .c-breadcrumb-wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 10px;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	background: transparent;
-}
-/* Breadcrumb list itself */
-.reading-content-wrap .c-breadcrumb {
-	padding: 0;
-	margin: 0;
-	font-size: 12px;
-	color: var(--mz-muted, #7e7e93);
-	min-width: 0;
-	flex: 1 1 auto;
-}
-.reading-content-wrap .c-breadcrumb .breadcrumb {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 4px;
-	background: transparent;
-	font-size: 12px;
-}
-.reading-content-wrap .c-breadcrumb .breadcrumb li {
-	padding: 0;
-	color: var(--mz-muted, #7e7e93);
-}
-.reading-content-wrap .c-breadcrumb .breadcrumb li + li::before {
-	content: "/";
-	padding: 0 4px 0 0;
-	color: var(--mz-muted, #7e7e93);
-}
-.reading-content-wrap .c-breadcrumb .breadcrumb li a {
-	color: var(--mz-ink-soft, #b6b6c4);
-	text-decoration: none;
-}
-.reading-content-wrap .c-breadcrumb .breadcrumb li a:hover {
-	color: var(--mz-accent, #ff6b35);
-}
-.reading-content-wrap .c-breadcrumb .breadcrumb li.active {
-	color: var(--mz-ink, #ededf2);
-}
-
-/* Action icon strip (dark/light contrast toggle from madara) */
-.reading-content-wrap .action-icon {
-	display: flex;
-	flex: 0 0 auto;
-	margin: 0;
-	padding: 0;
-}
-.reading-content-wrap .action-icon ul.action_list_icon,
-.reading-content-wrap .action-icon ul.list-inline {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	gap: 4px;
-}
-.reading-content-wrap .action-icon ul li {
-	margin: 0;
-	padding: 0;
-	display: inline-flex;
-}
-.reading-content-wrap .action-icon ul li a {
-	display: inline-flex;
-	align-items: center;
+.mz-reader__row--toggle { justify-content: center; }
+.mz-reader__row--pager {
 	justify-content: center;
-	width: 28px;
-	height: 28px;
-	border-radius: var(--mz-radius-sm, 6px);
-	background: var(--mz-surface-2, #1f1f30);
-	border: 1px solid var(--mz-border, #272736);
-	color: var(--mz-ink-soft, #b6b6c4);
-	text-decoration: none;
-	transition: all 140ms ease;
-	font-size: 14px;
-	line-height: 1;
-	box-shadow: none;
+	flex-wrap: nowrap;
 }
-.reading-content-wrap .action-icon ul li a:hover,
-.reading-content-wrap .action-icon ul li a:focus {
-	color: var(--mz-accent, #ff6b35);
-	border-color: var(--mz-accent, #ff6b35);
-	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
-}
-.reading-content-wrap .action-icon ul li a i { color: inherit; }
-
-/* Left cluster — host / volume / chapter / reading-style selects */
-.reading-content-wrap .wp-manga-nav .select-view {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
+.mz-reader__row--chapter-nav {
+	flex-wrap: nowrap;
 	gap: 6px;
-	min-width: 0;
-	flex: 1 1 auto;
 }
 
-/* Each "select picker" box */
-.reading-content-wrap .wp-manga-nav .c-selectpicker,
-.reading-content-wrap .wp-manga-nav .select-pagination .c-selectpicker {
-	margin: 0;
-	padding: 0;
-	background: transparent;
-	border: 0;
-}
-
-/* The actual <select> elements. Uses an SVG data-URI for the arrow
-   so the native browser chevron is guaranteed gone (appearance:none
-   fallback was still showing a double-chevron in the user's desktop
-   screenshot). !important on the critical bits so any plugin or
-   compiled-Madara rule can't override us. */
-.reading-content-wrap .wp-manga-nav select,
-.reading-content-wrap .wp-manga-nav .selectpicker,
-.reading-content-wrap select.single-chapter-select,
-.reading-content-wrap select.selectpicker,
-.reading-content-wrap select#single-pager {
-	-webkit-appearance: none !important;
-	-moz-appearance: none !important;
-	appearance: none !important;
-	background-color: var(--mz-surface, #171724) !important;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23b6b6c4' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E") !important;
-	background-repeat: no-repeat !important;
-	background-position: right 10px center !important;
-	background-size: 9px 6px !important;
-	color: var(--mz-ink, #ededf2);
-	border: 1px solid var(--mz-border, #272736);
-	border-radius: var(--mz-radius-sm, 6px);
-	padding: 0 26px 0 10px;
-	height: 30px;
-	font-size: 12px;
-	font-weight: 600;
-	cursor: pointer;
-	outline: none;
-	transition: border-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
-	min-width: 70px;
-	max-width: 100%;
-	font-family: inherit;
-	box-shadow: none;
-	line-height: 28px; /* vertical centering fallback for Safari */
-}
-/* IE / Edge legacy hide-arrow fallback */
-.reading-content-wrap .wp-manga-nav select::-ms-expand { display: none; }
-.reading-content-wrap .wp-manga-nav select:hover,
-.reading-content-wrap .wp-manga-nav .selectpicker:hover {
-	border-color: var(--mz-border-hi, #34344a);
-}
-.reading-content-wrap .wp-manga-nav select:focus,
-.reading-content-wrap .wp-manga-nav .selectpicker:focus {
-	border-color: var(--mz-accent, #ff6b35);
-	box-shadow: 0 0 0 3px var(--mz-accent-soft, rgba(255,107,53,0.18));
-}
-.reading-content-wrap .wp-manga-nav label {
-	margin: 0;
-	padding: 0;
-	display: inline-block;
-}
-
-/* Right cluster — page pager + prev/next chapter buttons */
-.reading-content-wrap .wp-manga-nav .select-pagination {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	gap: 6px;
-	margin: 0;
-	padding: 0;
-	background: transparent;
-	flex: 0 0 auto;
-}
-
-/* Prev / next / back buttons */
-.reading-content-wrap .wp-manga-nav .nav-links {
-	display: flex;
-	align-items: center;
-	gap: 6px;
-	margin: 0;
-	padding: 0;
-	background: transparent;
-	border: 0;
-	position: static;
-	box-shadow: none;
-}
-.reading-content-wrap .wp-manga-nav .nav-links .nav-previous,
-.reading-content-wrap .wp-manga-nav .nav-links .nav-next,
-.reading-content-wrap .wp-manga-nav .nav-links .btn-primary {
-	margin: 0;
-	padding: 0;
-	background: transparent;
-	border: 0;
-	display: inline-flex;
-}
-.reading-content-wrap .wp-manga-nav .nav-links a,
-.reading-content-wrap .wp-manga-nav .nav-links .btn,
-.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 4px;
-	padding: 0 12px;
-	height: 30px;
-	background: var(--mz-surface-2, #1f1f30);
-	color: var(--mz-ink, #ededf2);
-	border: 1px solid var(--mz-border, #272736);
-	border-radius: var(--mz-radius-sm, 6px);
-	font-size: 12px;
-	font-weight: 600;
-	text-decoration: none;
-	cursor: pointer;
-	transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
-	box-shadow: none;
-}
-/* Next + Back buttons get the accent fill */
-.reading-content-wrap .wp-manga-nav .nav-links .nav-next a,
-.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a {
-	background: var(--mz-accent, #ff6b35);
-	border-color: var(--mz-accent, #ff6b35);
-	color: var(--mz-accent-ink, #fff);
-}
-.reading-content-wrap .wp-manga-nav .nav-links a:hover,
-.reading-content-wrap .wp-manga-nav .nav-links .btn:hover,
-.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a:hover {
-	color: var(--mz-accent-ink, #fff);
-	background: var(--mz-accent-hover, #ff8054);
-	border-color: var(--mz-accent-hover, #ff8054);
-}
-.reading-content-wrap .wp-manga-nav .nav-links .nav-previous a:hover {
-	background: var(--mz-surface-3, #282838);
-	color: var(--mz-accent, #ff6b35);
-	border-color: var(--mz-accent, #ff6b35);
-}
-
-/* The mobile hamburger icon that lives inside .nav-links on mobile */
-.reading-content-wrap .wp-manga-nav .nav-links .mobile-nav-btn {
-	display: none;
-}
-
-/* ---- Reading-mode toggle (injected by js/mangazscans-reader.js) ---
-   Rendered as a full-width row INSIDE the nav wrapper, above the
-   dropdowns / prev-next buttons. A segmented pill that's equal-width
-   on mobile and compact centre-aligned on desktop. */
+/* ---- Style toggle (All pages / One by one) ------------------------- */
 
 .mz-style-toggle {
 	display: inline-flex;
+	gap: 2px;
+	padding: 2px;
 	background: var(--mz-surface-2, #1f1f30);
 	border: 1px solid var(--mz-border, #272736);
 	border-radius: var(--mz-radius-sm, 6px);
-	padding: 2px;
-	gap: 2px;
-	height: 30px;
-	box-sizing: border-box;
-	vertical-align: middle;
-}
-/* Row variant: own line above the rest of the nav. Centred + capped
-   so it doesn't stretch the full nav width on desktop. Mobile falls
-   through to full-width via the @media block. */
-.mz-style-toggle--row {
-	display: flex;
-	width: auto;
-	max-width: 280px;
-	margin: 0 auto 8px;
-	height: 30px;
 	box-sizing: border-box;
 }
 .mz-style-toggle__btn {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	height: 24px;
 	padding: 0 14px;
+	height: 24px;
 	font-size: 12px;
 	font-weight: 600;
 	color: var(--mz-ink-soft, #b6b6c4);
 	text-decoration: none;
-	border-radius: calc(var(--mz-radius-sm, 6px) - 2px);
-	transition: background 140ms ease, color 140ms ease;
+	border-radius: 4px;
 	line-height: 1;
 	white-space: nowrap;
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
-}
-.mz-style-toggle--row .mz-style-toggle__btn {
-	flex: 1 1 0;
-	height: 24px;
-	padding: 0 10px;
+	transition: background 140ms ease, color 140ms ease;
 }
 .mz-style-toggle__btn:hover {
 	color: var(--mz-ink, #ededf2);
@@ -376,59 +123,167 @@
 .mz-style-toggle__btn.is-active {
 	background: var(--mz-accent, #ff6b35);
 	color: var(--mz-accent-ink, #fff);
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .mz-style-toggle__btn.is-active:hover {
 	background: var(--mz-accent, #ff6b35);
 	color: var(--mz-accent-ink, #fff);
 }
 
-@media (max-width: 760px) {
-	.mz-style-toggle--row {
-		max-width: none;       /* full-width on mobile */
-		margin: 0 0 8px;
-		height: 32px;
-	}
-	.mz-style-toggle--row .mz-style-toggle__btn {
-		height: 26px;
-		font-size: 12.5px;
-		padding: 0 8px;
-	}
+/* ---- <select>'s (chapter + page pickers) --------------------------- */
+
+.mz-reader__select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: var(--mz-surface-2, #1f1f30);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23b6b6c4' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 9px 6px;
+	color: var(--mz-ink, #ededf2);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	height: 30px;
+	padding: 0 26px 0 10px;
+	font-size: 12.5px;
+	font-weight: 600;
+	font-family: inherit;
+	line-height: 28px;
+	cursor: pointer;
+	outline: none;
+	box-shadow: none;
+	transition: border-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
+}
+.mz-reader__select:hover { border-color: var(--mz-border-hi, #34344a); }
+.mz-reader__select:focus {
+	border-color: var(--mz-accent, #ff6b35);
+	box-shadow: 0 0 0 3px var(--mz-accent-soft, rgba(255,107,53,0.18));
+}
+.mz-reader__select::-ms-expand { display: none; }
+
+.mz-reader__chapter-select { width: 100%; min-width: 0; }
+.mz-reader__page-select {
+	flex: 1 1 auto;
+	min-width: 120px;
 }
 
-/* ---- Chapter image area ------------------------------------------ */
+/* ---- Pager arrow buttons (‹ / ›) ----------------------------------- */
 
-.reading-content-wrap .read-container,
-.reading-content-wrap .reading-content {
+.mz-reader__pager-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	background: var(--mz-surface-2, #1f1f30);
+	color: var(--mz-ink, #ededf2);
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1;
+	text-decoration: none;
+	transition: all 140ms ease;
+	flex: 0 0 auto;
+}
+.mz-reader__pager-btn:not(.is-disabled):hover {
+	background: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	color: var(--mz-accent-ink, #fff);
+}
+.mz-reader__pager-btn.is-disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* ---- Chapter prev / info / next buttons --------------------------- */
+
+.mz-reader__chapter-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 0 14px;
+	height: 32px;
+	background: var(--mz-surface-2, #1f1f30);
+	color: var(--mz-ink, #ededf2);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	font-size: 12.5px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 140ms ease;
+	flex: 1 1 0;
+	min-width: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.mz-reader__chapter-btn:not(.is-disabled):hover {
+	background: var(--mz-surface-3, #282838);
+	border-color: var(--mz-accent, #ff6b35);
+	color: var(--mz-accent, #ff6b35);
+}
+.mz-reader__chapter-btn--next {
+	background: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	color: var(--mz-accent-ink, #fff);
+}
+.mz-reader__chapter-btn--next:not(.is-disabled):hover {
+	background: var(--mz-accent-hover, #ff8054);
+	border-color: var(--mz-accent-hover, #ff8054);
+	color: var(--mz-accent-ink, #fff);
+}
+.mz-reader__chapter-btn.is-disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.mz-reader__info-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	color: var(--mz-ink, #ededf2);
+	background: transparent;
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	text-decoration: none;
+	transition: all 140ms ease;
+	flex: 0 0 auto;
+}
+.mz-reader__info-btn:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
+}
+
+/* ---- Chapter image area ------------------------------------------- */
+
+.mz-reader__content {
 	background: var(--mz-bg, #0e0e18);
+	padding: 4px 0;
 }
-.reading-content-wrap .reading-content {
-	max-width: 1000px;
-	margin: 0 auto;
-	padding: 8px 0;
+.mz-reader__content .reading-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 0;
 }
-.reading-content-wrap .reading-content .page-break {
-	margin: 0;
-	display: block;
+.mz-reader__content .page-break,
+.mz-reader__content .reading-content > * {
 	text-align: center;
 	width: 100%;
 }
-.reading-content-wrap .reading-content .page-break.no-gaps { margin: 0; }
-.reading-content-wrap .reading-content .page-break img,
-.reading-content-wrap .reading-content img {
+.mz-reader__content img {
 	display: block;
 	margin: 0 auto;
 	max-width: 100%;
 	height: auto;
 	background: var(--mz-surface, #171724);
-}
-
-/* Smooth fade-in when images finish loading (lazy or not) */
-.reading-content-wrap .reading-content img {
 	animation: mz-reader-fade 260ms ease-out both;
 }
 @keyframes mz-reader-fade {
@@ -436,8 +291,7 @@
 	to   { opacity: 1; }
 }
 
-/* View-full-size helper link that madara shows after last image */
-.reading-content-wrap #btn_view_full_image {
+.mz-reader__content #btn_view_full_image {
 	display: inline-block;
 	padding: 6px 14px;
 	margin: 10px auto;
@@ -450,158 +304,62 @@
 	text-decoration: none;
 	transition: all 140ms ease;
 }
-.reading-content-wrap #btn_view_full_image:hover {
+.mz-reader__content #btn_view_full_image:hover {
 	color: var(--mz-accent, #ff6b35);
 	border-color: var(--mz-accent, #ff6b35);
 	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
 }
 
-/* ---- Mobile (≤ 760 px) ------------------------------------------- */
+/* ---- Comments + related -------------------------------------------- */
+
+.mz-reader__comments,
+.mz-reader__related {
+	max-width: 1000px;
+	margin: 12px auto 16px;
+	padding: 14px 16px;
+	background: var(--mz-surface, #171724);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius, 8px);
+}
+
+/* ---- Mobile (≤ 760 px) -------------------------------------------- */
 
 @media (max-width: 760px) {
-	.reading-content-wrap #chapter-heading {
-		font-size: 14px;
-		margin: 6px 0 4px;
+	.mz-reader__heading {
+		margin: 4px 8px 4px;
+		padding: 8px 10px;
+	}
+	.mz-reader__chapter-title { font-size: 14px; }
+	.mz-reader__back { font-size: 11px; }
+	.mz-reader__back-text { max-width: 22ch; }
+
+	.mz-reader__bar {
+		margin: 0 8px 6px;
+		padding: 8px;
+	}
+
+	.mz-reader__row--pager { flex-wrap: nowrap; }
+	.mz-reader__page-select { min-width: 0; }
+
+	.mz-reader__row--chapter-nav { flex-wrap: nowrap; }
+	.mz-reader__chapter-btn {
 		padding: 0 10px;
-	}
-
-	/* Nav bar wrappers — tighter padding on mobile */
-	.reading-content-wrap .entry-header.header,
-	.reading-content-wrap .entry-header.footer,
-	.reading-content-wrap #manga-reading-nav-head,
-	.reading-content-wrap #manga-reading-nav-foot {
-		margin: 4px 6px;
-		padding: 6px;
-		border-radius: var(--mz-radius-sm, 6px);
-	}
-
-	.reading-content-wrap .wp-manga-nav select,
-	.reading-content-wrap .wp-manga-nav .selectpicker {
-		height: 32px;
-		font-size: 12.5px;
-	}
-
-	/* Column layout for the whole nav — one visual row per logical
-	   group. !important to beat any leftover Madara CSS specificity
-	   that was causing the pager to end up next to the breadcrumb. */
-	.reading-content-wrap .wp-manga-nav {
-		display: flex !important;
-		flex-direction: column !important;
-		align-items: stretch !important;
-		gap: 6px !important;
-		float: none !important;
-	}
-
-	/* Breadcrumb + action icons: single row, tight */
-	.reading-content-wrap .c-breadcrumb-wrapper {
-		gap: 8px;
-	}
-	.reading-content-wrap .c-breadcrumb .breadcrumb {
-		font-size: 11.5px;
-	}
-	.reading-content-wrap .action-icon ul li a {
-		width: 26px;
-		height: 26px;
-		font-size: 13px;
-	}
-
-	/* ── Select-view row (host / volume / chapter / reading-style) ── */
-	.reading-content-wrap .wp-manga-nav .select-view {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-		width: 100%;
-		justify-content: stretch;
-	}
-	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker {
-		flex: 1 1 100%;
-		min-width: 0;
-		margin: 0;
-	}
-	/* Host + volume share a row at 2-col when both present on ≥480 px */
-	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker.selectpicker_version,
-	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker.selectpicker_volume {
-		flex: 1 1 calc(50% - 4px);
-	}
-	/* Chapter picker: always its own full-width row */
-	.reading-content-wrap .wp-manga-nav .select-view > .c-selectpicker.selectpicker_chapter {
-		flex: 1 1 100%;
-	}
-	.reading-content-wrap .wp-manga-nav .select-view select,
-	.reading-content-wrap .wp-manga-nav .select-view .selectpicker {
-		width: 100%;
-		min-width: 0;
-	}
-
-	/* ── Pagination row (page pager + prev/next/back) ── */
-	.reading-content-wrap .wp-manga-nav .select-pagination {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 8px;
-		width: 100%;
-		justify-content: stretch;
-		padding: 0;
-		margin: 0;
-		background: transparent;
-		border: 0;
-	}
-	/* Page pager (1/2) on its own full-width row so the dropdown
-	   arrow doesn't collide with prev/next buttons */
-	.reading-content-wrap .wp-manga-nav .selectpicker_page {
-		flex: 1 1 100%;
-		min-width: 0;
-		margin: 0;
-	}
-	.reading-content-wrap .wp-manga-nav .selectpicker_page select,
-	.reading-content-wrap .wp-manga-nav #single-pager {
-		width: 100%;
-	}
-
-	/* Prev / Next / Back: equal-width row */
-	.reading-content-wrap .wp-manga-nav .nav-links {
-		display: flex;
-		width: 100%;
-		flex: 1 1 100%;
-		gap: 6px;
-		padding: 0;
-		margin: 0;
-		background: transparent;
-		border: 0;
-		box-shadow: none;
-		justify-content: stretch;
-	}
-	.reading-content-wrap .wp-manga-nav .nav-links .nav-previous,
-	.reading-content-wrap .wp-manga-nav .nav-links .nav-next,
-	.reading-content-wrap .wp-manga-nav .nav-links .btn-primary {
-		flex: 1 1 0;
-		min-width: 0;
-		margin: 0;
-		padding: 0;
-	}
-	.reading-content-wrap .wp-manga-nav .nav-links a,
-	.reading-content-wrap .wp-manga-nav .nav-links .btn,
-	.reading-content-wrap .wp-manga-nav .nav-links .btn-primary a {
-		width: 100%;
-		padding: 0 8px;
 		height: 34px;
-		font-size: 12.5px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		font-size: 12px;
 	}
 
-	/* Mobile hamburger from madara — our chapter picker replaces it */
-	.reading-content-wrap .wp-manga-nav .nav-links .mobile-nav-btn {
-		display: none !important;
+	.mz-reader__comments,
+	.mz-reader__related {
+		margin: 10px 8px;
+		padding: 12px;
 	}
 
-	/* Bottom nav: make it sticky so it's always reachable */
-	.reading-content-wrap #manga-reading-nav-foot,
-	.reading-content-wrap .entry-header.footer {
+	/* Sticky bottom nav so prev/next chapter is always in thumb reach. */
+	.mz-reader__bar--bottom {
 		position: sticky;
 		bottom: 0;
 		z-index: 20;
-		margin: 8px 0 0;
+		margin: 0;
 		border-radius: 0;
 		border-left: 0;
 		border-right: 0;
@@ -609,22 +367,28 @@
 		-webkit-backdrop-filter: saturate(160%) blur(10px);
 		backdrop-filter: saturate(160%) blur(10px);
 	}
-
-	/* Reader content: edge to edge on mobile */
-	.reading-content-wrap .reading-content { padding: 4px 0; }
-	.reading-content-wrap .reading-content .page-break img,
-	.reading-content-wrap .reading-content img {
-		width: 100%;
-		max-width: 100%;
-	}
 }
 
-/* iOS safe-area respect for sticky bottom nav */
 @supports (padding: env(safe-area-inset-bottom)) {
 	@media (max-width: 760px) {
-		.reading-content-wrap #manga-reading-nav-foot,
-		.reading-content-wrap .entry-header.footer {
+		.mz-reader__bar--bottom {
 			padding-bottom: calc(8px + env(safe-area-inset-bottom));
 		}
 	}
+}
+
+/* ---- Safety guard: kill any legacy madara nav markup -------------- */
+/* Only happens if an ajax partial injects .wp-manga-nav after load.
+   Scoped so it ONLY affects the reader page. */
+.mz-reader .wp-manga-nav,
+.mz-reader .select-pagination,
+.mz-reader .entry-header.header,
+.mz-reader .entry-header.footer,
+.mz-reader #manga-reading-nav-head,
+.mz-reader #manga-reading-nav-foot,
+.mz-reader #chapter-heading,
+.mz-reader .c-breadcrumb-wrapper,
+.mz-reader .select-view,
+.mz-reader .nav-links {
+	display: none !important;
 }
