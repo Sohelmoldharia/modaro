@@ -1,8 +1,9 @@
 /*
 Theme Name: MangazScans
 Theme URI: https://mangazscans.local/
-Description: Lightweight, security-hardened manga & comic theme for WordPress. Dark by default, compact UI. Rewritten chrome (header/footer, manga single page, chapter reader, Add Chapter admin) on top of a Madara 1.7.3.1 fork; integrated ImgChest / direct-URL / page-scrape / zip chapter imports; ajax_load_more LFI patched; silent-activation DB bug fixed.
-Version: 2.6.2
+Author: MangazScans
+Description: Lightweight, security-hardened manga & comic theme for WordPress. Dark by default, compact UI, integrated ImgChest / direct-URL / page-scrape / zip chapter imports, own chapter reader and admin upload flow. Upstream LFI in ajax_load_next_page and Unauthenticated Arbitrary File Deletion in the bundled chapter plugin (pre-2.2.4) are both patched.
+Version: 3.0.0
 Text Domain: mangazscans
 Domain Path: /languages/
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready
