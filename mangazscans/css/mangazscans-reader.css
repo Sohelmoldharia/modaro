@@ -209,7 +209,10 @@
 	display: none;
 }
 
-/* ---- Reading-mode toggle (injected by js/mangazscans-reader.js) --- */
+/* ---- Reading-mode toggle (injected by js/mangazscans-reader.js) ---
+   Rendered as a full-width row INSIDE the nav wrapper, above the
+   dropdowns / prev-next buttons. A segmented pill that's equal-width
+   on mobile and compact centre-aligned on desktop. */
 
 .mz-style-toggle {
 	display: inline-flex;
@@ -220,12 +223,21 @@
 	gap: 2px;
 	height: 36px;
 	box-sizing: border-box;
+	vertical-align: middle;
+}
+.mz-style-toggle--row {
+	display: flex;
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+	margin: 0 0 10px;
 }
 .mz-style-toggle__btn {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0 12px;
+	height: 30px;
+	padding: 0 14px;
 	font-size: 12.5px;
 	font-weight: 600;
 	color: var(--mz-ink-soft, #b6b6c4);
@@ -234,9 +246,17 @@
 	transition: background 140ms ease, color 140ms ease;
 	line-height: 1;
 	white-space: nowrap;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+.mz-style-toggle--row .mz-style-toggle__btn {
+	flex: 1 1 0;
+	height: 34px;
+	padding: 0 10px;
 }
 .mz-style-toggle__btn:hover {
 	color: var(--mz-ink, #ededf2);
+	background: var(--mz-surface-3, #282838);
 }
 .mz-style-toggle__btn.is-active {
 	background: var(--mz-accent, #ff6b35);
@@ -244,18 +264,17 @@
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 .mz-style-toggle__btn.is-active:hover {
+	background: var(--mz-accent, #ff6b35);
 	color: var(--mz-accent-ink, #fff);
 }
 
 @media (max-width: 760px) {
-	.mz-style-toggle {
-		width: 100%;
-		flex: 1 1 100%;
-		justify-content: stretch;
+	.mz-style-toggle--row {
+		margin: 0 0 8px;
 	}
-	.mz-style-toggle__btn {
-		flex: 1 1 0;
-		padding: 0 10px;
+	.mz-style-toggle--row .mz-style-toggle__btn {
+		height: 36px;
+		font-size: 13px;
 	}
 }
 

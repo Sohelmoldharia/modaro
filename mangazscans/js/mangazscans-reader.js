@@ -72,36 +72,28 @@
 	function inject() {
 		var current = currentStyle();
 
-		// We add the toggle to BOTH header + footer nav bars so readers
-		// see it at the top and at the bottom after they finish a chapter.
-		var containers = document.querySelectorAll(
-			'#manga-reading-nav-head .wp-manga-nav, ' +
-			'#manga-reading-nav-foot .wp-manga-nav, ' +
-			'.entry-header.header .wp-manga-nav, ' +
-			'.entry-header.footer .wp-manga-nav'
+		// Place the toggle as the FIRST child inside the outer reader-
+		// nav wrapper (#manga-reading-nav-head / -foot), i.e. a sibling
+		// that renders ABOVE .wp-manga-nav. That way it has its own
+		// clean row and never fights with the host/volume/chapter/page
+		// dropdowns for space.
+		var wrappers = document.querySelectorAll(
+			'#manga-reading-nav-head, ' +
+			'#manga-reading-nav-foot, ' +
+			'.entry-header.header, ' +
+			'.entry-header.footer'
 		);
 
-		containers.forEach(function (nav) {
-			// Don't double-inject if we come back through ajax.
-			if (nav.querySelector('.mz-style-toggle')) return;
+		wrappers.forEach(function (wrap) {
+			if (wrap.querySelector('.mz-style-toggle')) return; // idempotent
 
 			var toggle = buildToggle(current);
+			toggle.classList.add('mz-style-toggle--row');
+			wrap.insertBefore(toggle, wrap.firstChild);
 
-			// Try to drop the toggle into the left 'select-view' group so
-			// it sits with the chapter / reading-style pickers. Fall back
-			// to prepending to the whole nav.
-			var target = nav.querySelector('.select-view');
-			if (target) {
-				target.appendChild(toggle);
-			} else {
-				nav.insertBefore(toggle, nav.firstChild);
-			}
-
-			// madara also ships its own .reading-style-select dropdown
-			// inside .selectpicker_load — hide it per-instance since our
-			// toggle replaces it. We do it locally so other plugins that
-			// also scope by .selectpicker_load don't get clobbered.
-			var madaraPicker = nav.querySelector('.selectpicker_load');
+			// Madara's own 'List / Paged' dropdown is redundant now — hide
+			// it locally so our toggle is the single clear control.
+			var madaraPicker = wrap.querySelector('.selectpicker_load');
 			if (madaraPicker) madaraPicker.style.display = 'none';
 		});
 	}
