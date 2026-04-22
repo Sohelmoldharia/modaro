@@ -189,9 +189,17 @@
 					if ( ! $alternative_content ) {
 						do_action( 'wp_manga_before_chapter_content', $cur_chap, $manga_id );
 						if ( $wp_manga->is_content_manga( $manga_id ) ) {
+							// Text / video chapter — plugin renders its own content block.
 							$GLOBALS['wp_manga_template']->load_template( 'reading-content/content', 'reading-content', true );
 						} else {
-							$GLOBALS['wp_manga_template']->load_template( 'reading-content/content', 'reading-' . $reading_style, true );
+							// Image chapter — ALWAYS render list mode (all pages in
+							// one long scroll). The paged template shows one image
+							// at a time and relies on a page pager that this
+							// rewrite intentionally doesn't emit — so forcing list
+							// mode is what makes the chapter actually readable end
+							// to end. Chapter-level prev/next is in our own
+							// .mz-reader__bar; no need for page-within-chapter nav.
+							$GLOBALS['wp_manga_template']->load_template( 'reading-content/content', 'reading-list', true );
 						}
 						do_action( 'wp_manga_after_chapter_content', $cur_chap, $manga_id );
 					} else {
