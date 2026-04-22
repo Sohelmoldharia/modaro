@@ -1,0 +1,190 @@
+/*
+ * MangazScans overrides
+ *
+ * Layer loaded LAST so every rule in here wins over style.css without
+ * needing !important everywhere. Keep this file short and purposeful;
+ * anything structural lives in the compiled style.css.
+ *
+ * Goals:
+ *   - calm light palette: paper-white bg, ink text, single orange accent
+ *   - compact header with tighter vertical rhythm
+ *   - drop heavy gradients / shadows so pages feel faster
+ */
+
+:root {
+	--mz-bg: #ffffff;
+	--mz-surface: #fafafa;
+	--mz-ink: #1a1a2e;
+	--mz-ink-soft: #4a4a5e;
+	--mz-muted: #8a8a9a;
+	--mz-border: #e6e6ec;
+	--mz-accent: #ff6b35;
+	--mz-accent-ink: #ffffff;
+	--mz-header-h: 64px;
+	--mz-header-h-mobile: 56px;
+}
+
+/* ---- Base ---- */
+body,
+body.text-ui-light {
+	background: var(--mz-bg);
+	color: var(--mz-ink);
+}
+
+body a,
+body a:visited {
+	color: var(--mz-ink);
+	text-decoration: none;
+}
+body a:hover,
+body a:focus {
+	color: var(--mz-accent);
+}
+
+/* ---- Header: compact ---- */
+.site-header {
+	background: var(--mz-bg);
+	border-bottom: 1px solid var(--mz-border);
+	box-shadow: none;
+}
+
+.site-header .c-header__top {
+	background: var(--mz-bg);
+	border: 0;
+	box-shadow: none;
+	padding: 0;
+}
+
+.site-header .main-navigation {
+	background: var(--mz-bg);
+	min-height: var(--mz-header-h);
+	padding: 6px 0;
+	box-shadow: none;
+}
+
+.site-header .main-navigation .main-navigation_wrap {
+	min-height: calc(var(--mz-header-h) - 12px);
+	padding: 0;
+}
+
+.site-header .wrap_branding .logo img,
+.site-header .logo img {
+	max-height: 40px;
+	width: auto;
+	height: auto;
+}
+
+.site-header .main-menu > ul > li > a {
+	padding: 0 14px;
+	line-height: var(--mz-header-h);
+	color: var(--mz-ink);
+	font-weight: 600;
+	letter-spacing: 0.01em;
+}
+.site-header .main-menu > ul > li > a:hover,
+.site-header .main-menu > ul > li.current-menu-item > a {
+	color: var(--mz-accent);
+}
+
+.site-header .main-menu ul ul.sub-menu {
+	background: var(--mz-bg);
+	border: 1px solid var(--mz-border);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+.site-header .main-menu ul ul.sub-menu > li > a {
+	color: var(--mz-ink);
+}
+.site-header .main-menu ul ul.sub-menu > li > a:hover {
+	color: var(--mz-accent);
+	background: var(--mz-surface);
+}
+
+/* Sub-header / secondary nav: flatten */
+.sub-header-nav,
+.c-header__sub,
+.c-header__bottom {
+	background: var(--mz-bg);
+	border-bottom: 1px solid var(--mz-border);
+	box-shadow: none;
+}
+
+/* Search box in header */
+.site-header input[type="text"],
+.site-header input[type="search"] {
+	background: var(--mz-surface);
+	border: 1px solid var(--mz-border);
+	color: var(--mz-ink);
+	border-radius: 6px;
+}
+.site-header input[type="submit"],
+.btn-primary,
+.button-primary,
+button.button-primary {
+	background: var(--mz-accent);
+	border-color: var(--mz-accent);
+	color: var(--mz-accent-ink);
+	border-radius: 6px;
+	box-shadow: none;
+}
+.site-header input[type="submit"]:hover,
+.btn-primary:hover,
+.button-primary:hover {
+	background: #e95822;
+	border-color: #e95822;
+}
+
+/* Mobile header trim */
+@media (max-width: 768px) {
+	.site-header .main-navigation {
+		min-height: var(--mz-header-h-mobile);
+	}
+	.site-header .wrap_branding .logo img,
+	.site-header .logo img {
+		max-height: 34px;
+	}
+	.site-header .main-menu > ul > li > a {
+		line-height: var(--mz-header-h-mobile);
+	}
+}
+
+/* ---- Global calm-down ---- */
+.card,
+.c-card,
+.c-blog__inner,
+.c-widget-wrap,
+.page-breadcrumb,
+.page-listing-item {
+	background: var(--mz-bg);
+	border: 1px solid var(--mz-border);
+	box-shadow: none;
+}
+
+button,
+.btn,
+input[type="submit"] {
+	transition: background-color 120ms ease, color 120ms ease,
+		border-color 120ms ease;
+}
+
+/* Accent links (read now, continue, chapter links) */
+.c-btn,
+.wp-manga-nav-links a,
+.chapter-selection a.selected {
+	background: var(--mz-accent);
+	color: var(--mz-accent-ink);
+	border-color: var(--mz-accent);
+	box-shadow: none;
+}
+.c-btn:hover,
+.wp-manga-nav-links a:hover {
+	background: #e95822;
+	border-color: #e95822;
+}
+
+/* Tone down heavy backgrounds */
+.site-content,
+.c-body,
+.body-wrap,
+.wrap {
+	background: var(--mz-bg);
+}

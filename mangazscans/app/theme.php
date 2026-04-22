@@ -29,6 +29,10 @@
 		 * */
 		require( get_template_directory() . '/manga-functions.php' );
 
+		// Theme-level chapter storage backends (ImgChest, Direct URLs).
+		// Only loaded when Madara-Core is active, because they hook
+		// Madara-Core filters and AJAX handlers.
+		require( get_template_directory() . '/app/storage/bootstrap.php' );
 	}
 
 	/**
@@ -289,12 +293,22 @@
             }
 			//Temporary
 			wp_enqueue_style( 'loaders', get_parent_theme_file_uri( '/css/loaders.min.css' ) );
-            
-			wp_enqueue_style( 'madara-css', get_stylesheet_uri(), array(), '1.6.6' );
+
+			wp_enqueue_style( 'madara-css', get_stylesheet_uri(), array(), '2.0.0' );
+
+			// MangazScans overrides: loaded last so its rules trump the
+			// compiled style.css without needing !important. Compact
+			// header + calm palette live here.
+			wp_enqueue_style(
+				'mangazscans-overrides',
+				get_parent_theme_file_uri( '/css/mangazscans-overrides.css' ),
+				array( 'madara-css' ),
+				'2.0.0'
+			);
 
 			wp_enqueue_script( 'imagesloaded' );
 			wp_enqueue_script( 'slick', get_parent_theme_file_uri( '/js/slick/slick.min.js' ), array( 'jquery' ), '1.9.0', true );
-			wp_enqueue_script( 'aos', get_parent_theme_file_uri( '/js/aos.js' ), array(), '', true );
+			// (aos.js was dropped in Phase A; the enqueue is gone with it.)
 			
             wp_enqueue_script( 'madara-js', get_parent_theme_file_uri( '/js/template.js' ), array(
 				'jquery',
