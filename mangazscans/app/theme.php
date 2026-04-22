@@ -36,6 +36,10 @@
 		// Only loaded when Madara-Core is active, because they hook
 		// Madara-Core filters and AJAX handlers.
 		require( get_template_directory() . '/app/storage/bootstrap.php' );
+
+		// Small targeted shims for known Madara-Core bugs we don't
+		// want to fix by editing plugin files (so updates still apply).
+		require( get_template_directory() . '/app/patches.php' );
 	}
 
 	/**
