@@ -1,8 +1,8 @@
 /*
 Theme Name: MangazScans
 Theme URI: https://mangazscans.local/
-Description: Lightweight, security-hardened manga & comic theme for WordPress. Forked from Madara 1.7.3.1, then stripped of unused integrations (AMP, WooCommerce, Jetpack, Welcome, Starter Content), bundled font formats, and the Mangabooth/Envato activation flow; ajax_load_more LFI patched. Requires the Madara-Core (WP Manga) plugin.
-Version: 2.0.0
+Description: Lightweight, security-hardened manga & comic theme for WordPress. Dark by default, compact UI, integrated ImgChest / direct-URL / page-scrape / zip chapter imports. Forked from Madara 1.7.3.1; ajax_load_more LFI patched, silent-activation DB bug fixed, upload flow replaced. Bundles a slim madara-core plugin that auto-installs on theme activation.
+Version: 2.5.0
 Text Domain: mangazscans
 Domain Path: /languages/
 Tags: one-column, two-columns, right-sidebar, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready

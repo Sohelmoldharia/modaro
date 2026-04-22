@@ -294,7 +294,7 @@
 			//Temporary
 			wp_enqueue_style( 'loaders', get_parent_theme_file_uri( '/css/loaders.min.css' ) );
 
-			wp_enqueue_style( 'madara-css', get_stylesheet_uri(), array(), '2.0.0' );
+			wp_enqueue_style( 'madara-css', get_stylesheet_uri(), array(), '2.5.0' );
 
 			// MangazScans overrides: loaded last so its rules trump the
 			// compiled style.css without needing !important. Compact
@@ -303,7 +303,7 @@
 				'mangazscans-overrides',
 				get_parent_theme_file_uri( '/css/mangazscans-overrides.css' ),
 				array( 'madara-css' ),
-				'2.0.0'
+				'2.5.0'
 			);
 
 			wp_enqueue_script( 'imagesloaded' );
