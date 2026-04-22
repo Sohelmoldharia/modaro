@@ -222,22 +222,25 @@
 
 @media (max-width: 760px) {
 	.mz-reader__bar--top {
-		grid-template-columns: auto 1fr auto;
+		grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
 		gap: 6px;
 		padding: 6px 10px;
 	}
-	/* On mobile hide the per-item chapter label row in the top bar +
-	   shrink the back-label; the controls cluster moves to its own row
-	   below via the bottom-bar pattern. Keep it as one row still. */
-	.mz-reader__bar--top .mz-reader__controls { display: none; }
+	/* On mobile the top bar collapses to [back] [chapter title] [info].
+	   The controls cluster moves to a sticky bottom bar below. */
+	.mz-reader__bar--top .mz-reader__controls { display: none !important; }
 	.mz-reader__bar--top .mz-reader__chapter-label {
 		text-align: left;
 		font-size: 12.5px;
+		min-width: 0;
 	}
-	.mz-reader__back-label { max-width: 14ch; }
+	/* Hide the back-label text on narrow screens, keep the ← arrow so
+	   the target stays tappable but can't shove the chapter title off. */
+	.mz-reader__back-label { display: none; }
 	.mz-reader__back {
-		padding: 6px 8px;
-		font-size: 13px;
+		padding: 6px 10px;
+		font-size: 16px;
+		line-height: 1;
 	}
 	.mz-reader__info { width: 32px; height: 32px; }
 
@@ -287,13 +290,43 @@
 	}
 }
 
-/* ---- Suppress legacy madara nav that the plugin may still inject
-   via ajax partials, so we never get a double-nav again. ----------- */
-.mz-reader .select-pagination,
-.mz-reader .wp-manga-nav,
-.mz-reader .entry-header.header,
-.mz-reader .entry-header.footer,
-.mz-reader .c-select-bottom,
-.mz-reader #chapter-heading {
+/* ---- Suppress legacy madara nav -----------------------------------
+   This stylesheet is only enqueued on is_manga_reading_page(), so
+   every rule below applies only on reader pages. The selectors are
+   intentionally NOT scoped to .mz-reader — if a cached page or a
+   plugin injects the legacy markup outside our wrapper, we still
+   kill it. */
+
+.wp-manga-nav,
+.select-pagination,
+.entry-header.header,
+.entry-header.footer,
+.c-select-bottom,
+#chapter-heading,
+#manga-reading-nav-head,
+#manga-reading-nav-foot,
+.read-container > .c-blog-post > .entry-header,
+body .c-page-content.reading-content-wrap > .content-area > .container > .row > .main-col > h1#chapter-heading,
+body .c-page-content.reading-content-wrap .main-col > h1,
+body .c-page-content.reading-content-wrap .manga-breadcrumb,
+body .c-page-content.reading-content-wrap .c-breadcrumb {
 	display: none !important;
 }
+
+/* Also nuke the default madara "minimal reading layout" chrome that
+   sometimes re-appears via ajax page navigation partials. */
+body.reading-manga .entry-header,
+body.reading-manga .select-pagination,
+body.reading-manga .nav-links,
+body.reading-manga .c-select-bottom,
+body.manga-reading-paged-style .entry-header,
+body.manga-reading-paged-style .select-pagination,
+body.manga-reading-list-style  .entry-header,
+body.manga-reading-list-style  .select-pagination {
+	display: none !important;
+}
+/* ...but keep OUR nav visible even though it lives inside the same
+   ancestor chain. */
+.mz-reader .mz-reader__bar,
+.mz-reader .mz-reader__bar--top,
+.mz-reader .mz-reader__bar--bottom { display: grid !important; }
