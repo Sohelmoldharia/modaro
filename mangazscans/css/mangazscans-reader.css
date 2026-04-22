@@ -1,0 +1,299 @@
+/*
+ * MangazScans — chapter reader.
+ *
+ * Styles madara-core/manga-single-reading.php. Dark-first, inherits
+ * --mz-* tokens from the chrome + overrides layers. Own mz-reader__*
+ * namespace only — the plugin's own .select-pagination / .wp-manga-nav
+ * / .entry-header elements can't reach in because we don't render
+ * them at all in the rewritten template.
+ *
+ * Loaded only on is_manga_reading_page() via conditional enqueue.
+ */
+
+.mz-reader {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0;
+	color: var(--mz-ink, #ededf2);
+	font-family: var(--mz-font, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+}
+
+/* ---- Reader nav bar (used top + bottom) -------------------------- */
+
+.mz-reader__bar {
+	display: grid;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 12px;
+	background: var(--mz-blur-bg, rgba(14, 14, 24, 0.88));
+	-webkit-backdrop-filter: saturate(160%) blur(10px);
+	backdrop-filter: saturate(160%) blur(10px);
+	border-bottom: 1px solid var(--mz-border, #272736);
+	font-size: 13px;
+	color: var(--mz-ink, #ededf2);
+}
+
+.mz-reader__bar--top {
+	grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto) auto;
+	position: sticky;
+	top: var(--mz-header-h, 56px);
+	z-index: 20;
+}
+
+.mz-reader__bar--bottom {
+	grid-template-columns: 1fr;
+	justify-items: center;
+	border-bottom: 0;
+	border-top: 1px solid var(--mz-border, #272736);
+	padding: 10px 12px;
+	margin-bottom: 12px;
+}
+
+/* Back link (top only) — "← Manga title" */
+.mz-reader__back {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 10px;
+	color: var(--mz-ink, #ededf2);
+	text-decoration: none;
+	font-weight: 600;
+	border-radius: var(--mz-radius-sm, 6px);
+	transition: background 140ms ease, color 140ms ease;
+	max-width: 100%;
+	min-width: 0;
+}
+.mz-reader__back:hover {
+	background: var(--mz-surface-2, #1f1f30);
+	color: var(--mz-accent, #ff6b35);
+}
+.mz-reader__back-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 28ch;
+}
+
+/* Chapter label in the middle of the top bar */
+.mz-reader__chapter-label {
+	color: var(--mz-ink-soft, #b6b6c4);
+	font-size: 13px;
+	font-weight: 500;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 0;
+}
+
+/* Info icon (top only) — goes back to manga info */
+.mz-reader__info {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px; height: 36px;
+	color: var(--mz-ink, #ededf2);
+	background: transparent;
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	text-decoration: none;
+	transition: all 140ms ease;
+}
+.mz-reader__info:hover {
+	color: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+	background: var(--mz-accent-soft, rgba(255,107,53,0.15));
+}
+
+/* Controls cluster: [Prev] [Chapter select] [Next] */
+.mz-reader__controls {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-width: 0;
+}
+
+.mz-reader__nav {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 0 14px;
+	height: 36px;
+	color: var(--mz-ink, #ededf2);
+	background: transparent;
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	font-size: 13px;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all 140ms ease;
+	white-space: nowrap;
+}
+.mz-reader__nav:hover:not(.is-disabled) {
+	color: var(--mz-accent-ink, #fff);
+	background: var(--mz-accent, #ff6b35);
+	border-color: var(--mz-accent, #ff6b35);
+}
+.mz-reader__nav.is-disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* Chapter picker */
+.mz-reader__picker {
+	position: relative;
+	min-width: 0;
+	flex: 0 1 auto;
+}
+.mz-reader__select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background:
+		linear-gradient(45deg, transparent 50%, var(--mz-ink-soft, #b6b6c4) 50%) no-repeat right 14px top 50% / 5px 5px,
+		linear-gradient(135deg, var(--mz-ink-soft, #b6b6c4) 50%, transparent 50%) no-repeat right 9px top 50% / 5px 5px,
+		var(--mz-surface, #171724);
+	color: var(--mz-ink, #ededf2);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius-sm, 6px);
+	padding: 0 28px 0 12px;
+	height: 36px;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	max-width: 180px;
+	min-width: 100px;
+	transition: border-color 140ms ease, background-color 140ms ease;
+	outline: none;
+	text-overflow: ellipsis;
+}
+.mz-reader__select:hover { border-color: var(--mz-border-hi, #34344a); }
+.mz-reader__select:focus {
+	border-color: var(--mz-accent, #ff6b35);
+	box-shadow: 0 0 0 3px var(--mz-accent-soft, rgba(255,107,53,0.18));
+}
+
+/* ---- Chapter images ---------------------------------------------- */
+
+.mz-reader__content {
+	background: var(--mz-bg, #0e0e18);
+	padding: 8px 0;
+}
+.mz-reader__content .reading-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0;
+}
+.mz-reader__content img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	height: auto;
+	background: var(--mz-surface, #171724);
+	animation: mz-reader-fade 280ms ease-out both;
+}
+@keyframes mz-reader-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* Paged mode uses a specific wrapper — make its image fill too. */
+.mz-reader__content .page-break {
+	margin: 0;
+	display: block;
+	text-align: center;
+}
+.mz-reader__content .page-break img { width: auto; max-width: 100%; }
+
+/* ---- Comments / related / footer sections ------------------------ */
+
+.mz-reader__comments,
+.mz-reader__related {
+	max-width: 1000px;
+	margin: 12px auto 16px;
+	padding: 14px 16px;
+	background: var(--mz-surface, #171724);
+	border: 1px solid var(--mz-border, #272736);
+	border-radius: var(--mz-radius, 8px);
+}
+
+/* ---- Mobile (≤ 760 px) ------------------------------------------- */
+
+@media (max-width: 760px) {
+	.mz-reader__bar--top {
+		grid-template-columns: auto 1fr auto;
+		gap: 6px;
+		padding: 6px 10px;
+	}
+	/* On mobile hide the per-item chapter label row in the top bar +
+	   shrink the back-label; the controls cluster moves to its own row
+	   below via the bottom-bar pattern. Keep it as one row still. */
+	.mz-reader__bar--top .mz-reader__controls { display: none; }
+	.mz-reader__bar--top .mz-reader__chapter-label {
+		text-align: left;
+		font-size: 12.5px;
+	}
+	.mz-reader__back-label { max-width: 14ch; }
+	.mz-reader__back {
+		padding: 6px 8px;
+		font-size: 13px;
+	}
+	.mz-reader__info { width: 32px; height: 32px; }
+
+	/* Make the bottom bar the PRIMARY on mobile: sticky to bottom,
+	   always visible while reading. */
+	.mz-reader__bar--bottom {
+		position: sticky;
+		bottom: 0;
+		z-index: 20;
+		border-top: 1px solid var(--mz-border, #272736);
+		padding: 8px 10px;
+		margin-bottom: 0;
+	}
+	.mz-reader__bar--bottom .mz-reader__controls {
+		display: flex;
+		width: 100%;
+		justify-content: stretch;
+	}
+	.mz-reader__bar--bottom .mz-reader__nav {
+		flex: 1 1 0;
+		padding: 0 6px;
+		height: 40px;
+	}
+	.mz-reader__bar--bottom .mz-reader__nav-label { display: none; }
+	.mz-reader__bar--bottom .mz-reader__nav span[aria-hidden] {
+		font-size: 18px;
+		font-weight: 700;
+	}
+	.mz-reader__bar--bottom .mz-reader__picker { flex: 2 1 0; }
+	.mz-reader__bar--bottom .mz-reader__select {
+		width: 100%;
+		max-width: none;
+		height: 40px;
+	}
+
+	.mz-reader__content { padding: 4px 0; }
+	.mz-reader__comments,
+	.mz-reader__related { margin: 10px 8px; padding: 12px; }
+}
+
+/* iOS safe-area respect for bottom sticky nav */
+@supports (padding: env(safe-area-inset-bottom)) {
+	@media (max-width: 760px) {
+		.mz-reader__bar--bottom {
+			padding-bottom: calc(8px + env(safe-area-inset-bottom));
+		}
+	}
+}
+
+/* ---- Suppress legacy madara nav that the plugin may still inject
+   via ajax partials, so we never get a double-nav again. ----------- */
+.mz-reader .select-pagination,
+.mz-reader .wp-manga-nav,
+.mz-reader .entry-header.header,
+.mz-reader .entry-header.footer,
+.mz-reader .c-select-bottom,
+.mz-reader #chapter-heading {
+	display: none !important;
+}

@@ -1,202 +1,234 @@
 <?php
 	/**
-	 * The Template for Manga Chapter Reading page
+	 * MangazScans — Chapter Reading page.
 	 *
-	 * This template can be overridden by copying it to your-child-theme/madara-core/manga-single-reading.php
+	 * Rewritten from madara-core's manga-single-reading.php. Clean,
+	 * mobile-first layout with a sticky top bar (title + prev/next +
+	 * chapter picker + back) and a mirror sticky bottom bar on the
+	 * chapter images. Own mz-reader__* class namespace.
 	 *
-	 * HOWEVER, on occasion Madara will need to update template files and you
-	 * (the theme developer) will need to copy the new files to your theme to
-	 * maintain compatibility. We try to do this as little as possible, but it does
-	 * happen. When this occurs the version of the template file will be bumped and
-	 * we will list any important changes on our theme release logs.
-	 * @package Madara
-	 * @version 1.7.2.3
+	 * Still delegates the actual image rendering to the plugin's
+	 * content-reading-{list,paged,content}.php so every storage
+	 * backend (local, imgchest, direct, page, zip) keeps working.
+	 *
+	 * Preserves plugin hooks:
+	 *   wp_manga_before_chapter_content / _after_chapter_content
+	 *   madara_ads_before_content / _after_content
+	 *   wp_manga_discussion
+	 *   after_manga_single
+	 *
+	 * @package mangazscans
 	 */
-	 
-	 use App\MangazScans;
-	
-	$manga_id  = get_the_ID();
-	$reading_chapter = function_exists('madara_permalink_reading_chapter') ? madara_permalink_reading_chapter() : false;
-	
-	if(!$reading_chapter){
-		 // support Madara Core before 1.6
-		 if($chapter_slug = get_query_var('chapter')){
+
+	use App\MangazScans;
+
+	$manga_id = get_the_ID();
+
+	$reading_chapter = function_exists( 'madara_permalink_reading_chapter' )
+		? madara_permalink_reading_chapter()
+		: false;
+
+	if ( ! $reading_chapter ) {
+		if ( $chapter_slug = get_query_var( 'chapter' ) ) {
 			global $wp_manga_functions;
 			$reading_chapter = $wp_manga_functions->get_chapter_by_slug( $manga_id, $chapter_slug );
-		 }
-		 
-		 if(!$reading_chapter){
+		}
+		if ( ! $reading_chapter ) {
 			global $wp_query;
 			$wp_query->set_404();
 			status_header( 404 );
-			get_template_part( 404 ); exit();
-		 }
+			get_template_part( 404 );
+			exit;
+		}
 	}
 
-	$cur_chap = $reading_chapter['chapter_slug'];
-
+	$cur_chap           = $reading_chapter['chapter_slug'];
 	$wp_manga           = madara_get_global_wp_manga();
 	$wp_manga_functions = madara_get_global_wp_manga_functions();
-	
+	$reading_style      = isset( $_GET['style'] ) ? sanitize_key( $_GET['style'] ) : $wp_manga_functions->get_reading_style();
 
-	$style    = isset( $_GET['style'] ) ? $_GET['style'] : $wp_manga_functions->get_reading_style();
-
-	$wp_manga_settings = get_option( 'wp_manga_settings' );
-	$related_manga     = isset( $wp_manga_settings['related_manga'] ) ? $wp_manga_settings['related_manga'] : null;
-	if($related_manga == 1){
-		$related_manga = MangazScans::getOption( 'manga_reading_related', 'on' ) == 'on' ? 1 : 0;
+	// Build our own prev/next/chapter-select data from the DB instead
+	// of re-running madara's manga_nav() markup. That way we emit our
+	// own clean mz-reader__* layout without fighting the plugin's CSS.
+	global $wp_manga_chapter;
+	$all_chapters = array();
+	if ( is_object( $wp_manga_chapter ) && method_exists( $wp_manga_chapter, 'get_chapters' ) ) {
+		$all_chapters = $wp_manga_chapter->get_chapters( array( 'post_id' => $manga_id ) );
+		if ( ! is_array( $all_chapters ) ) {
+			$all_chapters = array();
+		}
 	}
-	$mz_single_sidebar      = madara_get_theme_sidebar_setting();
-	$mz_breadcrumb          = MangazScans::getOption( 'manga_single_breadcrumb', 'on' );
-	$manga_reading_discussion   = MangazScans::getOption( 'manga_reading_discussion', 'on' );
-	$manga_reading_social_share = MangazScans::getOption( 'manga_reading_social_share', 'off' );
-	
-	$chapter_type = get_post_meta( $manga_id, '_wp_manga_chapter_type', true );
-	$is_text_chapter_right_sidebar = ($mz_single_sidebar != 'full' && $chapter_type == 'text' && MangazScans::getOption( 'manga_reading_text_sidebar', 'on' ) == 'on') ? true : false;
-	
-	if ( $mz_single_sidebar == 'full' || $is_text_chapter_right_sidebar ) {
-		$main_col_class = 'sidebar-hidden col-12 col-sm-12 col-md-12 col-lg-12';
-	} else {
-		$main_col_class = 'main-col col-12 col-sm-8 col-md-8 col-lg-8';
+
+	// Sort setting (asc/desc) tells us which end of the array is "newer".
+	global $wp_manga_database;
+	$sort_setting = is_object( $wp_manga_database ) && method_exists( $wp_manga_database, 'get_sort_setting' )
+		? $wp_manga_database->get_sort_setting()
+		: array( 'sort' => 'desc' );
+	$asc = isset( $sort_setting['sort'] ) ? ( $sort_setting['sort'] !== 'desc' ) : false;
+
+	// Find current chapter's index in the flat list.
+	$cur_idx = -1;
+	foreach ( $all_chapters as $idx => $chap ) {
+		if ( $chap['chapter_slug'] === $cur_chap ) {
+			$cur_idx = $idx;
+			break;
+		}
 	}
-	
-	get_header();
 
-?>
-    <div class="c-page-content style-1 reading-content-wrap chapter-type-<?php echo esc_attr($chapter_type == '' ? 'manga' : $chapter_type);?>" data-site-url="<?php echo home_url( '/' ); ?>">
-        <div class="content-area">
-            <div class="container">
-                <div class="row">
-                    <div class="main-col <?php echo esc_attr($is_text_chapter_right_sidebar ? "col-md-8" : "col-md-12");?> col-sm-12 sidebar-hidden">
-						<?php 
-						
-						$mz_show_chapter_heading = MangazScans::getOption( 'chapter_heading', 'on' );
-						
-						if($mz_show_chapter_heading == 'on'){?>
-						<h1 id="chapter-heading"><?php 
-						$manga = get_post($manga_id); echo esc_html($manga->post_title);?> - <?php echo esc_html($reading_chapter['chapter_name']);?></h1>
-						<?php }  ?>
-						
-                        <!-- container & no-sidebar-->
-                        <div class="main-col-inner">
-                            <div class="c-blog-post">
-                                <div class="entry-header header" id="manga-reading-nav-head" data-position="header" data-chapter="<?php echo esc_attr($cur_chap);?>" data-id="<?php echo esc_attr(get_the_ID());?>"><?php $wp_manga->manga_nav( 'header' ); ?></div>
-                                <div class="entry-content">
-                                    <div class="entry-content_wrap">
+	// prev/next depend on asc/desc ordering.
+	$prev_chap = $next_chap = null;
+	if ( $cur_idx !== -1 ) {
+		$prev_chap = isset( $all_chapters[ $asc ? $cur_idx - 1 : $cur_idx + 1 ] )
+			? $all_chapters[ $asc ? $cur_idx - 1 : $cur_idx + 1 ]
+			: null;
+		$next_chap = isset( $all_chapters[ $asc ? $cur_idx + 1 : $cur_idx - 1 ] )
+			? $all_chapters[ $asc ? $cur_idx + 1 : $cur_idx - 1 ]
+			: null;
+	}
+	$prev_url = $prev_chap ? $wp_manga_functions->build_chapter_url( $manga_id, $prev_chap, $reading_style ) : '';
+	$next_url = $next_chap ? $wp_manga_functions->build_chapter_url( $manga_id, $next_chap, $reading_style ) : '';
 
-                                        <div class="read-container">
+	$manga_title       = get_the_title( $manga_id );
+	$manga_info_link   = get_permalink( $manga_id );
+	$chapter_full_name = $reading_chapter['chapter_name']
+		. ( isset( $reading_chapter['chapter_name_extend'] )
+			? $wp_manga_functions->filter_extend_name( $reading_chapter['chapter_name_extend'] )
+			: '' );
 
-											<?php echo apply_filters( 'madara_ads_before_content', madara_ads_position( 'ads_before_content', 'body-top-ads' ) ); ?>
-											
-                                            <div class="reading-content">
-												<input type="hidden" id="wp-manga-current-chap" data-id="<?php echo esc_attr($reading_chapter['chapter_id']);?>" value="<?php echo esc_attr($cur_chap);?>"/>
-												<?php 
-                                                
-                                                global $post;
-                                                
-                                                if( !$post->post_password || ($post->post_password && !post_password_required()) ){
-												
-                                                    /**
-                                                     * If alternative_content is empty, show default content
-                                                     **/
-                                                    $alternative_content = apply_filters('wp_manga_chapter_content_alternative', '');
-                                                    
-                                                    if(!$alternative_content){
-                                                        do_action('wp_manga_before_chapter_content', $cur_chap, $manga_id);
-                                                        
-                                                        if ( $wp_manga->is_content_manga( get_the_ID() ) ) {
-                                                            $GLOBALS['wp_manga_template']->load_template( 'reading-content/content', 'reading-content', true );
-                                                        } else {
-                                                            $GLOBALS['wp_manga_template']->load_template( 'reading-content/content', 'reading-' . $style, true );
-                                                        }
-                                                        
-                                                        do_action('wp_manga_after_chapter_content', $cur_chap, $manga_id);
-                                                    } else {
-                                                        echo madara_filter_content($alternative_content);
-                                                    }
-                                                
-                                                } else {
-                                                    // show the password form
-                                                    the_content();
-                                                }
-												
-												?>
+	// Helper: one render pass for both top + bottom nav bars.
+	$render_nav = static function ( $position ) use (
+		$manga_title,
+		$chapter_full_name,
+		$manga_info_link,
+		$prev_url,
+		$next_url,
+		$all_chapters,
+		$cur_chap,
+		$manga_id,
+		$reading_style,
+		$wp_manga_functions
+	) {
+		?>
+		<nav class="mz-reader__bar mz-reader__bar--<?php echo esc_attr( $position ); ?>" aria-label="<?php esc_attr_e( 'Chapter navigation', 'mangazscans' ); ?>">
+			<?php if ( $position === 'top' ) : ?>
+				<a class="mz-reader__back" href="<?php echo esc_url( $manga_info_link ); ?>" title="<?php echo esc_attr( $manga_title ); ?>">
+					<span aria-hidden="true">←</span>
+					<span class="mz-reader__back-label"><?php echo esc_html( $manga_title ); ?></span>
+				</a>
+				<span class="mz-reader__chapter-label"><?php echo esc_html( $chapter_full_name ); ?></span>
+			<?php endif; ?>
 
-                                            </div>
-										
+			<div class="mz-reader__controls">
+				<a class="mz-reader__nav mz-reader__nav--prev <?php echo $prev_url ? '' : 'is-disabled'; ?>"
+				   href="<?php echo $prev_url ? esc_url( $prev_url ) : '#'; ?>"
+				   aria-label="<?php esc_attr_e( 'Previous chapter', 'mangazscans' ); ?>"
+				   <?php echo $prev_url ? '' : 'aria-disabled="true" tabindex="-1"'; ?>>
+					<span aria-hidden="true">←</span>
+					<span class="mz-reader__nav-label"><?php esc_html_e( 'Prev', 'mangazscans' ); ?></span>
+				</a>
 
-											<?php echo apply_filters( 'madara_ads_after_content', madara_ads_position( 'ads_after_content', 'body-bottom-ads' ) ); ?>
-
-                                        </div>
-
-
-                                    </div>
-                                </div>
-								<div class="entry-header footer" id="manga-reading-nav-foot" data-position="footer" data-id="<?php echo esc_attr(get_the_ID());?>"><?php $wp_manga->manga_nav( 'footer' ); ?></div>
-                            </div>
-
-							<?php if ( class_exists( 'APSS_Class' ) && $manga_reading_social_share == 'on' ) {
-
-								$mz_sharing_text     = apply_filters( 'manga_reading_sharing_text', esc_html__( 'SHARE THIS MANGA', 'mangazscans' ) );
-								$mz_sharing_networks = 'facebook, twitter, google-plus, pinterest, linkedin, digg';
-								$mz_sharing_networks = apply_filters( 'manga_reading_sharing_networkds', $mz_sharing_networks );
-								echo do_shortcode( "[apss_share share_text='$mz_sharing_text' networks='$mz_sharing_networks' counter='1' total_counter='1' http_count='1']" );
-
-							} ?>
-
-							<?php if ( $manga_reading_discussion == 'on' && !$is_text_chapter_right_sidebar ) { ?>
-                                <div class="row <?php echo esc_attr( $mz_single_sidebar == 'left' ? 'sidebar-left' : ''); ?>">
-                                    <div class="<?php echo esc_attr( $main_col_class ); ?>">
-                                        <!-- comments-area -->
-										<?php do_action( 'wp_manga_discussion' ); ?>
-										<!-- END comments-area -->
-                                    </div>
-
-									<?php
-										if ( $mz_single_sidebar != 'full' ) {
-											?>
-                                            <div class="sidebar-col col-md-4 col-sm-4">
-												<?php get_sidebar(); ?>
-                                            </div>
-										<?php }
-									?>
-
-                                </div>
-							<?php } ?>
-
-							<?php
-								$minimal_reading_page = MangazScans::getOption( 'minimal_reading_page', 'off' );
-								
-								if ( $related_manga == 1 && $minimal_reading_page == 'off' ) {
-									get_template_part( '/madara-core/manga', 'related' );
-								}
-
-								if ( class_exists( 'WP_Manga' ) ) {
-									$GLOBALS['wp_manga']->wp_manga_get_tags();
-								}
-
-							?>
-                        </div>
-                    </div>
-					<?php
-					if ( $mz_single_sidebar != 'full' && $is_text_chapter_right_sidebar ) {
+				<div class="mz-reader__picker">
+					<select class="mz-reader__select" aria-label="<?php esc_attr_e( 'Select chapter', 'mangazscans' ); ?>"
+					        onchange="if(this.value)window.location.href=this.value;">
+						<?php foreach ( $all_chapters as $ch ) :
+							$link = $wp_manga_functions->build_chapter_url( $manga_id, $ch, $reading_style );
+							$name = $ch['chapter_name']
+								. ( isset( $ch['chapter_name_extend'] )
+									? $wp_manga_functions->filter_extend_name( $ch['chapter_name_extend'] )
+									: '' );
 						?>
-						<div class="sidebar-col text-sidebar col-md-4 col-sm-12">
-							<?php get_sidebar(); ?>
-							
-							<!-- comments-area -->
-							<?php 
-							if($manga_reading_discussion == 'on') 
-								do_action( 'wp_manga_discussion' ); ?>
-							<!-- END comments-area -->
-						</div>
-					<?php }
-					?>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php do_action( 'after_manga_single' ); ?>
-<?php
+							<option value="<?php echo esc_url( $link ); ?>" <?php selected( $ch['chapter_slug'], $cur_chap ); ?>>
+								<?php echo esc_html( $name ); ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
 
-	get_footer();
+				<a class="mz-reader__nav mz-reader__nav--next <?php echo $next_url ? '' : 'is-disabled'; ?>"
+				   href="<?php echo $next_url ? esc_url( $next_url ) : '#'; ?>"
+				   aria-label="<?php esc_attr_e( 'Next chapter', 'mangazscans' ); ?>"
+				   <?php echo $next_url ? '' : 'aria-disabled="true" tabindex="-1"'; ?>>
+					<span class="mz-reader__nav-label"><?php esc_html_e( 'Next', 'mangazscans' ); ?></span>
+					<span aria-hidden="true">→</span>
+				</a>
+			</div>
+
+			<?php if ( $position === 'top' ) : ?>
+				<a class="mz-reader__info" href="<?php echo esc_url( $manga_info_link ); ?>"
+				   title="<?php esc_attr_e( 'Manga info', 'mangazscans' ); ?>"
+				   aria-label="<?php esc_attr_e( 'Manga info', 'mangazscans' ); ?>">
+					<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+						<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+						<path d="M12 8h.01M11 12h1v5h1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</a>
+			<?php endif; ?>
+		</nav>
+		<?php
+	};
+
+	get_header();
+?>
+
+<article class="mz-reader" data-chapter="<?php echo esc_attr( $cur_chap ); ?>" data-id="<?php echo esc_attr( $manga_id ); ?>">
+
+	<?php $render_nav( 'top' ); ?>
+
+	<div class="mz-reader__content read-container reading-content-wrap chapter-type-manga"
+	     data-site-url="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<?php echo apply_filters( 'madara_ads_before_content', madara_ads_position( 'ads_before_content', 'body-top-ads' ) ); ?>
+
+		<div class="reading-content">
+			<input type="hidden" id="wp-manga-current-chap"
+			       data-id="<?php echo esc_attr( $reading_chapter['chapter_id'] ); ?>"
+			       value="<?php echo esc_attr( $cur_chap ); ?>" />
+			<?php
+				global $post;
+				if ( ! $post->post_password || ( $post->post_password && ! post_password_required() ) ) {
+					$alternative_content = apply_filters( 'wp_manga_chapter_content_alternative', '' );
+					if ( ! $alternative_content ) {
+						do_action( 'wp_manga_before_chapter_content', $cur_chap, $manga_id );
+						if ( $wp_manga->is_content_manga( $manga_id ) ) {
+							$GLOBALS['wp_manga_template']->load_template( 'reading-content/content', 'reading-content', true );
+						} else {
+							$GLOBALS['wp_manga_template']->load_template( 'reading-content/content', 'reading-' . $reading_style, true );
+						}
+						do_action( 'wp_manga_after_chapter_content', $cur_chap, $manga_id );
+					} else {
+						echo madara_filter_content( $alternative_content );
+					}
+				} else {
+					the_content();
+				}
+			?>
+		</div>
+
+		<?php echo apply_filters( 'madara_ads_after_content', madara_ads_position( 'ads_after_content', 'body-bottom-ads' ) ); ?>
+	</div>
+
+	<?php $render_nav( 'bottom' ); ?>
+
+	<?php
+		$manga_reading_discussion = MangazScans::getOption( 'manga_reading_discussion', 'on' );
+		if ( $manga_reading_discussion === 'on' && ( comments_open( $manga_id ) || get_comments_number( $manga_id ) > 0 ) ) :
+	?>
+		<section class="mz-reader__comments">
+			<?php do_action( 'wp_manga_discussion' ); ?>
+		</section>
+	<?php endif; ?>
+
+	<?php
+		$minimal_reading_page = MangazScans::getOption( 'minimal_reading_page', 'off' );
+		$wp_manga_settings    = get_option( 'wp_manga_settings' );
+		$related_manga        = isset( $wp_manga_settings['related_manga'] ) ? (int) $wp_manga_settings['related_manga'] : 0;
+		if ( $related_manga === 1 && $minimal_reading_page === 'off' ) :
+	?>
+		<section class="mz-reader__related">
+			<?php get_template_part( '/madara-core/manga', 'related' ); ?>
+		</section>
+	<?php endif; ?>
+
+	<?php do_action( 'after_manga_single' ); ?>
+</article>
+
+<?php get_footer();
