@@ -1,74 +1,103 @@
 /*
- * MangazScans overrides — dark by default, compact, accent-driven.
+ * MangazScans overrides — dark by default, compact, polished.
  *
  * Loaded last via wp_enqueue_style with 'madara-css' as a dependency,
  * so every rule here wins over the compiled style.css without
  * needing !important sprayed everywhere.
  *
- * Colour palette is driven by CSS custom properties scoped on the body
- * schema class so dark/light swaps are a single class flip:
+ * Madara's body classes are inverted from intuitive:
+ *   body.text-ui-light  → DARK mode  ("light text on dark bg")
+ *   body.text-ui-dark   → LIGHT mode ("dark text on light bg")
  *
- *   body.text-ui-light  → DARK mode  (madara names this "light text on dark bg")
- *   body.text-ui-dark   → LIGHT mode (madara names this "dark text on light bg")
- *
- * Default site mode is dark; admin can switch to light under
- * Theme Options → General → Body Schema. Logged-in users keep their
- * own per-account choice.
+ * Default site mode is dark; admin can switch under
+ * Theme Options → Theme Layout → Body Schema. Per-account override
+ * for logged-in users is preserved.
  */
 
 :root {
-	--mz-accent: #ff6b35;
-	--mz-accent-hover: #e95822;
-	--mz-accent-ink: #ffffff;
-	--mz-radius: 6px;
-	--mz-header-h: 56px;
-	--mz-header-h-mobile: 48px;
-	--mz-gap: 12px;
-	--mz-pad: 14px;
+	--mz-accent:        #ff6b35;
+	--mz-accent-hi:     #ff8054;        /* lighter for dark-mode hover  */
+	--mz-accent-lo:     #e95822;        /* darker for light-mode hover */
+	--mz-accent-ink:    #ffffff;
+	--mz-accent-soft:   rgba(255, 107, 53, 0.16);
+	--mz-radius:        6px;
+	--mz-radius-lg:     10px;
+	--mz-header-h:      52px;
+	--mz-header-h-mob:  44px;
+	--mz-gap:           10px;
+	--mz-pad:           12px;
+	--mz-pad-lg:        16px;
+	--mz-trans:         140ms cubic-bezier(.2, .8, .2, 1);
+	--mz-font-stack:    -apple-system, BlinkMacSystemFont, "Segoe UI",
+	                    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 /* DARK (default + body.text-ui-light) */
-body,
-body.text-ui-light {
-	--mz-bg: #14141f;
-	--mz-surface: #1c1c2e;
-	--mz-surface-2: #242438;
-	--mz-ink: #f0f0f5;
-	--mz-ink-soft: #c0c0d0;
-	--mz-muted: #80809a;
-	--mz-border: #2a2a3e;
-	--mz-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+body, body.text-ui-light {
+	--mz-bg:         #0e0e18;
+	--mz-surface:    #171724;
+	--mz-surface-2:  #1f1f30;
+	--mz-surface-3:  #282838;
+	--mz-ink:        #ededf2;
+	--mz-ink-soft:   #b6b6c4;
+	--mz-muted:      #7e7e93;
+	--mz-border:     #272736;
+	--mz-border-hi:  #34344a;
+	--mz-shadow:     0 1px 2px rgba(0, 0, 0, 0.4);
+	--mz-shadow-lift:0 6px 18px rgba(0, 0, 0, 0.45);
+	--mz-accent-hover: var(--mz-accent-hi);
 }
 
-/* LIGHT (when admin sets Body Schema → Light) */
+/* LIGHT (body.text-ui-dark) */
 body.text-ui-dark {
-	--mz-bg: #ffffff;
-	--mz-surface: #fafafa;
-	--mz-surface-2: #f0f0f4;
-	--mz-ink: #1a1a2e;
-	--mz-ink-soft: #4a4a5e;
-	--mz-muted: #8a8a9a;
-	--mz-border: #e6e6ec;
-	--mz-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+	--mz-bg:         #ffffff;
+	--mz-surface:    #f7f7f9;
+	--mz-surface-2:  #efeff3;
+	--mz-surface-3:  #e7e7ed;
+	--mz-ink:        #18182a;
+	--mz-ink-soft:   #515166;
+	--mz-muted:      #8d8d9c;
+	--mz-border:     #e3e3eb;
+	--mz-border-hi:  #d3d3dd;
+	--mz-shadow:     0 1px 2px rgba(0, 0, 0, 0.06);
+	--mz-shadow-lift:0 8px 24px rgba(0, 0, 0, 0.08);
+	--mz-accent-hover: var(--mz-accent-lo);
 }
 
 /* ---- Base ---- */
 html, body, body.text-ui-light, body.text-ui-dark {
 	background: var(--mz-bg);
 	color: var(--mz-ink);
+	font-family: var(--mz-font-stack);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
+body { font-size: 14px; line-height: 1.55; }
+p { margin: 0 0 0.85em; line-height: 1.55; }
 
-a, a:visited { color: var(--mz-ink); text-decoration: none; }
-a:hover, a:focus { color: var(--mz-accent); }
+/* Typography scale — controlled, not loose */
+h1, .h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin: 0 0 10px; }
+h2, .h2 { font-size: 18px; font-weight: 700; letter-spacing: -0.005em; line-height: 1.3; margin: 0 0 8px; }
+h3, .h3 { font-size: 16px; font-weight: 700; line-height: 1.35; margin: 0 0 8px; }
+h4, .h4 { font-size: 14px; font-weight: 700; line-height: 1.4; margin: 0 0 6px; }
+h5, .h5 { font-size: 13px; font-weight: 700; line-height: 1.4; margin: 0 0 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+h6, .h6 { font-size: 12px; font-weight: 700; line-height: 1.4; margin: 0 0 6px; color: var(--mz-muted); text-transform: uppercase; letter-spacing: 0.06em; }
 
-p { line-height: 1.5; }
+a, a:visited { color: var(--mz-ink); text-decoration: none; transition: color var(--mz-trans); }
+a:hover, a:focus-visible { color: var(--mz-accent); }
 
-hr { border-color: var(--mz-border); }
-
-/* Selection */
+hr { border: 0; border-top: 1px solid var(--mz-border); margin: 14px 0; }
 ::selection { background: var(--mz-accent); color: var(--mz-accent-ink); }
 
-/* ---- Header: compact, flat ---- */
+/* Universal focus ring — visible & accessible in both modes */
+:focus-visible {
+	outline: 2px solid var(--mz-accent);
+	outline-offset: 2px;
+	border-radius: var(--mz-radius);
+}
+
+/* ---- Site chrome ---- */
 .site-header,
 .site-header .c-header__top,
 .site-header .main-navigation,
@@ -78,64 +107,109 @@ hr { border-color: var(--mz-border); }
 	box-shadow: none;
 }
 .site-header { border-bottom: 1px solid var(--mz-border); }
-.site-header .main-navigation {
-	min-height: var(--mz-header-h);
-	padding: 4px 0;
-}
+
+.site-header .main-navigation { min-height: var(--mz-header-h); padding: 0; }
 .site-header .main-navigation .main-navigation_wrap {
-	min-height: calc(var(--mz-header-h) - 8px);
+	min-height: var(--mz-header-h);
+	display: flex;
+	align-items: center;
+	gap: 16px;
 	padding: 0;
 }
+.site-header .wrap_branding .logo,
+.site-header .logo { display: inline-flex; align-items: center; }
 .site-header .wrap_branding .logo img,
 .site-header .logo img {
-	max-height: 36px;
+	max-height: 30px;
 	width: auto;
 	height: auto;
+	transition: opacity var(--mz-trans);
 }
+.site-header .logo:hover img { opacity: 0.85; }
+
 .site-header .main-menu > ul > li > a {
-	padding: 0 12px;
+	padding: 0 11px;
 	line-height: var(--mz-header-h);
 	color: var(--mz-ink);
 	font-weight: 600;
-	font-size: 14px;
-	letter-spacing: 0.01em;
+	font-size: 13.5px;
+	letter-spacing: 0.005em;
+	position: relative;
 }
-.site-header .main-menu > ul > li > a:hover,
-.site-header .main-menu > ul > li.current-menu-item > a {
-	color: var(--mz-accent);
+.site-header .main-menu > ul > li > a::after {
+	content: '';
+	position: absolute;
+	left: 11px; right: 11px; bottom: 8px;
+	height: 2px;
+	background: var(--mz-accent);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform var(--mz-trans);
 }
+.site-header .main-menu > ul > li:hover > a::after,
+.site-header .main-menu > ul > li.current-menu-item > a::after { transform: scaleX(1); }
+.site-header .main-menu > ul > li:hover > a,
+.site-header .main-menu > ul > li.current-menu-item > a { color: var(--mz-accent); }
+
 .site-header .main-menu ul ul.sub-menu {
 	background: var(--mz-surface);
 	border: 1px solid var(--mz-border);
-	box-shadow: var(--mz-shadow);
+	border-radius: var(--mz-radius);
+	box-shadow: var(--mz-shadow-lift);
+	padding: 4px 0;
+	min-width: 200px;
 }
 .site-header .main-menu ul ul.sub-menu > li > a {
 	color: var(--mz-ink);
-	padding: 8px 14px;
+	padding: 7px 14px;
+	font-size: 13.5px;
 }
 .site-header .main-menu ul ul.sub-menu > li > a:hover {
 	color: var(--mz-accent);
 	background: var(--mz-surface-2);
 }
 
-/* Search input in header */
-.site-header input[type="text"],
-.site-header input[type="search"],
+@media (max-width: 768px) {
+	.site-header .main-navigation { min-height: var(--mz-header-h-mob); }
+	.site-header .main-navigation .main-navigation_wrap { min-height: var(--mz-header-h-mob); }
+	.site-header .wrap_branding .logo img,
+	.site-header .logo img { max-height: 26px; }
+	.site-header .main-menu > ul > li > a {
+		line-height: var(--mz-header-h-mob);
+		padding: 0 10px;
+		font-size: 13px;
+	}
+}
+
+/* ---- Inputs ---- */
 input[type="text"], input[type="search"], input[type="email"],
 input[type="url"], input[type="password"], input[type="number"],
-textarea, select {
+input[type="tel"], textarea, select {
 	background: var(--mz-surface);
 	border: 1px solid var(--mz-border);
 	color: var(--mz-ink);
 	border-radius: var(--mz-radius);
+	padding: 7px 10px;
+	font-size: 14px;
+	font-family: inherit;
+	transition: border-color var(--mz-trans), background-color var(--mz-trans), box-shadow var(--mz-trans);
+	box-shadow: none;
+}
+input:hover:not(:disabled), textarea:hover:not(:disabled), select:hover:not(:disabled) {
+	border-color: var(--mz-border-hi);
+}
+input:focus, textarea:focus, select:focus {
+	border-color: var(--mz-accent);
+	outline: 0;
+	box-shadow: 0 0 0 3px var(--mz-accent-soft);
 }
 input::placeholder, textarea::placeholder { color: var(--mz-muted); }
 
-/* Buttons */
+/* ---- Buttons ---- */
 .site-header input[type="submit"],
 button.button-primary, .button-primary,
-.btn-primary, a.btn-primary,
-.c-btn,
+.btn, .btn-primary, a.btn-primary,
+.c-btn, .wp-manga-action-button,
 .wp-manga-nav-links a,
 .chapter-selection a.selected {
 	background: var(--mz-accent);
@@ -143,83 +217,135 @@ button.button-primary, .button-primary,
 	color: var(--mz-accent-ink);
 	border-radius: var(--mz-radius);
 	box-shadow: none;
-	padding: 8px 16px;
+	padding: 7px 14px;
 	font-weight: 600;
-	transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+	font-size: 13.5px;
+	cursor: pointer;
+	transition: background-color var(--mz-trans), border-color var(--mz-trans), color var(--mz-trans), transform var(--mz-trans);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	line-height: 1.2;
 }
 .site-header input[type="submit"]:hover,
 button.button-primary:hover, .button-primary:hover,
-.btn-primary:hover, a.btn-primary:hover,
-.c-btn:hover, .wp-manga-nav-links a:hover {
+.btn:hover, .btn-primary:hover, a.btn-primary:hover,
+.c-btn:hover, .wp-manga-action-button:hover,
+.wp-manga-nav-links a:hover {
 	background: var(--mz-accent-hover);
 	border-color: var(--mz-accent-hover);
 	color: var(--mz-accent-ink);
 }
+button:active, .btn:active, .button-primary:active, .c-btn:active { transform: translateY(1px); }
+button:disabled, .btn:disabled, .button-primary:disabled { opacity: 0.55; cursor: not-allowed; }
 
-/* Mobile header trim */
-@media (max-width: 768px) {
-	.site-header .main-navigation {
-		min-height: var(--mz-header-h-mobile);
-	}
-	.site-header .wrap_branding .logo img,
-	.site-header .logo img {
-		max-height: 30px;
-	}
-	.site-header .main-menu > ul > li > a {
-		line-height: var(--mz-header-h-mobile);
-		padding: 0 10px;
-	}
+/* Secondary / ghost button */
+.btn-secondary, .button-secondary, a.btn-secondary {
+	background: transparent;
+	border: 1px solid var(--mz-border-hi);
+	color: var(--mz-ink);
+}
+.btn-secondary:hover, .button-secondary:hover, a.btn-secondary:hover {
+	border-color: var(--mz-accent);
+	color: var(--mz-accent);
+	background: transparent;
 }
 
-/* ---- Cards / widgets / containers ---- */
-.c-blog__inner,
-.c-card,
-.c-widget-wrap,
-.widget__inner,
-.page-listing-item,
-.page-content-listing,
-.page-breadcrumb,
-.c-blog,
-.c-tabs-content {
+/* ---- Cards / surfaces ---- */
+.c-blog__inner, .c-card, .c-widget-wrap, .widget__inner,
+.page-listing-item, .page-content-listing, .page-breadcrumb,
+.c-blog, .c-tabs-content {
 	background: var(--mz-surface);
 	border: 1px solid var(--mz-border);
 	box-shadow: none;
 	border-radius: var(--mz-radius);
 }
-.c-blog__inner,
-.c-card,
-.c-widget-wrap,
-.widget__inner {
-	padding: var(--mz-pad);
+.c-blog__inner, .c-card, .c-widget-wrap, .widget__inner { padding: var(--mz-pad); }
+.c-blog, .page-listing-item, .page-content-listing { margin-bottom: var(--mz-gap); }
+
+/* Tighter row gutters */
+.row { margin-left: -7px; margin-right: -7px; }
+.row > [class*="col-"] { padding-left: 7px; padding-right: 7px; }
+
+/* Tone down body wrappers */
+.site-content, .body-wrap, .wrap, .container, .c-body { background: var(--mz-bg); }
+
+/* ---- Page heading + breadcrumb ---- */
+.page-breadcrumb {
+	padding: 8px 12px;
+	margin-bottom: var(--mz-gap);
+	font-size: 13px;
 }
-.c-blog,
-.page-listing-item,
-.page-content-listing {
+.breadcrumb a { color: var(--mz-ink-soft); }
+.breadcrumb a:hover { color: var(--mz-accent); }
+
+/* ---- Manga grid (the money view) ---- */
+.page-listing-item .row .c-tabs-item__content,
+.page-listing-item .row .c-image-hover,
+.page-content-listing .row .page-item-detail {
 	margin-bottom: var(--mz-gap);
 }
-
-/* Compact list spacing */
-.row { margin-left: -8px; margin-right: -8px; }
-.row > [class*="col-"] { padding-left: 8px; padding-right: 8px; }
-
-/* Manga thumbnails: tighter gaps */
-.page-content-listing .row .page-item-detail,
-.page-content-listing .row .page-listing-item {
-	margin-bottom: var(--mz-gap);
+.page-item-detail {
+	transition: transform var(--mz-trans), box-shadow var(--mz-trans);
+	border-radius: var(--mz-radius);
+	overflow: hidden;
 }
-.item-summary { padding: 8px 4px; }
+.page-item-detail:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--mz-shadow-lift);
+}
+.item-thumb { background: var(--mz-surface-2); border-radius: var(--mz-radius) var(--mz-radius) 0 0; overflow: hidden; }
+.item-thumb a { display: block; }
 .item-thumb img,
-.thumb-content img { border-radius: var(--mz-radius); }
+.thumb-content img {
+	border-radius: 0;
+	width: 100%;
+	height: auto;
+	transition: transform 320ms cubic-bezier(.2, .8, .2, 1);
+}
+.page-item-detail:hover .item-thumb img,
+.page-item-detail:hover .thumb-content img {
+	transform: scale(1.04);
+}
+.item-summary {
+	padding: 8px 10px 10px;
+	background: var(--mz-surface);
+}
+.item-summary .post-title h3,
+.item-summary .post-title h5 {
+	font-size: 13.5px;
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 0 0 4px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+.item-summary .post-title a { color: var(--mz-ink); }
+.item-summary .post-title a:hover { color: var(--mz-accent); }
+.item-summary .meta-item,
+.item-summary .post-on,
+.item-summary .latest-chap { font-size: 12px; color: var(--mz-muted); }
+.item-summary .latest-chap a { color: var(--mz-ink-soft); }
+.item-summary .latest-chap a:hover { color: var(--mz-accent); }
 
-/* Tone down heavy backgrounds across body areas */
-.site-content, .body-wrap, .wrap, .container, .c-body {
-	background: var(--mz-bg);
+/* Manga badge (Hot, New, etc.) */
+.manga-title-badges,
+.manga-title-badges.hot,
+.manga-title-badges.new,
+.manga-title-badges.adult {
+	background: var(--mz-accent);
+	color: var(--mz-accent-ink);
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	padding: 2px 6px;
+	border-radius: 3px;
+	text-transform: uppercase;
 }
 
-/* Page heading bar: compact */
-.page-breadcrumb { padding: 10px 14px; margin-bottom: var(--mz-gap); }
-
-/* Sidebars */
+/* ---- Sidebars ---- */
 .c-sidebar { padding-top: 0; }
 .c-sidebar .widget,
 .c-sidebar .c-widget-wrap { margin-bottom: var(--mz-gap); }
@@ -227,11 +353,117 @@ button.button-primary:hover, .button-primary:hover,
 	border-bottom: 1px solid var(--mz-border);
 	padding: 0 0 8px;
 	margin: 0 0 10px;
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
 }
 .widget-heading h5,
-.widget-title h4 { color: var(--mz-ink); font-size: 14px; }
+.widget-heading h4,
+.widget-title h4 {
+	color: var(--mz-ink);
+	font-size: 13px;
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
 
-/* Footer: same flat surface as cards */
+/* ---- Single manga detail ---- */
+.profile-manga, .summary_image, .summary-content {
+	background: var(--mz-surface);
+	border: 1px solid var(--mz-border);
+	border-radius: var(--mz-radius);
+}
+.profile-manga { padding: var(--mz-pad-lg); }
+.post-title h1 { font-size: 24px; margin: 0 0 6px; }
+.post-content_item .summary-heading h5,
+.post-content_item .summary-heading h4 {
+	color: var(--mz-muted);
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin: 0 0 2px;
+}
+.post-content_item .summary-content { font-size: 13.5px; padding: 0; border: 0; background: transparent; }
+
+/* Chapters list (often hundreds of rows — keep it dense) */
+.listing-chapters_wrap, .version-chap, .main { background: transparent; }
+.wp-manga-chapter {
+	padding: 7px 10px;
+	border-bottom: 1px solid var(--mz-border);
+	font-size: 13.5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	transition: background-color var(--mz-trans);
+}
+.wp-manga-chapter:hover { background: var(--mz-surface-2); }
+.wp-manga-chapter a { color: var(--mz-ink); }
+.wp-manga-chapter a:hover { color: var(--mz-accent); }
+.wp-manga-chapter .chapter-release-date { color: var(--mz-muted); font-size: 12px; }
+
+/* ---- Chapter reader ---- */
+.read-container, .reading-content, .page-break {
+	background: var(--mz-bg);
+}
+.reading-content { padding: 0; max-width: 1000px; margin: 0 auto; }
+.reading-content .page-break {
+	margin: 0;
+	display: block;
+	text-align: center;
+}
+.reading-content img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	height: auto;
+	background: var(--mz-surface);
+	animation: mz-fade 320ms ease-out both;
+}
+@keyframes mz-fade { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 768px) {
+	.reading-content { padding: 0; }
+	.reading-content img { width: 100%; max-width: 100%; }
+}
+
+/* Sticky chapter navigation (top + bottom on the reading page) */
+.c-blog__heading.style-2.font-heading,
+.nav-links {
+	position: sticky;
+	top: 0;
+	z-index: 30;
+	background: color-mix(in srgb, var(--mz-bg) 88%, transparent);
+	-webkit-backdrop-filter: saturate(140%) blur(8px);
+	backdrop-filter: saturate(140%) blur(8px);
+	border-bottom: 1px solid var(--mz-border);
+	padding: 8px 12px;
+}
+.nav-links a, .nav-links span {
+	background: var(--mz-surface);
+	border: 1px solid var(--mz-border);
+	color: var(--mz-ink);
+	border-radius: var(--mz-radius);
+	padding: 5px 12px;
+	margin: 0 3px;
+	font-size: 13px;
+	font-weight: 600;
+	transition: all var(--mz-trans);
+}
+.nav-links a:hover { background: var(--mz-accent); border-color: var(--mz-accent); color: var(--mz-accent-ink); }
+
+/* Chapter selection dropdown */
+.chapter-selection,
+select.chapter-selection {
+	background: var(--mz-surface);
+	border: 1px solid var(--mz-border);
+	color: var(--mz-ink);
+	border-radius: var(--mz-radius);
+	padding: 6px 28px 6px 10px;
+	font-size: 13.5px;
+}
+
+/* ---- Footer ---- */
 .site-footer, .c-footer, .footer-wrapper, .c-footer__bottom {
 	background: var(--mz-surface);
 	border-top: 1px solid var(--mz-border);
@@ -239,68 +471,57 @@ button.button-primary:hover, .button-primary:hover,
 }
 .site-footer a, .c-footer a, .footer-wrapper a { color: var(--mz-ink-soft); }
 .site-footer a:hover, .c-footer a:hover, .footer-wrapper a:hover { color: var(--mz-accent); }
-.c-footer__bottom { padding: 10px 0; font-size: 13px; }
+.c-footer__bottom { padding: 8px 0; font-size: 12.5px; }
 
-/* ---- Manga reader page (where compactness matters most) ---- */
-.read-container, .reading-content, .page-break {
-	background: var(--mz-bg);
-}
-.reading-content img {
-	background: var(--mz-surface);
-	border-radius: 0;
-	display: block;
-	margin: 0 auto;
-}
-.c-blog__heading, .heading {
-	color: var(--mz-ink);
-	margin: 0 0 8px;
-}
-.chapter-selection,
-.nav-links {
-	background: var(--mz-surface);
-	border: 1px solid var(--mz-border);
-	border-radius: var(--mz-radius);
-	padding: 8px;
-}
-
-/* Manga single info card: compact stack */
-.c-blog-post .post-title h1,
-.c-blog-post .post-title h3 { font-size: 22px; margin: 0 0 6px; }
-
-/* Inputs grouped tighter */
-.wp-manga-form-group { margin-bottom: 12px; }
-
-/* Generic table compact */
-table { border-color: var(--mz-border); }
-th, td { padding: 6px 10px; }
-
-/* Pagination */
-.wp-pagenavi a, .wp-pagenavi span,
-.nav-links a, .nav-links span {
+/* ---- Pagination ---- */
+.wp-pagenavi a, .wp-pagenavi span {
 	background: var(--mz-surface);
 	border: 1px solid var(--mz-border);
 	color: var(--mz-ink);
 	border-radius: var(--mz-radius);
 	padding: 4px 10px;
 	margin: 0 2px;
+	font-size: 13px;
+	transition: all var(--mz-trans);
 }
 .wp-pagenavi .current,
-.wp-pagenavi a:hover,
-.nav-links .current,
-.nav-links a:hover {
+.wp-pagenavi a:hover {
 	background: var(--mz-accent);
 	border-color: var(--mz-accent);
 	color: var(--mz-accent-ink);
 }
 
-/* Ratings stars */
+/* ---- Ratings ---- */
 .ratings_stars { color: var(--mz-muted); }
 .ratings_stars.rating_current,
 .ratings_stars.rating_current_half { color: var(--mz-accent); }
+.score, .total_votes { color: var(--mz-ink-soft); font-size: 12px; }
 
-/* Comments */
+/* ---- Comments ---- */
 #comments, .comments-area { background: var(--mz-bg); }
-.comment-body { background: var(--mz-surface); padding: var(--mz-pad); border-radius: var(--mz-radius); }
+.comment-body {
+	background: var(--mz-surface);
+	border: 1px solid var(--mz-border);
+	padding: var(--mz-pad);
+	border-radius: var(--mz-radius);
+	margin-bottom: 8px;
+}
 
-/* Loaders / utility */
+/* ---- Tables ---- */
+table { border-collapse: collapse; width: 100%; }
+table, th, td { border-color: var(--mz-border); }
+th, td { padding: 6px 10px; font-size: 13.5px; }
+th { background: var(--mz-surface); color: var(--mz-ink); font-weight: 600; text-align: left; }
+
+/* ---- Misc utility ---- */
 .fa-spinner, .fa-spin { color: var(--mz-accent); }
+img { max-width: 100%; height: auto; }
+
+/* Smooth scroll for in-page anchors */
+html { scroll-behavior: smooth; }
+
+/* Print */
+@media print {
+	.site-header, .site-footer, .c-sidebar, .nav-links { display: none !important; }
+	body { background: #fff; color: #000; }
+}

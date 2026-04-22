@@ -1580,6 +1580,15 @@
 			),
 
 			array(
+				'id'      => 'mangazscans_imgchest_token',
+				'label'   => esc_html__( 'ImgChest API token', 'mangazscans' ),
+				'desc'    => esc_html__( 'Personal access token for api.imgchest.com. Required for private posts; public posts work without it. Generate one at https://imgchest.com/profile/api', 'mangazscans' ),
+				'std'     => 'wYbEtkoa3zSNV7YRm3ZQi8Ecb3Y0qcd54rY136EW9ab19a15',
+				'type'    => 'text',
+				'section' => 'misc',
+			),
+
+			array(
 				'id'       => 'loading_fontawesome',
 				'label'    => esc_html__( 'Turn On/Off loading FontAwesome', 'mangazscans' ),
 				'desc'     => esc_html__( 'If you don\'t use FontAwesome (a Font Icons library), you can turn it off to save bandwidth', 'mangazscans' ),
