@@ -4,16 +4,16 @@
 	 *  Sub header Navigation bar
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 	global $wp_manga_user_actions;
 
-	$header_bottom_border = Madara::getOption( 'header_bottom_border', 'on' );
-	$madara_header_style  = apply_filters( 'madara_header_style', Madara::getOption( 'header_style', 1 ) );
-	$sticky_menu          = Madara::getOption( 'nav_sticky', 1 );
-	$sticky_navgiation    = Madara::getOption('manga_reading_sticky_navigation', 'on');
-	$sticky_reading_header = Madara::getOption( 'manga_reading_sticky_header', '' );
-    $header_login_buttons = Madara::getOption('header_disable_login_buttons', 'on');
+	$header_bottom_border = MangazScans::getOption( 'header_bottom_border', 'on' );
+	$mz_header_style  = apply_filters( 'madara_header_style', MangazScans::getOption( 'header_style', 1 ) );
+	$sticky_menu          = MangazScans::getOption( 'nav_sticky', 1 );
+	$sticky_navgiation    = MangazScans::getOption('manga_reading_sticky_navigation', 'on');
+	$sticky_reading_header = MangazScans::getOption( 'manga_reading_sticky_header', '' );
+    $header_login_buttons = MangazScans::getOption('header_disable_login_buttons', 'on');
 	$is_manga_reading_page = false;
 	if( function_exists( 'is_manga_reading_page' ) && is_manga_reading_page() ) {
 		$is_manga_reading_page = true;
@@ -32,7 +32,7 @@
 	if ( $has_secondary_menu || ($user_enabled || $user_manga_logged) || $adult_filter ) {
 		?>
         <div class="<?php echo esc_attr($has_secondary_menu ? '' : 'no-subnav');?> c-sub-header-nav<?php echo esc_attr( $header_bottom_border == 'on' ? ' with-border ' : '' ); ?> <?php echo esc_attr($sticky_menu == 0 ? 'hide-sticky-menu' : ''); ?>">
-            <div class="container <?php echo esc_attr( $madara_header_style == '2' ? 'custom-width' : '' ); ?>">
+            <div class="container <?php echo esc_attr( $mz_header_style == '2' ? 'custom-width' : '' ); ?>">
                 <div class="c-sub-nav_wrap">
                     <div class="sub-nav_content">
 						

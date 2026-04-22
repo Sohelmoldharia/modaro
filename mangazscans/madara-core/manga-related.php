@@ -13,14 +13,14 @@
 	 * @version 1.7.2.2
 	 */
 	 
-	 use App\Madara;
+	 use App\MangazScans;
 
 	$wp_manga_settings = get_option( 'wp_manga_settings' );
 	$related_by        = $wp_manga_settings['related_by'];
     
-    $manga_related_layout = Madara::getOption('manga_single_related_items_layout', 1);
+    $manga_related_layout = MangazScans::getOption('manga_single_related_items_layout', 1);
     
-    $mobile_col = (Madara::getOption('manga_single_related_item_mobile_width', '100') == 50 ? '6' : '12');
+    $mobile_col = (MangazScans::getOption('manga_single_related_item_mobile_width', '100') == 50 ? '6' : '12');
     
 	$thumb_size        = array( 75, 106 ); // default
     if( $manga_related_layout == 2 ){
@@ -30,7 +30,7 @@
 		}
     }
     
-    $related_items_count = Madara::getOption('manga_single_related_items_count', 4);
+    $related_items_count = MangazScans::getOption('manga_single_related_items_count', 4);
 	
 	if ( $related_by ) {
 		$post_id = get_the_ID();

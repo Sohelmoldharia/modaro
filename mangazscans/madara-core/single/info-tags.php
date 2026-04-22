@@ -16,7 +16,7 @@
 	 
 	 ?><?php
 
-$madara = \App\Madara::getInstance();
+$madara = \App\MangazScans::getInstance();
 $setting = $madara->getOption('manga_single_tags_post', 'info');
 if($tags != '' && ($setting == 'info' || $setting == 'both')) {?>
 <div class="post-content_item">

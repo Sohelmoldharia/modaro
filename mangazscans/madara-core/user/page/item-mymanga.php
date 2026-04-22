@@ -14,7 +14,7 @@
 	 * @version 1.7.2.2
 	 */
 	 
-	 use App\Madara;
+	 use App\MangazScans;
 
 	$wp_query           = madara_get_global_wp_query();
 	$wp_manga           = madara_get_global_wp_manga();
@@ -24,11 +24,11 @@
 
 	//get ready
 	$thumb_size          = array( 110, 150 );
-	$madara_loop_index   = get_query_var( 'madara_loop_index' );
-	$madara_total_posts  = get_query_var( 'madara_post_count' );
-	$madara_page_sidebar = get_query_var( 'sidebar' );
+	$mz_loop_index   = get_query_var( 'madara_loop_index' );
+	$mz_total_posts  = get_query_var( 'madara_post_count' );
+	$mz_page_sidebar = get_query_var( 'sidebar' );
 
-	$manga_hover_details     = Madara::getOption( 'manga_hover_details', 'off' );
+	$manga_hover_details     = MangazScans::getOption( 'manga_hover_details', 'off' );
 	
 	$manga_id = get_the_ID();
 
@@ -39,7 +39,7 @@
 
 	$manga_archives_item_layout = get_query_var('manga_archives_item_layout');
 	$item_columns = 3;
-	if ( $madara_page_sidebar == 'full' ) {
+	if ( $mz_page_sidebar == 'full' ) {
 		if($manga_archives_item_layout == 'default' || $manga_archives_item_layout == 'small_thumbnail'){
 			$main_col_class = 'col-12 col-md-4';
 		} elseif($manga_archives_item_layout == 'big_thumbnail'){
@@ -66,7 +66,7 @@
 		}
 	}
 
-	if ( $madara_loop_index % $item_columns == 1 ) {
+	if ( $mz_loop_index % $item_columns == 1 ) {
 ?>
 <div class="page-listing-item">
     <div class="row row-eq-height">
@@ -117,7 +117,7 @@
 
         </div>
 		<?php
-			if ( ($madara_loop_index % $item_columns == 0 ) || ( $madara_loop_index == $madara_total_posts ) ) {
+			if ( ($mz_loop_index % $item_columns == 0 ) || ( $mz_loop_index == $mz_total_posts ) ) {
 		?>
     </div>
 </div>

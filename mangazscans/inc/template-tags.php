@@ -5,7 +5,7 @@
 	 * @package mangazscans
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 	/**
 	 * get information of current page in Project Listing
@@ -93,12 +93,12 @@
 	 * Get AOS properties string for Header
 	 */
 	function madara_get_header_aos_properties() {
-		$header_aos = Madara::getOption( 'header_aos', '' );
+		$header_aos = MangazScans::getOption( 'header_aos', '' );
 		$properties = '';
 		if ( $header_aos != '' ) {
 			$properties .= 'data-aos="' . esc_attr( $header_aos ) . '" data-aos-once="true"';
 
-			$header_aos_delay = Madara::getOption( 'header_aos_delay', '500' );
+			$header_aos_delay = MangazScans::getOption( 'header_aos_delay', '500' );
 			if ( $header_aos_delay != '' ) {
 				$properties .= ' data-aos-delay="' . $header_aos_delay . '"';
 			}
@@ -142,7 +142,7 @@
 	add_action( 'madara_js_params', 'cursor_image_url' );
 	
 	function madara_adult_filter_button(){
-		if(Madara::getOption('manga_adult_content', 'off') == 'on'){
+		if(MangazScans::getOption('manga_adult_content', 'off') == 'on'){
 			$adult_filter = 'on';					
 			if(isset($_COOKIE['wpmanga-adault']) && $_COOKIE['wpmanga-adault']) {
 				$adult_filter = 'off';

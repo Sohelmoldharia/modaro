@@ -24,7 +24,7 @@
 		}
 
 		public function __construct() {
-			$this->adsense_id = \App\Madara::getOption( 'adsense_id' );
+			$this->adsense_id = \App\MangazScans::getOption( 'adsense_id' );
 		}
 
 		public static function initialize() {
@@ -166,7 +166,7 @@
 		 * @return string - HTML code
 		 */
 		public function get_ad( $ad_pos, $class = '' ) {
-			$slot_id = \App\Madara::getOption( 'adsense_slot_' . $ad_pos );
+			$slot_id = \App\MangazScans::getOption( 'adsense_slot_' . $ad_pos );
 			$pub_id  = $this->adsense_id;
 
 			$html = '';
@@ -174,7 +174,7 @@
 			if ( $pub_id != '' && $slot_id != '' ) {
 				$html .= '<div class="ad c-ads ' . esc_attr( $class ) . '">' . $this->get_gooogle_responsive_ad( $pub_id, $slot_id ) . '</div>';
 			} else {
-				$html .= \App\Madara::getOption( $ad_pos ) != '' ? '<div class="ad c-ads custom-code ' . esc_attr( $class ) . '">' . \App\Madara::getOption( $ad_pos ) . '</div>' : '';
+				$html .= \App\MangazScans::getOption( $ad_pos ) != '' ? '<div class="ad c-ads custom-code ' . esc_attr( $class ) . '">' . \App\MangazScans::getOption( $ad_pos ) . '</div>' : '';
 			}
 
 			return $html;

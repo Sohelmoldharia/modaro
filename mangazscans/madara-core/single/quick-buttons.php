@@ -15,7 +15,7 @@
 	 */
 	 
 	 
-use App\Madara;
+use App\MangazScans;
 global $wp_manga_functions;
 			
 $current_read_chapter = 0;
@@ -27,7 +27,7 @@ if ( is_user_logged_in() ) {
 	}
 }
 
-$init_links_enabled = Madara::getOption('init_links_enabled', 'on') == 'on' ? true : false;
+$init_links_enabled = MangazScans::getOption('init_links_enabled', 'on') == 'on' ? true : false;
 
 if($init_links_enabled){ ?>
 

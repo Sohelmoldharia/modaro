@@ -3,10 +3,10 @@
 	 * @package mangazscans
 	 */
 
-	$madara_postMeta = new App\Views\ParseMeta();
-	$madara_showtags = \App\Madara::getOption( 'single_tags', 'on' );
-    $madara_single_excerpt = \App\Madara::getOption('single_excerpt', 'on');
-    $madara_featured_image = \App\Madara::getOption('single_featured_image', 'on');
+	$mz_postMeta = new App\Views\ParseMeta();
+	$mz_showtags = \App\MangazScans::getOption( 'single_tags', 'on' );
+    $mz_single_excerpt = \App\MangazScans::getOption('single_excerpt', 'on');
+    $mz_featured_image = \App\MangazScans::getOption('single_featured_image', 'on');
 	$thumb_size      = 'full';
 ?>
 
@@ -18,17 +18,17 @@
             <div class="entry-title">
                 <h2 class="item-title"><?php the_title(); ?></h2>
             </div>
-			<?php $madara_postMeta->renderPostMeta(); ?>
+			<?php $mz_postMeta->renderPostMeta(); ?>
         </div>
     </div>
 
-	<?php if ( has_excerpt() && $madara_single_excerpt == 'on' ) { ?>
+	<?php if ( has_excerpt() && $mz_single_excerpt == 'on' ) { ?>
         <div class="c-blog__excerpt">
 			<?php the_excerpt(); ?>
         </div>
 	<?php } ?>
 
-	<?php if ( has_post_thumbnail() && $madara_featured_image == 'on' ) { ?>
+	<?php if ( has_post_thumbnail() && $mz_featured_image == 'on' ) { ?>
         <div class="c-blog__thumbnail">
             <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 				<?php echo madara_thumbnail( $thumb_size ); ?>
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-	<?php if ( $madara_showtags == 'on' && has_tag() ): ?>
+	<?php if ( $mz_showtags == 'on' && has_tag() ): ?>
         <div class="item-tags">
             <h5><?php esc_html_e('Tags: ', 'mangazscans');?></h5>
 			<?php the_tags( '<ul class="list-inline">

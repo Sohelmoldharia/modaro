@@ -5,9 +5,9 @@
 	 * @package mangazscans
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
-	$page_content = Madara::getOption( 'page_content' );
+	$page_content = MangazScans::getOption( 'page_content' );
 	if ( $page_content == 'page_content' ) {
 		get_template_part( 'page' );
 		exit;
@@ -19,15 +19,15 @@
     
     $page_id = get_the_ID();
 
-	$madara_archive_heading_text = Madara::getOption( 'archive_heading_text', '' );
-	$madara_archive_heading_icon = Madara::getOption( 'archive_heading_icon', '' );
-	$archive_content_columns     = Madara::getOption( 'archive_content_columns', 3 );
+	$mz_archive_heading_text = MangazScans::getOption( 'archive_heading_text', '' );
+	$mz_archive_heading_icon = MangazScans::getOption( 'archive_heading_icon', '' );
+	$archive_content_columns     = MangazScans::getOption( 'archive_content_columns', 3 );
 	$archive_margin_top          = get_post_meta( $page_id, 'archive_margin_top', true );
 	$archive_margin_top          = isset( $archive_margin_top ) && $archive_margin_top != '' ? $archive_margin_top : '';
 	
 	
-	$madara_sidebar              = madara_get_theme_sidebar_setting();
-	$nav_type                    = \App\Madara::getOption( 'archive_navigation', 'default' );
+	$mz_sidebar              = madara_get_theme_sidebar_setting();
+	$nav_type                    = \App\MangazScans::getOption( 'archive_navigation', 'default' );
 
 	$template = 'html/loop/content';
 	
@@ -65,9 +65,9 @@
 		});
 	}
 	
-	$orderby        = Madara::getOption( 'page_post_orderby' );
+	$orderby        = MangazScans::getOption( 'page_post_orderby' );
 	if($orderby == 'name'){
-		$show_alphabeta_filters = Madara::getOption( 'manga_filter_by_characters', 'on' ) == 'on' ? true : false;
+		$show_alphabeta_filters = MangazScans::getOption( 'manga_filter_by_characters', 'on' ) == 'on' ? true : false;
 	} else {
 		$show_alphabeta_filters = false;
 	}
@@ -90,7 +90,7 @@
 				$orderby2 = 'random';
 				break;
             case 'trending':
-                $timerange        = Madara::getOption( 'frontpage_orderby_trending_timerange', 'week' );
+                $timerange        = MangazScans::getOption( 'frontpage_orderby_trending_timerange', 'week' );
                 break;
 			default:
 				$orderby2 = $orderby;
@@ -106,7 +106,7 @@
 									);
 		}
 		
-		$posts_per_page = Madara::getOption('page_post_count');
+		$posts_per_page = MangazScans::getOption('page_post_count');
 		if($posts_per_page) $args['posts_per_page'] = $posts_per_page;
 		
 		$args['tax_query'] = array();
@@ -147,22 +147,22 @@
 		
 		$args['meta_query'] = $meta_query;
         
-        $ignore_ids = Madara::getOption('ignore_ids');
+        $ignore_ids = MangazScans::getOption('ignore_ids');
         if($ignore_ids){
             $args['post__not_in'] = explode(",", $ignore_ids);
         }
 		
-		$madara_custom_query = madara_manga_query( $args );
+		$mz_custom_query = madara_manga_query( $args );
 
-		set_query_var( 'sidebar', $madara_sidebar );
+		set_query_var( 'sidebar', $mz_sidebar );
 
 		$set_query_var = array(
-			'sidebar' => $madara_sidebar,
+			'sidebar' => $mz_sidebar,
 		);
 
 
 	} else {
-		$madara_custom_query = madara_get_front_page_query( $post_type, $paged, $manga_type );
+		$mz_custom_query = madara_get_front_page_query( $post_type, $paged, $manga_type );
 
 		set_query_var( 'archive_content_columns', $archive_content_columns );
 
@@ -172,18 +172,18 @@
 
 	}
 
-	$madara_custom_query->query = array_merge( $madara_custom_query->query, $set_query_var );
+	$mz_custom_query->query = array_merge( $mz_custom_query->query, $set_query_var );
 
-	$madara_post_count = $madara_custom_query->post_count;
+	$mz_post_count = $mz_custom_query->post_count;
 	
-	if($madara_post_count == 0) {
+	if($mz_post_count == 0) {
 		global $wp_query;
 		  $wp_query->set_404();
 		  status_header( 404 );
 		  get_template_part( 404 ); exit();
 	}
 	
-	$manga_archives_item_layout = Madara::getOption( 'manga_archives_item_layout', 'default' );
+	$manga_archives_item_layout = MangazScans::getOption( 'manga_archives_item_layout', 'default' );
 	
 	get_header();
 
@@ -192,25 +192,25 @@
     <div class="c-page-content style-1">
         <div class="content-area" style="<?php echo esc_attr( $archive_margin_top != '' ? 'margin-top: ' . $archive_margin_top . 'px' : ''); ?>">
             <div class="container">
-                <div class="row <?php echo esc_attr( $madara_sidebar == 'left' ? 'sidebar-left' : '') ?>">
+                <div class="row <?php echo esc_attr( $mz_sidebar == 'left' ? 'sidebar-left' : '') ?>">
                     <?php do_action('madara_before_page_content'); ?>
-                    <div class="main-col <?php echo esc_attr( $madara_sidebar != 'full' && ( is_active_sidebar( 'manga_archive_sidebar' ) || is_active_sidebar( 'main_sidebar' ) ) ? 'col-md-8 col-sm-8' : 'sidebar-hidden col-md-12 col-sm-12'); ?>">
+                    <div class="main-col <?php echo esc_attr( $mz_sidebar != 'full' && ( is_active_sidebar( 'manga_archive_sidebar' ) || is_active_sidebar( 'main_sidebar' ) ) ? 'col-md-8 col-sm-8' : 'sidebar-hidden col-md-12 col-sm-12'); ?>">
 
 						<?php get_template_part( 'html/main-bodytop' ); ?>
 
 
                         <div class="main-col-inner <?php echo esc_attr( $class_1 ); ?>">
 
-							<?php if ( $madara_archive_heading_text != '' ) { ?>
-                                <div class="c-blog__heading style-2 font-heading <?php echo esc_attr( $madara_archive_heading_icon == '' ? 'no-icon' : '' ); ?>">
+							<?php if ( $mz_archive_heading_text != '' ) { ?>
+                                <div class="c-blog__heading style-2 font-heading <?php echo esc_attr( $mz_archive_heading_icon == '' ? 'no-icon' : '' ); ?>">
 
                                     <h1 class="h4">
 
-										<?php if ( $madara_archive_heading_icon != '' ) { ?>
-                                            <i class="<?php echo esc_attr( $madara_archive_heading_icon ); ?>"></i>
+										<?php if ( $mz_archive_heading_icon != '' ) { ?>
+                                            <i class="<?php echo esc_attr( $mz_archive_heading_icon ); ?>"></i>
 										<?php } ?>
 
-										<?php echo esc_html( $madara_archive_heading_text ); ?>
+										<?php echo esc_html( $mz_archive_heading_text ); ?>
 
                                     </h1>
                                 </div>
@@ -225,19 +225,19 @@
 												manga_listing_alphabeta_bars($wp->request ? home_url('/') . $wp->request : home_url('/'));
 											}
 											?>
-										<?php if ( $madara_custom_query->have_posts() ) : ?>
+										<?php if ( $mz_custom_query->have_posts() ) : ?>
 
                                             <div id="loop-content" class="page-content-listing <?php echo esc_attr('item-' . $manga_archives_item_layout);?>">
 
 
 												<?php
 													$index = 1;
-													set_query_var( 'madara_post_count', $madara_post_count );
+													set_query_var( 'madara_post_count', $mz_post_count );
 													set_query_var('manga_archives_item_layout', $manga_archives_item_layout);
 
 												?>
 
-												<?php while ( $madara_custom_query->have_posts() ) : $madara_custom_query->the_post(); ?>
+												<?php while ( $mz_custom_query->have_posts() ) : $mz_custom_query->the_post(); ?>
 
 													<?php
 													set_query_var( 'madara_loop_index', $index );
@@ -267,13 +267,13 @@
 										<?php endif; ?>
 
                                         <script type="text/javascript">
-											var manga_args = <?php echo str_replace( '\/', '/', json_encode( $madara_custom_query->query_vars ) ); ?>;
+											var manga_args = <?php echo str_replace( '\/', '/', json_encode( $mz_custom_query->query_vars ) ); ?>;
                                         </script>
 
 										<?php
 											//Get Pagination
-											$madara_pagination = new App\Views\ParsePagination();
-											$madara_pagination->renderPageNavigation( '#loop-content', $template, $madara_custom_query, $nav_type );
+											$mz_pagination = new App\Views\ParsePagination();
+											$mz_pagination->renderPageNavigation( '#loop-content', $template, $mz_custom_query, $nav_type );
 										?>
 
                                     </div>
@@ -289,7 +289,7 @@
 
 
 					<?php
-						if ( $madara_sidebar != 'full' && is_active_sidebar( 'main_sidebar' ) ) {
+						if ( $mz_sidebar != 'full' && is_active_sidebar( 'main_sidebar' ) ) {
 							?>
                             <div class="sidebar-col col-md-4 col-sm-4">
 								<?php get_sidebar(); ?>

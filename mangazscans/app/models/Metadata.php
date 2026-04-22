@@ -111,7 +111,7 @@
 		 * @return bool|mixed|null|string
 		 */
 		public function getOption( $options, $default = null ) {
-			return \App\Madara::getOption( $options, $default );
+			return \App\MangazScans::getOption( $options, $default );
 		}
 
 		/**

@@ -16,7 +16,7 @@
 	 */
 	 
 	 
-use App\Madara;
+use App\MangazScans;
 
 $wp_query           = madara_get_global_wp_query();
 $wp_manga           = madara_get_global_wp_manga();

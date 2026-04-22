@@ -13,7 +13,7 @@
 	 * @version 1.7.2.2
 	 */
 	 
-	 use App\Madara;
+	 use App\MangazScans;
     
 	/**
 	 * @package mangazscans
@@ -52,14 +52,14 @@
 	$s_query = madara_manga_query( $s_args );
 
 	$search_header_background = madara_output_background_options( 'search_header_background' );
-    $madara_ajax_search = Madara::getOption('madara_ajax_search', 'on');
+    $mz_ajax_search = MangazScans::getOption('madara_ajax_search', 'on');
 ?>
     <!--<header class="site-header">-->
     <div class="c-search-header__wrapper" style="<?php echo esc_attr( $search_header_background != '' ? $search_header_background : 'background-image: url(' . get_parent_theme_file_uri( '/images/bg-search.jpg' ) . ');'); ?>">
         <div class="container">
 
             <div class="search-content">
-                <form role="search" method="get" class="search-form manga-search-form <?php echo ($madara_ajax_search == 'on' ? 'ajax' : '');?>" action="<?php echo home_url('/');?>">
+                <form role="search" method="get" class="search-form manga-search-form <?php echo ($mz_ajax_search == 'on' ? 'ajax' : '');?>" action="<?php echo home_url('/');?>">
 						<span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'mangazscans' ); ?></span>
                         <input type="text" class="search-field manga-search-field" placeholder="<?php esc_html_e( 'Search...', 'mangazscans' ); ?>" value="<?php echo esc_attr( stripcslashes( $s )); ?>" name="s">
 						<input type="submit" class="search-submit" value="<?php esc_html_e( 'Search', 'mangazscans' ); ?>">
@@ -218,8 +218,8 @@
 													?>
                                             </div>
 											<?php
-											$madara_pagination = new App\Views\ParsePagination();
-													$madara_pagination->renderPageNavigation( '.c-tabs-item', 'madara-core/content/content-search', $s_query );
+											$mz_pagination = new App\Views\ParsePagination();
+													$mz_pagination->renderPageNavigation( '.c-tabs-item', 'madara-core/content/content-search', $s_query );
 													?>
                                         </div>
                                     </div>

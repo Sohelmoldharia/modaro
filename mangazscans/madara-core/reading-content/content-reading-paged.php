@@ -13,7 +13,7 @@
 	 * @version 1.7.2.2
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 	$wp_manga_functions = madara_get_global_wp_manga_functions();
 	global $wp_manga;
@@ -42,12 +42,12 @@
 	$is_valid_page = true;
 	$url_redirect  = get_the_permalink();
 
-	$manga_reading_style = Madara::getOption( 'manga_reading_style', 'paged' );
-	$preload_images      = Madara::getOption( 'manga_reading_preload_images', 'on' );
+	$manga_reading_style = MangazScans::getOption( 'manga_reading_style', 'paged' );
+	$preload_images      = MangazScans::getOption( 'manga_reading_preload_images', 'on' );
 
-	$manga_reading_navigation_by_pointer = Madara::getOption( 'manga_reading_navigation_by_pointer', 'on' );
+	$manga_reading_navigation_by_pointer = MangazScans::getOption( 'manga_reading_navigation_by_pointer', 'on' );
 
-	$is_lazy_load = Madara::getOption( 'lazyload', 'off' ) == 'on' ? true : false;
+	$is_lazy_load = MangazScans::getOption( 'lazyload', 'off' ) == 'on' ? true : false;
 	
 	if ( $is_lazy_load ) {
 		$lazyload = 'wp-manga-chapter-img img-responsive lazyload effect-fade';
@@ -101,13 +101,13 @@
 			
 			$src  = apply_filters('wp_manga_chapter_image_url', $host . $link, $host, $link, $post_id, $name);
 
-			$madara_reading_list_total_item = count( $chapter['storage'][ $in_use ]['page'] );
+			$mz_reading_list_total_item = count( $chapter['storage'][ $in_use ]['page'] );
 			
 			if($src != ''){
 
 			?>
 
-			<?php do_action( 'madara_before_chapter_image', $paged, $madara_reading_list_total_item ); ?>
+			<?php do_action( 'madara_before_chapter_image', $paged, $mz_reading_list_total_item ); ?>
 
             <img id="image-<?php echo esc_attr( $paged ); ?>" data-image-paged="<?php echo esc_attr( $paged ); ?>" <?php if($is_lazy_load){ echo 'data-src="'; } else { echo 'src="';}?><?php echo esc_url( $src ); ?>" class="<?php echo esc_attr( $lazyload ); ?>">
 			
@@ -121,7 +121,7 @@
 			//}
 			?>
 
-			<?php do_action( 'madara_after_chapter_image', $paged, $madara_reading_list_total_item ); ?>
+			<?php do_action( 'madara_after_chapter_image', $paged, $mz_reading_list_total_item ); ?>
 
 			<?php
 			}

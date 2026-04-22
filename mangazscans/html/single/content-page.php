@@ -3,26 +3,26 @@
 	 * @package mangazscans
 	 */
 
-	$madara_postMeta       = new App\Views\ParseMeta();
-	$madara_showtags       = \App\Madara::getOption( 'single_tags', 'on' );
-	$madara_page_meta_tags = \App\Madara::getOption( 'page_meta_tags', 'on' );
-	$madara_page_title = \App\Madara::getOption( 'page_title', 'on' );
+	$mz_postMeta       = new App\Views\ParseMeta();
+	$mz_showtags       = \App\MangazScans::getOption( 'single_tags', 'on' );
+	$mz_page_meta_tags = \App\MangazScans::getOption( 'page_meta_tags', 'on' );
+	$mz_page_title = \App\MangazScans::getOption( 'page_title', 'on' );
 	$thumb_size            = 'full';
 ?>
 
 
 <div id="post-<?php the_ID(); ?>" <?php post_class( 'c-blog-post' ); ?>>
-	<?php if($madara_page_title == 'on' || $madara_page_meta_tags == 'on'){?>
+	<?php if($mz_page_title == 'on' || $mz_page_meta_tags == 'on'){?>
     <div class="entry-header">
         <div class="entry-header_wrap">
-			<?php if($madara_page_title == 'on'){?>
+			<?php if($mz_page_title == 'on'){?>
             <div class="entry-title">
                 <h1 class="item-title h2"><?php the_title(); ?></h1>
             </div>
 			<?php } ?>
 
-			<?php if ( $madara_page_meta_tags == 'on' ) {
-				$madara_postMeta->renderPostMeta();
+			<?php if ( $mz_page_meta_tags == 'on' ) {
+				$mz_postMeta->renderPostMeta();
 			} ?>
         </div>
     </div>
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-	<?php if ( $madara_showtags == 'on' && has_tag() ): ?>
+	<?php if ( $mz_showtags == 'on' && has_tag() ): ?>
         <div class="item-tags">
 			<?php the_tags( '<ul class="list-inline">
                 <li>

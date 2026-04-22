@@ -9,7 +9,7 @@
 
 	namespace App\Views;
 
-	use App\Madara;
+	use App\MangazScans;
 
 	class ParseHead {
 		public function __construct() {
@@ -25,7 +25,7 @@
 
 			$description = get_bloginfo( 'description' );
 			$site_name = get_bloginfo( 'name' );
-			$logo = \App\Madara::getOption( 'logo_image', get_template_directory_uri() . '/images/logo.png' );
+			$logo = \App\MangazScans::getOption( 'logo_image', get_template_directory_uri() . '/images/logo.png' );
 
 			if ( is_single() ) {
 
@@ -95,7 +95,7 @@
 								"@type": "Person",
 								"name": "<?php
 								
-								$meta_type = Madara::getOption('manga_single_meta_author', 'wp_author');
+								$meta_type = MangazScans::getOption('manga_single_meta_author', 'wp_author');
 								
 								if($meta_type == 'wp_author'){
 									$author = get_user_by( 'id', $post->post_author );
@@ -151,7 +151,7 @@
 
 			$meta_tags_html .= '<meta property="og:image" content="' . esc_attr( apply_filters( 'madara_meta_image', $image ) ) . '"/>' . PHP_EOL;
 			$meta_tags_html .= '<meta property="og:site_name" content="' . esc_attr( $site_name ) . '"/>' . PHP_EOL;
-			$meta_tags_html .= '<meta property="fb:app_id" content="' . \App\Madara::getOption( 'facebook_app_id' ) . '" />' . PHP_EOL;
+			$meta_tags_html .= '<meta property="fb:app_id" content="' . \App\MangazScans::getOption( 'facebook_app_id' ) . '" />' . PHP_EOL;
 			$meta_tags_html .= '<meta property="og:title" content="' . esc_attr( apply_filters( 'madara_meta_title', $title ) ) . '"/>' . PHP_EOL;
 
 			if( !empty( $url ) ){

@@ -3,15 +3,15 @@
 	 * @package mangazscans
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 	get_header();
 
-	$madara_archive_heading_text = Madara::getOption( 'archive_heading_text' );
-	$madara_archive_heading_icon = Madara::getOption( 'archive_heading_icon' );
-	$madara_sidebar              = madara_get_theme_sidebar_setting();
-	$archive_content_columns         = Madara::getOption( 'archive_content_columns', 3 );
-	$archive_margin_top              = Madara::getOption( 'archive_margin_top', '' );
+	$mz_archive_heading_text = MangazScans::getOption( 'archive_heading_text' );
+	$mz_archive_heading_icon = MangazScans::getOption( 'archive_heading_icon' );
+	$mz_sidebar              = madara_get_theme_sidebar_setting();
+	$archive_content_columns         = MangazScans::getOption( 'archive_content_columns', 3 );
+	$archive_margin_top              = MangazScans::getOption( 'archive_margin_top', '' );
 	set_query_var( 'archive_content_columns', $archive_content_columns );
 
 ?>
@@ -22,25 +22,25 @@
 
             <div class="container">
 
-                <div class="row <?php echo esc_html($madara_sidebar == 'left' ? 'sidebar-left' : ''); ?>">
+                <div class="row <?php echo esc_html($mz_sidebar == 'left' ? 'sidebar-left' : ''); ?>">
 
-                    <div class="<?php echo esc_html($madara_sidebar !== 'full' && is_active_sidebar( 'main_sidebar' ) ? 'main-col col-md-8 col-sm-8' : 'col-md-12 col-sm-12'); ?>">
+                    <div class="<?php echo esc_html($mz_sidebar !== 'full' && is_active_sidebar( 'main_sidebar' ) ? 'main-col col-md-8 col-sm-8' : 'col-md-12 col-sm-12'); ?>">
 
 						<?php get_template_part( 'html/main-bodytop' ); ?>
 
 
                         <div class="main-col-inner">
 
-							<?php if ( $madara_archive_heading_text != '' ) { ?>
-                                <div class="c-blog__heading style-2 font-heading <?php echo esc_html($madara_archive_heading_icon == '' ? 'no-icon' : ''); ?>">
+							<?php if ( $mz_archive_heading_text != '' ) { ?>
+                                <div class="c-blog__heading style-2 font-heading <?php echo esc_html($mz_archive_heading_icon == '' ? 'no-icon' : ''); ?>">
 
                                     <h4>
 
-										<?php if ( $madara_archive_heading_icon != '' ) { ?>
-                                            <i class="<?php echo esc_attr( $madara_archive_heading_icon ); ?>"></i>
+										<?php if ( $mz_archive_heading_icon != '' ) { ?>
+                                            <i class="<?php echo esc_attr( $mz_archive_heading_icon ); ?>"></i>
 										<?php } ?>
 
-										<?php echo esc_html( $madara_archive_heading_text ); ?>
+										<?php echo esc_html( $mz_archive_heading_text ); ?>
 
                                     </h4>
                                 </div>
@@ -85,8 +85,8 @@
 										<?php
 
 											//Get Pagination
-											$madara_pagination = new App\Views\ParsePagination();
-											$madara_pagination->renderPageNavigation( '#loop-content', 'html/loop/content' );
+											$mz_pagination = new App\Views\ParsePagination();
+											$mz_pagination->renderPageNavigation( '#loop-content', 'html/loop/content' );
 
 										?>
 
@@ -104,7 +104,7 @@
 
 
 					<?php
-						if ( $madara_sidebar != 'full' && is_active_sidebar( 'main_sidebar' ) ) {
+						if ( $mz_sidebar != 'full' && is_active_sidebar( 'main_sidebar' ) ) {
 							?>
                             <div class="sidebar-col col-md-4 col-sm-4">
 								<?php get_sidebar(); ?>

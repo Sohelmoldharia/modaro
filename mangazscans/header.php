@@ -2,22 +2,20 @@
 	/**
 	 * MangazScans header.
 	 *
-	 * This replaces the original Madara header.php. It's deliberately
-	 * compact and uses its own 'mz-*' class namespace so our styles
-	 * (css/mangazscans-chrome.css) don't fight Madara's legacy CSS
-	 * cascade.
+	 * Dark-first, sticky, compact. Uses its own 'mz-*' class namespace
+	 * (see css/mangazscans-chrome.css) so nothing cascades in or out.
 	 *
-	 * Preserved from Madara:
-	 *   - body.text-ui-light / text-ui-dark classes (madara-core reader
-	 *     and some other plugins read them)
-	 *   - do_action( 'madara_before_body' )
-	 *   - do_action( 'madara_before_body_content' )
+	 * Theme contract kept for compatibility with the bundled plugin:
+	 *   - body.text-ui-light / text-ui-dark classes (reader + others
+	 *     read them to switch dark/light)
+	 *   - mangazscans_before_body / madara_before_body (dual-fired)
+	 *   - mangazscans_before_content / madara_before_body_content (dual)
 	 *   - .wrap > .body-wrap > .site-content outer structure
 	 *
 	 * @package mangazscans
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -33,15 +31,17 @@
 <body <?php body_class(); ?>>
 
 <?php if ( ! is_404() ) :
+	// Dual-fire so plugins hooked on the legacy action name still run.
+	do_action( 'mangazscans_before_body' );
 	do_action( 'madara_before_body' );
 
-	$minimal_reading_page = Madara::getOption( 'minimal_reading_page', 'off' );
+	$minimal_reading_page = MangazScans::getOption( 'minimal_reading_page', 'off' );
 	$is_reading_minimal   = ( function_exists( 'is_manga_reading_page' ) && is_manga_reading_page() && $minimal_reading_page === 'on' );
 	$search_action        = esc_url( home_url( '/' ) );
 
 	// Resolve logo URL once. Admin-uploaded option wins; else we use
 	// the theme's shipped dark/light wordmark.
-	$logo_opt = Madara::getOption( 'logo_image', '' );
+	$logo_opt = MangazScans::getOption( 'logo_image', '' );
 	$logo_dark  = $logo_opt !== '' ? $logo_opt : get_parent_theme_file_uri( '/images/logo-light.svg' );
 	$logo_light = $logo_opt !== '' ? $logo_opt : get_parent_theme_file_uri( '/images/logo.svg' );
 
@@ -153,5 +153,8 @@
 		<?php endif; ?>
 
 		<div class="site-content">
-			<?php do_action( 'madara_before_body_content' ); ?>
+			<?php
+				do_action( 'mangazscans_before_content' );
+				do_action( 'madara_before_body_content' ); // legacy alias
+			?>
 <?php endif; // ! is_404() ?>

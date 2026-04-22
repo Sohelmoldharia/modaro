@@ -14,7 +14,7 @@
 	 * @version 1.7.2.2
 	 */
 	 
-	 use App\Madara;
+	 use App\MangazScans;
 
 	$wp_query           = madara_get_global_wp_query();
 	$wp_manga           = madara_get_global_wp_manga();
@@ -23,12 +23,12 @@
     
 	//get ready
 	$thumb_size          = array( 110, 150 );
-	$madara_loop_index   = get_query_var( 'madara_loop_index' );
-	$madara_total_posts  = get_query_var( 'madara_post_count' );
-	$madara_page_sidebar = get_query_var( 'sidebar' );
+	$mz_loop_index   = get_query_var( 'madara_loop_index' );
+	$mz_total_posts  = get_query_var( 'madara_post_count' );
+	$mz_page_sidebar = get_query_var( 'sidebar' );
 
-	$manga_hover_details     = Madara::getOption( 'manga_hover_details', 'off' );
-	$manga_archives_item_mobile_width = Madara::getOption( 'manga_archives_item_mobile_width', '50' ) == 50 ? false : true;
+	$manga_hover_details     = MangazScans::getOption( 'manga_hover_details', 'off' );
+	$manga_archives_item_mobile_width = MangazScans::getOption( 'manga_archives_item_mobile_width', '50' ) == 50 ? false : true;
 	$manga_id = get_the_ID();
 
 	$alternative             = $wp_manga_functions->get_manga_alternative( $manga_id );
@@ -39,7 +39,7 @@
 	$manga_archives_item_layout = get_query_var('manga_archives_item_layout');
 	
 	$item_columns = 3;
-	if ( $madara_page_sidebar == 'full' ) {
+	if ( $mz_page_sidebar == 'full' ) {
 		if($manga_archives_item_layout == 'default' || $manga_archives_item_layout == 'small_thumbnail'){
 			$main_col_class = 'col-12 col-md-4';
 		} elseif($manga_archives_item_layout == 'big_thumbnail'){
@@ -66,10 +66,10 @@
 		}
 	}
     
-    $thumbnail_link = Madara::getOption('manga_archive_latest_chapter_on_thumbnail', 'off'); // default, ie. link to manga detail
+    $thumbnail_link = MangazScans::getOption('manga_archive_latest_chapter_on_thumbnail', 'off'); // default, ie. link to manga detail
 	
-	$title_badge_pos = Madara::getOption('manga_badge_position', 1); // 1: before title, 2: before thumbnail
-	if ( $madara_loop_index % $item_columns == 1 ) {
+	$title_badge_pos = MangazScans::getOption('manga_badge_position', 1); // 1: before title, 2: before thumbnail
+	if ( $mz_loop_index % $item_columns == 1 ) {
 ?>
 <div class="page-listing-item">
     <div class="row row-eq-height">
@@ -109,7 +109,7 @@
                                 <span class="quick-chapter-link"><?php echo esc_html($text);?></span>
                                 <?php }
                                                                 
-                                if(Madara::getOption('manga_archives_item_type_text', 'off') == 'on'){?>
+                                if(MangazScans::getOption('manga_archives_item_type_text', 'off') == 'on'){?>
                                 <span class="manga-type"><?php echo get_post_meta($manga_id, '_wp_manga_type', true);?></span>
                                 <?php }?>
                             </a>
@@ -143,7 +143,7 @@
 
         </div>
 		<?php
-			if ( ($madara_loop_index % $item_columns == 0 ) || ( $madara_loop_index == $madara_total_posts ) ) {
+			if ( ($mz_loop_index % $item_columns == 0 ) || ( $mz_loop_index == $mz_total_posts ) ) {
 		?>
     </div>
 </div>

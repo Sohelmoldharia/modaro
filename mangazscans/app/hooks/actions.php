@@ -1,5 +1,5 @@
 <?php
-use App\Madara;
+use App\MangazScans;
 
 add_action('madara_chapter_reading_actions_list_items', 'madara_chapter_reading_actions_add_darkmode_button');
 
@@ -13,7 +13,7 @@ function madara_chapter_reading_actions_add_darkmode_button(){
 add_filter( 'madara_meta_query_args', 'madara_adult_content_filter_metaquery');
 	
 function madara_adult_content_filter_metaquery($meta_query){
-	if(Madara::getOption('manga_adult_content','off') == 'on'){
+	if(MangazScans::getOption('manga_adult_content','off') == 'on'){
 		if(isset($_COOKIE['wpmanga-adault']) && $_COOKIE['wpmanga-adault']) {
 			// I'm an adult, family-mode is off, then show all content as default
 		} else {

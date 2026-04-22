@@ -13,7 +13,7 @@
 	 * @version 1.7.2.2
 	 */
 	 
-	 use App\Madara;
+	 use App\MangazScans;
     
 	if ( ! is_user_logged_in() ) {
 		return;
@@ -24,7 +24,7 @@
 	$user    = wp_get_current_user();
 	if($user) $user_id = $user->ID;
     
-    $user_settings_weak_password = Madara::getOption('user_settings_weak_password', 'on') == 'on' ? true : false;
+    $user_settings_weak_password = MangazScans::getOption('user_settings_weak_password', 'on') == 'on' ? true : false;
 
 ?>
 <form method="post" id="form-account-settings" data-force-strong-password="<?php echo esc_attr($user_settings_weak_password ? 1 : 0);?>">

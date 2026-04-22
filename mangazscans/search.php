@@ -2,19 +2,19 @@
 	/**
 	 * @package mangazscans
 	 */
-    use App\Madara;
+    use App\MangazScans;
     
 	get_header();
 
 	$wp_query                 = madara_get_global_wp_query();
 	$search_header_background = madara_output_background_options( 'search_header_background' );
-    $madara_ajax_search = Madara::getOption('madara_ajax_search', 'on');
+    $mz_ajax_search = MangazScans::getOption('madara_ajax_search', 'on');
 
 ?>
     <div class="c-search-header__wrapper" style="<?php echo esc_attr($search_header_background != '' ? $search_header_background : 'background-image: url(' . get_parent_theme_file_uri( '/images/bg-search.jpg' ) . ');'); ?>">
         <div class="container">
             <div class="search-content">
-                <form role="search" method="get" class="search-form <?php echo ($madara_ajax_search == 'on' ? 'ajax' : '');?>">
+                <form role="search" method="get" class="search-form <?php echo ($mz_ajax_search == 'on' ? 'ajax' : '');?>">
                     <label> <span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'mangazscans' ); ?></span>
                         <input type="search" class="search-field" placeholder="<?php esc_html_e( 'Search...', 'mangazscans' ); ?>" value="<?php echo esc_attr( $s ); ?>" name="s">
                     </label> <input type="submit" class="search-submit" value="<?php esc_html_e( 'Search', 'mangazscans' ); ?>">
@@ -71,8 +71,8 @@
 											<?php
 
 												//Get Pagination
-												$madara_pagination = new App\Views\ParsePagination();
-												$madara_pagination->renderPageNavigation( '#loop-content', 'html/loop/content' );
+												$mz_pagination = new App\Views\ParsePagination();
+												$mz_pagination->renderPageNavigation( '#loop-content', 'html/loop/content' );
 
 											?>
 

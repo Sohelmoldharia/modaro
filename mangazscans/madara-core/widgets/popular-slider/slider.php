@@ -14,11 +14,11 @@
 	 * @version 1.7.2.2
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 	$wp_manga_functions = madara_get_global_wp_manga_functions();
 	$thumb_size         = array( 125, 180 );
-	$allow_thumb_gif    = Madara::getOption( 'manga_single_allow_thumb_gif', 'off' );
+	$allow_thumb_gif    = MangazScans::getOption( 'manga_single_allow_thumb_gif', 'off' );
 
 	$thumb_url = get_the_post_thumbnail_url( get_the_ID() );
 

@@ -13,14 +13,14 @@
 	 * @version 1.7.2.2
 	 */
 	 
-	 use App\Madara;
+	 use App\MangazScans;
 	if ( ! is_user_logged_in() ) {
 		return;
 	}
 
 	$wp_manga_functions = madara_get_global_wp_manga_functions();
 	$user_id       = get_current_user_id();
-	$bookmarks     = $wp_manga_functions->get_bookmarked_mangas( $user_id, Madara::getOption('manga_bookmark_list_orderby', ''));
+	$bookmarks     = $wp_manga_functions->get_bookmarked_mangas( $user_id, MangazScans::getOption('manga_bookmark_list_orderby', ''));
 	$reading_style = $wp_manga_functions->get_reading_style();
 	$reading_style = ! empty( $reading_style ) ? $reading_style : 'paged';
 
@@ -37,7 +37,7 @@
     <tbody>
 
 	<?php if ( ! empty( $bookmarks ) ) {
-		$order = Madara::getOption('manga_bookmark_list_order', 'oldest_first');
+		$order = MangazScans::getOption('manga_bookmark_list_order', 'oldest_first');
 		if($order == 'newest_first')
 			$bookmarks = array_reverse($bookmarks); // latest bookmarked items on top
 		foreach ( $bookmarks as $bookmark ) {

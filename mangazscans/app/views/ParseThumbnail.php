@@ -12,7 +12,7 @@
 	// Prevent direct access to this file
 	defined( 'ABSPATH' ) || die( 'Direct access to this file is not allowed.' );
 
-	use App\Madara;
+	use App\MangazScans;
 
 	class ParseThumbnail {
 
@@ -53,7 +53,7 @@
 			//return
 			if ( function_exists( 'wp_get_attachment_image_srcset' ) ) {
 
-				$lazyload  = Madara::getOption( 'lazyload', 'off' );
+				$lazyload  = MangazScans::getOption( 'lazyload', 'off' );
 				$lazyClass = '';
 
 				$img_src    = wp_get_attachment_image_url( $attachment_id, $size );

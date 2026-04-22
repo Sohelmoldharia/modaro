@@ -11,7 +11,7 @@
 	if ( class_exists( 'WP_MANGA' ) ) {
 		// wp-manga plugin is active, add some options to Theme Options
 
-		$madara_theme_options = array(
+		$mz_theme_options = array(
 			'sections' => array(
 				array(
 					'id'    => 'manga_general_layout',

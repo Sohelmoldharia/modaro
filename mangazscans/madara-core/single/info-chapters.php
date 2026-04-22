@@ -15,10 +15,10 @@
 	 */
 	 
 	 
-use App\Madara;
-$manga_single_chapters_list = Madara::getOption( 'manga_single_chapters_list', 'on' );
-$chapters_list_cols = Madara::getOption( 'manga_single_chapters_list_cols', 1 );
-$chapters_order             = Madara::getOption( 'manga_chapters_order', '*_desc' );
+use App\MangazScans;
+$manga_single_chapters_list = MangazScans::getOption( 'manga_single_chapters_list', 'on' );
+$chapters_list_cols = MangazScans::getOption( 'manga_single_chapters_list_cols', 1 );
+$chapters_order             = MangazScans::getOption( 'manga_chapters_order', '*_desc' );
 $user_id = get_current_user_id();
 
 global $wp_manga_storage, $wp_manga_user_actions;

@@ -43,11 +43,11 @@
 			$html = '';
 			ob_start();
 
-			$madara_post_meta_tags  = \App\Madara::getOption( 'post_meta_tags', 'on' );
-			$madara_single_category = \App\Madara::getOption( 'single_category', 'on' );
-			$madara_page_meta_tags  = \App\Madara::getOption( 'page_meta_tags', 'on' );
+			$mz_post_meta_tags  = \App\MangazScans::getOption( 'post_meta_tags', 'on' );
+			$mz_single_category = \App\MangazScans::getOption( 'single_category', 'on' );
+			$mz_page_meta_tags  = \App\MangazScans::getOption( 'page_meta_tags', 'on' );
 
-			if ( ($madara_page_meta_tags == 'on' && is_page()) || ($madara_post_meta_tags == 'on' && is_single()) ) : ?>
+			if ( ($mz_page_meta_tags == 'on' && is_page()) || ($mz_post_meta_tags == 'on' && is_single()) ) : ?>
                 <div class="post-on">
                     <span class="font-meta"><?php echo esc_html__( 'posted on', 'mangazscans' ); ?></span>
                     <div class="c-blog__date">
@@ -55,7 +55,7 @@
 						<?php $this->renderPublishDate(); ?>
 
 						<?php
-							if ( $madara_single_category == 'on' ) {
+							if ( $mz_single_category == 'on' ) {
 								echo '<span class="post-category"><br/>' . wp_kses_post( $this->renderPostCategory() ) . '</span>';
 							}
 						?>

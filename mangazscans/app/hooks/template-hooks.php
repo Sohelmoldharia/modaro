@@ -7,7 +7,7 @@
 	 */
 
 
-	use App\Madara;
+	use App\MangazScans;
 	use App\Views\MadaraView;
 
 
@@ -15,19 +15,19 @@
 	function madara_output_before_body() {
 		// print out pre-loading effect
 
-		if ( Madara::getOption( 'pre_loading', - 1 ) == 1 || ( Madara::getOption( 'pre_loading', - 1 ) == 2 && ( is_front_page() ) ) ) {
-			$ajax_loading_template = \App\Madara::getOption( 'ajax_loading_effect', 'ball-grid-pulse' );
+		if ( MangazScans::getOption( 'pre_loading', - 1 ) == 1 || ( MangazScans::getOption( 'pre_loading', - 1 ) == 2 && ( is_front_page() ) ) ) {
+			$ajax_loading_template = \App\MangazScans::getOption( 'ajax_loading_effect', 'ball-grid-pulse' );
 
-			$madara_logo = \App\Madara::getOption( 'pre_loading_logo', '' );
-			if ( $madara_logo == '' ) {
-				$madara_logo = madara_get_logo( false, true );
+			$mz_logo = \App\MangazScans::getOption( 'pre_loading_logo', '' );
+			if ( $mz_logo == '' ) {
+				$mz_logo = madara_get_logo( false, true );
 			} else {
-				$madara_logo = '<a class="logo" href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '">
-			    <img class="for-original" src="' . esc_url( $madara_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '"/></a>';
+				$mz_logo = '<a class="logo" href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '">
+			    <img class="for-original" src="' . esc_url( $mz_logo ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '"/></a>';
 			}
 
 			$html = '<div id="pageloader" class="spinners">
-			<div class="spinner"><div class="c-pre-loading-logo">' . $madara_logo . '</div>';
+			<div class="spinner"><div class="c-pre-loading-logo">' . $mz_logo . '</div>';
 
 			ob_start();
 			get_template_part( 'html/ajax-loading/' . $ajax_loading_template );
@@ -47,7 +47,7 @@
 	add_action( 'before_page_content', 'madara_blog_breadcrumbs', 100 );
 	function madara_blog_breadcrumbs() {
 		if ( is_post_type_archive( 'post' ) || is_single() ) {
-			if ( Madara::getOption( 'archive_breadcrumbs', 'on' ) == 'on' ) {
+			if ( MangazScans::getOption( 'archive_breadcrumbs', 'on' ) == 'on' ) {
 				?>
                 <div id="c-blog_breadcrumbs">
 					<?php MadaraView::renderBreadcrumbs(); ?>
@@ -59,7 +59,7 @@
 
 	add_filter( 'excerpt_length', 'madara_custom_excerpt_length', 999 );
 	function madara_custom_excerpt_length( $length ) {
-		return Madara::getOption( 'custom_excerpt_length', $length );
+		return MangazScans::getOption( 'custom_excerpt_length', $length );
 	}
 
 	/**
@@ -95,7 +95,7 @@
 
 	add_action( 'wp_footer', 'madara_go_to_top' );
 	function madara_go_to_top() {
-		$is_gototop = Madara::getOption( 'go_to_top', 'off' );
+		$is_gototop = MangazScans::getOption( 'go_to_top', 'off' );
 
 		if ( $is_gototop != 'off' ) {
 			?>
@@ -185,7 +185,7 @@
 
 		if ( $option != '' ) {
 
-			$bg_options = Madara::getOption( $option );
+			$bg_options = MangazScans::getOption( $option );
 			
 			if ( is_array( $bg_options ) ) {
 				$bg_options_repeat     = isset( $bg_options['background-repeat'] ) ? $bg_options['background-repeat'] : '';
@@ -237,7 +237,7 @@
 
 		if ( $option != '' ) {
 
-			$option = Madara::getOption( $option, $default_value );
+			$option = MangazScans::getOption( $option, $default_value );
 
 			if ( $option == 'container' ) {
 				$container_class = 'container c-container';
@@ -261,7 +261,7 @@
 		$spacing = '';
 
 		if ( $option != '' ) {
-			$option = Madara::getOption( $option, $default_value );
+			$option = MangazScans::getOption( $option, $default_value );
 			if ( is_array( $option ) ) {
 
 				$unit   = isset( $option['unit'] ) ? $option['unit'] : 'px';
@@ -338,7 +338,7 @@
 
 	add_filter( 'ot_google_fonts_api_key', 'madara_ot_google_fonts_api_key' );
 	function madara_ot_google_fonts_api_key( $key ) {
-		$custom_key = Madara::getOption( 'google_font_api_key', '' );
+		$custom_key = MangazScans::getOption( 'google_font_api_key', '' );
 		if ( $custom_key != '' ) {
 			$key = $custom_key;
 		}

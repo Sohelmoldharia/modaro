@@ -4,7 +4,7 @@
 	 * helper functions
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 	use App\Models\Database;
 
 	/**
@@ -13,12 +13,12 @@
 	 * $manga_type = '{empty}|manga|text|video';
 	 */
 	function madara_get_front_page_query( $post_type = 'post', $page = 1, $manga_type = '' ) {
-		$posts_per_page = Madara::getOption( 'page_post_count' ) ? Madara::getOption( 'page_post_count' ) : get_option( 'posts_per_page' );
-		$cats           = Madara::getOption( 'page_post_cats' );
-		$tags           = Madara::getOption( 'page_post_tags' );
-		$ids            = Madara::getOption( 'page_post_ids' );
-		$order          = Madara::getOption( 'page_post_order' );
-		$orderby        = Madara::getOption( 'page_post_orderby' );
+		$posts_per_page = MangazScans::getOption( 'page_post_count' ) ? MangazScans::getOption( 'page_post_count' ) : get_option( 'posts_per_page' );
+		$cats           = MangazScans::getOption( 'page_post_cats' );
+		$tags           = MangazScans::getOption( 'page_post_tags' );
+		$ids            = MangazScans::getOption( 'page_post_ids' );
+		$order          = MangazScans::getOption( 'page_post_order' );
+		$orderby        = MangazScans::getOption( 'page_post_orderby' );
 
 		if ( $orderby == 'name' ) {
 			$order = 'ASC';
@@ -93,16 +93,16 @@
 		
 		$classes[] = 'page';
 
-		$header_layout = Madara::getOption( 'header_style', 1 );
+		$header_layout = MangazScans::getOption( 'header_style', 1 );
 		$classes[]     = 'header-style-' . $header_layout;
 
 		// if we are in Full Page template and Sectionized mode, sticky menu should be turned off
 		if ( is_page() && basename( get_page_template() ) == 'fullpage.php' && get_post_meta( get_the_ID(), 'fullpage_autoscrolling', true ) == 'on' ) {
 			// do nothing
 		} else {
-			$sticky_menu       = Madara::getOption( 'nav_sticky', 1 );
-			$sticky_reading_nav = Madara::getOption( 'manga_reading_sticky_navigation', 'on' );
-			$sticky_reading_header = Madara::getOption( 'manga_reading_sticky_header', '' );
+			$sticky_menu       = MangazScans::getOption( 'nav_sticky', 1 );
+			$sticky_reading_nav = MangazScans::getOption( 'manga_reading_sticky_navigation', 'on' );
+			$sticky_reading_header = MangazScans::getOption( 'manga_reading_sticky_header', '' );
 			
 			if ( ($sticky_menu != 0 && !($is_manga_reading_page && $sticky_reading_header == 'off')) || ($is_manga_reading_page && ($sticky_reading_header == 'on')) ) {
 				$classes[] = 'sticky-enabled';
@@ -120,7 +120,7 @@
 			$body_schema = get_user_meta( $user_id, '_manga_user_site_schema', true);
 		}
 		
-		$body_schema           = (isset($body_schema) && $body_schema != '') ? $body_schema : Madara::getOption( 'body_schema', 'dark' );
+		$body_schema           = (isset($body_schema) && $body_schema != '') ? $body_schema : MangazScans::getOption( 'body_schema', 'dark' );
 		
 		
 		$overwrite_body_schema = isset( $_GET['body_schema'] ) && $_GET['body_schema'] != '' ? $_GET['body_schema'] : '';
@@ -160,17 +160,17 @@
 			$classes[] = 'manga-reading-' . $manga_reading_style . '-style';
 		}
 		
-		$manga_archives_item_type_icon = Madara::getOption('manga_archives_item_type_icon', 'off');
+		$manga_archives_item_type_icon = MangazScans::getOption('manga_archives_item_type_icon', 'off');
 		if($manga_archives_item_type_icon == 'on'){
 			$classes[] = 'manga-type-icon';
 		}
 		
-		$minimal_reading_layout = Madara::getOption('minimal_reading_page', 'off');
+		$minimal_reading_layout = MangazScans::getOption('minimal_reading_page', 'off');
 		if($minimal_reading_layout == 'on'){
 			$classes[] = 'minimal-reading-layout';
 		}
 		
-		$sticky_for_mobile = Madara::getOption('manga_reading_sticky_navigation_mobile', 'off');
+		$sticky_for_mobile = MangazScans::getOption('manga_reading_sticky_navigation_mobile', 'off');
 		if($sticky_for_mobile == 'on'){
 			$classes[] = 'sticky-for-mobile';
 		}
@@ -184,7 +184,7 @@
 	function madara_wp_title( $title ) {
 
 		if ( is_404() ) {
-			$title['title'] = Madara::getOption( 'page404_head_tag', $title['title'] );
+			$title['title'] = MangazScans::getOption( 'page404_head_tag', $title['title'] );
 		}
 
 		return $title;
@@ -258,7 +258,7 @@
 		
 		if(isset($wp_manga_functions)){
 			if((is_page() && is_page_template('page-templates/front-page.php')) || $wp_manga_functions->is_manga_posttype_archive()){
-				$manga_archives_item_layout = Madara::getOption( 'manga_archives_item_layout', '' );
+				$manga_archives_item_layout = MangazScans::getOption( 'manga_archives_item_layout', '' );
 				
 				$args['manga_archives_item_layout'] = $manga_archives_item_layout;
 			}

@@ -1,12 +1,14 @@
 <?php
 	/**
-	 * 1.0
-	 * @package    Madara
-	 * @author     Madara Team <hi@mangabooth.com>
-	 * @copyright  Copyright (C) 2014 mangabooth.com. All Rights Reserved.
-	 * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+	 * MangazScans core class (base).
 	 *
-	 * Websites: https://www.mangabooth.com
+	 * Legacy name was "Madara" (this fork was derived from Madara
+	 * 1.7.3.1). The old identifier is kept available via class_alias
+	 * at the end of this file so anything still importing App\Madara
+	 * resolves to the same object.
+	 *
+	 * @package mangazscans
+	 * @license GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
 	 */
 
 	namespace App;
@@ -17,22 +19,19 @@
 	/**
 	 * Core class.
 	 *
-	 * @package  Madara
-	 * @since    1.0
+	 * @package mangazscans
 	 */
-	class Madara {
+	class MangazScans {
 		/**
-		 * Define theme version.
-		 *
-		 * @var  string
+		 * Theme engine version.
 		 */
-		const VERSION = '1.6.5';
+		const VERSION = '2.5.0';
 
 		private static $instance;
 
 		public static function getInstance() {
 			if ( null == self::$instance ) {
-				self::$instance = new Madara();
+				self::$instance = new MangazScans();
 			}
 
 			return self::$instance;
@@ -282,15 +281,15 @@
 				: self::getOption( 'manga_archives_item_layout', 'default' );
 			set_query_var( 'manga_archives_item_layout', $manga_archives_item_layout );
 
-			$madara_loop_index = 0;
+			$mz_loop_index = 0;
 
 			if ( $query->have_posts() ) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
-					$madara_loop_index++;
-					set_query_var( 'madara_loop_index', $madara_loop_index );
+					$mz_loop_index++;
+					set_query_var( 'madara_loop_index', $mz_loop_index );
 
-					if ( $madara_loop_index < $posts_per_page + 1 ) {
+					if ( $mz_loop_index < $posts_per_page + 1 ) {
 						get_template_part( $template_slug, get_post_format() );
 					}
 				}
@@ -426,13 +425,13 @@
 			/**
 			 * pre-built meta tags
 			 */
-			if ( Madara::getOption( 'echo_meta_tags', 'on' ) == 'on' ) {
+			if ( MangazScans::getOption( 'echo_meta_tags', 'on' ) == 'on' ) {
 				if ( function_exists( 'madara_meta_tags' ) ) {
 					madara_meta_tags();
 				}
 			}
 
-			$mobile_header_color = Madara::getOption('mobile_browser_header_color','');
+			$mobile_header_color = MangazScans::getOption('mobile_browser_header_color','');
 			if($mobile_header_color != ''){
 				?>
 				<meta name="theme-color" content="<?php echo esc_html($mobile_header_color);?>"/>
@@ -460,7 +459,7 @@
 		 * custom login page
 		 */
 		function __admin_login_page() {
-			if ( $img = Madara::getOption( 'login_logo_image' ) ) {
+			if ( $img = MangazScans::getOption( 'login_logo_image' ) ) {
 				?>
                 <style type="text/css">
                     body.login div#login h1 a {
@@ -491,4 +490,13 @@
 
 			return $theme->get( 'Version' );
 		}
+	}
+
+	/**
+	 * Back-compat: previous identifier was App\Madara. Any callsite still
+	 * using the old name resolves to the same class via this alias — no
+	 * behaviour change, just a different symbol.
+	 */
+	if ( ! class_exists( __NAMESPACE__ . '\\Madara', false ) ) {
+		class_alias( __NAMESPACE__ . '\\MangazScans', __NAMESPACE__ . '\\Madara' );
 	}

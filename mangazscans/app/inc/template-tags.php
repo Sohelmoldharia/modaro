@@ -5,7 +5,7 @@
 	 * @package mangazscans
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 	/**
 	 * Get Thumbnail Image
@@ -30,13 +30,13 @@
 	function madara_get_logo( $echo = true, $main_logo_only = false ) {
 		$html = '<a class="logo" href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
 
-		$header_style = Madara::getOption( 'header_style', 1 );
+		$header_style = MangazScans::getOption( 'header_style', 1 );
 
 
 		$default_logo_url = get_parent_theme_file_uri( '/images/logo.png' );
 
-		$logo        = Madara::getOption( 'logo_image', '' ) == '' ? esc_url( $default_logo_url ) : Madara::getOption( 'logo_image', '' );
-		$logo_sticky = Madara::getOption( 'sticky_logo', '' ) == '' ? ( $logo != $default_logo_url ? $logo : get_parent_theme_file_uri( '/images/logo.png' ) ) : Madara::getOption( 'sticky_logo', '' );
+		$logo        = MangazScans::getOption( 'logo_image', '' ) == '' ? esc_url( $default_logo_url ) : MangazScans::getOption( 'logo_image', '' );
+		$logo_sticky = MangazScans::getOption( 'sticky_logo', '' ) == '' ? ( $logo != $default_logo_url ? $logo : get_parent_theme_file_uri( '/images/logo.png' ) ) : MangazScans::getOption( 'sticky_logo', '' );
 
 		$html .= '<img class="for-original" src="' . esc_url( $logo ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '"/>';
 
@@ -56,12 +56,12 @@
 	function madara_get_sticky_logo( $echo = true ) {
 		$html = '<a class="logo" href="' . esc_url( home_url( '/' ) ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
 
-		$header_style = Madara::getOption( 'header_style', 1 );
+		$header_style = MangazScans::getOption( 'header_style', 1 );
 
 		$default_logo_url = get_parent_theme_file_uri( '/images/logo.png' );
 
-		$logo        = Madara::getOption( 'logo_image', '' ) == '' ? esc_url( $default_logo_url ) : Madara::getOption( 'logo_image', '' );
-		$logo_sticky = Madara::getOption( 'sticky_logo', '' ) == '' ? $logo : Madara::getOption( 'sticky_logo', '' );
+		$logo        = MangazScans::getOption( 'logo_image', '' ) == '' ? esc_url( $default_logo_url ) : MangazScans::getOption( 'logo_image', '' );
+		$logo_sticky = MangazScans::getOption( 'sticky_logo', '' ) == '' ? $logo : MangazScans::getOption( 'sticky_logo', '' );
 
 		$html .= '<img class="for-sticky" src="' . esc_url( $logo_sticky ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '"/>';
 
@@ -151,7 +151,7 @@
 	}
 
 	function madara_default_heading_icon( $echo = 1 ) {
-		$def_icon = Madara::getOption( 'static_icon', 'icon ion-ios-star' );
+		$def_icon = MangazScans::getOption( 'static_icon', 'icon ion-ios-star' );
 		if ( $echo == 1 ) {
 			echo esc_html( $def_icon );
 		} else {

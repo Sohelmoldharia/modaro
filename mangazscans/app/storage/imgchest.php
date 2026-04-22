@@ -71,12 +71,12 @@
 
 				// Token resolution order, first match wins:
 				//   1. Theme Options > Misc > ImgChest API token
-				//      (\App\Madara::getOption — what the admin UI writes)
+				//      (\App\MangazScans::getOption — what the admin UI writes)
 				//   2. wp_manga[imgchest_api_token] option
 				//      (legacy slot, kept so an existing site doesn't break)
 				$api_token = '';
 				if ( class_exists( '\\App\\Madara' ) ) {
-					$api_token = (string) \App\Madara::getOption( 'mangazscans_imgchest_token', '' );
+					$api_token = (string) \App\MangazScans::getOption( 'mangazscans_imgchest_token', '' );
 				}
 				if ( $api_token === '' ) {
 					$opts      = get_option( 'wp_manga', array() );

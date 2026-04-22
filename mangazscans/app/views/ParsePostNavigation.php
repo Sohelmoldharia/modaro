@@ -6,7 +6,7 @@
 
 	namespace App\Views;
     
-    use App\Madara;
+    use App\MangazScans;
 
 	class ParsePostNavigation {
 		public function __construct() {
@@ -14,11 +14,11 @@
 		}
 
 		public function render( $echo = 1 ) {
-            $nav_same_term = Madara::getOption('archive_navigation_same_term', 'off');
+            $nav_same_term = MangazScans::getOption('archive_navigation_same_term', 'off');
             
-			$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( ($nav_same_term == 'off' ? false : true), '', true, ($nav_same_term == 'on' ? Madara::getOption('archive_navigation_term_taxonomy', 'category') : 'category') );
+			$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( ($nav_same_term == 'off' ? false : true), '', true, ($nav_same_term == 'on' ? MangazScans::getOption('archive_navigation_term_taxonomy', 'category') : 'category') );
 
-			$next = get_adjacent_post( ($nav_same_term == 'off' ? false : true), '', false, ($nav_same_term == 'on' ? Madara::getOption('archive_navigation_term_taxonomy', 'category') : 'category') );
+			$next = get_adjacent_post( ($nav_same_term == 'off' ? false : true), '', false, ($nav_same_term == 'on' ? MangazScans::getOption('archive_navigation_term_taxonomy', 'category') : 'category') );
 
 			if ( ! $next && ! $previous ) {
 				return;
@@ -28,7 +28,7 @@
 			$get_next_post     = $next;
 			$thumb_size        = array( 254, 140 );
             
-            $reverse = Madara::getOption('single_reverse_nav', 'off');
+            $reverse = MangazScans::getOption('single_reverse_nav', 'off');
 
 			?>
 

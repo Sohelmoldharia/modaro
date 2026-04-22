@@ -9,7 +9,7 @@
 
 	namespace App\Views;
 
-	use App\Madara;
+	use App\MangazScans;
 
 	class ParsePageTitle {
 
@@ -27,7 +27,7 @@
 			$text['search']   = esc_html__( 'Search Results for', 'mangazscans' ) . ' <span>%s</span>';
 			$text['tag']      = esc_html__( 'Tag', 'mangazscans' ) . ' "%s"';
 			$text['author']   = esc_html__( 'Author', 'mangazscans' ) . ' %s';
-			$text['404']      = Madara::getOption( 'page404_title', esc_html__( 'Page not found', 'mangazscans' ) );
+			$text['404']      = MangazScans::getOption( 'page404_title', esc_html__( 'Page not found', 'mangazscans' ) );
 
 			$parent_id = $parent_id_2 = ( $post ) ? $post->post_parent : 0;
 

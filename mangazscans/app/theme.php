@@ -41,13 +41,13 @@
 	 * @package  Madara
 	 * @since    1.0
 	 */
-	class MadaraStarter extends Madara {
+	class MangazScansStarter extends MangazScans {
 
 		private static $instance;
 
 		public static function getInstance() {
 			if ( null == self::$instance ) {
-				self::$instance = new MadaraStarter();
+				self::$instance = new MangazScansStarter();
 			}
 
 			return self::$instance;
@@ -367,5 +367,13 @@
 	}
 
 
-	$madara = MadaraStarter::getInstance();
-	$madara->initialize();
+	$mangazscans_theme = MangazScansStarter::getInstance();
+	$mangazscans_theme->initialize();
+
+	/**
+	 * Back-compat: the previous identifier was App\MadaraStarter. Any
+	 * caller still using that name keeps working via this alias.
+	 */
+	if ( ! class_exists( __NAMESPACE__ . '\\MadaraStarter', false ) ) {
+		class_alias( __NAMESPACE__ . '\\MangazScansStarter', __NAMESPACE__ . '\\MadaraStarter' );
+	}

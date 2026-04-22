@@ -16,7 +16,7 @@
 	 */
 	 
 	 
-use App\Madara;
+use App\MangazScans;
 
 // get first chapter of this oneshot manga
 global $wp_manga_functions, $post;
@@ -48,9 +48,9 @@ if( !$post->post_password || ($post->post_password && !post_password_required())
             return;
         }
 
-        $madara_reading_list_total_item = 0;
+        $mz_reading_list_total_item = 0;
         
-        $is_lazy_load = Madara::getOption( 'lazyload', 'off' ) == 'on' ? true : false;
+        $is_lazy_load = MangazScans::getOption( 'lazyload', 'off' ) == 'on' ? true : false;
         if ( $is_lazy_load ) {
             $lazyload = 'wp-manga-chapter-img img-responsive lazyload effect-fade';
         } else {
@@ -76,7 +76,7 @@ if( !$post->post_password || ($post->post_password && !post_password_required())
                 
                 foreach ( $chapter['storage'][ $in_use ]['page'] as $page => $link ) {
 
-                    $madara_reading_list_total_item = count( $chapter['storage'][ $in_use ]['page'] );
+                    $mz_reading_list_total_item = count( $chapter['storage'][ $in_use ]['page'] );
 
                     $host = $chapter['storage'][ $in_use ]['host'];
                     $src  = apply_filters('wp_manga_chapter_image_url', $host . $link['src'], $host, $link['src'], $post_id, $name);
@@ -84,20 +84,20 @@ if( !$post->post_password || ($post->post_password && !post_password_required())
                     if($src != ''){
                         $i++;
                     
-                        do_action( 'madara_before_chapter_image_wrapper', $page, $madara_reading_list_total_item ); ?>
+                        do_action( 'madara_before_chapter_image_wrapper', $page, $mz_reading_list_total_item ); ?>
                     <div class="col-lg-2 col-md-3 col-6">
                         <div class="image-item">
 
-                            <?php do_action( 'madara_before_chapter_image', $page, $madara_reading_list_total_item );
+                            <?php do_action( 'madara_before_chapter_image', $page, $mz_reading_list_total_item );
                             ?>
                             <a href="<?php echo esc_url( $src ); ?>" data-lightbox="chapter-images">
                             <img id="image-<?php echo esc_attr( $page ); ?>" <?php if($is_lazy_load){ echo 'src="' . esc_url($lazyload_dfimg) . '" data-src="'; } else { echo 'src="';}?><?php echo esc_url( $src ); ?>" class="<?php echo esc_attr( $lazyload ); ?>">
                             </a>
                             <?php 
                             
-                            do_action( 'madara_after_chapter_image', $page, $madara_reading_list_total_item ); ?>
+                            do_action( 'madara_after_chapter_image', $page, $mz_reading_list_total_item ); ?>
                         </div>
-                        <?php do_action( 'madara_after_chapter_image_wrapper', $page, $madara_reading_list_total_item ); ?>
+                        <?php do_action( 'madara_after_chapter_image_wrapper', $page, $mz_reading_list_total_item ); ?>
                     </div>
                     <?php   
                         if($i%6 == 0 || $i == $total_page){

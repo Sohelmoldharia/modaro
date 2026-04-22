@@ -14,7 +14,7 @@ if (!function_exists('madara_custom_CSS')) {
 	{
 
 		$madara             = new App\Madara();
-		$madara_option_tree = new App\Config\OptionTree();
+		$mz_option_tree = new App\Config\OptionTree();
 		$typography         = new App\Models\Entity\Typography();
 
 		//Color
@@ -65,17 +65,17 @@ if (!function_exists('madara_custom_CSS')) {
 		if ($site_custom_colors == 'on' || (is_page() && $front_page_custom_colors == 'on')) {
 
 			if ($front_page_custom_colors == 'off') {
-				$main_color          = $madara_option_tree::getOption('main_color', '');
-				$main_color_end      = $madara_option_tree::getOption('main_color_end', '');
-				$link_color_hover    = $madara_option_tree::getOption('link_color_hover', '');
-				$hot_badges_bg_color = $madara_option_tree::getOption('hot_badges_bg_color', '');
-				$new_badges_bg_color = $madara_option_tree::getOption('new_badges_bg_color', '');
-				$custom_badges_bg_color = $madara_option_tree::getOption('custom_badges_bg_color', '');
-				$star_color          = $madara_option_tree::getOption('star_color', '');
-				$btn_bg              = $madara_option_tree::getOption('btn_bg', '');
-				$btn_color           = $madara_option_tree::getOption('btn_color', '');
-				$btn_hover_bg        = $madara_option_tree::getOption('btn_hover_bg', '');
-				$btn_hover_color     = $madara_option_tree::getOption('btn_hover_color', '');
+				$main_color          = $mz_option_tree::getOption('main_color', '');
+				$main_color_end      = $mz_option_tree::getOption('main_color_end', '');
+				$link_color_hover    = $mz_option_tree::getOption('link_color_hover', '');
+				$hot_badges_bg_color = $mz_option_tree::getOption('hot_badges_bg_color', '');
+				$new_badges_bg_color = $mz_option_tree::getOption('new_badges_bg_color', '');
+				$custom_badges_bg_color = $mz_option_tree::getOption('custom_badges_bg_color', '');
+				$star_color          = $mz_option_tree::getOption('star_color', '');
+				$btn_bg              = $mz_option_tree::getOption('btn_bg', '');
+				$btn_color           = $mz_option_tree::getOption('btn_color', '');
+				$btn_hover_bg        = $mz_option_tree::getOption('btn_hover_bg', '');
+				$btn_hover_color     = $mz_option_tree::getOption('btn_hover_color', '');
 			} else {
 				$main_color          = $madara->getOption('main_color', '');
 				$main_color_end      = $madara->getOption('main_color_end', '');
@@ -95,13 +95,13 @@ if (!function_exists('madara_custom_CSS')) {
 		if ($header_custom_colors == 'on' || (is_page() && $front_page_header_custom_colors == 'on')) {
 
 			if ($front_page_header_custom_colors == 'off') {
-				$nav_item_color           = $madara_option_tree::getOption('nav_item_color', '');
-				$nav_item_hover_color     = $madara_option_tree::getOption('nav_item_hover_color', '');
-				$nav_sub_bg               = $madara_option_tree::getOption('nav_sub_bg', '');
-				$nav_sub_bg_border_color  = $madara_option_tree::getOption('nav_sub_bg_border_color', '');
-				$nav_sub_item_color       = $madara_option_tree::getOption('nav_sub_item_color', '');
-				$nav_sub_item_hover_color = $madara_option_tree::getOption('nav_sub_item_hover_color', '');
-				$nav_sub_item_hover_bg    = $madara_option_tree::getOption('nav_sub_item_hover_bg', '');
+				$nav_item_color           = $mz_option_tree::getOption('nav_item_color', '');
+				$nav_item_hover_color     = $mz_option_tree::getOption('nav_item_hover_color', '');
+				$nav_sub_bg               = $mz_option_tree::getOption('nav_sub_bg', '');
+				$nav_sub_bg_border_color  = $mz_option_tree::getOption('nav_sub_bg_border_color', '');
+				$nav_sub_item_color       = $mz_option_tree::getOption('nav_sub_item_color', '');
+				$nav_sub_item_hover_color = $mz_option_tree::getOption('nav_sub_item_hover_color', '');
+				$nav_sub_item_hover_bg    = $mz_option_tree::getOption('nav_sub_item_hover_bg', '');
 
 			} else {
 				$nav_item_color           = $madara->getOption('nav_item_color', '');
@@ -118,13 +118,13 @@ if (!function_exists('madara_custom_CSS')) {
 		if ($header_bottom_custom_colors == 'on' || (is_page() && $front_page_header_bottom_colors == 'on')) {
 
 			if ($front_page_header_bottom_colors == 'off') {
-				$header_bottom_bg                = $madara_option_tree::getOption('header_bottom_bg', '');
-				$bottom_nav_item_color           = $madara_option_tree::getOption('bottom_nav_item_color', '');
-				$bottom_nav_item_hover_color     = $madara_option_tree::getOption('bottom_nav_item_hover_color', '');
-				$bottom_nav_sub_bg               = $madara_option_tree::getOption('bottom_nav_sub_bg', '');
-				$bottom_nav_sub_item_color       = $madara_option_tree::getOption('bottom_nav_sub_item_color', '');
-				$bottom_nav_sub_item_hover_color = $madara_option_tree::getOption('bottom_nav_sub_item_hover_color', '');
-				$bottom_nav_sub_border_bottom    = $madara_option_tree::getOption('bottom_nav_sub_border_bottom', '');
+				$header_bottom_bg                = $mz_option_tree::getOption('header_bottom_bg', '');
+				$bottom_nav_item_color           = $mz_option_tree::getOption('bottom_nav_item_color', '');
+				$bottom_nav_item_hover_color     = $mz_option_tree::getOption('bottom_nav_item_hover_color', '');
+				$bottom_nav_sub_bg               = $mz_option_tree::getOption('bottom_nav_sub_bg', '');
+				$bottom_nav_sub_item_color       = $mz_option_tree::getOption('bottom_nav_sub_item_color', '');
+				$bottom_nav_sub_item_hover_color = $mz_option_tree::getOption('bottom_nav_sub_item_hover_color', '');
+				$bottom_nav_sub_border_bottom    = $mz_option_tree::getOption('bottom_nav_sub_border_bottom', '');
 			} else {
 				$header_bottom_bg                = $madara->getOption('header_bottom_bg', '');
 				$bottom_nav_item_color           = $madara->getOption('bottom_nav_item_color', '');
@@ -140,9 +140,9 @@ if (!function_exists('madara_custom_CSS')) {
 		if ($mobile_menu_custom_color == 'on' || (is_page() && $front_page_header_mobile_menu_color == 'on')) {
 
 			if ($front_page_header_mobile_menu_color == 'off') {
-				$canvas_menu_background = $madara_option_tree::getOption('canvas_menu_background', '');
-				$canvas_menu_color      = $madara_option_tree::getOption('canvas_menu_color', '');
-				$canvas_menu_hover      = $madara_option_tree::getOption('canvas_menu_hover', '');
+				$canvas_menu_background = $mz_option_tree::getOption('canvas_menu_background', '');
+				$canvas_menu_color      = $mz_option_tree::getOption('canvas_menu_color', '');
+				$canvas_menu_hover      = $mz_option_tree::getOption('canvas_menu_hover', '');
 			} else {
 				$canvas_menu_background = $madara->getOption('canvas_menu_background', '');
 				$canvas_menu_color      = $madara->getOption('canvas_menu_color', '');
@@ -610,7 +610,7 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 		/**
 		 * print out custom css in theme options
 		 */
-		$madara_to_custom_css = $madara->getOption( 'custom_css', '' );
+		$mz_to_custom_css = $madara->getOption( 'custom_css', '' );
 
 		/**
 		 * retina logo process
@@ -694,8 +694,8 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 			$custom_css .= 'body.page .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item span.vol.font-meta{display:none}';
 		}
 		
-		$madara_disable_imagetoolbar    = $madara->getOption('madara_disable_imagetoolbar', 'off');
-		if($madara_disable_imagetoolbar == 'on'){
+		$mz_disable_imagetoolbar    = $madara->getOption('madara_disable_imagetoolbar', 'off');
+		if($mz_disable_imagetoolbar == 'on'){
 			$custom_css .= ".chapter-type-manga .c-blog-post .entry-content .entry-content_wrap .reading-content::before {
 				content: ' ';
 				display: block;
@@ -744,7 +744,7 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
         }
 
 		if ( $custom_css != '' ) {
-			$custom_css .= PHP_EOL . $madara_to_custom_css;
+			$custom_css .= PHP_EOL . $mz_to_custom_css;
 		}
 
 		$custom_css = apply_filters('madara_custom_css', $custom_css);

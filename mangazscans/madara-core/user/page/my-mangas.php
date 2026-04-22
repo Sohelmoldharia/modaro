@@ -14,12 +14,12 @@
 	 * @version 1.7.2.2
 	 */
 	 
-use App\Madara;
+use App\MangazScans;
 global $mymangas;
 
 $mymangas = apply_filters('madara_my_mangas_list', $mymangas); 
 
-$madara_post_count = $mymangas->post_count;
+$mz_post_count = $mymangas->post_count;
 $manga_archives_item_layout = 'simple'; // edit this if you want to change layout
 
 	?>
@@ -32,7 +32,7 @@ $manga_archives_item_layout = 'simple'; // edit this if you want to change layou
 
 						<?php
 							$index = 1;
-							set_query_var( 'madara_post_count', $madara_post_count );
+							set_query_var( 'madara_post_count', $mz_post_count );
 							set_query_var('manga_archives_item_layout', $manga_archives_item_layout);
 						?>
 
@@ -56,14 +56,14 @@ $manga_archives_item_layout = 'simple'; // edit this if you want to change layou
 					<?php
 						$template = 'madara-core/user/page/item-mymanga';
 						//Get Pagination
-						$madara_pagination = new App\Views\ParsePagination();
-						$madara_pagination->renderPageNavigation( '#loop-content', $template, $mymangas, 'ajax' );
+						$mz_pagination = new App\Views\ParsePagination();
+						$mz_pagination->renderPageNavigation( '#loop-content', $template, $mymangas, 'ajax' );
 					?>
 					
 					<script type="text/javascript">
 						// update args
 						__madara_query_vars['manga_archives_item_layout'] = '<?php echo esc_js($manga_archives_item_layout);?>';
-						__madara_query_vars['madara_post_count'] = <?php echo esc_js($madara_post_count);?>;
+						__madara_query_vars['madara_post_count'] = <?php echo esc_js($mz_post_count);?>;
 					</script>
 				</div>
 			</div>

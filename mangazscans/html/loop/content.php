@@ -3,27 +3,27 @@
 	 * @package mangazscans
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
-	$madara_postMeta = new App\Views\ParseMeta();
-	$madara_sidebar  = madara_get_theme_sidebar_setting();
+	$mz_postMeta = new App\Views\ParseMeta();
+	$mz_sidebar  = madara_get_theme_sidebar_setting();
 	$thumb_size      = array( 360, 206 );
 
-	$archive_content_columns = get_query_var( 'archive_content_columns', Madara::getOption( 'archive_content_columns', 3 ) );
-	$archive_post_excerpt    = Madara::getOption( 'archive_post_excerpt', 'on' );
+	$archive_content_columns = get_query_var( 'archive_content_columns', MangazScans::getOption( 'archive_content_columns', 3 ) );
+	$archive_post_excerpt    = MangazScans::getOption( 'archive_post_excerpt', 'on' );
 
 	$columns_class = 'col-md-4';
 	if ( $archive_content_columns == 2 ) {
 		$columns_class = 'col-md-6';
 	}
 
-	$madara_loop_index = get_query_var( 'madara_loop_index' );
-	$madara_post_count = get_query_var( 'madara_post_count' );
+	$mz_loop_index = get_query_var( 'madara_loop_index' );
+	$mz_post_count = get_query_var( 'madara_post_count' );
 
 ?>
 
 
-<?php if ( $madara_loop_index % $archive_content_columns == 1 ) { ?>
+<?php if ( $mz_loop_index % $archive_content_columns == 1 ) { ?>
     <div class="row c-row">
 <?php } ?>
     <div id="post-<?php the_ID(); ?>" <?php post_class( 'col-12  ' . $columns_class . ' ' ); ?>>
@@ -39,12 +39,12 @@
 
             <div class="c-blog__summary">
                 <div class="post-meta total-count font-meta">
-					<?php $madara_postMeta->renderPostViews( 1 ); ?><?php $madara_postMeta->renderPostTotalShareCounter( 1, 1 ); ?>
+					<?php $mz_postMeta->renderPostViews( 1 ); ?><?php $mz_postMeta->renderPostTotalShareCounter( 1, 1 ); ?>
                 </div>
                 <div class="post-title font-title">
 					<?php if ( get_the_title() != '' ) { ?>
 
-						<?php $madara_postMeta->renderPostTitle( 'h4' ); ?>
+						<?php $mz_postMeta->renderPostTitle( 'h4' ); ?>
 
 					<?php } else { ?>
                         <h4 class="heading">
@@ -64,6 +64,6 @@
         </div>
     </div>
 
-<?php if ( $madara_loop_index % $archive_content_columns == 0 || $madara_loop_index == $madara_post_count ) { ?>
+<?php if ( $mz_loop_index % $archive_content_columns == 0 || $mz_loop_index == $mz_post_count ) { ?>
     </div>
 <?php } ?>

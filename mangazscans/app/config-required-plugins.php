@@ -8,7 +8,7 @@
 	 * The bundled madara-shortcodes plugin was dropped to keep the theme
 	 * lighter; install it manually if you use [manga_listing] etc.
 	 */
-	$madara_required_plugins = array(
+	$mz_required_plugins = array(
 		array(
 			'name'     => 'Option Tree',
 			'slug'     => 'option-tree',

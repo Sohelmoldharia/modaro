@@ -2,7 +2,7 @@
 
 	use App\Views\MadaraView;
 
-	$manga_show_author = \App\Madara::getOption( 'single_author', 'on' );
+	$manga_show_author = \App\MangazScans::getOption( 'single_author', 'on' );
 	if ( $manga_show_author == 'on' ) {
 
 		$manga_author_desc = get_the_author_meta( 'description' );

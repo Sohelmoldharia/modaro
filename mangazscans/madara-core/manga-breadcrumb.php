@@ -13,16 +13,16 @@
 	 * @version 1.7.2.2
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 	$wp_query = madara_get_global_wp_query();
 	$object   = $wp_query->queried_object;
 
-	$madara_breadcrumb_bg = is_manga_archive() ? madara_output_background_options( 'manga_archive_breadcrumb_bg', '' ) : '';
+	$mz_breadcrumb_bg = is_manga_archive() ? madara_output_background_options( 'manga_archive_breadcrumb_bg', '' ) : '';
 
-	$madara_genres_block       = Madara::getOption( 'manga_archive_genres', 'on' );
-	$manga_archive_genres_collapse = Madara::getOption( 'manga_archive_genres_collapse', 'on' );
-	$manga_archive_genres_title    = Madara::getOption( 'manga_archive_genres_title', 'GENRES' );
+	$mz_genres_block       = MangazScans::getOption( 'manga_archive_genres', 'on' );
+	$manga_archive_genres_collapse = MangazScans::getOption( 'manga_archive_genres_collapse', 'on' );
+	$manga_archive_genres_title    = MangazScans::getOption( 'manga_archive_genres_title', 'GENRES' );
 
 	$overwrite_genres_collapse = isset( $_GET['genres_collapse'] ) && $_GET['genres_collapse'] != '' ? $_GET['genres_collapse'] : '';
 
@@ -55,7 +55,7 @@
 	if ( is_manga_archive() && ! is_manga_search_page() ) {
 		$breadcrumb_bg_html .= 'style="';
 
-		$breadcrumb_bg_html .= $madara_breadcrumb_bg != '' ? $madara_breadcrumb_bg : 'background-image: url(' . get_parent_theme_file_uri( '/images/bg-search.jpg' );
+		$breadcrumb_bg_html .= $mz_breadcrumb_bg != '' ? $mz_breadcrumb_bg : 'background-image: url(' . get_parent_theme_file_uri( '/images/bg-search.jpg' );
 
 		$breadcrumb_bg_html .= '"';
 	}
@@ -180,7 +180,7 @@
                                 </ul>
                             </div>
 						<?php } ?>
-						<?php if ( ! is_manga_single() && ! is_manga_reading_page() && $madara_genres_block == 'on' && ! is_manga_search_page() ) {
+						<?php if ( ! is_manga_single() && ! is_manga_reading_page() && $mz_genres_block == 'on' && ! is_manga_search_page() ) {
 
 							//genre query
 							$genre_args = array(

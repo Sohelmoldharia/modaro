@@ -10,7 +10,7 @@
 
 	namespace App\Views;
 
-	use App\Madara;
+	use App\MangazScans;
 
 	class ParseFonts {
 		public function __construct() {
@@ -22,17 +22,17 @@
 		 * return custom css for local fonts used
 		 */
 		public function enqueue_local_fonts( $custom_css ) {
-			if ( Madara::getOption( 'font_using_custom', 'off' ) == 'off' ) {
+			if ( MangazScans::getOption( 'font_using_custom', 'off' ) == 'off' ) {
 				if ( file_exists( get_parent_theme_file_path( '/app/config-local-fonts.php' ) ) ) {
 
 					include( '/app/config-local-fonts.php' );
 
-					if ( isset( $madara_fonts ) && count( $madara_fonts ) > 0 ) {
+					if ( isset( $mz_fonts ) && count( $mz_fonts ) > 0 ) {
 
 						$parserFont = new \App\Views\ParseLocalFonts();
 
 						$index = 0;
-						foreach ( $madara_fonts as $font => $variations ) {
+						foreach ( $mz_fonts as $font => $variations ) {
 							$custom_css .= $parserFont->render( $font, $variations );
 
 							$index ++;
@@ -53,7 +53,7 @@
 			// add custom font-face
 			$local_fonts = array( 'custom_font_1', 'custom_font_2' );
 			foreach ( $local_fonts as $local_font ) {
-				$font_url = Madara::getOption( $local_font, '' );
+				$font_url = MangazScans::getOption( $local_font, '' );
 				if ( $font_url != '' ) {
 					$fontface   = sprintf( '@font-face{font-family: %s;src: url(%s);}', $local_font, $font_url );
 					$custom_css .= $fontface;

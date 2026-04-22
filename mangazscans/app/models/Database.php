@@ -2,7 +2,7 @@
 
 	namespace App\Models;
 
-	use App\Madara;
+	use App\MangazScans;
 
 	class Database extends Data {
 		/**
@@ -514,8 +514,8 @@
 				}
 			}
 
-			$number              = Madara::getOption( 'related_posts_count', 3 );
-			$relatedPostsOrderBy = Madara::getOption( 'related_posts_order_by', 'date' ); // date or rand
+			$number              = MangazScans::getOption( 'related_posts_count', 3 );
+			$relatedPostsOrderBy = MangazScans::getOption( 'related_posts_order_by', 'date' ); // date or rand
 
 			$args = array(
 				'post_status'         => 'publish',
@@ -525,7 +525,7 @@
 				'post__not_in'        => array( $post_id )
 			);
 
-			$get_related_post_by = Madara::getOption( 'get_related_post_by' );
+			$get_related_post_by = MangazScans::getOption( 'get_related_post_by' );
 
 			if ( $get_related_post_by == 'cat' ) {
 				$categories = wp_get_post_categories( $post_id );

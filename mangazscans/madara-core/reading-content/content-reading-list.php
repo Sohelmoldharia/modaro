@@ -13,7 +13,7 @@
 	 * @version 1.7.2.2
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 	$wp_manga_functions = madara_get_global_wp_manga_functions();
 	$post_id  = get_the_ID();
@@ -37,9 +37,9 @@
 	$paged    = isset( $_GET[$wp_manga->manga_paged_var] ) ? $_GET[$wp_manga->manga_paged_var] : 1;
 	$style    = isset( $_GET['style'] ) ? $_GET['style'] : 'paged';
 
-	$manga_reading_content_gaps = Madara::getOption( 'manga_reading_content_gaps', 'on' );
+	$manga_reading_content_gaps = MangazScans::getOption( 'manga_reading_content_gaps', 'on' );
 
-	$is_lazy_load = Madara::getOption( 'lazyload', 'off' ) == 'on' ? true : false;
+	$is_lazy_load = MangazScans::getOption( 'lazyload', 'off' ) == 'on' ? true : false;
 	if ( $is_lazy_load ) {
 		$lazyload = 'wp-manga-chapter-img img-responsive lazyload effect-fade';
 	} else {
@@ -58,7 +58,7 @@
 		return;
 	}
 
-	$madara_reading_list_total_item = 0;
+	$mz_reading_list_total_item = 0;
 	
 	$need_button_fullsize = false;
     
@@ -66,7 +66,7 @@
 
 	foreach ( $chapter['storage'][ $in_use ]['page'] as $page => $link ) {
 
-		$madara_reading_list_total_item = count( $chapter['storage'][ $in_use ]['page'] );
+		$mz_reading_list_total_item = count( $chapter['storage'][ $in_use ]['page'] );
 
 		$host = $chapter['storage'][ $in_use ]['host'];
 		$src  = apply_filters('wp_manga_chapter_image_url', $host . $link['src'], $host, $link['src'], $post_id, $name);
@@ -75,11 +75,11 @@
 
 		?>
 
-		<?php do_action( 'madara_before_chapter_image_wrapper', $page, $madara_reading_list_total_item ); ?>
+		<?php do_action( 'madara_before_chapter_image_wrapper', $page, $mz_reading_list_total_item ); ?>
 
         <div class="page-break <?php echo( esc_attr($manga_reading_content_gaps == 'off' ? 'no-gaps' : '' )); ?>">
 
-			<?php do_action( 'madara_before_chapter_image', $page, $madara_reading_list_total_item );
+			<?php do_action( 'madara_before_chapter_image', $page, $mz_reading_list_total_item );
             ?>
             
             <img id="image-<?php echo esc_attr( $page ); ?>" <?php if($is_lazy_load){ echo 'data-src="'; } else { echo 'src="';}?>
@@ -99,10 +99,10 @@
 			}
 			**/
 			
-			do_action( 'madara_after_chapter_image', $page, $madara_reading_list_total_item ); ?>
+			do_action( 'madara_after_chapter_image', $page, $mz_reading_list_total_item ); ?>
         </div>
 
-		<?php do_action( 'madara_after_chapter_image_wrapper', $page, $madara_reading_list_total_item ); 
+		<?php do_action( 'madara_after_chapter_image_wrapper', $page, $mz_reading_list_total_item ); 
 		
 		}
 	}

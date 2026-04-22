@@ -1,7 +1,7 @@
 <?php
-	use App\Madara;
+	use App\MangazScans;
 	
-	$madara_image_sizes = array(
+	$mz_image_sizes = array(
 		'madara_misc_thumb_1' => array(
 			254,
 			140,
@@ -46,7 +46,7 @@
 		)
 	);
 
-	$madara_image_size_mapping = array(
+	$mz_image_size_mapping = array(
 		'254x140'  => 'madara_misc_thumb_1',
 		'360x206'  => 'madara_misc_thumb_2',
 		'125x180'  => 'madara_misc_thumb_3',

@@ -40,7 +40,7 @@
 			}
 
 			if ( $nav_type == '' ) {
-				$nav_type = \App\Madara::getOption( 'archive_navigation', 'default' );
+				$nav_type = \App\MangazScans::getOption( 'archive_navigation', 'default' );
 			}
 
 			switch ( $nav_type ) {
@@ -88,7 +88,7 @@
 				return;
 			}
 
-			$rtlmode = \App\Madara::getOption( 'rtl', 'off' );
+			$rtlmode = \App\MangazScans::getOption( 'rtl', 'off' );
 
 			?>
             <nav class="navigation paging-navigation">

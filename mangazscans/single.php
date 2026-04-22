@@ -1,22 +1,22 @@
 <?php
 	
 	use App\Views\MadaraView;
-	use App\Madara;
+	use App\MangazScans;
 
 	get_header();
 
-	$madara_sidebar = madara_get_theme_sidebar_setting();
+	$mz_sidebar = madara_get_theme_sidebar_setting();
 
-	$madara_postMeta = new App\Views\ParseMeta();
+	$mz_postMeta = new App\Views\ParseMeta();
 
 ?>
 
     <div class="c-page-content style-1">
         <div class="content-area">
             <div class="container">
-                <div class="row <?php echo esc_attr($madara_sidebar == 'left' ? 'sidebar-left' : ''); ?>">
+                <div class="row <?php echo esc_attr($mz_sidebar == 'left' ? 'sidebar-left' : ''); ?>">
 
-                    <div class="<?php echo esc_attr($madara_sidebar !== 'full' && ( is_active_sidebar( 'single_post_sidebar' ) || is_active_sidebar( 'main_sidebar' ) ) ? 'main-col col-md-8 col-sm-8' : 'col-md-12 col-sm-12'); ?>">
+                    <div class="<?php echo esc_attr($mz_sidebar !== 'full' && ( is_active_sidebar( 'single_post_sidebar' ) || is_active_sidebar( 'main_sidebar' ) ) ? 'main-col col-md-8 col-sm-8' : 'col-md-12 col-sm-12'); ?>">
 
 						<?php get_template_part( 'html/main-bodytop' ); ?>
 
@@ -32,7 +32,7 @@
 
 								<?php
 								// If comments are open or we have at least one comment, load up the comment template
-								if ( (comments_open() || '0' != get_comments_number()) && Madara::getOption('enable_comment', 'on') == 'on' ) :
+								if ( (comments_open() || '0' != get_comments_number()) && MangazScans::getOption('enable_comment', 'on') == 'on' ) :
 									comments_template();
 								endif;
 								?>
@@ -47,7 +47,7 @@
 
 
 					<?php
-						if ( $madara_sidebar !== 'full' && ( is_active_sidebar( 'single_post_sidebar' ) || is_active_sidebar( 'main_sidebar' ) ) ) {
+						if ( $mz_sidebar !== 'full' && ( is_active_sidebar( 'single_post_sidebar' ) || is_active_sidebar( 'main_sidebar' ) ) ) {
 							?>
                             <div class="sidebar-col col-md-4 col-sm-4">
 								<?php get_sidebar(); ?>

@@ -1,6 +1,6 @@
 <?php
 
-	$madara_ParseSocials = new App\Views\ParseSocials();
+	$mz_ParseSocials = new App\Views\ParseSocials();
 
 	/**
 	 * Hook to wrap Main Header div

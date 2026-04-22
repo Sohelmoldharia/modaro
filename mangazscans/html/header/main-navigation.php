@@ -4,11 +4,11 @@
 	 * @package mangazscans
 	 */
 
-	use App\Madara;
+	use App\MangazScans;
 
 ?>
 
-<section class="c-main-navigation sticky-<?php echo esc_attr(Madara::getOption( 'nav_sticky_schema', 'dark' )); ?>">
+<section class="c-main-navigation sticky-<?php echo esc_attr(MangazScans::getOption( 'nav_sticky_schema', 'dark' )); ?>">
     <div class="container c-container">
         <div class="row c-row">
             <div class="c-main-navigation__inner">
@@ -18,14 +18,14 @@
                             <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 								<?php
 
-									$madara_logo = Madara::getOption( 'desktop_logo_image', '' );
-									if ( $madara_logo == '' ) {
-										$madara_logo = get_parent_theme_file_uri( '/images/logo.png' );
+									$mz_logo = MangazScans::getOption( 'desktop_logo_image', '' );
+									if ( $mz_logo == '' ) {
+										$mz_logo = get_parent_theme_file_uri( '/images/logo.png' );
 									}
 
-									$madara_logo = apply_filters( 'madara_logo_url', $madara_logo );
+									$mz_logo = apply_filters( 'madara_logo_url', $mz_logo );
 								?>
-                                <img src="<?php echo esc_url( $madara_logo ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>">
+                                <img src="<?php echo esc_url( $mz_logo ); ?>" alt="<?php echo esc_html( get_bloginfo( 'name' ) ); ?>">
                             </a>
                         </div>
                     </div>

@@ -7,7 +7,7 @@
 	 * Custom settings array that will eventually be
 	 * passes to the OptionTree Settings API Class.
 	 */
-	$madara_theme_options = array(
+	$mz_theme_options = array(
 		'contextual_help' => array(
 			'content' => array(
 				array(

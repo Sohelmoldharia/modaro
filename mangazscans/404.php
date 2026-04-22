@@ -1,6 +1,6 @@
 <?php
 
-	use App\Madara;
+	use App\MangazScans;
 
 	/**
 	 * The Template for displaying all 404 pages.
@@ -28,10 +28,10 @@
                                     <header class="entry-header">
                                         <div class="entry-featured-image">
 											<?php
-												$madara_featured_image = Madara::getOption( 'page404_featured_image' );
+												$mz_featured_image = MangazScans::getOption( 'page404_featured_image' );
 
-												if ( $madara_featured_image != '' ) {
-													echo '<figure class="c-thumbnail"><img src="' . esc_url( $madara_featured_image ) . '" alt="' . esc_attr__( '404', 'mangazscans' ) . '"/></figure>';
+												if ( $mz_featured_image != '' ) {
+													echo '<figure class="c-thumbnail"><img src="' . esc_url( $mz_featured_image ) . '" alt="' . esc_attr__( '404', 'mangazscans' ) . '"/></figure>';
 												} else {
 													echo '<figure class="c-thumbnail"><img src="' . esc_url( get_template_directory_uri() . '/images/404.png' ) . '" alt="' . esc_attr__( '404', 'mangazscans' ) . '"/></figure>';
 												}
@@ -40,10 +40,10 @@
                                         <div class="entry-title">
                                             <h3 class="heading">
 												<?php
-													$madara_heading = Madara::getOption( 'page404_title' );
+													$mz_heading = MangazScans::getOption( 'page404_title' );
 
-													if ( $madara_heading != '' ) {
-														echo esc_html( $madara_heading );
+													if ( $mz_heading != '' ) {
+														echo esc_html( $mz_heading );
 													} else {
 														esc_html_e( 'Oops! page not found.', 'mangazscans' );
 													}
@@ -53,10 +53,10 @@
                                     </header>
 
                                     <!-- .entry-header -->
-									<?php $madara_content = Madara::getOption( 'page404_content' );
+									<?php $mz_content = MangazScans::getOption( 'page404_content' );
 
-										if ( $madara_content != '' ) {
-											echo '<div class="entry-content">' . wp_kses_post( $madara_content ) . '</div>';
+										if ( $mz_content != '' ) {
+											echo '<div class="entry-content">' . wp_kses_post( $mz_content ) . '</div>';
 										}
 									?>
                                     <!-- .entry-content -->

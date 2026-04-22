@@ -13,7 +13,7 @@
 			if ( file_exists( get_parent_theme_file_path( '/app/config-required-plugins.php' ) ) ) {
 				include( get_template_directory() . '/app/config-required-plugins.php' );
 
-				return apply_filters( 'madara_required_plugins', $madara_required_plugins );
+				return apply_filters( 'madara_required_plugins', $mz_required_plugins );
 			}
 
 			return array();
@@ -24,7 +24,7 @@
 			if ( file_exists( get_parent_theme_file_path( '/app/config-image-sizes.php' ) ) ) {
 				include( get_template_directory() . '/app/config-image-sizes.php' );
 
-				return apply_filters( 'madara_thumbnail_sizes', $madara_image_sizes );
+				return apply_filters( 'madara_thumbnail_sizes', $mz_image_sizes );
 			}
 
 			return array();
@@ -41,7 +41,7 @@
 			if ( file_exists( get_parent_theme_file_path( '/app/config-image-sizes.php' ) ) ) {
 				include( get_template_directory() . '/app/config-image-sizes.php' );
 
-				$mapping = apply_filters( 'madara_thumbnail_size_mapping', $madara_image_size_mapping );
+				$mapping = apply_filters( 'madara_thumbnail_size_mapping', $mz_image_size_mapping );
 
 				if ( isset( $mapping[ $preferred_size[0] . 'x' . $preferred_size[1] ] ) ) {
 					return $mapping[ $preferred_size[0] . 'x' . $preferred_size[1] ];

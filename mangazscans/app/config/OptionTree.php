@@ -63,18 +63,18 @@
 
 			// require core settings
 			require( 'theme-options.php' );
-			$custom_settings      = $madara_theme_options;
-			$madara_theme_options = array(); // clear
+			$custom_settings      = $mz_theme_options;
+			$mz_theme_options = array(); // clear
 
 			// require custom settings
 			if ( file_exists( get_parent_theme_file_path( '/app/theme-options.php' ) ) ) {
 				require( get_template_directory() . '/app/theme-options.php' );
-				if ( isset( $madara_theme_options['settings'] ) && count( $madara_theme_options['settings'] ) > 0 ) {
-					$custom_settings['settings'] = array_merge( $custom_settings['settings'], $madara_theme_options['settings'] );
+				if ( isset( $mz_theme_options['settings'] ) && count( $mz_theme_options['settings'] ) > 0 ) {
+					$custom_settings['settings'] = array_merge( $custom_settings['settings'], $mz_theme_options['settings'] );
 				}
 
-				if ( isset( $madara_theme_options['sections'] ) && count( $madara_theme_options['sections'] ) > 0 ) {
-					$custom_settings['sections'] = array_merge( $custom_settings['sections'], $madara_theme_options['sections'] );
+				if ( isset( $mz_theme_options['sections'] ) && count( $mz_theme_options['sections'] ) > 0 ) {
+					$custom_settings['sections'] = array_merge( $custom_settings['sections'], $mz_theme_options['sections'] );
 				}
 			}
 

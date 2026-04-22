@@ -3,8 +3,8 @@
 	 * Mobile Navigation Template
 	 * @package mangazscans
 	 */
-    use App\Madara;
-    $header_login_buttons = Madara::getOption('header_disable_login_buttons', 'on');
+    use App\MangazScans;
+    $header_login_buttons = MangazScans::getOption('header_disable_login_buttons', 'on');
     $user_enabled = ($header_login_buttons == 'on') && ! is_user_logged_in() && get_option( 'users_can_register' );
 ?>
 

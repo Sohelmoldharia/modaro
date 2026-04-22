@@ -13,7 +13,7 @@
 	 * @version 1.7.2.3
 	 */
 	 
-	 use App\Madara;
+	 use App\MangazScans;
 	
 	$manga_id  = get_the_ID();
 	$reading_chapter = function_exists('madara_permalink_reading_chapter') ? madara_permalink_reading_chapter() : false;
@@ -44,17 +44,17 @@
 	$wp_manga_settings = get_option( 'wp_manga_settings' );
 	$related_manga     = isset( $wp_manga_settings['related_manga'] ) ? $wp_manga_settings['related_manga'] : null;
 	if($related_manga == 1){
-		$related_manga = Madara::getOption( 'manga_reading_related', 'on' ) == 'on' ? 1 : 0;
+		$related_manga = MangazScans::getOption( 'manga_reading_related', 'on' ) == 'on' ? 1 : 0;
 	}
-	$madara_single_sidebar      = madara_get_theme_sidebar_setting();
-	$madara_breadcrumb          = Madara::getOption( 'manga_single_breadcrumb', 'on' );
-	$manga_reading_discussion   = Madara::getOption( 'manga_reading_discussion', 'on' );
-	$manga_reading_social_share = Madara::getOption( 'manga_reading_social_share', 'off' );
+	$mz_single_sidebar      = madara_get_theme_sidebar_setting();
+	$mz_breadcrumb          = MangazScans::getOption( 'manga_single_breadcrumb', 'on' );
+	$manga_reading_discussion   = MangazScans::getOption( 'manga_reading_discussion', 'on' );
+	$manga_reading_social_share = MangazScans::getOption( 'manga_reading_social_share', 'off' );
 	
 	$chapter_type = get_post_meta( $manga_id, '_wp_manga_chapter_type', true );
-	$is_text_chapter_right_sidebar = ($madara_single_sidebar != 'full' && $chapter_type == 'text' && Madara::getOption( 'manga_reading_text_sidebar', 'on' ) == 'on') ? true : false;
+	$is_text_chapter_right_sidebar = ($mz_single_sidebar != 'full' && $chapter_type == 'text' && MangazScans::getOption( 'manga_reading_text_sidebar', 'on' ) == 'on') ? true : false;
 	
-	if ( $madara_single_sidebar == 'full' || $is_text_chapter_right_sidebar ) {
+	if ( $mz_single_sidebar == 'full' || $is_text_chapter_right_sidebar ) {
 		$main_col_class = 'sidebar-hidden col-12 col-sm-12 col-md-12 col-lg-12';
 	} else {
 		$main_col_class = 'main-col col-12 col-sm-8 col-md-8 col-lg-8';
@@ -70,9 +70,9 @@
                     <div class="main-col <?php echo esc_attr($is_text_chapter_right_sidebar ? "col-md-8" : "col-md-12");?> col-sm-12 sidebar-hidden">
 						<?php 
 						
-						$madara_show_chapter_heading = Madara::getOption( 'chapter_heading', 'on' );
+						$mz_show_chapter_heading = MangazScans::getOption( 'chapter_heading', 'on' );
 						
-						if($madara_show_chapter_heading == 'on'){?>
+						if($mz_show_chapter_heading == 'on'){?>
 						<h1 id="chapter-heading"><?php 
 						$manga = get_post($manga_id); echo esc_html($manga->post_title);?> - <?php echo esc_html($reading_chapter['chapter_name']);?></h1>
 						<?php }  ?>
@@ -137,15 +137,15 @@
 
 							<?php if ( class_exists( 'APSS_Class' ) && $manga_reading_social_share == 'on' ) {
 
-								$madara_sharing_text     = apply_filters( 'manga_reading_sharing_text', esc_html__( 'SHARE THIS MANGA', 'mangazscans' ) );
-								$madara_sharing_networks = 'facebook, twitter, google-plus, pinterest, linkedin, digg';
-								$madara_sharing_networks = apply_filters( 'manga_reading_sharing_networkds', $madara_sharing_networks );
-								echo do_shortcode( "[apss_share share_text='$madara_sharing_text' networks='$madara_sharing_networks' counter='1' total_counter='1' http_count='1']" );
+								$mz_sharing_text     = apply_filters( 'manga_reading_sharing_text', esc_html__( 'SHARE THIS MANGA', 'mangazscans' ) );
+								$mz_sharing_networks = 'facebook, twitter, google-plus, pinterest, linkedin, digg';
+								$mz_sharing_networks = apply_filters( 'manga_reading_sharing_networkds', $mz_sharing_networks );
+								echo do_shortcode( "[apss_share share_text='$mz_sharing_text' networks='$mz_sharing_networks' counter='1' total_counter='1' http_count='1']" );
 
 							} ?>
 
 							<?php if ( $manga_reading_discussion == 'on' && !$is_text_chapter_right_sidebar ) { ?>
-                                <div class="row <?php echo esc_attr( $madara_single_sidebar == 'left' ? 'sidebar-left' : ''); ?>">
+                                <div class="row <?php echo esc_attr( $mz_single_sidebar == 'left' ? 'sidebar-left' : ''); ?>">
                                     <div class="<?php echo esc_attr( $main_col_class ); ?>">
                                         <!-- comments-area -->
 										<?php do_action( 'wp_manga_discussion' ); ?>
@@ -153,7 +153,7 @@
                                     </div>
 
 									<?php
-										if ( $madara_single_sidebar != 'full' ) {
+										if ( $mz_single_sidebar != 'full' ) {
 											?>
                                             <div class="sidebar-col col-md-4 col-sm-4">
 												<?php get_sidebar(); ?>
@@ -165,7 +165,7 @@
 							<?php } ?>
 
 							<?php
-								$minimal_reading_page = Madara::getOption( 'minimal_reading_page', 'off' );
+								$minimal_reading_page = MangazScans::getOption( 'minimal_reading_page', 'off' );
 								
 								if ( $related_manga == 1 && $minimal_reading_page == 'off' ) {
 									get_template_part( '/madara-core/manga', 'related' );
@@ -179,7 +179,7 @@
                         </div>
                     </div>
 					<?php
-					if ( $madara_single_sidebar != 'full' && $is_text_chapter_right_sidebar ) {
+					if ( $mz_single_sidebar != 'full' && $is_text_chapter_right_sidebar ) {
 						?>
 						<div class="sidebar-col text-sidebar col-md-4 col-sm-12">
 							<?php get_sidebar(); ?>

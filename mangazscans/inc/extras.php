@@ -1,6 +1,6 @@
 <?php
 
-	use App\Madara;
+	use App\MangazScans;
 
 	/**
 	 * Get sidebar setting for a particular page
@@ -12,17 +12,17 @@
 		if ( is_404() ) {
 			$sidebar = 'hidden';
 		} elseif ( class_exists( 'WP_MANGA' ) && is_manga_archive() ) {
-			$sidebar = Madara::getOption( 'manga_archive_sidebar', 'right' );
+			$sidebar = MangazScans::getOption( 'manga_archive_sidebar', 'right' );
 		} elseif ( class_exists( 'WP_MANGA' ) && is_manga_single() ) {
-			$sidebar = Madara::getOption( 'manga_single_sidebar', 'right' );
+			$sidebar = MangazScans::getOption( 'manga_single_sidebar', 'right' );
 		} elseif ( class_exists( 'WP_MANGA' ) && is_manga_reading_page() ) {
-			$sidebar = Madara::getOption( 'manga_reading_page_sidebar', 'right' );
+			$sidebar = MangazScans::getOption( 'manga_reading_page_sidebar', 'right' );
 		} elseif ( is_page() ) {
-			$sidebar = Madara::getOption( 'page_sidebar', 'right' );
+			$sidebar = MangazScans::getOption( 'page_sidebar', 'right' );
 		} elseif ( class_exists( 'WP_MANGA' ) && ! is_manga() && is_archive() || ( class_exists( 'WP_MANGA' ) && class_exists( 'WP_MANGA' ) && ! is_manga() && is_front_page() && is_home() || ( class_exists( 'WP_MANGA' ) && ! is_manga() && is_home() ) ) ) {
-			$sidebar = Madara::getOption( 'archive_sidebar', 'right' );
+			$sidebar = MangazScans::getOption( 'archive_sidebar', 'right' );
 		} else {
-			$sidebar = Madara::getOption( 'single_sidebar', 'right' );
+			$sidebar = MangazScans::getOption( 'single_sidebar', 'right' );
 		}
 
 		return apply_filters( 'madara_sidebar_setting', $sidebar );
@@ -35,7 +35,7 @@
 
 		$page_title = '';
 		if ( is_home() ) {
-			$page_title = Madara::getOption( 'blog_heading', '' );
+			$page_title = MangazScans::getOption( 'blog_heading', '' );
 			$page_title = $page_title ? $page_title : get_bloginfo( 'name' );
 		} elseif ( is_search() ) {
 			$page_title = esc_html__( 'Search Results', 'mangazscans' );
@@ -151,7 +151,7 @@
 			'my-mangas' => array('url' => $wp_manga_user_actions->get_user_tab_url( 'my-mangas' ), 'icon' => 'icon ion-md-folder-open', 'label' => esc_html__( 'My Uploaded Mangas', 'mangazscans' ))
 		];
 		
-		$reader_settings_tab = Madara::getOption( 'manga_reader_setting', 'on' );
+		$reader_settings_tab = MangazScans::getOption( 'manga_reader_setting', 'on' );
 		if($reader_settings_tab == 'off'){
 			unset($default_tabs['reader-settings']);
 		}
@@ -343,9 +343,9 @@
 		}
 
 		// exclude args
-		$exclude_tags = Madara::getOption('manga_search_exclude_tags', '');
-		$exclude_genres = Madara::getOption('manga_search_exclude_genres', '');
-		$exclude_authors = Madara::getOption('manga_search_exclude_authors', '');
+		$exclude_tags = MangazScans::getOption('manga_search_exclude_tags', '');
+		$exclude_genres = MangazScans::getOption('manga_search_exclude_genres', '');
+		$exclude_authors = MangazScans::getOption('manga_search_exclude_authors', '');
 		
 		if($exclude_tags != '' || $exclude_genres != '' || $exclude_authors != ''){
 			$exclude_args = array();
