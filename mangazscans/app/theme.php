@@ -1,12 +1,15 @@
 <?php
 
 	/**
-	 * 1.0
-	 * @package    Madara
-	 * @author     WPStylish <wpstylish@gmail.com>
-	 * @copyright  Copyright (C) 2018 mangabooth.com. All Rights Reserved
+	 * MangazScans theme bootstrap.
 	 *
-	 * Websites: https://mangabooth.com/
+	 * Defines MangazScansStarter (the concrete theme class) on top of the
+	 * App\MangazScans base in core.php, wires up sidebars, menus, and the
+	 * front-end enqueue graph, and pulls in manga-specific glue when the
+	 * bundled madara-core (WP Manga) plugin is active.
+	 *
+	 * @package mangazscans
+	 * @license GNU/GPL v2 or later
 	 */
 
 	namespace App;
@@ -36,10 +39,9 @@
 	}
 
 	/**
-	 * Core class.
-	 *
-	 * @package  Madara
-	 * @since    1.0
+	 * Theme-level starter class. Extends the base in core.php with the
+	 * concrete initialize() that registers sidebars, menus, enqueues,
+	 * and template tags for the front-end.
 	 */
 	class MangazScansStarter extends MangazScans {
 
@@ -360,7 +362,7 @@
 			 * Add Custom CSS
 			 */
 			require( get_template_directory() . '/css/custom.css.php' );
-			$custom_css = madara_custom_CSS();
+			$custom_css = mangazscans_custom_CSS();
 			wp_add_inline_style( 'madara-css', $custom_css );
 		}		
 

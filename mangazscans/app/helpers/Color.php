@@ -106,7 +106,7 @@
 		}
 
 		/* Add opacity to a Hexa color */
-		public static function madara_hex2rgba( $hex, $opacity ) {
+		public static function mangazscans_hex2rgba( $hex, $opacity ) {
 
 			$hex = str_replace( "#", "", $hex );
 
@@ -127,7 +127,7 @@
 			return implode( ",", $rgba ); // returns the rgb values separated by commas
 		}
 
-		public static function madara_adjust_Brightness( $hex, $steps ) {
+		public static function mangazscans_adjust_brightness( $hex, $steps ) {
 			// Steps should be between -255 and 255. Negative = darker, positive = lighter
 			$steps = max( - 255, min( 255, $steps ) );
 
@@ -150,11 +150,11 @@
 			return $return;
 		}
 
-		public static function madara_background_gradient( $start = false, $percent = '20%', $end = false ) {
+		public static function mangazscans_background_gradient( $start = false, $percent = '20%', $end = false ) {
 			$css_attr = '';
 			if ( $start ) {
 				if ( ! $end ) {
-					$start_lighten = self::madara_adjust_Brightness( $start, '20' );
+					$start_lighten = self::mangazscans_adjust_brightness( $start, '20' );
 					$css_attr      .= '
 						  background: -webkit-linear-gradient(left, ' . $start . ' ' . $percent . ',' . $start_lighten . ');
 						  background: -o-linear-gradient(right, ' . $start . ' ' . $percent . ',' . $start_lighten . ');

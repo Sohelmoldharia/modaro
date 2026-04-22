@@ -8,20 +8,20 @@
 
 
 
-if (!function_exists('madara_custom_CSS')) {
+if (!function_exists('mangazscans_custom_CSS')) {
 
-	function madara_custom_CSS()
+	function mangazscans_custom_CSS()
 	{
 
-		$madara             = new App\Madara();
+		$mz             = new App\MangazScans();
 		$mz_option_tree = new App\Config\OptionTree();
 		$typography         = new App\Models\Entity\Typography();
 
 		//Color
-		$site_custom_colors          = $madara->getOption('site_custom_colors', 'off');
-		$header_custom_colors        = $madara->getOption('header_custom_colors', 'off');
-		$header_bottom_custom_colors = $madara->getOption('header_bottom_custom_colors', 'off');
-		$mobile_menu_custom_color    = $madara->getOption('mobile_menu_custom_color', 'off');
+		$site_custom_colors          = $mz->getOption('site_custom_colors', 'off');
+		$header_custom_colors        = $mz->getOption('header_custom_colors', 'off');
+		$header_bottom_custom_colors = $mz->getOption('header_bottom_custom_colors', 'off');
+		$mobile_menu_custom_color    = $mz->getOption('mobile_menu_custom_color', 'off');
 
 		$front_page_custom_colors            = get_post_meta(get_the_ID(), 'custom_colors', true);
 		$front_page_header_custom_colors     = get_post_meta(get_the_ID(), 'header_colors', true);
@@ -77,17 +77,17 @@ if (!function_exists('madara_custom_CSS')) {
 				$btn_hover_bg        = $mz_option_tree::getOption('btn_hover_bg', '');
 				$btn_hover_color     = $mz_option_tree::getOption('btn_hover_color', '');
 			} else {
-				$main_color          = $madara->getOption('main_color', '');
-				$main_color_end      = $madara->getOption('main_color_end', '');
-				$link_color_hover    = $madara->getOption('link_color_hover', '');
-				$hot_badges_bg_color = $madara->getOption('hot_badges_bg_color', '');
-				$new_badges_bg_color = $madara->getOption('new_badges_bg_color', '');
-				$custom_badges_bg_color = $madara->getOption('custom_badges_bg_color', '');
-				$star_color          = $madara->getOption('star_color', '');
-				$btn_bg              = $madara->getOption('btn_bg', '');
-				$btn_color           = $madara->getOption('btn_color', '');
-				$btn_hover_bg        = $madara->getOption('btn_hover_bg', '');
-				$btn_hover_color     = $madara->getOption('btn_hover_color', '');
+				$main_color          = $mz->getOption('main_color', '');
+				$main_color_end      = $mz->getOption('main_color_end', '');
+				$link_color_hover    = $mz->getOption('link_color_hover', '');
+				$hot_badges_bg_color = $mz->getOption('hot_badges_bg_color', '');
+				$new_badges_bg_color = $mz->getOption('new_badges_bg_color', '');
+				$custom_badges_bg_color = $mz->getOption('custom_badges_bg_color', '');
+				$star_color          = $mz->getOption('star_color', '');
+				$btn_bg              = $mz->getOption('btn_bg', '');
+				$btn_color           = $mz->getOption('btn_color', '');
+				$btn_hover_bg        = $mz->getOption('btn_hover_bg', '');
+				$btn_hover_color     = $mz->getOption('btn_hover_color', '');
 			}
 
 		}
@@ -104,13 +104,13 @@ if (!function_exists('madara_custom_CSS')) {
 				$nav_sub_item_hover_bg    = $mz_option_tree::getOption('nav_sub_item_hover_bg', '');
 
 			} else {
-				$nav_item_color           = $madara->getOption('nav_item_color', '');
-				$nav_item_hover_color     = $madara->getOption('nav_item_hover_color', '');
-				$nav_sub_bg               = $madara->getOption('nav_sub_bg', '');
-				$nav_sub_bg_border_color  = $madara->getOption('nav_sub_bg_border_color', '');
-				$nav_sub_item_color       = $madara->getOption('nav_sub_item_color', '');
-				$nav_sub_item_hover_color = $madara->getOption('nav_sub_item_hover_color', '');
-				$nav_sub_item_hover_bg    = $madara->getOption('nav_sub_item_hover_bg', '');
+				$nav_item_color           = $mz->getOption('nav_item_color', '');
+				$nav_item_hover_color     = $mz->getOption('nav_item_hover_color', '');
+				$nav_sub_bg               = $mz->getOption('nav_sub_bg', '');
+				$nav_sub_bg_border_color  = $mz->getOption('nav_sub_bg_border_color', '');
+				$nav_sub_item_color       = $mz->getOption('nav_sub_item_color', '');
+				$nav_sub_item_hover_color = $mz->getOption('nav_sub_item_hover_color', '');
+				$nav_sub_item_hover_bg    = $mz->getOption('nav_sub_item_hover_bg', '');
 			}
 
 		}
@@ -126,13 +126,13 @@ if (!function_exists('madara_custom_CSS')) {
 				$bottom_nav_sub_item_hover_color = $mz_option_tree::getOption('bottom_nav_sub_item_hover_color', '');
 				$bottom_nav_sub_border_bottom    = $mz_option_tree::getOption('bottom_nav_sub_border_bottom', '');
 			} else {
-				$header_bottom_bg                = $madara->getOption('header_bottom_bg', '');
-				$bottom_nav_item_color           = $madara->getOption('bottom_nav_item_color', '');
-				$bottom_nav_item_hover_color     = $madara->getOption('bottom_nav_item_hover_color', '');
-				$bottom_nav_sub_bg               = $madara->getOption('bottom_nav_sub_bg', '');
-				$bottom_nav_sub_item_color       = $madara->getOption('bottom_nav_sub_item_color', '');
-				$bottom_nav_sub_item_hover_color = $madara->getOption('bottom_nav_sub_item_hover_color', '');
-				$bottom_nav_sub_border_bottom    = $madara->getOption('bottom_nav_sub_border_bottom', '');
+				$header_bottom_bg                = $mz->getOption('header_bottom_bg', '');
+				$bottom_nav_item_color           = $mz->getOption('bottom_nav_item_color', '');
+				$bottom_nav_item_hover_color     = $mz->getOption('bottom_nav_item_hover_color', '');
+				$bottom_nav_sub_bg               = $mz->getOption('bottom_nav_sub_bg', '');
+				$bottom_nav_sub_item_color       = $mz->getOption('bottom_nav_sub_item_color', '');
+				$bottom_nav_sub_item_hover_color = $mz->getOption('bottom_nav_sub_item_hover_color', '');
+				$bottom_nav_sub_border_bottom    = $mz->getOption('bottom_nav_sub_border_bottom', '');
 			}
 
 		}
@@ -144,9 +144,9 @@ if (!function_exists('madara_custom_CSS')) {
 				$canvas_menu_color      = $mz_option_tree::getOption('canvas_menu_color', '');
 				$canvas_menu_hover      = $mz_option_tree::getOption('canvas_menu_hover', '');
 			} else {
-				$canvas_menu_background = $madara->getOption('canvas_menu_background', '');
-				$canvas_menu_color      = $madara->getOption('canvas_menu_color', '');
-				$canvas_menu_hover      = $madara->getOption('canvas_menu_hover', '');
+				$canvas_menu_background = $mz->getOption('canvas_menu_background', '');
+				$canvas_menu_color      = $mz->getOption('canvas_menu_color', '');
+				$canvas_menu_hover      = $mz->getOption('canvas_menu_hover', '');
 			}
 
 		}
@@ -163,12 +163,12 @@ if (!function_exists('madara_custom_CSS')) {
 		if ($main_color != '') {
 
 			if ($main_color_end != '') {
-				$bg_gradient = App\Helpers\Color::madara_background_gradient($main_color, '40%', $main_color_end);
+				$bg_gradient = App\Helpers\Color::mangazscans_background_gradient($main_color, '40%', $main_color_end);
 				$custom_css .= '.c-blog__heading.style-2 i {' . $bg_gradient . ' ;}';
 				$custom_css .= '.c-blog__heading.style-2 i:after, .settings-page .nav-tabs-wrap ul.nav-tabs li.active:after { border-left-color: ' . $main_color_end . ' ; }';
 			} else {
-				$bg_gradient   = App\Helpers\Color::madara_background_gradient($main_color);
-				$start_lighten = App\Helpers\Color::madara_adjust_Brightness($main_color, '20');
+				$bg_gradient   = App\Helpers\Color::mangazscans_background_gradient($main_color);
+				$start_lighten = App\Helpers\Color::mangazscans_adjust_brightness($main_color, '20');
 				$custom_css .= '.c-blog__heading.style-2 i:after, .settings-page .nav-tabs-wrap ul.nav-tabs li.active:after { border-left-color: ' . $start_lighten . ' ;border-right-color: ' . $start_lighten . ' ;}';
 			}
 
@@ -230,7 +230,7 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 		}
 
 		if ($nav_item_hover_color != '') {
-			$nav_item_hover_color_rgba_50 = App\Helpers\Color::madara_hex2rgba($nav_item_hover_color, 50);
+			$nav_item_hover_color_rgba_50 = App\Helpers\Color::mangazscans_hex2rgba($nav_item_hover_color, 50);
 
 			$custom_css .= '.site-header .main-navigation .main-menu ul.main-navbar > li > a:hover, .site-header .main-navigation.style-1 .search-navigation .search-navigation__wrap .link-adv-search a:hover { color: ' . $nav_item_hover_color . ' ;}';
 
@@ -319,7 +319,7 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 			$custom_css .= '.off-canvas ul.main-navbar li a:hover { color : ' . $canvas_menu_hover . ' ;}';
 		}
 
-		$pre_loading_color = $madara->getOption('pre_loading_icon_color', '');
+		$pre_loading_color = $mz->getOption('pre_loading_icon_color', '');
 
 		if ($pre_loading_color != '') {
 			$custom_css .= '#pageloader .loader-inner.ball-pulse > div, #pageloader .loader-inner.ball-pulse-sync > div, #pageloader .loader-inner.ball-beat > div, #pageloader .loader-inner.ball-grid-pulse > div, #pageloader .loader-inner.ball-grid-beat > div, #pageloader .loader-inner.ball-pulse-rise>div, #pageloader .loader-inner.ball-rotate>div, #pageloader .loader-inner.ball-rotate>div:after, #pageloader .loader-inner.ball-rotate>div:before, #pageloader .loader-inner.cube-transition>div, #pageloader .loader-inner.ball-zig-zag>div, #pageloader .loader-inner.ball-zig-zag-deflect>div, #pageloader .loader-inner.line-scale-party>div, #pageloader .loader-inner.line-scale-pulse-out-rapid>div, #pageloader .loader-inner.line-scale-pulse-out>div, #pageloader .loader-inner.line-scale>div, #pageloader .loader-inner.line-spin-fade-loader>div, #pageloader .loader-inner.ball-scale>div, #pageloader .loader-inner.ball-scale-multiple>div, #pageloader .loader-inner.ball-spin-fade-loader>div, #pageloader .loader-inner.square-spin>div {background-color: ' . $pre_loading_color . '}';
@@ -334,11 +334,11 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 			$custom_css .= '#pageloader .loader-inner.semi-circle-spin>div {background-image: linear-gradient(transparent 0,transparent 70%, ' . $pre_loading_color . ' 30%, ' . $pre_loading_color . ' 100%);}';
 		}
 
-		if ($madara->getOption('font_using_custom', 'off') == 'on') {
+		if ($mz->getOption('font_using_custom', 'off') == 'on') {
 			// Custom Fonts
 
 			//Google Font
-			$main_google_font = $madara->getOption('main_font_on_google', 'off');
+			$main_google_font = $mz->getOption('main_font_on_google', 'off');
 
 			$mainFontFamily     = $typography->getMainFontFamily();
 			$headingFontFamily  = $typography->getHeadingFontFamily();
@@ -346,39 +346,39 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 			$mainNavigationFont = $typography->getNavigationFontFamily();
 
 			//Line Height
-			$main_line_height = $madara->getOption('main_font_line_height', 1.5);
+			$main_line_height = $mz->getOption('main_font_line_height', 1.5);
 
-			$h1_line_height = $madara->getOption('h1_line_height', 1.5);
-			$h2_line_height = $madara->getOption('h2_line_height', 1.5);
-			$h3_line_height = $madara->getOption('h3_line_height', 1.5);
-			$h4_line_height = $madara->getOption('h4_line_height', 1.5);
-			$h5_line_height = $madara->getOption('h5_line_height', 1.5);
-			$h6_line_height = $madara->getOption('h6_line_height', 1.5);
+			$h1_line_height = $mz->getOption('h1_line_height', 1.5);
+			$h2_line_height = $mz->getOption('h2_line_height', 1.5);
+			$h3_line_height = $mz->getOption('h3_line_height', 1.5);
+			$h4_line_height = $mz->getOption('h4_line_height', 1.5);
+			$h5_line_height = $mz->getOption('h5_line_height', 1.5);
+			$h6_line_height = $mz->getOption('h6_line_height', 1.5);
 
-			$h1_font_weight = $madara->getOption('h1_font_weight', 900);
-			$h2_font_weight = $madara->getOption('h2_font_weight', 900);
-			$h3_font_weight = $madara->getOption('h3_font_weight', 900);
-			$h4_font_weight = $madara->getOption('h4_font_weight', 600);
-			$h5_font_weight = $madara->getOption('h5_font_weight', 600);
-			$h6_font_weight = $madara->getOption('h6_font_weight', 500);
+			$h1_font_weight = $mz->getOption('h1_font_weight', 900);
+			$h2_font_weight = $mz->getOption('h2_font_weight', 900);
+			$h3_font_weight = $mz->getOption('h3_font_weight', 900);
+			$h4_font_weight = $mz->getOption('h4_font_weight', 600);
+			$h5_font_weight = $mz->getOption('h5_font_weight', 600);
+			$h6_font_weight = $mz->getOption('h6_font_weight', 500);
 
-			$meta_font_line_height = $madara->getOption('meta_font_line_height');
+			$meta_font_line_height = $mz->getOption('meta_font_line_height');
 
 			//Font Size
-			$mainFontFamily_size = $madara->getOption('main_font_size', 14);
-			$h1_size             = $madara->getOption('heading_font_size_h1', 34);
-			$h2_size             = $madara->getOption('heading_font_size_h2', 30);
-			$h3_size             = $madara->getOption('heading_font_size_h3', 24);
-			$h4_size             = $madara->getOption('heading_font_size_h4', 18);
-			$h5_size             = $madara->getOption('heading_font_size_h5', 16);
-			$h6_size             = $madara->getOption('heading_font_size_h6', 14);
+			$mainFontFamily_size = $mz->getOption('main_font_size', 14);
+			$h1_size             = $mz->getOption('heading_font_size_h1', 34);
+			$h2_size             = $mz->getOption('heading_font_size_h2', 30);
+			$h3_size             = $mz->getOption('heading_font_size_h3', 24);
+			$h4_size             = $mz->getOption('heading_font_size_h4', 18);
+			$h5_size             = $mz->getOption('heading_font_size_h5', 16);
+			$h6_size             = $mz->getOption('heading_font_size_h6', 14);
 
-			$custom_font_1 = $madara->getOption('custom_font_1', '');
-			$custom_font_2 = $madara->getOption('custom_font_2', '');
-			$custom_font_3 = $madara->getOption('custom_font_3', '');
+			$custom_font_1 = $mz->getOption('custom_font_1', '');
+			$custom_font_2 = $mz->getOption('custom_font_2', '');
+			$custom_font_3 = $mz->getOption('custom_font_3', '');
 
 			//Font Wwight
-			$main_font_weight = $madara->getOption('main_font_weight', 'normal');
+			$main_font_weight = $mz->getOption('main_font_weight', 'normal');
 
 			/**
 			 * Main Font Family
@@ -530,13 +530,13 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 				$custom_css .= '.main-navigation .main-menu a, .second-menu a, .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .c-user_item span, .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .c-user_item .c-user_menu a, .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .btn-active-modal, .site-header .main-navigation.style-1 .search-navigation .search-navigation__wrap .link-adv-search a {font-family: ' . esc_html($mainNavigationFont) . '}';
 			}
 
-			$mainNavigationFontSize = $madara->getOption('navigation_font_size', 18);
+			$mainNavigationFontSize = $mz->getOption('navigation_font_size', 18);
 
 			if ($mainNavigationFontSize != 14) {
 				$custom_css .= '.main-navigation .main-menu a, .second-menu a, .main-navigation .main-menu ul li > a, .main-navigation .main-menu ul li a, .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .c-user_item span, .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .c-user_item .c-user_menu a, .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .btn-active-modal, .site-header .main-navigation.style-1 .search-navigation .search-navigation__wrap .link-adv-search a {font-size: ' . $mainNavigationFontSize . 'px}';
 			}
 
-			$navigation_font_weight = $madara->getOption('navigation_font_weight', 400);
+			$navigation_font_weight = $mz->getOption('navigation_font_weight', 400);
 
 			if ($navigation_font_weight != 400) {
 				$custom_css .= '.c-main-navigation .c-main-navigation__inner .c-main-menu .main-menu .navbar-nav > li > a, .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .c-user_item span, .site-header .c-sub-header-nav .c-sub-nav_wrap .c-modal_item .c-user_item .c-user_menu a, .site-header .main-navigation.style-1 .search-navigation .search-navigation__wrap .link-adv-search a, .site-header .c-sub-header-nav .c-sub-nav_wrap .sub-nav_content .sub-nav_list li a, .site-header .main-navigation .main-menu ul.main-navbar > li > a {font-weight: ' . $navigation_font_weight . '}';
@@ -585,7 +585,7 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 				width:100%;
 				height:100%;
 				z-index:99999;
-				background:' . $madara::getOption( 'pre_loading_bg_color', '#222' ) . '
+				background:' . $mz::getOption( 'pre_loading_bg_color', '#222' ) . '
 			}
 		';
 		$custom_css .= '
@@ -610,12 +610,12 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 		/**
 		 * print out custom css in theme options
 		 */
-		$mz_to_custom_css = $madara->getOption( 'custom_css', '' );
+		$mz_to_custom_css = $mz->getOption( 'custom_css', '' );
 
 		/**
 		 * retina logo process
 		 */
-		$retina_logo = $madara->getOption( 'retina_logo_image', '' );
+		$retina_logo = $mz->getOption( 'retina_logo_image', '' );
 
 		if ( $retina_logo != '' ) {
 			$custom_css .= '@media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
@@ -689,12 +689,12 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 			}
 		}
 		
-		$archives_show_volume = $madara->getOption( 'manga_archives_item_volume', 'on' );
+		$archives_show_volume = $mz->getOption( 'manga_archives_item_volume', 'on' );
 		if($archives_show_volume == 'off') {
 			$custom_css .= 'body.page .c-page-content .c-page .c-page__content .page-content-listing .page-listing-item .page-item-detail .item-summary .list-chapter .chapter-item span.vol.font-meta{display:none}';
 		}
 		
-		$mz_disable_imagetoolbar    = $madara->getOption('madara_disable_imagetoolbar', 'off');
+		$mz_disable_imagetoolbar    = $mz->getOption('madara_disable_imagetoolbar', 'off');
 		if($mz_disable_imagetoolbar == 'on'){
 			$custom_css .= ".chapter-type-manga .c-blog-post .entry-content .entry-content_wrap .reading-content::before {
 				content: ' ';
@@ -710,17 +710,17 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
 			$custom_css .= 'body.modal-open .modal .modal-dialog, body.modal-open .modal .modal-content .modal-loading-screen{background-image:none;' . $login_popup_background . '}';
 		}
 		
-		$manga_reading_full_width = $madara->getOption('manga_reading_full_width', 'on');
+		$manga_reading_full_width = $mz->getOption('manga_reading_full_width', 'on');
 		if($manga_reading_full_width == 'on'){
 			$custom_css .= "@media (max-width: 480px) {.c-blog-post .entry-content .entry-content_wrap .reading-content{margin-left:-15px;margin-right:-15px}}";
 		}
 		
-		$text_fontsize = $madara->getOption('manga_reading_text_fontsize', '');
+		$text_fontsize = $mz->getOption('manga_reading_text_fontsize', '');
 		if($text_fontsize != ''){
 			$custom_css .= ".reading-manga .reading-content{font-size:{$text_fontsize}px}";
 		}
         
-        $visible_lines = $madara->getOption('manga_archive_limit_visible_lines', 2);
+        $visible_lines = $mz->getOption('manga_archive_limit_visible_lines', 2);
         if($visible_lines != 2){
             $custom_css .= '.page-listing-item .post-title h3, .slider__content_item h4{-webkit-line-clamp: ' . $visible_lines . ';}';
         }
@@ -737,7 +737,7 @@ body.manga-page .profile-manga .tab-summary .post-rating .post-total-rating i.io
           }';
         
         if(defined('WP_MANGA_VER') && WP_MANGA_VER >= 1.66 && is_manga_oneshot()){
-            $oneshot_image_height = $madara->getOption('manga_oneshot_image_height', 200);
+            $oneshot_image_height = $mz->getOption('manga_oneshot_image_height', 200);
             if($oneshot_image_height != 200){
                 $custom_css .= "#oneshot-reader .image-item{height:{$oneshot_image_height}px}";
             }
