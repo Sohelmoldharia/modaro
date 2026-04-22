@@ -124,7 +124,7 @@ tagline = "Lightweight, security-hardened manga & comic theme for WordPress"
 tw = d.textlength(tagline, font=tagline_font)
 d.text(((W - tw) // 2, (H // 2) + 90), tagline, font=tagline_font, fill=SUBTLE)
 
-foot = "v2.5.0  ·  forked from Madara 1.7.3.1"
+foot = "v2.6.0  ·  forked from Madara 1.7.3.1"
 fw = d.textlength(foot, font=foot_font)
 d.text(((W - fw) // 2, (H // 2) + 140), foot, font=foot_font, fill=ACCENT[:3])
 

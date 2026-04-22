@@ -5,7 +5,7 @@ Forked from Madara 1.7.3.1 (the most recent ThemeForest build, Nov 2021)
 and modernized for the comic site `MangazScans`.
 
 - **Theme dir**: `mangazscans/`
-- **Theme version**: 2.5.0
+- **Theme version**: 2.6.0
 - **Forked from**: Madara 1.7.3.1 by WPStylish (ThemeForest)
 - **Required plugin**: Madara-Core (ships bundled at `mangazscans/app/plugins/packages/madara-core.zip`, auto-installed via TGM on first activation)
 - **Tested PHP**: 8.4 (`php -l` clean across all theme files)
