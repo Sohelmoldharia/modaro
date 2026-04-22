@@ -86,19 +86,24 @@
 			</div>
 
 			<div class="mz-footer__bottom">
-				<p class="mz-footer__copy">
-					<?php
-					if ( $copyright !== '' ) {
-						echo wp_kses_post( $copyright );
-					} else {
-						printf(
-							/* translators: %s: current year */
-							esc_html__( '© %s MangazScans. All rights reserved.', 'mangazscans' ),
-							esc_html( date( 'Y' ) )
-						);
-					}
-					?>
-				</p>
+				<div class="mz-footer__bottom-text">
+					<p class="mz-footer__copy">
+						<?php
+						if ( $copyright !== '' ) {
+							echo wp_kses_post( $copyright );
+						} else {
+							printf(
+								/* translators: %s: current year */
+								esc_html__( '© %s MangazScans. All rights reserved.', 'mangazscans' ),
+								esc_html( date( 'Y' ) )
+							);
+						}
+						?>
+					</p>
+					<p class="mz-footer__disclaimer">
+						<?php esc_html_e( 'MangazScans does not host images of any comics or manga. If you\'re a rights-holder and want something removed, reach out to the host where the images are stored.', 'mangazscans' ); ?>
+					</p>
+				</div>
 				<?php
 					// Language switcher (Polylang) — only render if enabled + plugin active.
 					if ( MangazScans::getOption( 'polylang_footer', 'off' ) === 'on' && function_exists( 'pll_the_languages' ) ) :
