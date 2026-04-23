@@ -270,3 +270,150 @@
 		);
 	}, 20 );
 
+	/**
+	 * PATCH: chapter reading pages should show 'Manga — Chapter N' in
+	 * share cards, not just the manga title.
+	 *
+	 * Chapter URLs (/manga/one-piece/ch-1181/) are WP rewrites on top
+	 * of the wp-manga post — no new post exists per chapter, so Yoast
+	 * picks up the manga post's title and emits it as og:title. That's
+	 * why Discord/Slack/etc. show 'One Piece - MangazScans' for every
+	 * chapter regardless of which chapter was shared.
+	 *
+	 * We detect the chapter reading page via madara-core's
+	 * is_manga_reading_page() helper, pull the chapter name from
+	 * madara_permalink_reading_chapter(), and rewrite:
+	 *   - <title> (via document_title_parts)
+	 *   - og:title, twitter:title (Yoast filters)
+	 *   - og:image (to the manga cover instead of site logo)
+	 *   - og:description (chapter name + manga synopsis)
+	 *
+	 * All filters are priority 99 so they run after Yoast's own pass.
+	 */
+	function mangazscans_chapter_share_info() {
+		static $cache = null;
+		if ( $cache !== null ) {
+			return $cache;
+		}
+		$cache = false;
+
+		if ( ! function_exists( 'is_manga_reading_page' ) || ! is_manga_reading_page() ) {
+			return false;
+		}
+
+		$manga_id = get_the_ID();
+		if ( ! $manga_id ) {
+			return false;
+		}
+
+		$chapter = function_exists( 'madara_permalink_reading_chapter' )
+			? madara_permalink_reading_chapter()
+			: false;
+		if ( ! $chapter || empty( $chapter['chapter_name'] ) ) {
+			return false;
+		}
+
+		$extend = '';
+		if ( ! empty( $chapter['chapter_name_extend'] )
+			&& function_exists( 'madara_get_global_wp_manga_functions' ) ) {
+			$fns = madara_get_global_wp_manga_functions();
+			if ( is_object( $fns ) && method_exists( $fns, 'filter_extend_name' ) ) {
+				$extend = $fns->filter_extend_name( $chapter['chapter_name_extend'] );
+			}
+		}
+
+		$cache = array(
+			'manga_id'     => (int) $manga_id,
+			'manga_title'  => get_the_title( $manga_id ),
+			'chapter_name' => trim( $chapter['chapter_name'] . $extend ),
+		);
+		return $cache;
+	}
+
+	// <title> element
+	add_filter( 'document_title_parts', function ( $parts ) {
+		$info = mangazscans_chapter_share_info();
+		if ( ! $info ) {
+			return $parts;
+		}
+		$parts['title'] = sprintf( '%s — %s', $info['manga_title'], $info['chapter_name'] );
+		return $parts;
+	}, 99 );
+
+	// Yoast og:title (and title output)
+	add_filter( 'wpseo_opengraph_title', function ( $title ) {
+		$info = mangazscans_chapter_share_info();
+		if ( ! $info ) {
+			return $title;
+		}
+		return sprintf( '%s — %s - %s', $info['manga_title'], $info['chapter_name'], get_bloginfo( 'name' ) );
+	}, 99 );
+	add_filter( 'wpseo_title', function ( $title ) {
+		$info = mangazscans_chapter_share_info();
+		if ( ! $info ) {
+			return $title;
+		}
+		return sprintf( '%s — %s - %s', $info['manga_title'], $info['chapter_name'], get_bloginfo( 'name' ) );
+	}, 99 );
+
+	// Yoast twitter:title
+	add_filter( 'wpseo_twitter_title', function ( $title ) {
+		$info = mangazscans_chapter_share_info();
+		if ( ! $info ) {
+			return $title;
+		}
+		return sprintf( '%s — %s', $info['manga_title'], $info['chapter_name'] );
+	}, 99 );
+
+	// Yoast og:image / twitter:image → manga cover
+	add_filter( 'wpseo_opengraph_image', function ( $img ) {
+		$info = mangazscans_chapter_share_info();
+		if ( ! $info ) {
+			return $img;
+		}
+		$cover = get_the_post_thumbnail_url( $info['manga_id'], 'large' );
+		return $cover ?: $img;
+	}, 99 );
+	add_filter( 'wpseo_twitter_image', function ( $img ) {
+		$info = mangazscans_chapter_share_info();
+		if ( ! $info ) {
+			return $img;
+		}
+		$cover = get_the_post_thumbnail_url( $info['manga_id'], 'large' );
+		return $cover ?: $img;
+	}, 99 );
+
+	// Yoast og:description → 'Read <chapter> of <manga>. <first 25 words of synopsis>'
+	add_filter( 'wpseo_opengraph_desc', function ( $desc ) {
+		$info = mangazscans_chapter_share_info();
+		if ( ! $info ) {
+			return $desc;
+		}
+		$synopsis = wp_trim_words(
+			wp_strip_all_tags( (string) get_post_field( 'post_content', $info['manga_id'] ) ),
+			25,
+			'…'
+		);
+		$lead = sprintf(
+			/* translators: 1: chapter name, 2: manga title */
+			esc_html__( 'Read %1$s of %2$s.', 'mangazscans' ),
+			$info['chapter_name'],
+			$info['manga_title']
+		);
+		$out = $synopsis !== '' ? $lead . ' ' . $synopsis : $lead;
+		return $out;
+	}, 99 );
+	add_filter( 'wpseo_twitter_description', function ( $desc ) {
+		$info = mangazscans_chapter_share_info();
+		if ( ! $info ) {
+			return $desc;
+		}
+		return sprintf(
+			/* translators: 1: chapter name, 2: manga title */
+			esc_html__( 'Read %1$s of %2$s.', 'mangazscans' ),
+			$info['chapter_name'],
+			$info['manga_title']
+		);
+	}, 99 );
+
+
